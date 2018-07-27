@@ -7,20 +7,47 @@ import {convertToMap, update} from 'utils/maps'
 import {t, language} from 'utils/i18n'
 import {createCssNamespace} from 'utils/css'
 
-const originalOnLoad = window.onload
-const convertedTranslations = convertToMap(translations)
-const configName = document.currentScript.dataset.config || "klaroConfig"
+const defaultOptions = {
+    configName: 'klaroConfig',
+    stylePrefix: 'klaro'
+}
 const noAutoLoad = document.currentScript.dataset.noAutoLoad == "true"
-const stylePrefix = document.currentScript.dataset.stylePrefix || "klaro"
-const config = window[configName]
+const inModule = typeof exports === 'object' && typeof module === 'object'
+const convertedTranslations = convertToMap(translations)
+let currentConfig = null
 const managers = {}
 
-window.onload = initialize
+// do not autoload if user explicitely asked, or if we are in an environment with modules
+if (!inModule && !noAutoLoad) {
+    const docScript = document.currentScript
+    const originalOnLoad = window.onload
+    window.onload = function(e) {
+        initialize({
+            config: window[docScript.dataset.configName || defaultOptions.configName],
+            stylePrefix: docScript.dataset.stylePrefix || defaultOptions.stylePrefix,
+        })
+        if (originalOnLoad !== null){
+            originalOnLoad(e)
+        }
+    }
+}
 
 if (module.hot) {
     if (!noAutoLoad)
-        renderKlaro(config)
+        renderKlaro(currentConfig)
     module.hot.accept()
+}
+
+export function initialize(opts) {
+    const options = {...defaultOptions, ...opts}
+    if (!options.config) {
+        throw new Error(inModule
+            ? 'No Kralo config found. Please initialize Klaro with a `config` key in the options object'
+            : 'No Kralo config found. Please make sure window[configName] is set correctly'
+        )
+    }
+    currentConfig = options.config
+    renderKlaro(options)
 }
 
 function getElementID(config){
@@ -51,7 +78,7 @@ function getTranslations(config){
     return trans
 }
 
-export function renderKlaro(config, show){
+export function renderKlaro({config, stylePrefix}, show){
     if (config === undefined)
         return
     const element = getElement(config)
@@ -67,24 +94,16 @@ export function renderKlaro(config, show){
     return app
 }
 
-export function initialize(e){
-    if (!noAutoLoad)
-        renderKlaro(config)
-    if (originalOnLoad !== null){
-        originalOnLoad(e)
-    }
-}
-
-export function getManager(conf){
-    conf = conf || config
+export function getManager(config){
+    conf = config || currentConfig
     const name = getElementID(conf)
     if (managers[name] === undefined)
         managers[name] = new ConsentManager(conf)
     return managers[name]
 }
 
-export function show(conf){
-    conf = conf || config
+export function show(config){
+    conf = config || currentConfig
     renderKlaro(conf, true)
     return false
 }
