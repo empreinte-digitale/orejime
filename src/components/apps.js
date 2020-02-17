@@ -63,28 +63,35 @@ export default class Apps extends React.Component {
             return consents[app.name]
         }).length === apps.length
 
-        return <div>
-            <div className={ns('AppToggles')}>
-                <button
-                    type="button"
-                    className={ns('Button Button--info AppToggles-button AppToggles-enableAll')}
-                    disabled={allEnabled}
-                    onClick={enableAll}
-                >
-                    {t(['acceptAll'])}
-                </button>
-                <button
-                    type="button"
-                    className={ns('Button Button--info AppToggles-button AppToggles-disableAll')}
-                    disabled={allDisabled}
-                    onClick={disableAll}
-                >
-                    {t(['declineAll'])}
-                </button>
+        const someOptional = apps.some((app) => !app.required);
+
+        return (
+            <div>
+                {someOptional ? (
+                    <div className={ns('AppToggles')}>
+                        <button
+                            type="button"
+                            className={ns('Button Button--info AppToggles-button AppToggles-enableAll')}
+                            disabled={allEnabled}
+                            onClick={enableAll}
+                        >
+                            {t(['acceptAll'])}
+                        </button>
+                        <button
+                            type="button"
+                            className={ns('Button Button--info AppToggles-button AppToggles-disableAll')}
+                            disabled={allDisabled}
+                            onClick={disableAll}
+                        >
+                            {t(['declineAll'])}
+                        </button>
+                    </div>
+                ) : null}
+
+                <ul className={ns('AppList')}>
+                    {appItems}
+                </ul>
             </div>
-            <ul className={ns('AppList')}>
-                {appItems}
-            </ul>
-        </div>
+        );
     }
 }
