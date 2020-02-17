@@ -58,7 +58,12 @@ export default class AppItem extends React.Component {
                 </span>
             </label>
             <div id={`${id}-description`} className={ns('AppItem-fullDescription')}>
-                <p className={ns('AppItem-description')}>{description || t([name, 'description'])}</p>
+                <p
+                    className={ns('AppItem-description')}
+                    dangerouslySetInnerHTML={{
+                        __html: description || t([name, 'description'])
+                    }}
+                />
                 {purposesEl}
             </div>
         </div>
