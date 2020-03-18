@@ -119,6 +119,10 @@ var orejimeConfig = {
 
     // You must provide a link to your privacy policy page
     privacyPolicy: "",
+    
+    // Optional. Replaces the existing "Accept" button with an "Accept all" option. To ensure
+    // GDPR compliancy.
+    gdprCompliant: false,
 
     // Optional. Applications configured below will be ON by default if default=true.
     // defaults to true

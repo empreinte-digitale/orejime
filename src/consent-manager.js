@@ -63,6 +63,12 @@ export default class ConsentManager {
         return consents
     }
 
+    acceptAll(){
+        this.config.apps.map((app) => {
+            this.updateConsent(app, true)
+        })
+    }
+
     declineAll(){
         this.config.apps.map((app) => {
             this.updateConsent(app, false)
@@ -138,6 +144,12 @@ export default class ConsentManager {
             this.notify('consents', this.consents)
         }
         return this.consents
+    }
+
+    saveAndApplyAllConsents(){
+        this.acceptAll()
+        this.saveConsents()
+        this.applyConsents()
     }
 
     saveAndApplyConsents(){
