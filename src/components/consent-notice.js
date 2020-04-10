@@ -1,9 +1,10 @@
 import React from 'react'
 import {getPurposes} from '../utils/config'
+import {Close} from "./icons";
 
 export default class ConsentNotice extends React.Component {
     render() {
-        const {
+      const {
             config,
             manager,
             isModalVisible,
@@ -13,7 +14,7 @@ export default class ConsentNotice extends React.Component {
             onSaveRequestAcceptAll,
             onSaveRequest,
             onDeclineRequest,
-            onConfigRequest
+            onConfigRequest,
         } = this.props
 
         const purposes = getPurposes(config)
@@ -22,6 +23,13 @@ export default class ConsentNotice extends React.Component {
 
         return <div aria-hidden={isModalVisible} className={ns(`Notice${isMandatory ? ' Notice--mandatory' : ''}`)}>
             <div className={ns('Notice-body')}>
+                <button
+                  title={t(['close'])}
+                  className={ns('Modal-closeButton')}
+                  type="button"
+                  onClick={onDeclineRequest}>
+                      <Close t={t} ns={ns} />
+                </button>
                 {config.logo &&
                     <div className={ns('Notice-logoContainer')}>
                         <img
@@ -50,53 +58,55 @@ export default class ConsentNotice extends React.Component {
                             </a>
                         })}
                     </p>
+
+                    <ul className={ns('Notice-actions')}>
+                    {config.gdprCompliant &&
+                    <li className={ns('Notice-actionItem Notice-actionItem--save')}>
+                    <button
+                      className={ns('Button Button--save Notice-button Notice-saveButton')}
+                      type="button"
+                      onClick={onSaveRequestAcceptAll}
+                          >
+                          {t(['acceptAll'])}
+                          </button>
+                          </li>
+                    }
+                    {!config.gdprCompliant &&
+                    <li className={ns('Notice-actionItem Notice-actionItem--save')}>
+                    <button
+                      className={ns('Button Button--save Notice-button Notice-saveButton')}
+                      type="button"
+                      onClick={onSaveRequest}
+                          >
+                          {t(['accept'])}
+                          </button>
+                          </li>
+                    }
+                    <li className={ns('Notice-actionItem Notice-actionItem--decline')}>
+                    <button
+                      className={ns('Button Button--decline Notice-button Notice-declineButton')}
+                      type="button"
+                      onClick={onDeclineRequest}
+                          >
+                          {t(['decline'])}
+                          </button>
+                          </li>
+                          <li className={ns('Notice-actionItem Notice-actionItem--info')}>
+                    <button
+                      type="button"
+                      className={ns('Button Button--info Notice-learnMoreButton')}
+                      onClick={onConfigRequest}
+                          >
+                          {t(['consentNotice', 'learnMore'])}
+                          </button>
+                          </li>
+                    </ul>
+
                 </div>
 
                 {manager.changed &&
                     <p className={ns('Notice-changes')}>{t(['consentNotice', 'changeDescription'])}</p>
                 }
-                <ul className={ns('Notice-actions')}>
-                {config.gdprCompliant &&
-                        <li className={ns('Notice-actionItem Notice-actionItem--save')}>
-                          <button
-                            className={ns('Button Button--save Notice-button Notice-saveButton')}
-                            type="button"
-                            onClick={onSaveRequestAcceptAll}
-                          >
-                              {t(['acceptAll'])}
-                           </button>
-                        </li>
-                }
-                {!config.gdprCompliant &&
-                    <li className={ns('Notice-actionItem Notice-actionItem--save')}>
-                         <button
-                            className={ns('Button Button--save Notice-button Notice-saveButton')}
-                            type="button"
-                            onClick={onSaveRequest}
-                        >
-                            {t(['accept'])}
-                        </button>
-                    </li>
-                }
-                    <li className={ns('Notice-actionItem Notice-actionItem--decline')}>
-                         <button
-                            className={ns('Button Button--decline Notice-button Notice-declineButton')}
-                            type="button"
-                            onClick={onDeclineRequest}
-                        >
-                            {t(['decline'])}
-                        </button>
-                    </li>
-                    <li className={ns('Notice-actionItem Notice-actionItem--info')}>
-                         <button
-                            type="button"
-                            className={ns('Button Button--info Notice-learnMoreButton')}
-                            onClick={onConfigRequest}
-                        >
-                            {t(['consentNotice', 'learnMore'])}
-                        </button>
-                    </li>
-                </ul>
             </div>
         </div>
     }
