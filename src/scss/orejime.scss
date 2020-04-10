@@ -2,13 +2,13 @@ $orejime-box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 5px 5px 10px 0 rgba(0, 0, 0
 $orejime-border-radius: 0 !default;
 $orejime-btn-border-radius: 0.25rem;
 
-$orejime-blue: #057EB6 !default;
-$orejime-green: #008A28 !default;
+$orejime-blue: #4098C1 !default;
+$orejime-green: #00D63D !default;
 
-$orejime-theme-bg: #fff !default;
+$orejime-theme-bg: #4D4D4D !default;
 $orejime-theme-border: 1px solid #555 !default;
-$orejime-theme-color: #000 !default;
-$orejime-theme-color-light: #aaa !default;
+$orejime-theme-color: #fff !default;
+$orejime-theme-color-light: #B8B8B8 !default;
 
 // micro css reset for everything orejime related
 [class^="orejime-"] {
@@ -89,6 +89,9 @@ $orejime-theme-color-light: #aaa !default;
         left: 0;
         position: absolute;
         z-index: -1;
+        line {
+          color: $orejime-theme-color;
+        }
       }
     }
     @media (min-width: 990px) {
