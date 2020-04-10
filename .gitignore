@@ -1,6 +1,4 @@
 node_modules
 /dist/orejime.js
-/dist/orejime.css
-/dist/orejime.scss
 /es
 /lib
