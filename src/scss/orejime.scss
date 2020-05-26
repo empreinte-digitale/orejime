@@ -280,6 +280,28 @@ $orejime-theme-color-light: #aaa !default;
     }
 }
 
+.orejime-CategorizedAppList {
+    list-style: none;
+}
+
+.orejime-CategorizedAppList-item {
+    margin-bottom: 1em;
+}
+
+.orejime-CategorizedAppList-title {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.orejime-CategorizedAppList-description {
+    font-size: 0.9em;
+}
+
+.orejime-CategorizedAppList-apps {
+    margin-top: 0.5em;
+    margin-left: 1em;
+}
+
 .orejime-AppItem-title {
     font-weight: 600;
     cursor: pointer;
