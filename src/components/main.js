@@ -10,6 +10,7 @@ export default class Main extends React.Component {
         }
         this.showModal = this.showModal.bind(this)
         this.hideModal = this.hideModal.bind(this)
+        this.saveAndHideAcceptAll= this.saveAndHideAcceptAll.bind(this)
         this.saveAndHideAll = this.saveAndHideAll.bind(this)
         this.declineAndHideAll = this.declineAndHideAll.bind(this)
     }
@@ -50,6 +51,14 @@ export default class Main extends React.Component {
         this.setState({isModalVisible: this.isModalVisible(false)})
     }
 
+    saveAndHideAcceptAll(e) {
+        if (e !== undefined) {
+            e.preventDefault()
+        }
+        this.props.manager.saveAndApplyAllConsents()
+        this.setState({isModalVisible: this.isModalVisible(false)})
+    }
+
     saveAndHideAll(e) {
         if (e !== undefined) {
             e.preventDefault()
@@ -79,6 +88,7 @@ export default class Main extends React.Component {
                     config={config}
                     manager={manager}
                     onSaveRequest={this.saveAndHideAll}
+                    onSaveRequestAcceptAll={this.saveAndHideAcceptAll}
                     onDeclineRequest={this.declineAndHideAll}
                     onConfigRequest={this.showModal}
                 />
