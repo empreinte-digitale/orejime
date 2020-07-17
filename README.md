@@ -1,9 +1,3 @@
-# DISCLAIMER
-This is a patched version of Orejime. 
-The goal is to have cookies by default not accepted and that the "accept" button changes them to true if necessary.
-
-For story see this [issues (#24)](https://github.com/empreinte-digitale/orejime/issues/24).
-
 # Orejime 🍪
 
 > Let your users choose the cookies they eat on your website.  
