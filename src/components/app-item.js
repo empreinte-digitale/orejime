@@ -51,7 +51,7 @@ export default class AppItem extends React.Component {
                 className={ns('AppItem-label')}
                 {...(required ? {tabIndex: "0"} : {})}
             >
-                <span className={ns('AppItem-title')}>{title}</span>{requiredText}{optOutText}
+                <span className={ns('AppItem-title')}>{t([name, 'title']) || title}</span>{requiredText}{optOutText}
                 <span className={ns(`AppItem-switch ${required ? 'AppItem-switch--disabled' : ''}`)}>
                     <div className={ns('AppItem-slider')}></div>
                     <div aria-hidden="true" className={ns('AppItem-switchLabel')}>{t(switchLabel)}</div>
