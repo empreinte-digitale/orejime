@@ -61,7 +61,7 @@ export default class AppItem extends React.Component {
                 <p
                     className={ns('AppItem-description')}
                     dangerouslySetInnerHTML={{
-                        __html: description || t([name, 'description'])
+                        __html: t([name, 'description']) || description
                     }}
                 />
                 {purposesEl}
