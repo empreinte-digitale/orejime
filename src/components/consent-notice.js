@@ -60,6 +60,7 @@ export default class ConsentNotice extends React.Component {
                          <button
                             className={ns('Button Button--save Notice-button Notice-saveButton')}
                             type="button"
+                            title={t(['acceptTitle'])}
                             onClick={onSaveRequest}
                         >
                             {t(['accept'])}
