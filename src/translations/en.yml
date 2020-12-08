@@ -12,6 +12,7 @@ consentNotice:
     We collect and process your personal information for the following purposes: {purposes}.
   learnMore: Learn more
 accept: Accept
+acceptTitle: Accept cookies
 acceptAll: Accept all apps
 save: Save
 saveData: Save my configuration on collected information
