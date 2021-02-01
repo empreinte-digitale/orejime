@@ -32,7 +32,7 @@ export default class ConsentNotice extends React.Component {
 
                 <div className={ns('Notice-text')}>
                     {title &&
-                        <h1 className={ns('Notice-title')} id="orejime-notice-title">{title}</h1>
+                        <span className={ns('Notice-title')} id="orejime-notice-title">{title}</span>
                     }
 
                     <p className={ns('Notice-description')}>
