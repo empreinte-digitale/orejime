@@ -51,7 +51,6 @@ export const defaultConfig = {
     default: true,
     mustConsent: false,
     mustNotice: false,
-    implicitConsent: false,
     logo: false,
     lang: language(),
     translations: {},
