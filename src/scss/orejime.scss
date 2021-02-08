@@ -9,6 +9,8 @@ $orejime-theme-border: 1px solid #555 !default;
 $orejime-theme-color: #eee !default;
 $orejime-theme-color-light: #aaa !default;
 
+$orejime-breakpoint-notice: 990px !default;
+
 // micro css reset for everything orejime related
 [class^="orejime-"] {
     margin: 0;
@@ -66,7 +68,7 @@ $orejime-theme-color-light: #aaa !default;
     bottom: 0;
     font-size: 0.8em;
 
-    @media (min-width: 990px) {
+    @media (min-width: $orejime-breakpoint-notice) {
         box-shadow: $orejime-box-shadow;
         border-radius: $orejime-border-radius;
         bottom: 20px;
@@ -74,7 +76,7 @@ $orejime-theme-color-light: #aaa !default;
         max-width: 300px;
     }
 
-    @media (max-width: 989px) {
+    @media (max-width: $orejime-breakpoint-notice) {
         border: none;
         border-radius: 0;
     }
