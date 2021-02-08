@@ -24,16 +24,28 @@ export function getCookie(name) {
     return null
 }
 
+function pair(key, value) {
+    return `${key}=${value}`;
+}
 
 //https://stackoverflow.com/questions/14573223/set-cookie-and-get-cookie-with-javascript
-export function setCookie(name, value, days) {
-    var expires = "";
+export function setCookie(name, value = '', days = 0, domain = undefined) {
+    const cookie = [
+        pair(name, value)
+    ];
+
     if (days) {
-        var date = new Date();
+        const date = new Date();
         date.setTime(date.getTime() + (days*24*60*60*1000));
-        expires = "; expires=" + date.toUTCString();
+        cookie.push(pair('expires', date.toUTCString()));
     }
-    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+
+    if (domain) {
+        cookie.push(pair('domain', domain));
+    }
+
+    cookie.push(pair('path', '/'));
+    document.cookie = cookie.join('; ');
 }
 
 export function deleteCookie(name, path, domain) {

@@ -45,6 +45,7 @@ export const defaultConfig = {
     stylePrefix: 'orejime',
     cookieName: 'orejime',
     cookieExpiresAfterDays: 365,
+    cookieDomain: undefined,
     stringifyCookie: JSON.stringify.bind(JSON),
     parseCookie: JSON.parse.bind(JSON),
     privacyPolicy: '',

@@ -111,6 +111,9 @@ var orejimeConfig = {
     // defaults to 365.
     cookieExpiresAfterDays: 365,
 
+    // Optional. You can provide a custom domain for the Orejime cookie, for example to make it available on every associated subdomains.
+    cookieDomain: 'mydomain.com',
+
     // Optional. You can provide a custom function to serialize the cookie contents.
     stringifyCookie: (contents) => JSON.stringify(contents),
 
