@@ -69,6 +69,12 @@ export default class ConsentManager {
         })
     }
 
+    acceptAll(){
+        this.config.apps.map((app) => {
+            this.updateConsent(app, true)
+        })
+    }
+
     updateConsent(app, value){
         if (app.required && !value) {
             return;

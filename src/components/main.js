@@ -64,6 +64,12 @@ export default class Main extends React.Component {
         this.setState({isModalVisible: this.isModalVisible(false)})
     }
 
+    acceptAndHideAll(e) {
+        this.props.manager.acceptAll()
+        this.props.manager.saveAndApplyConsents()
+        this.setState({isModalVisible: this.isModalVisible(false)})
+    }
+
     render() {
         const {config, t, manager, ns} = this.props
         const isNoticeVisible = this.isNoticeVisible()
@@ -89,7 +95,7 @@ export default class Main extends React.Component {
                     ns={ns}
                     config={config}
                     onHideRequest={this.hideModal}
-                    onSaveRequest={this.saveAndHideAll}
+                    onSaveRequest={this.acceptAndHideAll}
                     manager={manager}
                 />
             </div>
