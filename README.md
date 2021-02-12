@@ -140,14 +140,6 @@ var orejimeConfig = {
     // defaults to false
     mustNotice: false,
 
-    // Optional. If "implicitConsent" is set to true, Orejime will automatically accept
-    // cookies if the user continues his navigation on the website after the
-    // first page. If you enable this, you must warn the user
-    // of this behavior in the notice window. You can do that easily by overriding
-    // translation strings (see below).
-    // defaults to false
-    implicitConsent: false,
-
     // Optional. You can define the UI language directly here. If undefined, Orejime will
     // use the value given in the global "lang" variable, or fallback to the value
     // in the <html> lang attribute, or fallback to "en".
