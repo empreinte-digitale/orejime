@@ -48,7 +48,7 @@ export const defaultConfig = {
     stringifyCookie: JSON.stringify.bind(JSON),
     parseCookie: JSON.parse.bind(JSON),
     privacyPolicy: '',
-    default: false,
+    default: true,
     mustConsent: false,
     mustNotice: false,
     implicitConsent: false,
