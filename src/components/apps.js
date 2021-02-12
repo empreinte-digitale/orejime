@@ -1,6 +1,6 @@
 import React from 'react'
-import {getPurposes} from '../utils/config'
-import AppItem from './app-item'
+import AppList from './app-list';
+import CategorizedAppList from './categorized-app-list';
 
 export default class Apps extends React.Component {
     constructor(props, context){
@@ -25,40 +25,23 @@ export default class Apps extends React.Component {
     render(){
         const {config, t, ns, manager} = this.props
         const {consents} = this.state
-        const {apps} = config
+        const {apps, categories} = config
 
-        const toggle = (apps, value) => {
+        const toggleAll = (value) => {
             apps.map((app)=>{
                 manager.updateConsent(app, value)
             })
         }
 
-        const toggleAll = (value) => {
-            toggle(apps, value)
-        }
         const enableAll = () => toggleAll(true)
         const disableAll = () => toggleAll(false)
 
-        const appItems = apps.map((app, key) => {
-            const toggleApp = (value) => {
-                toggle([app], value)
-            }
-            const checked = consents[app.name]
-            return <li key={`app-${app.name}`} className={ns(`AppList-item AppList-item--${app.name}`)}>
-                <AppItem
-                    checked={checked || app.required}
-                    onToggle={toggleApp}
-                    t={t}
-                    ns={ns}
-                    {...app}
-                />
-            </li>
-        })
         const allDisabled = apps.filter((app) => {
             return (app.required || false)
                 ? false
                 : consents[app.name]
         }).length === 0
+
         const allEnabled = apps.filter((app) => {
             return consents[app.name]
         }).length === apps.length
@@ -88,9 +71,24 @@ export default class Apps extends React.Component {
                     </div>
                 ) : null}
 
-                <ul className={ns('AppList')}>
-                    {appItems}
-                </ul>
+                {categories ? (
+                    <CategorizedAppList
+                        t={t}
+                        ns={ns}
+                        categories={categories}
+                        apps={apps}
+                        consents={consents}
+                        onToggle={manager.updateConsent}
+                    />
+                ) : (
+                    <AppList
+                        t={t}
+                        ns={ns}
+                        apps={apps}
+                        consents={consents}
+                        onToggle={manager.updateConsent}
+                    />
+                )}
             </div>
         );
     }
