@@ -1,5 +1,25 @@
 # CHANGELOG
 
+## 1.2.3
+
+- fix: Allowing HTML in item descriptions (https://github.com/empreinte-digitale/orejime/issues/18)
+
+## 1.2.2
+
+- fix: import of nl translations (https://github.com/empreinte-digitale/orejime/pull/27)
+- fix: hiding batch actions when all apps are required (https://github.com/empreinte-digitale/pull/issues/28)
+
+## 1.2.1
+
+- doc: capitalization of nationalities and languages (https://github.com/empreinte-digitale/orejime/issues/16)
+- doc: improved example markup (attributes were missing from `<script />` tags)
+- translations: updates to `nl` translations
+- internal: node-sass update
+
+## 1.2.0
+
+- new feature: Ability to customize cookie serialization (https://github.com/empreinte-digitale/orejime/issues/13)
+
 ## 1.1.1
 
 nothing different from 1.1.0, this is just to make npm bypass a problem...
