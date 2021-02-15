@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 2.0.0
+
+- fix: translation of app titles (https://github.com/empreinte-digitale/orejime/issues/42)
+- fix: title of accept button (https://github.com/empreinte-digitale/orejime/issues/45)
+- demo: redesign of the demo page (https://github.com/empreinte-digitale/orejime/pull/46)
+- feature: cookie domain configuration (https://github.com/empreinte-digitale/pull/issues/38)
+- feature: providing Sass variables for breakpoints (https://github.com/empreinte-digitale/pull/issues/36)
+- feature: categories (https://github.com/empreinte-digitale/pull/issues/22)
+- breaking change: removed implicit consent (https://github.com/empreinte-digitale/orejime/pull/50)
+
 ## 1.2.3
 
 - fix: Allowing HTML in item descriptions (https://github.com/empreinte-digitale/orejime/issues/18)
