@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 2.0.1
+
+- fix: acceptance of all cookies when clicking "accept", including ones that are off by default
+- fix: broken toggle buttons
+
 ## 2.0.0
 
 - fix: translation of app titles (https://github.com/empreinte-digitale/orejime/issues/42)
