@@ -12,6 +12,7 @@ export default class Main extends React.Component {
         this.hideModal = this.hideModal.bind(this)
         this.saveAndHideAll = this.saveAndHideAll.bind(this)
         this.declineAndHideAll = this.declineAndHideAll.bind(this)
+        this.acceptAndHideAll = this.acceptAndHideAll.bind(this)
     }
 
     isModalVisible(userRequest) {
@@ -84,7 +85,7 @@ export default class Main extends React.Component {
                     isModalVisible={this.state.isModalVisible}
                     config={config}
                     manager={manager}
-                    onSaveRequest={this.saveAndHideAll}
+                    onSaveRequest={this.acceptAndHideAll}
                     onDeclineRequest={this.declineAndHideAll}
                     onConfigRequest={this.showModal}
                 />
@@ -95,7 +96,7 @@ export default class Main extends React.Component {
                     ns={ns}
                     config={config}
                     onHideRequest={this.hideModal}
-                    onSaveRequest={this.acceptAndHideAll}
+                    onSaveRequest={this.saveAndHideAll}
                     manager={manager}
                 />
             </div>
