@@ -78,7 +78,7 @@ export default class Apps extends React.Component {
                         categories={categories}
                         apps={apps}
                         consents={consents}
-                        onToggle={manager.updateConsent}
+                        onToggle={manager.updateConsent.bind(manager)}
                     />
                 ) : (
                     <AppList
@@ -86,7 +86,7 @@ export default class Apps extends React.Component {
                         ns={ns}
                         apps={apps}
                         consents={consents}
-                        onToggle={manager.updateConsent}
+                        onToggle={manager.updateConsent.bind(manager)}
                     />
                 )}
             </div>

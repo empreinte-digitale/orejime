@@ -8,7 +8,7 @@ const pickApps = (apps, names) =>
         )
     );
 
-const CategorizedAppList = ({t, ns, categories, apps, consents, onToggleApp}) => (
+const CategorizedAppList = ({t, ns, categories, apps, consents, onToggle}) => (
     <ul className={ns('CategorizedAppList')}>
         {categories.map(({title, description, apps: appNames}) => (
             <li className={ns('CategorizedAppList-item')}>
@@ -21,7 +21,7 @@ const CategorizedAppList = ({t, ns, categories, apps, consents, onToggleApp}) =>
                         ns={ns}
                         apps={pickApps(apps, appNames)}
                         consents={consents}
-                        onToggle={onToggleApp}
+                        onToggle={onToggle}
                     />
                 </div>
             </li>

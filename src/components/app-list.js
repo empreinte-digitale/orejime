@@ -1,12 +1,12 @@
 import React from 'react';
 import AppItem from './app-item';
 
-const AppList = ({t, ns, apps, consents, onToggleApp}) => (
+const AppList = ({t, ns, apps, consents, onToggle}) => (
     <ul className={ns('AppList')}>
         {apps.map((app) => {
             const checked = consents[app.name];
             const handleToggle = (value) =>
-                onToggleApp(app, value);
+                onToggle(app, value);
 
             return (
                 <li
