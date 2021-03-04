@@ -302,6 +302,39 @@ When including the script, the lib checks if the `window.orejimeConfig` variable
 Orejime.init(orejimeConfig);
 ```
 
+### Styling
+
+#### CSS
+
+Either replace the original CSS entirely, or add your custom stylesheet to overwrite only some of the rules.  
+For example:
+
+```css
+/* custom-style.css */
+.orejime-Notice,
+.orejime-Modal {
+    background: pink;
+    color: white;
+}
+```
+```html
+<link rel="stylesheet" href="orejime.css" />
+<link rel="stylesheet" href="custom-style.css" />
+```
+
+#### Sass
+
+You can import [the original Sass stylesheet](https://github.com/empreinte-digitale/orejime/blob/master/src/scss/orejime.scss) into your own, and tweak it as you wish.  
+Orejime provides default variables that you can overwrite to quickly change its appearance.  
+For example:
+
+```scss
+$orejime-theme-bg: pink;
+$orejime-theme-color: white;
+
+@import "~orejime/src/scss/orejime.scss"
+```
+
 ## API
 
 * `Orejime.init(config)`: creates a new Orejime instance with the given config object
