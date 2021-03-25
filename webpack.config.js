@@ -32,7 +32,15 @@ var config = {
       {
         test: /\.jsx?/,
         include: [SRC_DIR],
-        use: ['babel-loader']
+        use: [
+          'babel-loader',
+          {
+            loader: 'prettier-loader',
+            options: {
+              ignoreInitial: true
+            }
+          }
+        ]
       }
     ]
   },
