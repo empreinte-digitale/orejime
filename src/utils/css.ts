@@ -1,4 +1,6 @@
-export function createCssNamespace(namespace) {
+import {CssNamespace} from '../types';
+
+export function createCssNamespace(namespace: string): CssNamespace {
 	return function ns(classNames) {
 		const splitClassNames = classNames.split(' ');
 		return splitClassNames

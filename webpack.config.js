@@ -13,7 +13,7 @@ var config = {
   context: SRC_DIR,
   resolve: {
     symlinks: false,
-    extensions: ['.js', '.jsx'],
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
     alias: {
       "react": "preact-compat",
       "react-dom": "preact-compat"
@@ -30,29 +30,36 @@ var config = {
         ],
       },
       {
-        test: /\.jsx?/,
+        test: /\.(tsx?|jsx?)/,
         include: [SRC_DIR],
         use: [
-          'babel-loader',
+          'ts-loader',
           {
             loader: 'prettier-loader',
             options: {
-              ignoreInitial: true
+              //ignoreInitial: true
             }
           }
         ]
+      },
+      {
+        test: /\.ya?ml$/,
+        include: [SRC_DIR],
+        use: 'yaml-loader',
+        type: 'json'
       }
     ]
   },
   entry: [
-    SRC_DIR + '/orejime.umd.js',
+    SRC_DIR + '/orejime.umd.ts',
   ],
   output: {
     path: BUILD_DIR,
     filename: 'orejime.js',
     library: 'Orejime',
     libraryTarget: 'umd',
-    publicPath: ''
+    libraryExport: 'default',
+    publicPath: '',
   },
   plugins: [
     new MiniCssExtractPlugin({

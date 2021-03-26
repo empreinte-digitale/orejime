@@ -4,6 +4,7 @@
 	"htmlWhitespaceSensitivity": "ignore",
 	"jsxBracketSameLine": false,
 	"jsxSingleQuote": false,
+	"parser": "typescript",
 	"printWidth": 80,
 	"proseWrap": "always",
 	"quoteProps": "preserve",
@@ -11,6 +12,5 @@
 	"singleQuote": true,
 	"tabWidth": 3,
 	"trailingComma": "none",
-	"useTabs": true,
-	"parser": "babel"
+	"useTabs": true
 }

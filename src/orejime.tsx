@@ -1,13 +1,14 @@
 import React from 'react';
 import {render} from 'react-dom';
+import assign from 'assign-deep';
 import ConsentManager from './consent-manager';
 import translations from './translations';
-import Main from './components/main';
-import {convertToMap, update} from './utils/maps';
+import Main from './components/Main';
 import {t, language} from './utils/i18n';
 import {createCssNamespace} from './utils/css';
+import {Config} from './types';
 
-function getElement(config) {
+function getElement(config: Config) {
 	const {elementID: id, stylePrefix} = config;
 	var element = document.getElementById(id);
 	if (element === null) {
@@ -24,15 +25,17 @@ function getElement(config) {
 	return document.querySelector(`.${stylePrefix}-AppContainer`);
 }
 
-function getTranslations(config) {
-	const trans = new Map([]);
-	update(trans, convertToMap(translations));
-	update(trans, convertToMap(config.translations));
-	return trans;
+function getTranslations(config: Config) {
+	console.log(
+		translations,
+		config.translations,
+		assign({}, translations, config.translations)
+	);
+	return assign({}, translations, config.translations);
 }
 
-const managers = {};
-function getManager(config) {
+const managers: {[name: string]: ConsentManager} = {};
+function getManager(config: Config) {
 	const name = config.elementID;
 	if (managers[name] === undefined)
 		managers[name] = new ConsentManager(config);
@@ -41,11 +44,9 @@ function getManager(config) {
 
 export const defaultConfig = {
 	elementID: 'orejime',
-	appElement: undefined,
 	stylePrefix: 'orejime',
 	cookieName: 'orejime',
 	cookieExpiresAfterDays: 365,
-	cookieDomain: undefined,
 	stringifyCookie: JSON.stringify.bind(JSON),
 	parseCookie: JSON.parse.bind(JSON),
 	privacyPolicy: '',
@@ -59,7 +60,7 @@ export const defaultConfig = {
 	debug: false
 };
 
-export function init(conf) {
+export function init(conf: Config) {
 	const config = Object.assign({}, defaultConfig, conf);
 	const errors = [];
 	if (!Object.keys(config.apps).length) {
@@ -76,18 +77,15 @@ export function init(conf) {
 	const element = getElement(config);
 	const trans = getTranslations(config);
 	const manager = getManager(config);
-	const tt = (...args) => {
-		return t(trans, config.lang, config.debug, ...args);
-	};
-	const app = render(
+	const app = (render(
 		<Main
-			t={tt}
+			t={t.bind(null, trans, config.lang, config.debug)}
 			ns={createCssNamespace(config.stylePrefix)}
 			manager={manager}
 			config={config}
 		/>,
 		element
-	);
+	) as unknown) as Main;
 	return {
 		show: app.showModal.bind(app),
 		internals: {

@@ -1,9 +1,22 @@
-import React from 'react';
-import {Close} from './icons';
-import Apps from './apps';
-import Dialog from './dialog';
+import React, {Component} from 'react';
+import {Close} from './Icons';
+import Apps from './Apps';
+import Dialog from './Dialog';
+import ConsentManager from '../consent-manager';
+import {Config, CssNamespace, Translate} from '../types';
+import {template} from '../utils/template';
 
-export default class ConsentModal extends React.Component {
+interface Props {
+	t: Translate;
+	ns: CssNamespace;
+	config: Config;
+	manager: ConsentManager;
+	isOpen: boolean;
+	onHideRequest: () => void;
+	onSaveRequest: () => void;
+}
+
+export default class ConsentModal extends Component<Props> {
 	render() {
 		const {
 			isOpen,
@@ -55,7 +68,7 @@ export default class ConsentModal extends React.Component {
 									</p>
 								)}
 							{t(['consentModal', 'description'])}&nbsp;
-							{t(['consentModal', 'privacyPolicy', 'text'], {
+							{template(t(['consentModal', 'privacyPolicy', 'text']), {
 								privacyPolicy: (
 									<a
 										key="privacyPolicyLink"
