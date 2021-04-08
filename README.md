@@ -25,9 +25,12 @@ Using Orejime 🍪 requires a few steps:
 The easiest way to use the lib is to include the built files directly in the browser.
 
 ```html
-<link rel="stylesheet" href="https://unpkg.com/orejime@1.2.4/dist/orejime.css" />
-<script src="https://unpkg.com/orejime@1.2.4/dist/orejime.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/orejime@latest/dist/orejime.css" />
+<script src="https://unpkg.com/orejime@latest/dist/orejime.js"></script>
 ```
+
+If you're using this method, please avoid using the `@latest` version. Prefer a fixed one like `https://unpkg.com/orejime@2.0.1/...`. 
+That way you can ensure you will not be impacted by a change of API or a potential bug that could land in the latest version.
 
 #### Via npm
 
