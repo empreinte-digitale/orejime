@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 2.0.2
+
+- doc: Added doc on unpkg versions (https://github.com/empreinte-digitale/orejime/pull/61)
+- fix: Updated default "powered by" URL (https://github.com/empreinte-digitale/orejime/pull/58)
+
 ## 2.0.1
 
 - fix: acceptance of all cookies when clicking "accept", including ones that are off by default
