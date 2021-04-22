@@ -33,7 +33,7 @@
   "homepage": "https://github.com/empreinte-digitale/orejime#readme",
   "dependencies": {
     "@babel/runtime": "^7.1.2",
-    "react-modal": "^3.6.1"
+    "react-modal": "^3.13.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
