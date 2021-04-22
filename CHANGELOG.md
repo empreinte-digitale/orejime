@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2.0.3
+
+- fix: focus trap in consent modal (https://github.com/empreinte-digitale/orejime/pull/62)
+
 ## 2.0.2
 
 - doc: Added doc on unpkg versions (https://github.com/empreinte-digitale/orejime/pull/61)
