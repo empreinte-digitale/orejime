@@ -155,6 +155,14 @@
 							analytics: "Analytics",
 							security: "Security",
 							ads: "Ads"
+						},
+						categories: {
+							example: {
+								description: 'Applications can be grouped into categories to help users better understand their use.'
+							},
+							"third-party": {
+								description: 'These are fake third-party applications.'
+							}
 						}
 					},
 				},
@@ -186,13 +194,13 @@
 				],
 				categories: [
 					{
+						name: 'example',
 						title: 'Example category',
-						description: 'Applications can be grouped into categories to help users better understand their use.',
 						apps: ['inline-tracker', 'disabled-by-default']
 					},
 					{
+						name: 'third-party',
 						title: 'Third-party applications',
-						description: 'These are fake third-party applications.',
 						apps: ['external-tracker', 'always-on']
 					}
 				]

@@ -176,6 +176,11 @@ var orejimeConfig = {
             purposes: {
                 analytics: "Analytics",
                 security: "Security"
+            },
+            categories: {
+                analytics: {
+                    description: "A long form description of the category."
+                }
             }
         },
     },
@@ -272,8 +277,8 @@ var orejimeConfig = {
     // description of their purpose.
     categories: {
         [
+            name: "analytics",
             title: "Analytics",
-            description: "A long form description of the category.",
             // The list of apps belonging to the category, referenced by name.
             apps: [
                 "google-tag-manager",
