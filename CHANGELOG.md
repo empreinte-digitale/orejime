@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2.1.0
+
+- feature: translation of category names and descriptions (https://github.com/empreinte-digitale/orejime/pull/67)
+
 ## 2.0.3
 
 - fix: focus trap in consent modal (https://github.com/empreinte-digitale/orejime/pull/62)
