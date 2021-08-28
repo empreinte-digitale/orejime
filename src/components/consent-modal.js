@@ -32,7 +32,7 @@ export default class ConsentModal extends React.Component {
                         </button>
                     }
 
-                    <h1 className={ns('Modal-title')} id="orejime-modal-title">{t(['consentModal', 'title'])}</h1>
+                    <span className={ns('Modal-title')} id="orejime-modal-title">{t(['consentModal', 'title'])}</span>
                     <p className={ns('Modal-description')}>
                         {manager.changed && (config.mustConsent || config.noNotice) &&
                             <p className={ns('Modal-description')}>
