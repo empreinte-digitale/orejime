@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 2.1.1
+
+- fix: string formatting (https://github.com/empreinte-digitale/orejime/pull/71)
+- internal: code formatting with prettier (https://github.com/empreinte-digitale/orejime/pull/69)
+
 ## 2.1.0
 
 - feature: translation of category names and descriptions (https://github.com/empreinte-digitale/orejime/pull/67)
