@@ -1,19 +1,12 @@
-String.prototype.format = function () {
-	'use strict';
-	var str = this.toString();
-
-	var t = typeof arguments[0];
-	var args;
-	if (arguments.length == 0) args = {};
-	else
-		args =
-			'string' === t || 'number' === t
-				? Array.prototype.slice.call(arguments)
-				: arguments[0];
+function format(string, ...args) {
+	var t = typeof args[0];
+	var values;
+	if (args.length == 0) values = {};
+	else values = 'string' === t || 'number' === t ? args : args[0];
 
 	var splits = [];
 
-	var s = str;
+	var s = string;
 	while (s.length > 0) {
 		var m = s.match(/\{(?!\{)([\w\d]+)\}(?!\})/);
 		if (m !== null) {
@@ -24,10 +17,10 @@ String.prototype.format = function () {
 			splits.push(left);
 			if (n != n) {
 				// not a number
-				splits.push(args[m[1]]);
+				splits.push(values[m[1]]);
 			} else {
 				// a numbered argument
-				splits.push(args[n]);
+				splits.push(values[n]);
 			}
 		} else {
 			splits.push(s);
@@ -35,7 +28,7 @@ String.prototype.format = function () {
 		}
 	}
 	return splits;
-};
+}
 
 export function language() {
 	return window.language || document.documentElement.lang || 'en';
@@ -61,14 +54,15 @@ export function t(trans, lang, debug, key) {
 	if (value === undefined) {
 		if (debug) {
 			console.log(
-				'[missing translation: {lang}/{key}]'
-					.format({key: kl.join('/'), lang: lang})
-					.join('')
+				format('[missing translation: {lang}/{key}]', {
+					key: kl.join('/'),
+					lang: lang
+				}).join('')
 			);
 		}
 		return false;
 	}
 	const params = Array.prototype.slice.call(arguments, 4);
-	if (params.length > 0) return value.format(...params);
+	if (params.length > 0) return format(value, ...params);
 	return value;
 }
