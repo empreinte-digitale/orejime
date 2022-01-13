@@ -20,9 +20,9 @@
     "cjs": "cross-env BABEL_ENV=cjs babel --out-dir lib src",
     "es": "cross-env BABEL_ENV=es babel --out-dir es src",
     "umd": "cross-env BABEL_ENV=umd webpack",
-    "copy-scss": "cp src/scss/orejime.scss dist/orejime.scss",
+    "copy-scss": "shx cp src/scss/orejime.scss dist/orejime.scss",
     "build": "npm run clean-build && npm run cjs && npm run es && cross-env NODE_ENV=production npm run umd && npm run copy-scss",
-    "clean-build": "rm -Rf ./dist/orejime.{js,css,scss} && rm -Rf ./lib && rm -Rf ./es",
+    "clean-build": "shx rm -Rf ./dist/orejime.{js,css,scss} && shx rm -Rf -Rf ./lib && shx rm -Rf -Rf ./es",
     "prepublishOnly": "npm run build"
   },
   "author": "Emmanuel Pelletier <e.pelletier@empreintedigitale.fr>",
@@ -53,6 +53,7 @@
     "prettier": "^2.2.1",
     "prettier-loader": "^3.3.0",
     "sass-loader": "^6.0.7",
+    "shx": "^0.3.4",
     "webpack": "^4.25.1",
     "webpack-cli": "^3.1.2"
   },
