@@ -129,17 +129,10 @@ export default class ConsentManager {
 		const value = this.config.stringifyCookie(this.consents);
 		const configCookieExpiresAfterDays = this.config.cookieExpiresAfterDays;
 
-		let cookieExpiresAfterDays =
+		const cookieExpiresAfterDays =
 			typeof configCookieExpiresAfterDays === 'function'
 				? configCookieExpiresAfterDays(this.consents, this.config)
-				: configCookieExpiresAfterDays;
-
-		if (
-			cookieExpiresAfterDays === null ||
-			cookieExpiresAfterDays === undefined
-		) {
-			cookieExpiresAfterDays = 120;
-		}
+				: configCookieExpiresAfterDays || 120;
 
 		setCookie(
 			this.cookieName,
