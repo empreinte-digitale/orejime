@@ -34,6 +34,9 @@ export default class Main extends React.Component {
 		if (manager.confirmed && !manager.changed) {
 			return false;
 		}
+		if (manager.canBypassConsent()) {
+			return false;
+		}
 		return true;
 	}
 

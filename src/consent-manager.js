@@ -55,6 +55,14 @@ export default class ConsentManager {
 		return consents;
 	}
 
+	// If every app is either required or optOut, or both,
+	// there is no need to ask for user consent.
+	canBypassConsent() {
+		return this.config.apps.every(
+			({optOut = false, required = false}) => optOut || required
+		);
+	}
+
 	declineAll() {
 		this.config.apps.map((app) => {
 			this.updateConsent(app, false);

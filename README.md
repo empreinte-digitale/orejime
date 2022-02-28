@@ -231,11 +231,14 @@ var orejimeConfig = {
 
             // Optional. If "required" is set to true, Orejime will not allow this app to
             // be disabled by the user.
+            // See "Special cases" below for more information.
             // default to false
             required: false,
 
-            // Optional. If "optOut" is set to true, Orejime will load this app even before
-            // the user gave explicit consent.We recommend always leaving this "false".
+            // Optional. If "optOut" is set to true, Orejime will load this app
+            // even before the user gave explicit consent.
+            // We recommend always leaving this "false".
+            // See "Special cases" below for more information.
             // defaults to false
             optOut: false,
 
@@ -290,6 +293,17 @@ var orejimeConfig = {
 ```
 
 </details>
+
+#### Special cases
+
+##### Exemption
+
+If every app is either `required` or `optOut`, Orejime will not show at startup
+(but it will still be possible to open it programmatically).
+However, you should consider this use case carefully, and ensure that :
+* `required` trackers are truly required for your app to function properly
+* `optOut` trackers are exempt from consent, (i.e.
+[as defined by the CNIL](https://www.cnil.fr/fr/cookies-solutions-pour-les-outils-de-mesure-daudience))
 
 ### Initialization
 
