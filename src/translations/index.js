@@ -9,7 +9,7 @@ import it from './it.yml';
 import ro from './ro.yml';
 import nb from './nb.yml';
 import nl from './nl.yml';
-import nl from './oc.yml';
+import oc from './oc.yml';
 
 export default {
 	de,
