@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2.2.0
+
+- feature: Consent exemption (https://github.com/empreinte-digitale/orejime/pull/82)
+- feature: Occitan translations (https://github.com/empreinte-digitale/orejime/pull/83)
+- fix: cross-platform build scripts (https://github.com/empreinte-digitale/orejime/pull/77)
+
 ## 2.1.1
 
 - fix: string formatting (https://github.com/empreinte-digitale/orejime/pull/71)
