@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2.2.1
+
+- fix: typo in Occitan translations (https://github.com/empreinte-digitale/orejime/pull/84)
+
 ## 2.2.0
 
 - feature: Consent exemption (https://github.com/empreinte-digitale/orejime/pull/82)
