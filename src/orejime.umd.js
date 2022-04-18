@@ -1,4 +1,3 @@
-require('./scss/orejime.scss');
 const Orejime = require('./orejime');
 
 function initDefaultInstance() {
