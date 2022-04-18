@@ -1,6 +1,5 @@
 *
-!dist/orejime.js
-!dist/orejime.css
-!dist/orejime.scss
-!es/**/*
-!lib/**/*
+!/dist/*.js
+!/dist/*.css
+!/dist/*.scss
+!/dist/*.LICENSE.txt
