@@ -15,8 +15,8 @@ var config = {
     symlinks: false,
     extensions: ['.js', '.jsx'],
     alias: {
-      "react": "preact-compat",
-      "react-dom": "preact-compat"
+      "react": "preact/compat",
+      "react-dom": "preact/compat"
     }
   },
   module: {
