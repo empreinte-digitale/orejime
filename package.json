@@ -33,7 +33,7 @@
   "homepage": "https://github.com/empreinte-digitale/orejime#readme",
   "dependencies": {
     "@babel/runtime": "^7.1.2",
-    "react-modal": "^3.13.1"
+    "react-modal": "^3.14.4"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
@@ -47,8 +47,7 @@
     "cross-env": "^5.2.0",
     "css-loader": "^0.28.11",
     "mini-css-extract-plugin": "^0.4.4",
-    "preact": "^8.2.9",
-    "preact-compat": "^3.18.2",
+    "preact": "^10.7.1",
     "prettier": "^2.2.1",
     "prettier-loader": "^3.3.0",
     "sass": "^1.61.0",
@@ -58,7 +57,7 @@
     "webpack-cli": "^3.1.2"
   },
   "peerDependencies": {
-    "react": "^0.14.0 || ^15.0.0 || ^16",
-    "react-dom": "^0.14.0 || ^15.0.0 || ^16"
+    "react": ">=15",
+    "react-dom": ">=15"
   }
 }
