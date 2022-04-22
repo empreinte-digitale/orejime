@@ -1,15 +1,18 @@
 consentModal:
   title: Informationen zur Privatsphäre
   description: >
-    Hier können Sie einsehen und anpassen, welche persönlichen Daten gespeichert werden.
+    Hier können Sie einsehen und anpassen, welche persönlichen Daten gespeichert
+    werden.
   privacyPolicy:
     name: Datenschutzerklärung
-    text: >
+    text: |
       Bitte lesen Sie unsere {privacyPolicy} um weitere Details zu erfahren.
 consentBanner:
-  changeDescription: Es gab Änderungen seit Ihrem letzten Besuch, bitte aktualisieren Sie Ihre Auswahl.
+  changeDescription: Es gab Änderungen seit Ihrem letzten Besuch, bitte
+    aktualisieren Sie Ihre Auswahl.
   description: >
-    Wir speichern und verarbeiten Ihre persönlichen Daten für folgende Zwecke: {purposes}.
+    Wir speichern und verarbeiten Ihre persönlichen Daten für folgende Zwecke:
+    {purposes}.
   learnMore: Mehr erfahren
 accept: Akzeptieren
 acceptTitle: Cookies akzeptieren
@@ -24,7 +27,8 @@ disabled: Deaktiviert
 purpose:
   optOut:
     title: (Opt-Out)
-    description: Diese Einstellungen als Standard festlegen (sie können jederzeit deaktiviert werden)
+    description: Diese Einstellungen als Standard festlegen (sie können jederzeit
+      deaktiviert werden)
   required:
     title: (immer notwendig)
     description: Diese Einstellungen werden immer benötigt

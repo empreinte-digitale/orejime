@@ -1,18 +1,27 @@
 consentModal:
   title: Informazioni che raccogliamo
-  description: >
+  description: |
     Qui puoi vedere e scegliere le informazioni che raccogliamo su di te.
   privacyPolicy:
     name: policy privacy
-    text: >
+    text: |
       Per saperne di più, leggi la nostra {privacyPolicy}.
 consentBanner:
   changeDescription: Ci sono stati cambiamenti dalla tua ultima visita, aggiorna il tuo consenso.
   description: >
-    Raccogliamo ed elaboriamo le vostre informazioni personali per i seguenti scopi: {purposes}.
+    Raccogliamo ed elaboriamo le vostre informazioni personali per i
+    seguenti scopi: {purposes}.
   learnMore: Scopri di più
+accept: ""
+acceptTitle: ""
+acceptAll: ""
 save: Salva
+saveData: ""
 decline: Rifiuta
+declineAll: ""
+close: ""
+enabled: ""
+disabled: ""
 purpose:
   optOut:
     title: (opt-out)
@@ -23,3 +32,4 @@ purpose:
   purposes: Scopi
   purpose: Scopo
 poweredBy: Realizzato da Orejime
+newWindow: ""
