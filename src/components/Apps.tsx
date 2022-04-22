@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
 import ConsentManager from '../ConsentManager';
-import {Config, Consents, CssNamespace, Translate} from '../types';
+import {Config, Consents, Translate} from '../types';
 import AppList from './AppList';
 import CategorizedAppList from './CategorizedAppList';
 
 interface Props {
 	t: Translate;
-	ns: CssNamespace;
 	config: Config;
 	manager: ConsentManager;
 }
@@ -35,7 +34,7 @@ export default class Apps extends Component<Props, State> {
 	}
 
 	render() {
-		const {config, t, ns, manager} = this.props;
+		const {config, t, manager} = this.props;
 		const {consents} = this.state;
 		const {apps, categories} = config;
 
@@ -63,12 +62,10 @@ export default class Apps extends Component<Props, State> {
 		return (
 			<div>
 				{someOptional ? (
-					<div className={ns('AppToggles')}>
+					<div className="orejime-AppToggles">
 						<button
 							type="button"
-							className={ns(
-								'Button Button--info AppToggles-button AppToggles-enableAll'
-							)}
+							className="orejime-Button orejime-Button--info orejime-AppToggles-button orejime-AppToggles-enableAll"
 							disabled={allEnabled}
 							onClick={enableAll}
 						>
@@ -76,9 +73,7 @@ export default class Apps extends Component<Props, State> {
 						</button>
 						<button
 							type="button"
-							className={ns(
-								'Button Button--info AppToggles-button AppToggles-disableAll'
-							)}
+							className="orejime-Button orejime-Button--info orejime-AppToggles-button orejime-AppToggles-disableAll"
 							disabled={allDisabled}
 							onClick={disableAll}
 						>
@@ -90,7 +85,6 @@ export default class Apps extends Component<Props, State> {
 				{categories ? (
 					<CategorizedAppList
 						t={t}
-						ns={ns}
 						categories={categories}
 						apps={apps}
 						consents={consents}
@@ -99,7 +93,6 @@ export default class Apps extends Component<Props, State> {
 				) : (
 					<AppList
 						t={t}
-						ns={ns}
 						apps={apps}
 						consents={consents}
 						onToggle={manager.updateConsent.bind(manager)}

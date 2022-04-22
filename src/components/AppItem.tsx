@@ -1,16 +1,15 @@
 import React, {ChangeEvent, Component} from 'react';
-import {App, CssNamespace, Translate} from '../types';
+import {App, Translate} from '../types';
 
 interface Props extends App {
 	t: Translate;
-	ns: CssNamespace;
 	checked: boolean;
 	onToggle: (checked: boolean) => void;
 }
 
 export default class AppItem extends Component<Props> {
 	render() {
-		const {checked, onToggle, name, title, description, t, ns} = this.props;
+		const {checked, onToggle, name, title, description, t} = this.props;
 		const required = this.props.required || false;
 		const optOut = this.props.optOut || false;
 		const purposes = this.props.purposes || [];
@@ -24,7 +23,7 @@ export default class AppItem extends Component<Props> {
 			.join(', ');
 		const optOutText = optOut ? (
 			<span
-				className={ns('AppItem-optOut')}
+				className="orejime-AppItem-optOut"
 				title={t(['app', 'optOut', 'description'])}
 			>
 				{t(['app', 'optOut', 'title'])}
@@ -34,7 +33,7 @@ export default class AppItem extends Component<Props> {
 		);
 		const requiredText = required ? (
 			<span
-				className={ns('AppItem-required')}
+				className="orejime-AppItem-required"
 				title={t(['app', 'required', 'description'])}
 			>
 				{t(['app', 'required', 'title'])}
@@ -45,17 +44,17 @@ export default class AppItem extends Component<Props> {
 
 		const purposesEl =
 			purposes.length > 0 ? (
-				<p className={ns('AppItem-purposes')}>
+				<p className="orejime-AppItem-purposes">
 					{t(['app', purposes.length > 1 ? 'purposes' : 'purpose'])}:{' '}
 					{purposesText}
 				</p>
 			) : null;
 		const switchLabel = isChecked ? 'enabled' : 'disabled';
 		return (
-			<div className={ns('AppItem')}>
+			<div className="orejime-AppItem">
 				<input
 					id={id}
-					className={ns('AppItem-input')}
+					className="orejime-AppItem-input"
 					aria-describedby={`${id}-description`}
 					disabled={required}
 					checked={isChecked}
@@ -64,33 +63,34 @@ export default class AppItem extends Component<Props> {
 				/>
 				<label
 					htmlFor={id}
-					className={ns('AppItem-label')}
+					className="orejime-AppItem-label"
 					{...(required ? {tabIndex: 0} : {})}
 				>
-					<span className={ns('AppItem-title')}>
+					<span className="orejime-AppItem-title">
 						{t([name, 'title']) || title}
 					</span>
 					{requiredText}
 					{optOutText}
 					<span
-						className={ns(
-							`AppItem-switch ${
-								required ? 'AppItem-switch--disabled' : ''
-							}`
-						)}
+						className={`orejime-AppItem-switch ${
+							required ? 'orejime-AppItem-switch--disabled' : ''
+						}`}
 					>
-						<div className={ns('AppItem-slider')}></div>
-						<div aria-hidden="true" className={ns('AppItem-switchLabel')}>
+						<div className="orejime-AppItem-slider"></div>
+						<div
+							aria-hidden="true"
+							className="orejime-AppItem-switchLabel"
+						>
 							{t([switchLabel])}
 						</div>
 					</span>
 				</label>
 				<div
 					id={`${id}-description`}
-					className={ns('AppItem-fullDescription')}
+					className="orejime-AppItem-fullDescription"
 				>
 					<p
-						className={ns('AppItem-description')}
+						className="orejime-AppItem-description"
 						dangerouslySetInnerHTML={{
 							__html: t([name, 'description']) || description
 						}}

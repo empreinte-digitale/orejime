@@ -3,11 +3,10 @@ import {Close} from './Icons';
 import Apps from './Apps';
 import Dialog from './Dialog';
 import ConsentManager from '../ConsentManager';
-import {Config, CssNamespace, Translate} from '../types';
+import {Config, Translate} from '../types';
 
 interface Props {
 	t: Translate;
-	ns: CssNamespace;
 	config: Config;
 	manager: ConsentManager;
 	isOpen: boolean;
@@ -23,8 +22,7 @@ export default class ConsentModal extends Component<Props> {
 			onSaveRequest,
 			config,
 			manager,
-			t,
-			ns
+			t
 		} = this.props;
 
 		const isAlert =
@@ -34,34 +32,34 @@ export default class ConsentModal extends Component<Props> {
 			<Dialog
 				isOpen={isOpen}
 				aria={{'labelledby': 'orejime-modal-title'}}
-				portalClassName={ns('ModalPortal')}
-				overlayClassName={ns('ModalOverlay')}
-				className={ns('ModalWrapper')}
+				portalClassName="orejime-ModalPortal"
+				overlayClassName="orejime-ModalOverlay"
+				className="orejime-ModalWrapper"
 				config={config}
 				onRequestClose={onHideRequest}
 				role={isAlert ? 'alertdialog' : 'dialog'}
 			>
-				<div className={ns('Modal')}>
-					<div className={ns('Modal-header')}>
+				<div className="orejime-Modal">
+					<div className="orejime-Modal-header">
 						{!isAlert && (
 							<button
 								title={t(['close'])}
-								className={ns('Modal-closeButton')}
+								className="orejime-Modal-closeButton"
 								type="button"
 								onClick={onHideRequest}
 							>
-								<Close t={t} ns={ns} />
+								<Close t={t} />
 							</button>
 						)}
 
-						<h1 className={ns('Modal-title')} id="orejime-modal-title">
+						<h1 className="orejime-Modal-title" id="orejime-modal-title">
 							{t(['consentModal', 'title'])}
 						</h1>
-						<p className={ns('Modal-description')}>
+						<p className="orejime-Modal-description">
 							{manager.changed &&
 								(config.mustConsent || config.noNotice) && (
-									<p className={ns('Modal-description')}>
-										<strong className={ns('Modal-changes')}>
+									<p className="orejime-Modal-description">
+										<strong className="orejime-Modal-changes">
 											{t(['consentNotice', 'changeDescription'])}
 										</strong>
 									</p>
@@ -71,7 +69,7 @@ export default class ConsentModal extends Component<Props> {
 								privacyPolicy: (
 									<a
 										key="privacyPolicyLink"
-										className={ns('Modal-privacyPolicyLink')}
+										className="orejime-Modal-privacyPolicyLink"
 										onClick={(e) => {
 											onHideRequest();
 										}}
@@ -84,13 +82,13 @@ export default class ConsentModal extends Component<Props> {
 						</p>
 					</div>
 
-					<form className={ns('Modal-form')}>
-						<div className={ns('Modal-body')}>
-							<Apps t={t} ns={ns} config={config} manager={manager} />
+					<form className="orejime-Modal-form">
+						<div className="orejime-Modal-body">
+							<Apps t={t} config={config} manager={manager} />
 						</div>
-						<div className={ns('Modal-footer')}>
+						<div className="orejime-Modal-footer">
 							<button
-								className={ns('Button Button--save Modal-saveButton')}
+								className="orejime-Button orejime-Button--save orejime-Modal-saveButton"
 								onClick={onSaveRequest}
 								title={t(['saveData'])}
 							>
@@ -98,7 +96,7 @@ export default class ConsentModal extends Component<Props> {
 							</button>
 							<a
 								target="_blank"
-								className={ns('Modal-poweredByLink')}
+								className="orejime-Modal-poweredByLink"
 								href={
 									config.poweredBy ||
 									'https://orejime.empreintedigitale.fr'

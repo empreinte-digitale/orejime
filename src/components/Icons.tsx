@@ -1,16 +1,15 @@
 import React from 'react';
-import {CssNamespace, Translate} from '../types';
+import {Translate} from '../types';
 
 interface Props {
 	t: Translate;
-	ns: CssNamespace;
 }
 
-export const Close = ({t, ns}: Props) => {
+export const Close = ({t}: Props) => {
 	return (
 		<svg
 			role="img"
-			className={ns('CloseIcon')}
+			className="orejime-CloseIcon"
 			aria-label={t(['close']) as string}
 			width="12"
 			height="12"

@@ -5,24 +5,23 @@ import translations from './translations';
 import Main from './components/Main';
 import {convertToMap, update} from './utils/maps';
 import {t, language} from './utils/i18n';
-import {createCssNamespace} from './utils/css';
 import {Config, Translate, TranslationMap} from './types';
 
 function getElement(config: Config) {
-	const {elementID: id, stylePrefix} = config;
+	const {elementID: id} = config;
 	var element = document.getElementById(id);
 	if (element === null) {
 		element = document.createElement('div');
 		element.id = id;
 		document.body.insertBefore(element, document.body.firstChild);
 	}
-	var child = document.querySelector(`.${stylePrefix}-AppContainer`);
+	var child = document.querySelector('.orejime-AppContainer');
 	if (child === null) {
 		child = document.createElement('div');
-		child.className = `${stylePrefix}-AppContainer`;
+		child.className = 'orejime-AppContainer';
 		element.appendChild(child);
 	}
-	return document.querySelector(`.${stylePrefix}-AppContainer`);
+	return document.querySelector('.orejime-AppContainer');
 }
 
 function getTranslations(config: Config) {
@@ -42,7 +41,6 @@ function getManager(config: Config) {
 
 export const defaultConfig: Config = {
 	elementID: 'orejime',
-	stylePrefix: 'orejime',
 	cookieName: 'orejime',
 	cookieExpiresAfterDays: 365,
 	stringifyCookie: JSON.stringify.bind(JSON),
@@ -79,12 +77,7 @@ export function init(conf: Config) {
 		return t(trans, config.lang, config.debug, key, ...args) as string;
 	};
 	const app = (render(
-		<Main
-			t={tt}
-			ns={createCssNamespace(config.stylePrefix)}
-			manager={manager}
-			config={config}
-		/>,
+		<Main t={tt} manager={manager} config={config} />,
 		element
 	) as unknown) as Main;
 	return {

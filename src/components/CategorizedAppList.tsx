@@ -1,10 +1,9 @@
 import React from 'react';
-import {App, Category, Consents, CssNamespace, Translate} from '../types';
+import {App, Category, Consents, Translate} from '../types';
 import AppList from './AppList';
 
 interface Props {
 	t: Translate;
-	ns: CssNamespace;
 	categories: Category[];
 	apps: App[];
 	consents: Consents;
@@ -16,27 +15,25 @@ const pickApps = (apps: App[], names: string[]) =>
 
 const CategorizedAppList = ({
 	t,
-	ns,
 	categories,
 	apps,
 	consents,
 	onToggle
 }: Props) => (
-	<ul className={ns('CategorizedAppList')}>
+	<ul className="orejime-CategorizedAppList">
 		{categories.map(({name, title, description, apps: appNames}) => (
-			<li className={ns('CategorizedAppList-item')}>
-				<h2 className={ns('CategorizedAppList-title')}>
+			<li className="orejime-CategorizedAppList-item">
+				<h2 className="orejime-CategorizedAppList-title">
 					{t(['categories', name, 'title']) || title}
 				</h2>
 
-				<p className={ns('CategorizedAppList-description')}>
+				<p className="orejime-CategorizedAppList-description">
 					{t(['categories', name, 'description']) || description}
 				</p>
 
-				<div className={ns('CategorizedAppList-apps')}>
+				<div className="orejime-CategorizedAppList-apps">
 					<AppList
 						t={t}
-						ns={ns}
 						apps={pickApps(apps, appNames)}
 						consents={consents}
 						onToggle={onToggle}
