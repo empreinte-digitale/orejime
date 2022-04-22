@@ -21,7 +21,7 @@ declineAll: Rechazar todas las apps
 close: Cerrar
 enabled: Habilitado
 disabled: Deshabilitado
-app:
+purpose:
   optOut:
     title: (desactivar)
     description: Esta aplicación se carga por defecto (pero puedes desactivarla)

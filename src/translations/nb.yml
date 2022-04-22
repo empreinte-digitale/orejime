@@ -13,7 +13,7 @@ consentNotice:
   learnMore: Lær mer
 save: Opslaan
 decline: Avslå
-app:
+purpose:
   optOut:
     title: (opt-out)
     description: Denne appen er lastet som standard (men du kan skru det av)

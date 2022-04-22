@@ -1,4 +1,4 @@
-import {App, Config, Consents, ConsentsWatcher} from './types';
+import {Purpose, Config, Consents, ConsentsWatcher} from './types';
 import {getCookie, getCookies, setCookie, deleteCookie} from './utils/cookies';
 
 // temporary fix to avoid touching the code for now
@@ -19,11 +19,11 @@ export default class ConsentManager {
 
 	constructor(config: Config) {
 		this.config = config; // the configuration
-		this.consents = this.defaultConsents; // the consent states of the configured apps
+		this.consents = this.defaultConsents; // the consent states of the configured purposes
 		this.confirmed = false; // true if the user actively confirmed his/her consent
-		this.changed = false; // true if the app config changed compared to the cookie
-		this.states = {}; // keep track of the change (enabled, disabled) of individual apps
-		this.executedOnce = {}; //keep track of which apps have been executed at least once
+		this.changed = false; // true if the purpose config changed compared to the cookie
+		this.states = {}; // keep track of the change (enabled, disabled) of individual purposes
+		this.executedOnce = {}; //keep track of which purposes have been executed at least once
 		this.watchers = new Set([]);
 		this.loadConsents();
 		this.applyConsents();
@@ -47,16 +47,16 @@ export default class ConsentManager {
 		});
 	}
 
-	getApp(name: string) {
-		const matchingApps = this.config.apps.filter((app) => {
-			return app.name == name;
+	getPurpose(name: string) {
+		const matching = this.config.purposes.filter((purpose) => {
+			return purpose.name == name;
 		});
-		if (matchingApps.length > 0) return matchingApps[0];
+		if (matching.length > 0) return matching[0];
 		return undefined;
 	}
 
-	getDefaultConsent(app: App) {
-		let consent = app.default;
+	getDefaultConsent(purpose: Purpose) {
+		let consent = purpose.default;
 		if (consent === undefined) consent = this.config.default;
 		if (consent === undefined) consent = false;
 		return consent;
@@ -64,9 +64,9 @@ export default class ConsentManager {
 
 	get defaultConsents() {
 		const consents: Consents = {};
-		for (var i = 0; i < this.config.apps.length; i++) {
-			const app = this.config.apps[i];
-			consents[app.name] = this.getDefaultConsent(app);
+		for (var i = 0; i < this.config.purposes.length; i++) {
+			const purpose = this.config.purposes[i];
+			consents[purpose.name] = this.getDefaultConsent(purpose);
 		}
 		return consents;
 	}
@@ -74,28 +74,28 @@ export default class ConsentManager {
 	// If every app is either required or optOut, or both,
 	// there is no need to ask for user consent.
 	canBypassConsent() {
-		return this.config.apps.every(
+		return this.config.purposes.every(
 			({optOut = false, required = false}) => optOut || required
 		);
 	}
 
 	declineAll() {
-		this.config.apps.map((app) => {
-			this.updateConsent(app, false);
+		this.config.purposes.map((purpose) => {
+			this.updateConsent(purpose, false);
 		});
 	}
 
 	acceptAll() {
-		this.config.apps.map((app) => {
-			this.updateConsent(app, true);
+		this.config.purposes.map((purpose) => {
+			this.updateConsent(purpose, true);
 		});
 	}
 
-	updateConsent(app: App, value: boolean) {
-		if (app.required && !value) {
+	updateConsent(purpose: Purpose, value: boolean) {
+		if (purpose.required && !value) {
 			return;
 		}
-		this.consents[app.name] = value;
+		this.consents[purpose.name] = value;
 		this.notify('consents', this.consents);
 	}
 
@@ -113,18 +113,18 @@ export default class ConsentManager {
 
 	_checkConsents() {
 		let complete = true;
-		const appNames = this.config.apps.map((app) => app.name);
+		const purposeNames = this.config.purposes.map((purpose) => purpose.name);
 		Object.keys(this.consents).forEach(
 			function (key: string) {
-				if (appNames.indexOf(key) === -1) {
+				if (purposeNames.indexOf(key) === -1) {
 					delete this.consents[key];
 				}
 			}.bind(this)
 		);
-		this.config.apps.forEach(
-			function (app: App) {
-				if (typeof this.consents[app.name] === 'undefined') {
-					this.consents[app.name] = this.getDefaultConsent(app);
+		this.config.purposes.forEach(
+			function (purpose: Purpose) {
+				if (typeof this.consents[purpose.name] === 'undefined') {
+					this.consents[purpose.name] = this.getDefaultConsent(purpose);
 					complete = false;
 				}
 			}.bind(this)
@@ -164,32 +164,32 @@ export default class ConsentManager {
 	}
 
 	applyConsents() {
-		for (var i = 0; i < this.config.apps.length; i++) {
-			const app = this.config.apps[i];
-			const state = this.states[app.name];
+		for (var i = 0; i < this.config.purposes.length; i++) {
+			const purpose = this.config.purposes[i];
+			const state = this.states[purpose.name];
 			const confirmed =
 				this.confirmed ||
-				(app.optOut !== undefined
-					? app.optOut
+				(purpose.optOut !== undefined
+					? purpose.optOut
 					: this.config.optOut || false);
-			const consent = this.getConsent(app.name) && confirmed;
+			const consent = this.getConsent(purpose.name) && confirmed;
 			if (state === consent) continue;
-			this.updateAppElements(app, consent);
-			this.updateAppCookies(app, consent);
-			if (app.callback !== undefined) app.callback(consent, app);
-			this.states[app.name] = consent;
+			this.updatePurposeElements(purpose, consent);
+			this.updatePurposeCookies(purpose, consent);
+			if (purpose.callback !== undefined) purpose.callback(consent, purpose);
+			this.states[purpose.name] = consent;
 		}
 	}
 
-	updateAppElements(app: App, consent: boolean) {
-		// we make sure we execute this app only once if the option is set
+	updatePurposeElements(purpose: Purpose, consent: boolean) {
+		// we make sure we execute this purpose only once if the option is set
 		if (consent) {
-			if (app.onlyOnce && this.executedOnce[app.name]) return;
-			this.executedOnce[app.name] = true;
+			if (purpose.onlyOnce && this.executedOnce[purpose.name]) return;
+			this.executedOnce[purpose.name] = true;
 		}
 
 		const elements = document.querySelectorAll<HTMLElement>(
-			"[data-name='" + app.name + "']"
+			"[data-name='" + purpose.name + "']"
 		);
 		for (var i = 0; i < elements.length; i++) {
 			const element = elements[i];
@@ -258,17 +258,17 @@ export default class ConsentManager {
 		}
 	}
 
-	updateAppCookies(app: App, consent: boolean) {
+	updatePurposeCookies(purpose: Purpose, consent: boolean) {
 		if (consent) return;
 
 		function escapeRegexStr(str: string) {
 			return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&');
 		}
 
-		if (app.cookies !== undefined && app.cookies.length > 0) {
+		if (purpose.cookies !== undefined && purpose.cookies.length > 0) {
 			const cookies = getCookies();
-			for (var i = 0; i < app.cookies.length; i++) {
-				let cookiePattern = app.cookies[i];
+			for (var i = 0; i < purpose.cookies.length; i++) {
+				let cookiePattern = purpose.cookies[i];
 				let cookiePath, cookieDomain;
 				if (cookiePattern instanceof Array) {
 					[cookiePattern, cookiePath, cookieDomain] = cookiePattern;

@@ -21,7 +21,7 @@ declineAll: Rebutja tot
 close: Tancar
 enabled: Actiu
 disabled: Inactiu
-app:
+purpose:
   optOut:
     title: (desactivar)
     description: Aquesta aplicació es carrega de manera predeterminada (però podeu desactivar-la)

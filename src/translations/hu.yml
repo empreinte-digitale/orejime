@@ -13,7 +13,7 @@ consentNotice:
   learnMore: Tudj meg többet
 save: Mentés
 decline: Elvet
-app:
+purpose:
   optOut:
     title: (leiratkozás)
     description: Ez az alkalmazás alapértelmezés szerint betöltött (de ki lehet kapcsolni)

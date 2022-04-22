@@ -1,6 +1,6 @@
 # Orejime 🍪
 
-> Let your users choose the cookies they eat on your website.  
+> Let your users choose the cookies they eat on your website.
 > Orejime 🍪 is an easy to use consent manager that focuses on accessibility.
 
 ## Introduction
@@ -29,7 +29,7 @@ The easiest way to use the lib is to include the built files directly in the bro
 <script src="https://unpkg.com/orejime@latest/dist/orejime.js"></script>
 ```
 
-If you're using this method, please avoid using the `@latest` version. Prefer a fixed one like `https://unpkg.com/orejime@2.0.1/...`. 
+If you're using this method, please avoid using the `@latest` version. Prefer a fixed one like `https://unpkg.com/orejime@2.0.1/...`.
 That way you can ensure you will not be impacted by a change of API or a potential bug that could land in the latest version.
 
 #### Via npm
@@ -40,7 +40,7 @@ Orejime 🍪 is a React lib. Make sure you already installed react and react-dom
 npm install orejime
 ```
 
-The CSS is located in `node_modules/orejime/dist/orejime.css`. Import it directly in your JS thanks to webpack, or install it any way you are used to in your project.  
+The CSS is located in `node_modules/orejime/dist/orejime.css`. Import it directly in your JS thanks to webpack, or install it any way you are used to in your project.
 You can also directly consume the Sass file if you prefer, located in the same folder.
 
 Note: if you don't have a React environment but still want to use npm in order to easily get the latest version of Orejime, the already-built JS file is located in `node_modules/orejime/dist/orejime.js`.
@@ -79,7 +79,7 @@ For external scripts or img tags (for tracking pixels), do the same, and rename 
 
 ### Configuration
 
-You need to pass Orejime 🍪 a configuration object with, at the very least, `apps` and `privacyPolicy` properties. Each app listed in `apps` must itself have at least `name`, `title` and `cookies`.
+You need to pass Orejime 🍪 a configuration object with, at the very least, `purposes` and `privacyPolicy` properties. Each purpose listed in `purposes` must itself have at least `name`, `title` and `cookies`.
 
 <details open>
     <summary>Here is a fully-detailed annotated example of a configuration object:</summary>
@@ -126,19 +126,19 @@ var orejimeConfig = {
     // You must provide a link to your privacy policy page
     privacyPolicy: "",
 
-    // Optional. Applications configured below will be ON by default if default=true.
+    // Optional. Purposes configured below will be ON by default if default=true.
     // defaults to true
     default: true,
 
     // Optional. If "mustConsent" is set to true, Orejime will directly display the consent
     // manager modal and not allow the user to close it before having actively
-    // consented or declined the use of third-party apps.
+    // consented or declined the use of third-party purposes.
     // defaults to false
     mustConsent: false,
 
     // Optional. If "mustNotice" is set to true, Orejime will display the consent
     // notice and not allow the user to close it before having actively
-    // consented or declined the use of third-party apps.
+    // consented or declined the use of third-party purposes.
     // Has no effect if mustConsent is set to true.
     // defaults to false
     mustNotice: false,
@@ -160,7 +160,7 @@ var orejimeConfig = {
     debug: false,
 
     // You can overwrite existing translations and add translations for your
-    // app descriptions and purposes. See `src/translations.yml` for a full
+    // purpose descriptions and purposes. See `src/translations.yml` for a full
     // list of translations that can be overwritten
     translations: {
         en: {
@@ -185,24 +185,24 @@ var orejimeConfig = {
         },
     },
 
-    // The list of third-party apps that Orejime will manage for you.
-    // The apps will appear in the modal in the same order as defined here.
-    apps: [
+    // The list of third-party purposes that Orejime will manage for you.
+    // The purposes will appear in the modal in the same order as defined here.
+    purposes: [
         {
-            // The name of the app, used internally by Orejime.
+            // The name of the purpose, used internally by Orejime.
             // Each name should match a name of a <script> tag defined in the
             // "Changing your existing third-party scripts" documentation step.
             name: "google-tag-manager",
 
-            // The title of you app as listed in the consent modal.
+            // The title of you purpose as listed in the consent modal.
             title: "Google Tag Manager",
 
             // A list of regex expressions, strings, or arrays, giving the names of
-            // cookies set by this app. If the user withdraws consent for a
-            // given app, Orejime will then automatically delete all matching
+            // cookies set by this purpose. If the user withdraws consent for a
+            // given purpose, Orejime will then automatically delete all matching
             // cookies.
             //
-            // See a different example below with the inline-tracker app
+            // See a different example below with the inline-tracker purpose
             // to see how to define cookies set on different path or domains.
             cookies: [
                 "_ga",
@@ -217,37 +217,37 @@ var orejimeConfig = {
                 "_gat_" + GTM_UA
             ],
 
-            // Optional. The purpose(s) of this app. Will be listed on the consent notice.
+            // Optional. The purpose(s) of this purpose. Will be listed on the consent notice.
             // Do not forget to add translations for all purposes you list here.
             purposes: ["analytics"],
 
             // Optional. A callback function that will be called each time
-            // the consent state for the app changes. Passes
-            // the `app` config as the second parameter as well.
-            callback: function(consent, app){
+            // the consent state for the purpose changes. Passes
+            // the `purpose` config as the second parameter as well.
+            callback: function(consent, purpose){
                 // This is an example callback function.
-                console.log("User consent for app " + app.name + ": consent=" + consent)
+                console.log("User consent for purpose " + purpose.name + ": consent=" + consent)
             },
 
-            // Optional. If "required" is set to true, Orejime will not allow this app to
+            // Optional. If "required" is set to true, Orejime will not allow this purpose to
             // be disabled by the user.
             // See "Special cases" below for more information.
             // default to false
             required: false,
 
-            // Optional. If "optOut" is set to true, Orejime will load this app
+            // Optional. If "optOut" is set to true, Orejime will load this purpose
             // even before the user gave explicit consent.
             // We recommend always leaving this "false".
             // See "Special cases" below for more information.
             // defaults to false
             optOut: false,
 
-            // Optional. If "default" is set to true, the app will be enabled by default
+            // Optional. If "default" is set to true, the purpose will be enabled by default
             // Overwrites the global "default" setting.
             // defaults to the value of the gobal "default" setting
             default: true,
 
-            // Optional. If "onlyOnce" is set to true, the app will only be executed
+            // Optional. If "onlyOnce" is set to true, the purpose will only be executed
             // once regardless how often the user toggles it on and off.
             // defaults to false
             onlyOnce: true,
@@ -275,15 +275,15 @@ var orejimeConfig = {
             required: true
         }
     ],
-    // Optional. A list of categories under which apps will be classified.
-    // This allows for a visual grouping of the different apps, along with a
+    // Optional. A list of categories under which purposes will be classified.
+    // This allows for a visual grouping of the different purposes, along with a
     // description of their purpose.
     categories: [
         {
             name: "analytics",
             title: "Analytics",
-            // The list of apps belonging to the category, referenced by name.
-            apps: [
+            // The list of purposes belonging to the category, referenced by name.
+            purposes: [
                 "google-tag-manager",
                 "external-tracker"
             ]
@@ -298,7 +298,7 @@ var orejimeConfig = {
 
 ##### Exemption
 
-If every app is either `required` or `optOut`, Orejime will not show at startup
+If every purpose is either `required` or `optOut`, Orejime will not show at startup
 (but it will still be possible to open it programmatically).
 However, you should consider this use case carefully, and ensure that :
 * `required` trackers are truly required for your app to function properly
@@ -328,7 +328,7 @@ Orejime.init(orejimeConfig);
 
 #### CSS
 
-Either replace the original CSS entirely, or add your custom stylesheet to overwrite only some of the rules.  
+Either replace the original CSS entirely, or add your custom stylesheet to overwrite only some of the rules.
 For example:
 
 ```css
@@ -346,8 +346,8 @@ For example:
 
 #### Sass
 
-You can import [the original Sass stylesheet](https://github.com/empreinte-digitale/orejime/blob/master/src/scss/orejime.scss) into your own, and tweak it as you wish.  
-Orejime provides default variables that you can overwrite to quickly change its appearance.  
+You can import [the original Sass stylesheet](https://github.com/empreinte-digitale/orejime/blob/master/src/scss/orejime.scss) into your own, and tweak it as you wish.
+Orejime provides default variables that you can overwrite to quickly change its appearance.
 For example:
 
 ```scss

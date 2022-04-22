@@ -360,19 +360,19 @@ main {
 	font-family: var(--headings-font);
 }
 
-.orejime-AppToggles {
+.orejime-PurposeToggles {
 	margin-bottom: calc(1.5 * var(--unit));
 }
 
-.orejime-AppToggles button {
+.orejime-PurposeToggles button {
 	margin: 0 1px 1px 0;
 }
 
-.orejime-AppList-item {
+.orejime-PurposeList-item {
 	padding-left: calc(50px + var(--unit));
 }
 
-.orejime-AppItem-purposes {
+.orejime-Purpose-purposes {
 	color: var(--cyan-light);
 }
 
@@ -426,7 +426,7 @@ main {
 	background: var(--positive-active);
 }
 
-.orejime-AppItem-input:checked + .orejime-AppItem-label .orejime-AppItem-slider {
+.orejime-Purpose-input:checked + .orejime-Purpose-label .orejime-Purpose-slider {
 	background: var(--magenta);
 }
 

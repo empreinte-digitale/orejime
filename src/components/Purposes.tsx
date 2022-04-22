@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import ConsentManager from '../ConsentManager';
 import {Config, Consents, Translate} from '../types';
-import AppList from './AppList';
-import CategorizedAppList from './CategorizedAppList';
+import PurposeList from './PurposeList';
+import CategorizedPurposeList from './CategorizedPurposeList';
 
 interface Props {
 	t: Translate;
@@ -14,7 +14,7 @@ interface State {
 	consents: Consents;
 }
 
-export default class Apps extends Component<Props, State> {
+export default class Purposes extends Component<Props, State> {
 	constructor(props: Props) {
 		super(props);
 		props.manager.watch(this);
@@ -36,11 +36,11 @@ export default class Apps extends Component<Props, State> {
 	render() {
 		const {config, t, manager} = this.props;
 		const {consents} = this.state;
-		const {apps, categories} = config;
+		const {purposes, categories} = config;
 
 		const toggleAll = (value: boolean) => {
-			apps.map((app) => {
-				manager.updateConsent(app, value);
+			purposes.map((purpose) => {
+				manager.updateConsent(purpose, value);
 			});
 		};
 
@@ -48,24 +48,24 @@ export default class Apps extends Component<Props, State> {
 		const disableAll = () => toggleAll(false);
 
 		const allDisabled =
-			apps.filter((app) => {
-				return app.required || false ? false : consents[app.name];
+			purposes.filter((purpose) => {
+				return purpose.required || false ? false : consents[purpose.name];
 			}).length === 0;
 
 		const allEnabled =
-			apps.filter((app) => {
-				return consents[app.name];
-			}).length === apps.length;
+			purposes.filter((purpose) => {
+				return consents[purpose.name];
+			}).length === purposes.length;
 
-		const someOptional = apps.some((app) => !app.required);
+		const someOptional = purposes.some((purpose) => !purpose.required);
 
 		return (
 			<div>
 				{someOptional ? (
-					<div className="orejime-AppToggles">
+					<div className="orejime-PurposeToggles">
 						<button
 							type="button"
-							className="orejime-Button orejime-Button--info orejime-AppToggles-button orejime-AppToggles-enableAll"
+							className="orejime-Button orejime-Button--info orejime-PurposeToggles-button orejime-PurposeToggles-enableAll"
 							disabled={allEnabled}
 							onClick={enableAll}
 						>
@@ -73,7 +73,7 @@ export default class Apps extends Component<Props, State> {
 						</button>
 						<button
 							type="button"
-							className="orejime-Button orejime-Button--info orejime-AppToggles-button orejime-AppToggles-disableAll"
+							className="orejime-Button orejime-Button--info orejime-PurposeToggles-button orejime-PurposeToggles-disableAll"
 							disabled={allDisabled}
 							onClick={disableAll}
 						>
@@ -83,17 +83,17 @@ export default class Apps extends Component<Props, State> {
 				) : null}
 
 				{categories ? (
-					<CategorizedAppList
+					<CategorizedPurposeList
 						t={t}
 						categories={categories}
-						apps={apps}
+						purposes={purposes}
 						consents={consents}
 						onToggle={manager.updateConsent.bind(manager)}
 					/>
 				) : (
-					<AppList
+					<PurposeList
 						t={t}
-						apps={apps}
+						purposes={purposes}
 						consents={consents}
 						onToggle={manager.updateConsent.bind(manager)}
 					/>

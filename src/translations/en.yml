@@ -21,7 +21,7 @@ declineAll: Decline all apps
 close: Close
 enabled: Enabled
 disabled: Disabled
-app:
+purpose:
   optOut:
     title: (opt-out)
     description: This app is loaded by default (but you can opt out)

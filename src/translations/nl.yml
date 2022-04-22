@@ -20,7 +20,7 @@ declineAll: Alles weigeren
 close: Sluiten
 enabled: Geactiveerd
 disabled: Gedesactiveerd
-app:
+purpose:
   optOut:
     title: (afmelden)
     description: Deze app is standaard geladen (maar je kunt je afmelden)

@@ -52,15 +52,15 @@ export const defaultConfig: Config = {
 	logo: false,
 	lang: language(),
 	translations: {},
-	apps: [],
+	purposes: [],
 	debug: false
 };
 
 export function init(conf: Config) {
 	const config = Object.assign({}, defaultConfig, conf);
 	const errors = [];
-	if (!Object.keys(config.apps).length) {
-		errors.push('  - you must define `apps` to manage');
+	if (!Object.keys(config.purposes).length) {
+		errors.push('  - you must define `purposes` to manage');
 	}
 	if (!config.privacyPolicy.length) {
 		errors.push('  - you must define a `privacyPolicy` url');
