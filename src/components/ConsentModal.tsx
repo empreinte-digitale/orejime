@@ -3,10 +3,11 @@ import {Close} from './Icons';
 import Purposes from './Purposes';
 import Dialog from './Dialog';
 import ConsentManager from '../ConsentManager';
-import {Config, Translate} from '../types';
+import {Config, Translations} from '../types';
+import {template} from '../utils/template';
 
 interface Props {
-	t: Translate;
+	t: Translations;
 	config: Config;
 	manager: ConsentManager;
 	isOpen: boolean;
@@ -43,7 +44,7 @@ export default class ConsentModal extends Component<Props> {
 					<div className="orejime-Modal-header">
 						{!isAlert && (
 							<button
-								title={t(['close'])}
+								title={t.close}
 								className="orejime-Modal-closeButton"
 								type="button"
 								onClick={onHideRequest}
@@ -53,19 +54,19 @@ export default class ConsentModal extends Component<Props> {
 						)}
 
 						<h1 className="orejime-Modal-title" id="orejime-modal-title">
-							{t(['consentModal', 'title'])}
+							{t.consentModal.title}
 						</h1>
 						<p className="orejime-Modal-description">
 							{manager.changed &&
 								(config.mustConsent || config.noBanner) && (
 									<p className="orejime-Modal-description">
 										<strong className="orejime-Modal-changes">
-											{t(['consentBanner', 'changeDescription'])}
+											{t.consentBanner.changeDescription}
 										</strong>
 									</p>
 								)}
-							{t(['consentModal', 'description'])}&nbsp;
-							{t(['consentModal', 'privacyPolicy', 'text'], {
+							{t.consentModal.description}&nbsp;
+							{template(t.consentModal.privacyPolicy.text, {
 								privacyPolicy: (
 									<a
 										key="privacyPolicyLink"
@@ -75,7 +76,7 @@ export default class ConsentModal extends Component<Props> {
 										}}
 										href={config.privacyPolicy}
 									>
-										{t(['consentModal', 'privacyPolicy', 'name'])}
+										{t.consentModal.privacyPolicy.name}
 									</a>
 								)
 							})}
@@ -90,9 +91,9 @@ export default class ConsentModal extends Component<Props> {
 							<button
 								className="orejime-Button orejime-Button--save orejime-Modal-saveButton"
 								onClick={onSaveRequest}
-								title={t(['saveData'])}
+								title={t.saveData}
 							>
-								{t(['save'])}
+								{t.save}
 							</button>
 							<a
 								target="_blank"
@@ -101,9 +102,9 @@ export default class ConsentModal extends Component<Props> {
 									config.poweredBy ||
 									'https://orejime.empreintedigitale.fr'
 								}
-								title={`${t(['poweredBy'])} (${t(['newWindow'])})`}
+								title={`${t.poweredBy} (${t.newWindow})`}
 							>
-								{t(['poweredBy'])}
+								{t.poweredBy}
 							</a>
 						</div>
 					</form>

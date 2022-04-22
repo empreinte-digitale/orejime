@@ -1,9 +1,9 @@
 import React from 'react';
-import {Purpose, Category, Consents, Translate} from '../types';
+import {Purpose, Category, Consents, Translations} from '../types';
 import PurposeList from './PurposeList';
 
 interface Props {
-	t: Translate;
+	t: Translations;
 	categories: Category[];
 	purposes: Purpose[];
 	consents: Consents;
@@ -24,11 +24,11 @@ const CategorizedPurposeList = ({
 		{categories.map(({name, title, description, purposes: purposeNames}) => (
 			<li className="orejime-CategorizedPurposeList-item">
 				<h2 className="orejime-CategorizedPurposeList-title">
-					{t(['categories', name, 'title']) || title}
+					{t?.categories?.[name]?.title || title}
 				</h2>
 
 				<p className="orejime-CategorizedPurposeList-description">
-					{t(['categories', name, 'description']) || description}
+					{t?.categories?.[name]?.description || description}
 				</p>
 
 				<div className="orejime-CategorizedPurposeList-purposes">

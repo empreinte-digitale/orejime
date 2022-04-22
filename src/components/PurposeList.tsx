@@ -1,9 +1,9 @@
 import React from 'react';
-import {Purpose as PurposeType, Consents, Translate} from '../types';
+import {Purpose as PurposeType, Consents, Translations} from '../types';
 import Purpose from './Purpose';
 
 interface Props {
-	t: Translate;
+	t: Translations;
 	purposes: PurposeType[];
 	consents: Consents;
 	onToggle: (purpose: PurposeType, checked: boolean) => void;
