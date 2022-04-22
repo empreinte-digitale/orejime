@@ -2,10 +2,10 @@ import React, {Component} from 'react';
 import ConsentBannerWrapper from './ConsentBannerWrapper';
 import ConsentModal from './ConsentModal';
 import ConsentManager from '../ConsentManager';
-import {Config, Translate} from '../types';
+import {Config, Translations} from '../types';
 
 interface Props {
-	t: Translate;
+	t: Translations;
 	config: Config;
 	manager: ConsentManager;
 }

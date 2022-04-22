@@ -1,8 +1,8 @@
 import React, {ChangeEvent, Component} from 'react';
-import {Purpose as PurposeType, Translate} from '../types';
+import {Purpose as PurposeType, Translations} from '../types';
 
 interface Props extends PurposeType {
-	t: Translate;
+	t: Translations;
 	checked: boolean;
 	onToggle: (checked: boolean) => void;
 }
@@ -19,14 +19,14 @@ export default class Purpose extends Component<Props> {
 		const id = `orejime-purpose-${name}`;
 		const isChecked = checked || required;
 		const purposesText = purposes
-			.map((purpose) => t(['purposes', purpose]))
+			.map((purpose) => t?.purposes?.[purpose])
 			.join(', ');
 		const optOutText = optOut ? (
 			<span
 				className="orejime-Purpose-optOut"
-				title={t(['purpose', 'optOut', 'description'])}
+				title={t.purpose.optOut.description}
 			>
-				{t(['purpose', 'optOut', 'title'])}
+				{t.purpose.optOut.title}
 			</span>
 		) : (
 			''
@@ -34,9 +34,9 @@ export default class Purpose extends Component<Props> {
 		const requiredText = required ? (
 			<span
 				className="orejime-Purpose-required"
-				title={t(['purpose', 'required', 'description'])}
+				title={t.purpose.required.description}
 			>
-				{t(['purpose', 'required', 'title'])}
+				{t.purpose.required.title}
 			</span>
 		) : (
 			''
@@ -45,11 +45,10 @@ export default class Purpose extends Component<Props> {
 		const purposesEl =
 			purposes.length > 0 ? (
 				<p className="orejime-Purpose-purposes">
-					{t(['purpose', purposes.length > 1 ? 'purposes' : 'purpose'])}:{' '}
+					{t.purpose[purposes.length > 1 ? 'purposes' : 'purpose']}:{' '}
 					{purposesText}
 				</p>
 			) : null;
-		const switchLabel = isChecked ? 'enabled' : 'disabled';
 		return (
 			<div className="orejime-Purpose">
 				<input
@@ -67,7 +66,7 @@ export default class Purpose extends Component<Props> {
 					{...(required ? {tabIndex: 0} : {})}
 				>
 					<span className="orejime-Purpose-title">
-						{t([name, 'title']) || title}
+						{t?.[name]?.title || title}
 					</span>
 					{requiredText}
 					{optOutText}
@@ -81,7 +80,7 @@ export default class Purpose extends Component<Props> {
 							aria-hidden="true"
 							className="orejime-Purpose-switchLabel"
 						>
-							{t([switchLabel])}
+							{isChecked ? t.enabled : t.disabled}
 						</div>
 					</span>
 				</label>
@@ -92,7 +91,7 @@ export default class Purpose extends Component<Props> {
 					<p
 						className="orejime-Purpose-description"
 						dangerouslySetInnerHTML={{
-							__html: t([name, 'description']) || description
+							__html: t?.[name]?.description || description
 						}}
 					/>
 					{purposesEl}

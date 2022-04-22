@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import ConsentManager from '../ConsentManager';
-import {Config, Translate} from '../types';
+import {Config, Translations} from '../types';
 import {getPurposes} from '../utils/config';
+import {template} from '../utils/template';
 
 export interface Props {
-	t: Translate;
+	t: Translations;
 	config: Config;
 	manager: ConsentManager;
 	isModalVisible: boolean;
@@ -29,9 +30,9 @@ export default class ConsentBanner extends Component<Props> {
 
 		const purposes = getPurposes(config);
 		const purposesText = purposes
-			.map((purpose) => t(['purposes', purpose]))
+			.map((purpose) => t?.purposes?.[purpose])
 			.join(', ');
-		const title = t(['consentBanner', 'title']);
+		const title = t.consentBanner.title;
 
 		return (
 			<div
@@ -70,7 +71,7 @@ export default class ConsentBanner extends Component<Props> {
 						)}
 
 						<p className="orejime-Banner-description">
-							{t(['consentBanner', 'description'], {
+							{template(t.consentBanner.description, {
 								purposes: (
 									<strong
 										key="purposes"
@@ -80,14 +81,14 @@ export default class ConsentBanner extends Component<Props> {
 									</strong>
 								)
 							})}
-							{t(['consentBanner', 'privacyPolicy', 'text'], {
+							{template(t.consentModal.privacyPolicy.text, {
 								privacyPolicy: (
 									<a
 										key="privacyPolicyLink"
 										className="orejime-Banner-privacyPolicyLink"
 										href={config.privacyPolicy}
 									>
-										{t(['consentBanner', 'privacyPolicy', 'name'])}
+										{t.consentModal.privacyPolicy.name}
 									</a>
 								)
 							})}
@@ -96,7 +97,7 @@ export default class ConsentBanner extends Component<Props> {
 
 					{manager.changed && (
 						<p className="orejime-Banner-changes">
-							{t(['consentBanner', 'changeDescription'])}
+							{t.consentBanner.changeDescription}
 						</p>
 					)}
 
@@ -105,10 +106,10 @@ export default class ConsentBanner extends Component<Props> {
 							<button
 								className="orejime-Button orejime-Button--save orejime-Banner-button orejime-Banner-saveButton"
 								type="button"
-								title={t(['acceptTitle']) as string}
+								title={t.acceptTitle}
 								onClick={onSaveRequest}
 							>
-								{t(['accept'])}
+								{t.accept}
 							</button>
 						</li>
 						<li className="orejime-Banner-actionItem orejime-Banner-actionItem--decline">
@@ -117,7 +118,7 @@ export default class ConsentBanner extends Component<Props> {
 								type="button"
 								onClick={onDeclineRequest}
 							>
-								{t(['decline'])}
+								{t.decline}
 							</button>
 						</li>
 						<li className="orejime-Banner-actionItem orejime-Banner-actionItem--info">
@@ -126,7 +127,7 @@ export default class ConsentBanner extends Component<Props> {
 								className="orejime-Button orejime-Button--info orejime-Banner-learnMoreButton"
 								onClick={onConfigRequest}
 							>
-								{t(['consentBanner', 'learnMore'])}
+								{t.consentBanner.learnMore}
 							</button>
 						</li>
 					</ul>

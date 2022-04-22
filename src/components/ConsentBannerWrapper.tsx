@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import Dialog from './Dialog';
 import ConsentBanner, {Props as ConsentBannerProps} from './ConsentBanner';
-import {Config, Translate} from '../types';
+import {Config, Translations} from '../types';
 
 interface Props extends ConsentBannerProps {
-	t: Translate;
+	t: Translations;
 	config: Config;
 	isVisible: boolean;
 	isMandatory: boolean;
@@ -16,7 +16,7 @@ export default class ConsentBannerWrapper extends Component<Props> {
 		if (!this.props.isMandatory && !isVisible) {
 			return null;
 		}
-		const title = this.props.t(['consentBanner', 'title']);
+		const title = this.props.t.consentBanner.title;
 		const ariaProp = title
 			? {aria: {'labelledby': 'orejime-Banner-title'}}
 			: {};

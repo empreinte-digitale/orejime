@@ -3,9 +3,9 @@ import {render} from 'react-dom';
 import ConsentManager from './ConsentManager';
 import translations from './translations';
 import Main from './components/Main';
-import {convertToMap, update} from './utils/maps';
-import {t, language} from './utils/i18n';
-import {Config, Translate, TranslationMap} from './types';
+import {language} from './utils/i18n';
+import {deepMerge} from './utils/objects';
+import {Config} from './types';
 
 function getElement(config: Config) {
 	const {elementID: id} = config;
@@ -25,10 +25,11 @@ function getElement(config: Config) {
 }
 
 function getTranslations(config: Config) {
-	const trans: TranslationMap = new Map([]);
-	update(trans, convertToMap(translations));
-	update(trans, convertToMap(config.translations));
-	return trans;
+	return deepMerge(
+		translations?.[config.lang as keyof typeof translations] ||
+			translations.en,
+		config.translations?.[config.lang]
+	);
 }
 
 const managers: {[name: string]: ConsentManager} = {};
@@ -52,8 +53,7 @@ export const defaultConfig: Config = {
 	logo: false,
 	lang: language(),
 	translations: {},
-	purposes: [],
-	debug: false
+	purposes: []
 };
 
 export function init(conf: Config) {
@@ -71,13 +71,10 @@ export function init(conf: Config) {
 		return;
 	}
 	const element = getElement(config);
-	const trans = getTranslations(config);
 	const manager = getManager(config);
-	const tt: Translate = (key, ...args) => {
-		return t(trans, config.lang, config.debug, key, ...args) as string;
-	};
+	const t = getTranslations(config);
 	const app = (render(
-		<Main t={tt} manager={manager} config={config} />,
+		<Main t={t} manager={manager} config={config} />,
 		element
 	) as unknown) as Main;
 	return {

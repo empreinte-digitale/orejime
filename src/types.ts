@@ -1,9 +1,5 @@
 export type JsonParser = (json: string) => any;
 export type JsonSerializer = (json: any) => string;
-export type Translate = (
-	path: string[],
-	variables?: {[name: string]: any}
-) => string;
 
 type AppCookie = [
 	cookiePattern: RegExp,
@@ -31,6 +27,58 @@ export interface Category {
 	title: string;
 }
 
+export interface Translations {
+	consentModal: {
+		title: string;
+		description: string;
+		privacyPolicy: {
+			name: string;
+			text: string;
+		};
+	};
+	consentBanner: {
+		title: string;
+		description: string;
+		changeDescription: string;
+		learnMore: string;
+	};
+	accept: string;
+	acceptTitle: string;
+	acceptAll: string;
+	save: string;
+	saveData: string;
+	decline: string;
+	declineAll: string;
+	close: string;
+	enabled: string;
+	disabled: string;
+	purpose: {
+		title: string;
+		description: string;
+		optOut: {
+			title: string;
+			description: string;
+		};
+		required: {
+			title: string;
+			description: string;
+		};
+		purposes: string;
+		purpose: string;
+	};
+	poweredBy: string;
+	newWindow: string;
+	categories?: {
+		[name: string]: {
+			title: string;
+			description: string;
+		};
+	};
+	purposes?: {
+		[name: string]: string;
+	};
+}
+
 export interface Config {
 	appElement?: HTMLElement;
 	purposes: Purpose[];
@@ -38,7 +86,6 @@ export interface Config {
 	cookieDomain?: string;
 	cookieExpiresAfterDays: number;
 	cookieName: string;
-	debug: boolean;
 	default: boolean;
 	elementID: string;
 	lang: string;
@@ -57,7 +104,9 @@ export interface Config {
 	poweredBy?: string;
 	privacyPolicy: string;
 	stringifyCookie: JsonSerializer;
-	translations: {};
+	translations: {
+		[lang: string]: Translations;
+	};
 }
 
 export interface Consents {
@@ -67,10 +116,3 @@ export interface Consents {
 export interface ConsentsWatcher {
 	update: (emitter: any, name: string, consents: Consents) => void;
 }
-
-export type TranslationMap = Map<string, string | TranslationMap>;
-export type TranslationObject = {
-	[key: string]: string | TranslationObject;
-};
-
-export type Translations = TranslationMap | TranslationObject;

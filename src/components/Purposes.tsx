@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import ConsentManager from '../ConsentManager';
-import {Config, Consents, Translate} from '../types';
+import {Config, Consents, Translations} from '../types';
 import PurposeList from './PurposeList';
 import CategorizedPurposeList from './CategorizedPurposeList';
 
 interface Props {
-	t: Translate;
+	t: Translations;
 	config: Config;
 	manager: ConsentManager;
 }
@@ -69,7 +69,7 @@ export default class Purposes extends Component<Props, State> {
 							disabled={allEnabled}
 							onClick={enableAll}
 						>
-							{t(['acceptAll'])}
+							{t.acceptAll}
 						</button>
 						<button
 							type="button"
@@ -77,7 +77,7 @@ export default class Purposes extends Component<Props, State> {
 							disabled={allDisabled}
 							onClick={disableAll}
 						>
-							{t(['declineAll'])}
+							{t.declineAll}
 						</button>
 					</div>
 				) : null}
