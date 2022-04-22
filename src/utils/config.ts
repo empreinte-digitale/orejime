@@ -1,4 +1,4 @@
-import {Config} from '../types';
+import {Config, ImageDescriptor} from '../types';
 
 export function getPurposes(config: Config) {
 	const purposes = new Set<string>([]);
@@ -9,3 +9,18 @@ export function getPurposes(config: Config) {
 	}
 	return Array.from(purposes);
 }
+
+export const imageAttributes = (image: ImageDescriptor) => {
+	if (typeof image === 'string') {
+		return {
+			src: image,
+			alt: ''
+		};
+	}
+
+	return {
+		src: '',
+		alt: '',
+		...image
+	};
+};

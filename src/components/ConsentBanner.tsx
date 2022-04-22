@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import ConsentManager from '../ConsentManager';
 import {Config, Translations} from '../types';
-import {getPurposes} from '../utils/config';
+import {getPurposes, imageAttributes} from '../utils/config';
 import {template} from '../utils/template';
 
 export interface Props {
@@ -45,17 +45,8 @@ export default class ConsentBanner extends Component<Props> {
 					{config.logo && (
 						<div className="orejime-Banner-logoContainer">
 							<img
-								src={
-									typeof config.logo == 'object'
-										? config.logo.src
-										: (config.logo as string)
-								}
-								alt={
-									typeof config.logo == 'object' && config.logo.alt
-										? config.logo.alt
-										: ''
-								}
 								className="orejime-Banner-logo"
+								{...imageAttributes(config.logo)}
 							/>
 						</div>
 					)}

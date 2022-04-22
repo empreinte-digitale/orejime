@@ -148,9 +148,8 @@ var orejimeConfig = {
 
     // Optional. You can pass an image url to show in the notice.
     // If the image is not exclusively decorative, you can pass an object
-    // with the image src and alt attributes: `logo: {src: '...', alt: '...'}`
-    // defaults to false
-    logo: false,
+    // with the image `src` and `alt` attributes: `logo: {src: '...', alt: '...'}`
+    logo: '/img/logo.png',
 
     // You can overwrite existing translations and add translations for your
     // purpose descriptions and purposes. See `src/translations.yml` for a full
