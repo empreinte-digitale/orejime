@@ -57,10 +57,10 @@ export default class ConsentModal extends Component<Props> {
 						</h1>
 						<p className="orejime-Modal-description">
 							{manager.changed &&
-								(config.mustConsent || config.noNotice) && (
+								(config.mustConsent || config.noBanner) && (
 									<p className="orejime-Modal-description">
 										<strong className="orejime-Modal-changes">
-											{t(['consentNotice', 'changeDescription'])}
+											{t(['consentBanner', 'changeDescription'])}
 										</strong>
 									</p>
 								)}

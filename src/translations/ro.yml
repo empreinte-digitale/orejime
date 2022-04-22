@@ -6,7 +6,7 @@ consentModal:
     name: politica privacy
     text: >
       Pentru a afla mai multe, vă rugăm să citiți {privacyPolicy}.
-consentNotice:
+consentBanner:
   changeDescription: Au existat modificări de la ultima vizită, vă rugăm să actualizați consimțământul.
   description: >
     Colectăm și procesăm informațiile dvs. personale în următoarele scopuri: {purposes}.

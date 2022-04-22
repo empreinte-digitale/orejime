@@ -291,11 +291,11 @@ main {
 }
 
 .orejime-ModalOverlay,
-.orejime-NoticeOverlay {
+.orejime-BannerOverlay {
 	background: rgba(54, 117, 145, 0.75);
 }
 
-.orejime-Notice,
+.orejime-Banner,
 .orejime-Modal {
 	background: var(--cyan-darker);
 	background: linear-gradient(112.5deg, var(--cyan-dark) 0%, var(--cyan-darker) 100%);
@@ -303,25 +303,25 @@ main {
 }
 
 @media screen and (min-width: 990px) {
-	.orejime-Notice {
+	.orejime-Banner {
 		max-width: 40ch;
 	}
 }
 
-.orejime-Notice-body {
+.orejime-Banner-body {
 	padding: calc(var(--unit) / 2);
 }
 
-.orejime-Notice-purposes {
+.orejime-Banner-purposes {
 	color: var(--cyan-light);
 }
 
-.orejime-Notice-description {
+.orejime-Banner-description {
 	margin-bottom: calc(var(--unit) / 2);
 	text-align: center;
 }
 
-.orejime-Notice-actions {
+.orejime-Banner-actions {
 	text-align: center;
 }
 

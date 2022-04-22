@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import ConsentNoticeWrapper from './ConsentNoticeWrapper';
+import ConsentBannerWrapper from './ConsentBannerWrapper';
 import ConsentModal from './ConsentModal';
 import ConsentManager from '../ConsentManager';
 import {Config, Translate} from '../types';
@@ -38,9 +38,9 @@ export default class Main extends Component<Props, State> {
 		return false;
 	}
 
-	isNoticeVisible() {
+	isBannerVisible() {
 		const {config, manager} = this.props;
-		if (config.mustConsent || config.noNotice) {
+		if (config.mustConsent || config.noBanner) {
 			return false;
 		}
 		if (manager.confirmed && !manager.changed) {
@@ -88,13 +88,13 @@ export default class Main extends Component<Props, State> {
 
 	render() {
 		const {config, t, manager} = this.props;
-		const isNoticeVisible = this.isNoticeVisible();
+		const isBannerVisible = this.isBannerVisible();
 		return (
 			<div className="orejime-Main">
-				<ConsentNoticeWrapper
-					key="notice"
+				<ConsentBannerWrapper
+					key="banner"
 					t={t}
-					isVisible={isNoticeVisible}
+					isVisible={isBannerVisible}
 					isMandatory={config.mustNotice || false}
 					isModalVisible={this.state.isModalVisible}
 					config={config}

@@ -6,7 +6,7 @@ consentModal:
     name: privacybeleid
     text: >
       Lees ons privacybeleid voor meer informatie {privacyPolicy}.
-consentNotice:
+consentBanner:
   changeDescription: Er waren wijzigingen sinds uw laatste bezoek, werk uw voorkeuren bij.
   description: >
     Wij verzamelen en verwerken uw persoonlijke gegevens voor de volgende doeleinden: {purposes}.

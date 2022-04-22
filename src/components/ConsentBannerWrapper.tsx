@@ -1,24 +1,24 @@
 import React, {Component} from 'react';
 import Dialog from './Dialog';
-import ConsentNotice, {Props as ConsentNoticeProps} from './ConsentNotice';
+import ConsentBanner, {Props as ConsentBannerProps} from './ConsentBanner';
 import {Config, Translate} from '../types';
 
-interface Props extends ConsentNoticeProps {
+interface Props extends ConsentBannerProps {
 	t: Translate;
 	config: Config;
 	isVisible: boolean;
 	isMandatory: boolean;
 }
 
-export default class ConsentNoticeWrapper extends Component<Props> {
+export default class ConsentBannerWrapper extends Component<Props> {
 	render() {
 		const {isVisible, ...props} = this.props;
 		if (!this.props.isMandatory && !isVisible) {
 			return null;
 		}
-		const title = this.props.t(['consentNotice', 'title']);
+		const title = this.props.t(['consentBanner', 'title']);
 		const ariaProp = title
-			? {aria: {'labelledby': 'orejime-notice-title'}}
+			? {aria: {'labelledby': 'orejime-Banner-title'}}
 			: {};
 		if (this.props.isMandatory) {
 			return (
@@ -26,14 +26,14 @@ export default class ConsentNoticeWrapper extends Component<Props> {
 					isOpen={isVisible}
 					{...ariaProp}
 					config={this.props.config}
-					portalClassName="orejime-NoticePortal"
-					overlayClassName="orejime-NoticeOverlay"
-					className="orejime-NoticeWrapper"
+					portalClassName="orejime-BannerPortal"
+					overlayClassName="orejime-BannerOverlay"
+					className="orejime-BannerWrapper"
 				>
-					<ConsentNotice {...props} />
+					<ConsentBanner {...props} />
 				</Dialog>
 			);
 		}
-		return <ConsentNotice {...props} />;
+		return <ConsentBanner {...props} />;
 	}
 }

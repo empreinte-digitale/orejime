@@ -6,7 +6,7 @@ consentModal:
     name: politica de confidencialitat
     text: >
       Per ne saber mai, mercés de legir nòstra {privacyPolicy}.
-consentNotice:
+consentBanner:
   changeDescription: I aguèt de modificacions dempuèi vòstra darrièra visita, mercés d’actualizar vòstre consentiment.
   description: >
     Reculhissèm e tractam vòstras informacions personalas amb la tòca seguenta : {purposes}.

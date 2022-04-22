@@ -6,7 +6,7 @@ consentModal:
     name: tietosuojasivultamme
     text: >
       Voit lukea lisätietoja {privacyPolicy}.
-consentNotice:
+consentBanner:
   changeDescription: Olemme tehneet muutoksia ehtoihin viime vierailusi jälkeen, tarkista ehdot.
   description: >
     Keräämme ja käsittelemme henkilötietoja seuraaviin tarkoituksiin: {purposes}.

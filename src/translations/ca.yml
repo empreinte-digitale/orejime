@@ -6,7 +6,7 @@ consentModal:
     name: política de privacitat
     text: >
       Per saber-ne més, llegiu la nostre {privacyPolicy}.
-consentNotice:
+consentBanner:
   changeDescription: S'han produït canvis des de la vostra última visita, actualitzeu el vostre consentiment.
   description: >
     Recopilem i processem la vostra informació personal amb la finalitat següent : {purposes}.
