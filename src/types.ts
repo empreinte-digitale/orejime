@@ -90,6 +90,13 @@ export interface Translations {
 
 export type ElementReference = string | HTMLElement;
 
+export type ImageAttributes = {
+	src: string;
+	alt: string;
+};
+
+export type ImageDescriptor = string | ImageAttributes;
+
 export interface Config {
 	orejimeElement?: ElementReference;
 	appElement?: ElementReference;
@@ -99,13 +106,7 @@ export interface Config {
 	cookieExpiresAfterDays: number;
 	cookieName: string;
 	lang: string;
-	logo:
-		| boolean
-		| string
-		| {
-				alt: string;
-				src: string;
-		  };
+	logo?: ImageDescriptor;
 	forceBanner: boolean;
 	forceModal: boolean;
 	parseCookie: JsonParser;

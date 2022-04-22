@@ -24,7 +24,6 @@ export const defaultConfig: Config = {
 	privacyPolicy: '',
 	forceModal: false,
 	forceBanner: false,
-	logo: false,
 	lang: language(),
 	translations: {},
 	purposes: []
