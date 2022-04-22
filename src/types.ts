@@ -1,6 +1,5 @@
 export type JsonParser = (json: string) => any;
 export type JsonSerializer = (json: any) => string;
-export type CssNamespace = (className: string) => string;
 export type Translate = (
 	path: string[],
 	variables?: {[name: string]: any}
@@ -58,7 +57,6 @@ export interface Config {
 	poweredBy?: string;
 	privacyPolicy: string;
 	stringifyCookie: JsonSerializer;
-	stylePrefix: string;
 	translations: {};
 }
 

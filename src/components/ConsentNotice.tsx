@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
 import ConsentManager from '../ConsentManager';
-import {Config, CssNamespace, Translate} from '../types';
+import {Config, Translate} from '../types';
 import {getPurposes} from '../utils/config';
 
 export interface Props {
 	t: Translate;
-	ns: CssNamespace;
 	config: Config;
 	manager: ConsentManager;
 	isModalVisible: boolean;
@@ -23,7 +22,6 @@ export default class ConsentNotice extends Component<Props> {
 			isModalVisible,
 			isMandatory,
 			t,
-			ns,
 			onSaveRequest,
 			onDeclineRequest,
 			onConfigRequest
@@ -38,11 +36,13 @@ export default class ConsentNotice extends Component<Props> {
 		return (
 			<div
 				aria-hidden={isModalVisible}
-				className={ns(`Notice${isMandatory ? ' Notice--mandatory' : ''}`)}
+				className={`orejime-Notice${
+					isMandatory ? ' orejime-Notice--mandatory' : ''
+				}`}
 			>
-				<div className={ns('Notice-body')}>
+				<div className="orejime-Notice-body">
 					{config.logo && (
-						<div className={ns('Notice-logoContainer')}>
+						<div className="orejime-Notice-logoContainer">
 							<img
 								src={
 									typeof config.logo == 'object'
@@ -54,27 +54,27 @@ export default class ConsentNotice extends Component<Props> {
 										? config.logo.alt
 										: ''
 								}
-								className={ns('Notice-logo')}
+								className="orejime-Notice-logo"
 							/>
 						</div>
 					)}
 
-					<div className={ns('Notice-text')}>
+					<div className="orejime-Notice-text">
 						{title && (
 							<h1
-								className={ns('Notice-title')}
+								className="orejime-Notice-title"
 								id="orejime-notice-title"
 							>
 								{title}
 							</h1>
 						)}
 
-						<p className={ns('Notice-description')}>
+						<p className="orejime-Notice-description">
 							{t(['consentNotice', 'description'], {
 								purposes: (
 									<strong
 										key="purposes"
-										className={ns('Notice-purposes')}
+										className="orejime-Notice-purposes"
 									>
 										{purposesText}
 									</strong>
@@ -84,7 +84,7 @@ export default class ConsentNotice extends Component<Props> {
 								privacyPolicy: (
 									<a
 										key="privacyPolicyLink"
-										className={ns('Notice-privacyPolicyLink')}
+										className="orejime-Notice-privacyPolicyLink"
 										href={config.privacyPolicy}
 									>
 										{t(['consentNotice', 'privacyPolicy', 'name'])}
@@ -95,19 +95,15 @@ export default class ConsentNotice extends Component<Props> {
 					</div>
 
 					{manager.changed && (
-						<p className={ns('Notice-changes')}>
+						<p className="orejime-Notice-changes">
 							{t(['consentNotice', 'changeDescription'])}
 						</p>
 					)}
 
-					<ul className={ns('Notice-actions')}>
-						<li
-							className={ns('Notice-actionItem Notice-actionItem--save')}
-						>
+					<ul className="orejime-Notice-actions">
+						<li className="orejime-Notice-actionItem orejime-Notice-actionItem--save">
 							<button
-								className={ns(
-									'Button Button--save Notice-button Notice-saveButton'
-								)}
+								className="orejime-Button orejime-Button--save orejime-Notice-button orejime-Notice-saveButton"
 								type="button"
 								title={t(['acceptTitle']) as string}
 								onClick={onSaveRequest}
@@ -115,29 +111,19 @@ export default class ConsentNotice extends Component<Props> {
 								{t(['accept'])}
 							</button>
 						</li>
-						<li
-							className={ns(
-								'Notice-actionItem Notice-actionItem--decline'
-							)}
-						>
+						<li className="orejime-Notice-actionItem orejime-Notice-actionItem--decline">
 							<button
-								className={ns(
-									'Button Button--decline Notice-button Notice-declineButton'
-								)}
+								className="orejime-Button orejime-Button--decline orejime-Notice-button orejime-Notice-declineButton"
 								type="button"
 								onClick={onDeclineRequest}
 							>
 								{t(['decline'])}
 							</button>
 						</li>
-						<li
-							className={ns('Notice-actionItem Notice-actionItem--info')}
-						>
+						<li className="orejime-Notice-actionItem orejime-Notice-actionItem--info">
 							<button
 								type="button"
-								className={ns(
-									'Button Button--info Notice-learnMoreButton'
-								)}
+								className="orejime-Button orejime-Button--info orejime-Notice-learnMoreButton"
 								onClick={onConfigRequest}
 							>
 								{t(['consentNotice', 'learnMore'])}

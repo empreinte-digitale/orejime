@@ -2,11 +2,10 @@ import React, {Component} from 'react';
 import ConsentNoticeWrapper from './ConsentNoticeWrapper';
 import ConsentModal from './ConsentModal';
 import ConsentManager from '../ConsentManager';
-import {Config, CssNamespace, Translate} from '../types';
+import {Config, Translate} from '../types';
 
 interface Props {
 	t: Translate;
-	ns: CssNamespace;
 	config: Config;
 	manager: ConsentManager;
 }
@@ -88,14 +87,13 @@ export default class Main extends Component<Props, State> {
 	}
 
 	render() {
-		const {config, t, manager, ns} = this.props;
+		const {config, t, manager} = this.props;
 		const isNoticeVisible = this.isNoticeVisible();
 		return (
-			<div className={ns('Main')}>
+			<div className="orejime-Main">
 				<ConsentNoticeWrapper
 					key="notice"
 					t={t}
-					ns={ns}
 					isVisible={isNoticeVisible}
 					isMandatory={config.mustNotice || false}
 					isModalVisible={this.state.isModalVisible}
@@ -109,7 +107,6 @@ export default class Main extends Component<Props, State> {
 					key="modal"
 					isOpen={this.state.isModalVisible}
 					t={t}
-					ns={ns}
 					config={config}
 					onHideRequest={this.hideModal}
 					onSaveRequest={this.saveAndHideAll}

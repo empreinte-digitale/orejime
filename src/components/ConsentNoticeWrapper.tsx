@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
 import Dialog from './Dialog';
 import ConsentNotice, {Props as ConsentNoticeProps} from './ConsentNotice';
-import {Config, CssNamespace, Translate} from '../types';
+import {Config, Translate} from '../types';
 
 interface Props extends ConsentNoticeProps {
 	t: Translate;
-	ns: CssNamespace;
 	config: Config;
 	isVisible: boolean;
 	isMandatory: boolean;
@@ -27,9 +26,9 @@ export default class ConsentNoticeWrapper extends Component<Props> {
 					isOpen={isVisible}
 					{...ariaProp}
 					config={this.props.config}
-					portalClassName={this.props.ns('NoticePortal')}
-					overlayClassName={this.props.ns('NoticeOverlay')}
-					className={this.props.ns('NoticeWrapper')}
+					portalClassName="orejime-NoticePortal"
+					overlayClassName="orejime-NoticeOverlay"
+					className="orejime-NoticeWrapper"
 				>
 					<ConsentNotice {...props} />
 				</Dialog>
