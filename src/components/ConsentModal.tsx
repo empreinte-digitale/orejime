@@ -96,10 +96,7 @@ export default class ConsentModal extends Component<Props> {
 							<a
 								target="_blank"
 								className="orejime-Modal-poweredByLink"
-								href={
-									config.poweredBy ||
-									'https://orejime.empreintedigitale.fr'
-								}
+								href={'https://orejime.empreintedigitale.fr'}
 								title={`${t.misc.poweredBy} (${t.misc.newWindowTitle})`}
 							>
 								{t.misc.poweredBy}
