@@ -32,14 +32,6 @@ function getTranslations(config: Config) {
 	);
 }
 
-const managers: {[name: string]: ConsentManager} = {};
-function getManager(config: Config) {
-	const name = config.elementID;
-	if (managers[name] === undefined)
-		managers[name] = new ConsentManager(config);
-	return managers[name];
-}
-
 export const defaultConfig: Config = {
 	elementID: 'orejime',
 	cookieName: 'orejime',
@@ -71,7 +63,7 @@ export function init(conf: Config) {
 		return;
 	}
 	const element = getElement(config);
-	const manager = getManager(config);
+	const manager = new ConsentManager(config);
 	const t = getTranslations(config);
 	const app = (render(
 		<Main t={t} manager={manager} config={config} />,
