@@ -98,7 +98,6 @@ export interface Config {
 	cookieDomain?: string;
 	cookieExpiresAfterDays: number;
 	cookieName: string;
-	default: boolean;
 	lang: string;
 	logo:
 		| boolean
@@ -109,7 +108,6 @@ export interface Config {
 		  };
 	forceBanner: boolean;
 	forceModal: boolean;
-	optOut?: boolean;
 	parseCookie: JsonParser;
 	poweredBy?: string;
 	privacyPolicy: string;

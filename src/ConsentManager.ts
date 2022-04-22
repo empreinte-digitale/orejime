@@ -57,7 +57,6 @@ export default class ConsentManager {
 
 	getDefaultConsent(purpose: Purpose) {
 		let consent = purpose.default;
-		if (consent === undefined) consent = this.config.default;
 		if (consent === undefined) consent = false;
 		return consent;
 	}
@@ -167,11 +166,7 @@ export default class ConsentManager {
 		for (var i = 0; i < this.config.purposes.length; i++) {
 			const purpose = this.config.purposes[i];
 			const state = this.states[purpose.name];
-			const confirmed =
-				this.confirmed ||
-				(purpose.optOut !== undefined
-					? purpose.optOut
-					: this.config.optOut || false);
+			const confirmed = this.confirmed || !!purpose.optOut;
 			const consent = this.getConsent(purpose.name) && confirmed;
 			if (state === consent) continue;
 			this.updatePurposeElements(purpose, consent);
