@@ -109,7 +109,6 @@ export interface Config {
 	forceBanner: boolean;
 	forceModal: boolean;
 	parseCookie: JsonParser;
-	poweredBy?: string;
 	privacyPolicy: string;
 	stringifyCookie: JsonSerializer;
 	translations: {
