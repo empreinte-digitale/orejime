@@ -128,10 +128,6 @@ var orejimeConfig = {
     // You must provide a link to your privacy policy page
     privacyPolicy: "",
 
-    // Optional. Purposes configured below will be ON by default if default=true.
-    // defaults to true
-    default: true,
-
     // Optional. If `forceModal` is set to true, Orejime will directly display
     // the consent modal and not allow the user to close it before having actively
     // consented or declined the use of third-party purposes.
@@ -240,9 +236,8 @@ var orejimeConfig = {
             optOut: false,
 
             // Optional. If "default" is set to true, the purpose will be enabled by default
-            // Overwrites the global "default" setting.
-            // defaults to the value of the gobal "default" setting
-            default: true,
+            // defaults to false.
+            default: false,
 
             // Optional. If "onlyOnce" is set to true, the purpose will only be executed
             // once regardless how often the user toggles it on and off.
