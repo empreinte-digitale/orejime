@@ -21,7 +21,7 @@ declineAll: Tot refusar
 close: Tancar
 enabled: Activat
 disabled: Desactivat
-app:
+purpose:
   optOut:
     title: (opt-out)
     description: Aquesta aplicacion es cargada per defaut (mas la podètz desactivar)

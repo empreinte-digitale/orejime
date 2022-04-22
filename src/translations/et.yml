@@ -21,7 +21,7 @@ declineAll: Keela kõik rakendused
 close: Sulge
 enabled: Lubatud
 disabled: Välja lülitatud
-app:
+purpose:
   optOut:
     title: (Opt-Out)
     description: See rakendus on vaikimisi lisatud (kuid saate sellest loobuda)

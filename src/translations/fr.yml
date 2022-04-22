@@ -21,7 +21,7 @@ declineAll: Tout refuser
 close: Fermer
 enabled: Activé
 disabled: Désactivé
-app:
+purpose:
   optOut:
     title: (opt-out)
     description: Cette application est chargée par défaut (mais vous pouvez la désactiver)

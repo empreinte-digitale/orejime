@@ -13,7 +13,7 @@ consentNotice:
   learnMore: Läs mer
 save: Spara
 decline: Avböj
-app:
+purpose:
   optOut:
     title: (Avaktivera)
     description: Den här appen laddas som standardinställning (men du kan avaktivera den)

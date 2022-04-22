@@ -13,7 +13,7 @@ consentNotice:
   learnMore: Află mai multe
 save: Salvează
 decline: Renunță
-app:
+purpose:
   optOut:
     title: (opt-out)
     description: Această aplicație este încărcată în mod implicit (dar puteți renunța)

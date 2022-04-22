@@ -13,7 +13,7 @@ consentNotice:
   learnMore: Scopri di più
 save: Salva
 decline: Rifiuta
-app:
+purpose:
   optOut:
     title: (opt-out)
     description: Quest'applicazione è caricata di default (ma puoi disattivarla)

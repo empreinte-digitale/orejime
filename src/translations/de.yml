@@ -21,7 +21,7 @@ declineAll: Alle Einstellungen ablehnen
 close: Schließen
 enabled: Aktiviert
 disabled: Deaktiviert
-app:
+purpose:
   optOut:
     title: (Opt-Out)
     description: Diese Einstellungen als Standard festlegen (sie können jederzeit deaktiviert werden)

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Close} from './Icons';
-import Apps from './Apps';
+import Purposes from './Purposes';
 import Dialog from './Dialog';
 import ConsentManager from '../ConsentManager';
 import {Config, Translate} from '../types';
@@ -84,7 +84,7 @@ export default class ConsentModal extends Component<Props> {
 
 					<form className="orejime-Modal-form">
 						<div className="orejime-Modal-body">
-							<Apps t={t} config={config} manager={manager} />
+							<Purposes t={t} config={config} manager={manager} />
 						</div>
 						<div className="orejime-Modal-footer">
 							<button

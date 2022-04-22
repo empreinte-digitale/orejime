@@ -262,13 +262,13 @@ $orejime-breakpoint-notice: 990px !default;
     }
 }
 
-.orejime-AppList {
+.orejime-PurposeList {
     display: block;
     padding: 0;
     margin: 0;
 }
 
-.orejime-AppList-item {
+.orejime-PurposeList-item {
     display: block;
     position: relative;
     line-height: 1.25;
@@ -282,50 +282,50 @@ $orejime-breakpoint-notice: 990px !default;
     }
 }
 
-.orejime-CategorizedAppList {
+.orejime-CategorizedPurposeList {
     list-style: none;
 }
 
-.orejime-CategorizedAppList-item {
+.orejime-CategorizedPurposeList-item {
     margin-bottom: 1em;
 }
 
-.orejime-CategorizedAppList-title {
+.orejime-CategorizedPurposeList-title {
     font-size: 1.2em;
     font-weight: bold;
 }
 
-.orejime-CategorizedAppList-description {
+.orejime-CategorizedPurposeList-description {
     font-size: 0.9em;
 }
 
-.orejime-CategorizedAppList-apps {
+.orejime-CategorizedPurposeList-purposes {
     margin-top: 0.5em;
     margin-left: 1em;
 }
 
-.orejime-AppItem-title {
+.orejime-Purpose-title {
     font-weight: 600;
     cursor: pointer;
 }
 
-.orejime-AppItem-description {
+.orejime-Purpose-description {
     font-size: 0.8em;
 }
 
-.orejime-AppItem-purposes {
+.orejime-Purpose-purposes {
     font-size: 0.8em;
     color: $orejime-theme-color-light;
 }
 
-.orejime-AppItem-optOut,
-.orejime-AppItem-required {
+.orejime-Purpose-optOut,
+.orejime-Purpose-required {
     padding-left: 0.2em;
     font-size: 0.8em;
     color: $orejime-theme-color-light;
 }
 
-.orejime-AppItem-input {
+.orejime-Purpose-input {
     position: absolute;
     top: 0;
     left: 0;
@@ -334,7 +334,7 @@ $orejime-breakpoint-notice: 990px !default;
     height: 30px;
 }
 
-.orejime-AppItem-switch {
+.orejime-Purpose-switch {
     position: absolute;
     left: 0;
     display: inline-block;
@@ -342,7 +342,7 @@ $orejime-breakpoint-notice: 990px !default;
     height: 30px;
 }
 
-.orejime-AppItem-slider {
+.orejime-Purpose-slider {
     box-shadow: $orejime-box-shadow;
     position: absolute;
     cursor: pointer;
@@ -373,7 +373,7 @@ $orejime-breakpoint-notice: 990px !default;
     }
 }
 
-.orejime-AppItem-switchLabel {
+.orejime-Purpose-switchLabel {
     position: absolute;
     width: 50px;
     top: 34px;
@@ -382,35 +382,35 @@ $orejime-breakpoint-notice: 990px !default;
     text-align: center;
 }
 
-.orejime-AppItem-switch--disabled .orejime-AppItem-slider {
+.orejime-Purpose-switch--disabled .orejime-Purpose-slider {
     cursor: default;
     opacity: 0.5;
 }
 
-.orejime-AppItem-switch--disabled .orejime-AppItem-switchLabel {
+.orejime-Purpose-switch--disabled .orejime-Purpose-switchLabel {
     color: #aaa;
 }
 
-.orejime-AppItem-input:focus + .orejime-AppItem-label .orejime-AppItem-slider {
+.orejime-Purpose-input:focus + .orejime-Purpose-label .orejime-Purpose-slider {
     border-color: #fff;
     outline-offset: 2px;
 }
 
-.orejime-AppItem-input:checked + .orejime-AppItem-label .orejime-AppItem-slider {
+.orejime-Purpose-input:checked + .orejime-Purpose-label .orejime-Purpose-slider {
     background-color: $orejime-blue;
 }
 
-.orejime-AppItem-input:checked + .orejime-AppItem-label .orejime-AppItem-slider:before {
+.orejime-Purpose-input:checked + .orejime-Purpose-label .orejime-Purpose-slider:before {
     -webkit-transform: translateX(20px);
     -ms-transform: translateX(20px);
     transform: translateX(20px);
 }
 
-.orejime-AppToggles {
+.orejime-PurposeToggles {
     margin-bottom: 1em;
     display: block;
 }
 
-.orejime-AppToggles-item {
+.orejime-PurposeToggles-item {
     display: inline;
 }

@@ -11,8 +11,8 @@ type AppCookie = [
 	cookieDomain: string
 ];
 
-export interface App {
-	callback?: (consent: boolean, app: App) => void;
+export interface Purpose {
+	callback?: (consent: boolean, app: Purpose) => void;
 	cookies: Array<string | RegExp | AppCookie>;
 	default?: boolean;
 	description?: string;
@@ -33,7 +33,7 @@ export interface Category {
 
 export interface Config {
 	appElement?: HTMLElement;
-	apps: App[];
+	purposes: Purpose[];
 	categories?: Category[];
 	cookieDomain?: string;
 	cookieExpiresAfterDays: number;
