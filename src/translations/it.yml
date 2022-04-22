@@ -6,7 +6,7 @@ consentModal:
     name: policy privacy
     text: >
       Per saperne di più, leggi la nostra {privacyPolicy}.
-consentNotice:
+consentBanner:
   changeDescription: Ci sono stati cambiamenti dalla tua ultima visita, aggiorna il tuo consenso.
   description: >
     Raccogliamo ed elaboriamo le vostre informazioni personali per i seguenti scopi: {purposes}.

@@ -6,7 +6,7 @@ consentModal:
     name: adatvédelmi irányelveinket
     text: >
       További információért kérjük, olvassd el az {privacyPolicy}.
-consentNotice:
+consentBanner:
   changeDescription: Az utolsó látogatás óta változások történtek, kérjük, frissítsd a hozzájárulásodat.
   description: >
     Az személyes adataidat összegyűjtjük és feldolgozzuk az alábbi célokra: {purposes}.

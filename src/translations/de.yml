@@ -6,7 +6,7 @@ consentModal:
     name: Datenschutzerklärung
     text: >
       Bitte lesen Sie unsere {privacyPolicy} um weitere Details zu erfahren.
-consentNotice:
+consentBanner:
   changeDescription: Es gab Änderungen seit Ihrem letzten Besuch, bitte aktualisieren Sie Ihre Auswahl.
   description: >
     Wir speichern und verarbeiten Ihre persönlichen Daten für folgende Zwecke: {purposes}.

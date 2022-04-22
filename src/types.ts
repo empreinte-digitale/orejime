@@ -26,7 +26,7 @@ export interface Purpose {
 
 export interface Category {
 	name: string;
-	apps: string[];
+	purposes: string[];
 	description: string;
 	title: string;
 }
@@ -51,7 +51,7 @@ export interface Config {
 		  };
 	mustConsent: boolean;
 	mustNotice: boolean;
-	noNotice?: boolean;
+	noBanner?: boolean;
 	optOut?: boolean;
 	parseCookie: JsonParser;
 	poweredBy?: string;

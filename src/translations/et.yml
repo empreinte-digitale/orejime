@@ -6,7 +6,7 @@ consentModal:
     name: privaatsustingimused
     text: >
       Lisateabe saamiseks lugege palun meie {privacyPolicy}
-consentNotice:
+consentBanner:
   changeDescription: Pärast teie viimast külastust on toimunud muudatusi, palun uuendage oma nõusolekut.
   description: >
     Me kogume ja töötleme teie isikuandmeid järgmistel eesmärkidel: {purposes}.
