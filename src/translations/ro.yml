@@ -4,15 +4,25 @@ consentModal:
     Aici puteți vedea și personaliza informațiile pe care le colectăm despre dvs.
   privacyPolicy:
     name: politica privacy
-    text: >
+    text: |
       Pentru a afla mai multe, vă rugăm să citiți {privacyPolicy}.
 consentBanner:
-  changeDescription: Au existat modificări de la ultima vizită, vă rugăm să actualizați consimțământul.
+  changeDescription: Au existat modificări de la ultima vizită, vă rugăm să
+    actualizați consimțământul.
   description: >
-    Colectăm și procesăm informațiile dvs. personale în următoarele scopuri: {purposes}.
+    Colectăm și procesăm informațiile dvs. personale în următoarele
+    scopuri: {purposes}.
   learnMore: Află mai multe
+accept: ""
+acceptTitle: ""
+acceptAll: ""
 save: Salvează
+saveData: ""
 decline: Renunță
+declineAll: ""
+close: ""
+enabled: ""
+disabled: ""
 purpose:
   optOut:
     title: (opt-out)
@@ -23,3 +33,4 @@ purpose:
   purposes: Scopuri
   purpose: Scop
 poweredBy: Realizat de Orejime
+newWindow: ""

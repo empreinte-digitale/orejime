@@ -1,18 +1,26 @@
 consentModal:
   title: Keräämämme tiedot
-  description: >
+  description: |
     Voit tarkastella ja muokata sinusta keräämiämme tietoja.
   privacyPolicy:
     name: tietosuojasivultamme
-    text: >
+    text: |
       Voit lukea lisätietoja {privacyPolicy}.
 consentBanner:
   changeDescription: Olemme tehneet muutoksia ehtoihin viime vierailusi jälkeen, tarkista ehdot.
   description: >
     Keräämme ja käsittelemme henkilötietoja seuraaviin tarkoituksiin: {purposes}.
   learnMore: Lue lisää
+accept: ""
+acceptTitle: ""
+acceptAll: ""
 save: Tallenna
+saveData: ""
 decline: Hylkää
+declineAll: ""
+close: ""
+enabled: ""
+disabled: ""
 purpose:
   optOut:
     title: (ladataan oletuksena)
@@ -23,3 +31,4 @@ purpose:
   purposes: Käyttötarkoitukset
   purpose: Käyttötarkoitus
 poweredBy: Palvelun tarjoaa Orejime
+newWindow: ""

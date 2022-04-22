@@ -1,18 +1,28 @@
 consentModal:
   title: Információk, amiket gyűjtünk
-  description: >
+  description: |
     Itt láthatod és testreszabhatod az rólad gyűjtött információkat.
   privacyPolicy:
     name: adatvédelmi irányelveinket
-    text: >
+    text: |
       További információért kérjük, olvassd el az {privacyPolicy}.
 consentBanner:
-  changeDescription: Az utolsó látogatás óta változások történtek, kérjük, frissítsd a hozzájárulásodat.
+  changeDescription: Az utolsó látogatás óta változások történtek, kérjük,
+    frissítsd a hozzájárulásodat.
   description: >
-    Az személyes adataidat összegyűjtjük és feldolgozzuk az alábbi célokra: {purposes}.
+    Az személyes adataidat összegyűjtjük és feldolgozzuk az alábbi
+    célokra: {purposes}.
   learnMore: Tudj meg többet
+accept: ""
+acceptTitle: ""
+acceptAll: ""
 save: Mentés
+saveData: ""
 decline: Elvet
+declineAll: ""
+close: ""
+enabled: ""
+disabled: ""
 purpose:
   optOut:
     title: (leiratkozás)
@@ -23,3 +33,4 @@ purpose:
   purposes: Célok
   purpose: Cél
 poweredBy: Powered by Orejime
+newWindow: ""

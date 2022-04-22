@@ -1,18 +1,28 @@
 consentModal:
   title: Informasjon vi samler inn
-  description: >
+  description: |
     Her kan du se og velge hvilken informasjon vi samler inn om deg.
   privacyPolicy:
     name: personvernerklæring
-    text: >
+    text: |
       For å lære mer, vennligst les vår {privacyPolicy}.
 consentBanner:
-  changeDescription: Det har skjedd endringer siden ditt siste besøk, vennligst oppdater ditt samtykke.
+  changeDescription: Det har skjedd endringer siden ditt siste besøk, vennligst
+    oppdater ditt samtykke.
   description: >
-    Vi samler inn og prosesserer din personlige informasjon av følgende årsaker: {purposes}.
+    Vi samler inn og prosesserer din personlige informasjon av følgende
+    årsaker: {purposes}.
   learnMore: Lær mer
+accept: ""
+acceptTitle: ""
+acceptAll: ""
 save: Opslaan
+saveData: ""
 decline: Avslå
+declineAll: ""
+close: ""
+enabled: ""
+disabled: ""
 purpose:
   optOut:
     title: (opt-out)
@@ -23,3 +33,4 @@ purpose:
   purposes: Årsaker
   purpose: Årsak
 poweredBy: Laget med Orejime
+newWindow: ""

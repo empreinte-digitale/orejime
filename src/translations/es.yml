@@ -1,15 +1,16 @@
 consentModal:
   title: La información que recopilamos
-  description: >
+  description: |
     Aquí puede ver y personalizar la información que recopilamos sobre usted.
   privacyPolicy:
     name: política de confidencialidad
-    text: >
+    text: |
       Para obtener más información, lea nuestra {privacyPolicy}.
 consentBanner:
   changeDescription: Se han producido cambios desde su última visita, actualice su consentimiento.
   description: >
-    Recopilamos y procesamos su información personal para los siguientes propósitos : {purposes}.
+    Recopilamos y procesamos su información personal para los siguientes
+    propósitos : {purposes}.
   learnMore: Más información
 accept: Aceptar
 acceptTitle: Aceptar cookies

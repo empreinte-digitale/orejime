@@ -1,14 +1,15 @@
 consentModal:
   title: Isikuandmete kogumine
-  description: >
+  description: |
     Siit saate vaadata ja hallata teavet, mida me teie kohta kogume.
   privacyPolicy:
     name: privaatsustingimused
-    text: >
+    text: |
       Lisateabe saamiseks lugege palun meie {privacyPolicy}
 consentBanner:
-  changeDescription: Pärast teie viimast külastust on toimunud muudatusi, palun uuendage oma nõusolekut.
-  description: >
+  changeDescription: Pärast teie viimast külastust on toimunud muudatusi, palun
+    uuendage oma nõusolekut.
+  description: |
     Me kogume ja töötleme teie isikuandmeid järgmistel eesmärkidel: {purposes}.
   learnMore: Lisateave
 accept: Nõustu

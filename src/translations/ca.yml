@@ -4,12 +4,14 @@ consentModal:
     Aquí podeu veure i personalitzar la informació que recopilem sobre vosaltres.
   privacyPolicy:
     name: política de privacitat
-    text: >
+    text: |
       Per saber-ne més, llegiu la nostre {privacyPolicy}.
 consentBanner:
-  changeDescription: S'han produït canvis des de la vostra última visita, actualitzeu el vostre consentiment.
+  changeDescription: S'han produït canvis des de la vostra última visita,
+    actualitzeu el vostre consentiment.
   description: >
-    Recopilem i processem la vostra informació personal amb la finalitat següent : {purposes}.
+    Recopilem i processem la vostra informació personal amb la finalitat següent
+    : {purposes}.
   learnMore: Més informació
 accept: Acceptar
 acceptTitle: Acceptar les cookies
@@ -24,7 +26,8 @@ disabled: Inactiu
 purpose:
   optOut:
     title: (desactivar)
-    description: Aquesta aplicació es carrega de manera predeterminada (però podeu desactivar-la)
+    description: Aquesta aplicació es carrega de manera predeterminada (però podeu
+      desactivar-la)
   required:
     title: (sempre obligatori)
     description: Aquesta aplicació sempre és necessària

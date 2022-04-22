@@ -1,15 +1,18 @@
 consentModal:
   title: Las informacions que reculhissèm
   description: >
-    Aicí, podètz veire e personalizar las informacions que reculhissèm vos tocant.
+    Aicí, podètz veire e personalizar las informacions que reculhissèm
+    vos tocant.
   privacyPolicy:
     name: politica de confidencialitat
-    text: >
+    text: |
       Per ne saber mai, mercés de legir nòstra {privacyPolicy}.
 consentBanner:
-  changeDescription: I aguèt de modificacions dempuèi vòstra darrièra visita, mercés d’actualizar vòstre consentiment.
+  changeDescription: I aguèt de modificacions dempuèi vòstra darrièra visita,
+    mercés d’actualizar vòstre consentiment.
   description: >
-    Reculhissèm e tractam vòstras informacions personalas amb la tòca seguenta : {purposes}.
+    Reculhissèm e tractam vòstras informacions personalas amb la tòca
+    seguenta : {purposes}.
   learnMore: Ne saber mai
 accept: Acceptar
 acceptTitle: Acceptar los cookies
