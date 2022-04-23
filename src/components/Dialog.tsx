@@ -2,11 +2,10 @@ import React, {Component} from 'react';
 import ReactModal, {Props as ReactModalProps} from 'react-modal';
 import {Config} from '../types';
 import {getElement} from '../utils/dom';
-import useLegacyLifecycleMethods from '../utils/useLegacyLifecycleMethods';
 
-interface Props extends ReactModalProps {
+interface Props extends Omit<ReactModalProps, 'isOpen'> {
 	config: Config;
-	isOpen: boolean;
+	isAlert?: boolean;
 	handleScrollPosition?: boolean;
 }
 
@@ -24,39 +23,14 @@ export default class Dialog extends Component<Props> {
 			ReactModal.setAppElement(props.config.appElement);
 		}
 		this.scrollPosition = null;
-
-		// handle lifecycle methods depending on react version for full support
-		if (useLegacyLifecycleMethods()) {
-			this.componentWillUpdate = this.componentWillUpdateLifecycle;
-		} else {
-			this.getSnapshotBeforeUpdate = this.getSnapshotBeforeUpdateLifecycle;
-		}
 	}
 
-	// for react <16.3 support - see constructor
-	componentWillUpdateLifecycle(nextProps: Props) {
-		const willOpen = nextProps.isOpen;
-		if (willOpen && !this.props.isOpen) {
-			this.scrollPosition = window.pageYOffset;
-		}
+	componentWillMount() {
+		this.scrollPosition = window.pageYOffset;
 	}
 
-	// for react >= 16.3 support - see constructor
-	getSnapshotBeforeUpdateLifecycle(prevProps: Props) {
-		const {isOpen} = this.props;
-		if (isOpen && !prevProps.isOpen) {
-			this.scrollPosition = window.pageYOffset;
-		}
-	}
-
-	componentDidUpdate(prevProps: Props) {
-		const {isOpen} = this.props;
-		if (
-			!isOpen &&
-			prevProps.isOpen &&
-			this.props.handleScrollPosition &&
-			this.scrollPosition !== null
-		) {
+	componentWillUnmount() {
+		if (this.props.handleScrollPosition && this.scrollPosition !== null) {
 			// the scroll position stuff is for iOS to work correctly when we want to prevent normal website
 			// scrolling with the modal opened
 			//
@@ -81,6 +55,7 @@ export default class Dialog extends Component<Props> {
 
 	render() {
 		const {
+			isAlert,
 			children,
 			handleScrollPosition,
 			config,
@@ -89,12 +64,14 @@ export default class Dialog extends Component<Props> {
 
 		return (
 			<ReactModal
+				{...reactModalProps}
 				parentSelector={() =>
 					getElement(config.orejimeElement, document.body)
 				}
+				role={isAlert ? 'alertdialog' : 'dialog'}
 				htmlOpenClassName="orejimeHtml-WithModalOpen"
 				bodyOpenClassName="orejimeBody-WithModalOpen"
-				{...reactModalProps}
+				isOpen
 			>
 				{children}
 			</ReactModal>

@@ -10,35 +10,24 @@ interface Props {
 	t: Translations;
 	config: Config;
 	manager: ConsentManager;
-	isOpen: boolean;
 	onHideRequest: () => void;
 	onSaveRequest: () => void;
 }
 
 export default class ConsentModal extends Component<Props> {
 	render() {
-		const {
-			isOpen,
-			onHideRequest,
-			onSaveRequest,
-			config,
-			manager,
-			t
-		} = this.props;
-
-		const isAlert =
-			config.forceModal && (!manager.confirmed || manager.changed);
+		const {onHideRequest, onSaveRequest, config, manager, t} = this.props;
+		const isAlert = config.forceModal && manager.isDirty();
 
 		return (
 			<Dialog
-				isOpen={isOpen}
+				isAlert={isAlert}
 				aria={{'labelledby': 'orejime-modal-title'}}
 				portalClassName="orejime-ModalPortal"
 				overlayClassName="orejime-ModalOverlay"
 				className="orejime-ModalWrapper"
 				config={config}
 				onRequestClose={onHideRequest}
-				role={isAlert ? 'alertdialog' : 'dialog'}
 			>
 				<div className="orejime-Modal">
 					<div className="orejime-Modal-header">

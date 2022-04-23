@@ -4,26 +4,26 @@ import {Config, Translations} from '../types';
 import {imageAttributes} from '../utils/config';
 import {template} from '../utils/template';
 
-export interface Props {
+export interface ConsentBannerProps {
 	t: Translations;
 	config: Config;
 	manager: ConsentManager;
 	isModalVisible: boolean;
-	isMandatory: boolean;
+	isForced?: boolean;
 	purposeTitles: string[];
 	onSaveRequest: () => void;
 	onDeclineRequest: () => void;
 	onConfigRequest: () => void;
 }
 
-export default class ConsentBanner extends Component<Props> {
+export default class ConsentBanner extends Component<ConsentBannerProps> {
 	render() {
 		const {
 			t,
 			config,
 			manager,
 			isModalVisible,
-			isMandatory,
+			isForced,
 			purposeTitles,
 			onSaveRequest,
 			onDeclineRequest,
@@ -36,7 +36,7 @@ export default class ConsentBanner extends Component<Props> {
 			<div
 				aria-hidden={isModalVisible}
 				className={`orejime-Banner${
-					isMandatory ? ' orejime-Banner--mandatory' : ''
+					isForced ? ' orejime-Banner--forced' : ''
 				}`}
 			>
 				<div className="orejime-Banner-body">
