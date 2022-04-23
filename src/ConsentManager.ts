@@ -50,6 +50,10 @@ export default class ConsentManager {
 		});
 	}
 
+	isDirty() {
+		return !this.confirmed || this.changed;
+	}
+
 	getPurposes() {
 		return this.purposes;
 	}

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import ConsentBannerWrapper from './ConsentBannerWrapper';
+import ModalConsentBanner from './ModalConsentBanner';
+import ConsentBanner from './ConsentBanner';
 import ConsentModal from './ConsentModal';
 import ConsentManager from '../ConsentManager';
 import {Config, Translations} from '../types';
@@ -32,7 +33,7 @@ export default class Main extends Component<Props, State> {
 		if (userRequest) {
 			return true;
 		}
-		if (config.forceModal && (!manager.confirmed || manager.changed)) {
+		if (config.forceModal && manager.isDirty()) {
 			return true;
 		}
 		return false;
@@ -43,7 +44,7 @@ export default class Main extends Component<Props, State> {
 		if (config.forceModal) {
 			return false;
 		}
-		if (manager.confirmed && !manager.changed) {
+		if (!manager.isDirty()) {
 			return false;
 		}
 		if (manager.canBypassConsent()) {
@@ -89,30 +90,35 @@ export default class Main extends Component<Props, State> {
 	render() {
 		const {config, t, manager} = this.props;
 		const isBannerVisible = this.isBannerVisible();
+		const BannerComponent = config.forceBanner
+			? ModalConsentBanner
+			: ConsentBanner;
 		return (
 			<div className="orejime-Main">
-				<ConsentBannerWrapper
-					key="banner"
-					t={t}
-					isVisible={isBannerVisible}
-					isMandatory={config.forceBanner || false}
-					isModalVisible={this.state.isModalVisible}
-					config={config}
-					manager={manager}
-					purposeTitles={config.purposes.map(({title}) => title)}
-					onSaveRequest={this.acceptAndHideAll}
-					onDeclineRequest={this.declineAndHideAll}
-					onConfigRequest={this.showModal}
-				/>
-				<ConsentModal
-					key="modal"
-					isOpen={this.state.isModalVisible}
-					t={t}
-					config={config}
-					onHideRequest={this.hideModal}
-					onSaveRequest={this.saveAndHideAll}
-					manager={manager}
-				/>
+				{isBannerVisible ? (
+					<BannerComponent
+						key="banner"
+						t={t}
+						isModalVisible={this.state.isModalVisible}
+						config={config}
+						manager={manager}
+						purposeTitles={config.purposes.map(({title}) => title)}
+						onSaveRequest={this.acceptAndHideAll}
+						onDeclineRequest={this.declineAndHideAll}
+						onConfigRequest={this.showModal}
+					/>
+				) : null}
+
+				{this.state.isModalVisible ? (
+					<ConsentModal
+						key="modal"
+						t={t}
+						config={config}
+						onHideRequest={this.hideModal}
+						onSaveRequest={this.saveAndHideAll}
+						manager={manager}
+					/>
+				) : null}
 			</div>
 		);
 	}
