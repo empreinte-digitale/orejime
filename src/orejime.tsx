@@ -25,8 +25,8 @@ export const defaultConfig: Config = {
 	translations: {},
 	purposes: [],
 	cookie: {
-		name: 'orejime',
-		duration: 365,
+		name: 'eu-consent',
+		duration: 120,
 		stringify: JSON.stringify.bind(JSON),
 		parse: JSON.parse.bind(JSON)
 	}
