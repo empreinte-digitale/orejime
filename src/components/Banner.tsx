@@ -1,42 +1,47 @@
 import React from 'react';
+import {ImageDescriptor} from '../types';
 import {imageAttributes} from '../utils/config';
-import {useConfig, useManager, useTranslations} from '../utils/hooks';
+import {useTranslations} from '../utils/hooks';
 import {template} from '../utils/template';
 
 export interface BannerProps {
-	isModalVisible: boolean;
+	isHidden: boolean;
 	isForced?: boolean;
+	hasChanges: boolean;
 	purposeTitles: string[];
-	onSaveRequest: () => void;
-	onDeclineRequest: () => void;
-	onConfigRequest: () => void;
+	privacyPolicyUrl: string;
+	logo?: ImageDescriptor;
+	onAccept: () => void;
+	onDecline: () => void;
+	onConfigure: () => void;
 }
 
 const Banner = ({
-	isModalVisible,
+	isHidden,
 	isForced,
+	hasChanges,
 	purposeTitles,
-	onSaveRequest,
-	onDeclineRequest,
-	onConfigRequest
+	privacyPolicyUrl,
+	logo,
+	onAccept: onSaveRequest,
+	onDecline: onDeclineRequest,
+	onConfigure: onConfigRequest
 }: BannerProps) => {
-	const config = useConfig();
-	const manager = useManager();
 	const t = useTranslations();
 
 	return (
 		<div
-			aria-hidden={isModalVisible}
+			aria-hidden={isHidden}
 			className={`orejime-Banner${
 				isForced ? ' orejime-Banner--forced' : ''
 			}`}
 		>
 			<div className="orejime-Banner-body">
-				{config.logo && (
+				{logo && (
 					<div className="orejime-Banner-logoContainer">
 						<img
 							className="orejime-Banner-logo"
-							{...imageAttributes(config.logo)}
+							{...imageAttributes(logo)}
 						/>
 					</div>
 				)}
@@ -65,7 +70,7 @@ const Banner = ({
 								<a
 									key="privacyPolicyLink"
 									className="orejime-Banner-privacyPolicyLink"
-									href={config.privacyPolicy}
+									href={privacyPolicyUrl}
 								>
 									{t.banner.privacyPolicyLabel}
 								</a>
@@ -74,7 +79,7 @@ const Banner = ({
 					</p>
 				</div>
 
-				{manager.changed && (
+				{hasChanges && (
 					<p className="orejime-Banner-changes">{t.misc.updateNeeded}</p>
 				)}
 

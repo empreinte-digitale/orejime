@@ -9,9 +9,12 @@ import Modal from './Modal';
 import {
 	useBannerState,
 	useConfig,
+	useConsents,
 	useManager,
 	useModalState
 } from '../utils/hooks';
+import PurposeTree from './PurposeTree';
+import {GlobalPurpose} from './GlobalPurpose';
 
 interface MainHandle {
 	openModal: () => void;
@@ -22,6 +25,15 @@ const Main: ForwardRefRenderFunction<MainHandle> = (_, ref) => {
 	const manager = useManager();
 	const isBannerVisible = useBannerState();
 	const [isModalVisible, openModal, closeModal] = useModalState();
+	const {
+		consents,
+		areAllEnabled,
+		areAllDisabled,
+		areAllMandatory,
+		acceptAll,
+		declineAll
+	} = useConsents();
+
 	const BannerComponent = config.forceBanner ? ModalBanner : Banner;
 
 	const saveAndHideAll = () => {
@@ -49,20 +61,40 @@ const Main: ForwardRefRenderFunction<MainHandle> = (_, ref) => {
 			{isBannerVisible ? (
 				<BannerComponent
 					key="banner"
-					isModalVisible={isModalVisible}
+					isHidden={isModalVisible}
+					hasChanges={manager.changed}
 					purposeTitles={config.purposes.map(({title}) => title)}
-					onSaveRequest={acceptAndHideAll}
-					onDeclineRequest={declineAndHideAll}
-					onConfigRequest={openModal}
+					privacyPolicyUrl={config.privacyPolicy}
+					logo={config.logo}
+					onAccept={acceptAndHideAll}
+					onDecline={declineAndHideAll}
+					onConfigure={openModal}
 				/>
 			) : null}
 
 			{isModalVisible ? (
 				<Modal
 					key="modal"
-					onHideRequest={closeModal}
-					onSaveRequest={saveAndHideAll}
-				/>
+					isForced={config.forceModal && manager.isDirty()}
+					privacyPolicyUrl={config.privacyPolicy}
+					onClose={closeModal}
+					onSave={saveAndHideAll}
+				>
+					{areAllMandatory ? null : (
+						<GlobalPurpose
+							areAllEnabled={areAllEnabled}
+							areAllDisabled={areAllDisabled}
+							acceptAll={acceptAll}
+							declineAll={declineAll}
+						/>
+					)}
+
+					<PurposeTree
+						purposes={config.purposes}
+						consents={consents}
+						onToggle={manager.updateConsent.bind(manager)}
+					/>
+				</Modal>
 			) : null}
 		</div>
 	);
