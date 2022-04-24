@@ -1,6 +1,6 @@
 import {useContext, useEffect, useRef, useState} from 'react';
 import Context from '../components/Context';
-import {Consents, ConsentsWatcher} from '../types';
+import {Purpose} from '../core';
 
 // @see https://stackoverflow.com/a/56818036/2391359
 export const useBeforeRender = (callback: () => void) => {
@@ -20,6 +20,22 @@ export const useConfig = () => {
 
 export const useManager = () => {
 	const {manager} = useContext(Context);
+	const [i, refresh] = useState(0);
+
+	// A little hack to rerender the host component whenever
+	// consents are updated.
+	useEffect(() => {
+		const update = () => {
+			refresh(i + 1);
+		};
+
+		manager.on('update', update);
+
+		return () => {
+			manager.off('update', update);
+		};
+	});
+
 	return manager;
 };
 
@@ -31,33 +47,12 @@ export const useTranslations = () => {
 export const useBannerState = () => {
 	const config = useConfig();
 	const manager = useManager();
-	const [isDirty, setIsDirty] = useState(manager.isDirty());
-
-	useEffect(() => {
-		const watcher: ConsentsWatcher = {
-			update(_, type) {
-				if (type === 'save') {
-					setIsDirty(manager.isDirty());
-				}
-			}
-		};
-
-		manager.watch(watcher);
-
-		return () => {
-			manager.unwatch(watcher);
-		};
-	});
 
 	if (config.forceModal) {
 		return false;
 	}
 
-	if (!isDirty) {
-		return false;
-	}
-
-	if (manager.canBypassConsent()) {
+	if (!manager.isDirty()) {
 		return false;
 	}
 
@@ -85,54 +80,9 @@ export const useModalState = (): [
 	return [isOpen, open, close];
 };
 
-export const useConsents = () => {
+export const useConsent = (
+	id: Purpose['id']
+): [consent: boolean, setConsent: (consent: boolean) => void] => {
 	const manager = useManager();
-	const purposes = manager.getPurposes();
-	const [consents, setConsents] = useState({...manager.consents});
-
-	const areAllEnabled =
-		purposes.filter((purpose) => {
-			return consents[purpose.id];
-		}).length === purposes.length;
-
-	const areAllDisabled =
-		purposes.filter((purpose) => {
-			return purpose.isMandatory || false ? false : consents[purpose.id];
-		}).length === 0;
-
-	const areAllMandatory = purposes.every((purpose) => purpose.isMandatory);
-
-	const toggleAll = (value: boolean) => {
-		purposes.map((purpose) => {
-			manager.updateConsent(purpose, value);
-		});
-	};
-
-	const acceptAll = () => toggleAll(true);
-	const declineAll = () => toggleAll(false);
-
-	useEffect(() => {
-		const watcher: ConsentsWatcher = {
-			update(_, type, map) {
-				if (type === 'consents') {
-					setConsents({...map});
-				}
-			}
-		};
-
-		manager.watch(watcher);
-
-		return () => {
-			manager.unwatch(watcher);
-		};
-	});
-
-	return {
-		consents,
-		areAllEnabled,
-		areAllDisabled,
-		areAllMandatory,
-		acceptAll,
-		declineAll
-	};
+	return [manager.getConsent(id), manager.setConsent.bind(manager, id)];
 };

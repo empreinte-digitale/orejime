@@ -9,12 +9,12 @@ import Modal from './Modal';
 import {
 	useBannerState,
 	useConfig,
-	useConsents,
 	useManager,
 	useModalState
 } from '../utils/hooks';
 import PurposeTree from './PurposeTree';
 import {GlobalPurpose} from './GlobalPurpose';
+import StubManagerProvider from './StubManagerProvider';
 
 interface MainHandle {
 	openModal: () => void;
@@ -23,33 +23,9 @@ interface MainHandle {
 const Main: ForwardRefRenderFunction<MainHandle> = (_, ref) => {
 	const config = useConfig();
 	const manager = useManager();
-	const isBannerVisible = useBannerState();
-	const [isModalVisible, openModal, closeModal] = useModalState();
-	const {
-		consents,
-		areAllEnabled,
-		areAllDisabled,
-		areAllMandatory,
-		acceptAll,
-		declineAll
-	} = useConsents();
-
+	const isBannerOpen = useBannerState();
+	const [isModalOpen, openModal, closeModal] = useModalState();
 	const BannerComponent = config.forceBanner ? ModalBanner : Banner;
-
-	const saveAndHideAll = () => {
-		manager.saveAndApplyConsents();
-		closeModal();
-	};
-
-	const declineAndHideAll = () => {
-		manager.declineAll();
-		manager.saveAndApplyConsents();
-	};
-
-	const acceptAndHideAll = () => {
-		manager.acceptAll();
-		manager.saveAndApplyConsents();
-	};
 
 	// makes openModal() available from the outside
 	useImperativeHandle(ref, () => ({
@@ -58,43 +34,44 @@ const Main: ForwardRefRenderFunction<MainHandle> = (_, ref) => {
 
 	return (
 		<div className="orejime-Main">
-			{isBannerVisible ? (
+			{isBannerOpen ? (
 				<BannerComponent
 					key="banner"
-					isHidden={isModalVisible}
-					hasChanges={manager.changed}
+					isHidden={isModalOpen}
+					needsUpdate={manager.needsUpdate()}
 					purposeTitles={config.purposes.map(({title}) => title)}
 					privacyPolicyUrl={config.privacyPolicyUrl}
 					logo={config.logo}
-					onAccept={acceptAndHideAll}
-					onDecline={declineAndHideAll}
 					onConfigure={openModal}
+					onAccept={() => {
+						manager.acceptAll();
+						closeModal();
+					}}
+					onDecline={() => {
+						manager.declineAll();
+						closeModal();
+					}}
 				/>
 			) : null}
 
-			{isModalVisible ? (
-				<Modal
-					key="modal"
-					isForced={config.forceModal && manager.isDirty()}
-					privacyPolicyUrl={config.privacyPolicyUrl}
-					onClose={closeModal}
-					onSave={saveAndHideAll}
-				>
-					{areAllMandatory ? null : (
-						<GlobalPurpose
-							areAllEnabled={areAllEnabled}
-							areAllDisabled={areAllDisabled}
-							acceptAll={acceptAll}
-							declineAll={declineAll}
-						/>
-					)}
+			{isModalOpen ? (
+				<StubManagerProvider onCommit={closeModal}>
+					{(commit) => (
+						<Modal
+							key="modal"
+							isForced={config.forceModal && manager.isDirty()}
+							privacyPolicyUrl={config.privacyPolicyUrl}
+							onClose={closeModal}
+							onSave={commit}
+						>
+							{manager.areAllPurposesMandatory() ? null : (
+								<GlobalPurpose />
+							)}
 
-					<PurposeTree
-						purposes={config.purposes}
-						consents={consents}
-						onToggle={manager.updateConsent.bind(manager)}
-					/>
-				</Modal>
+							<PurposeTree purposes={config.purposes} />
+						</Modal>
+					)}
+				</StubManagerProvider>
 			) : null}
 		</div>
 	);

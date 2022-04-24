@@ -1,6 +1,5 @@
 import React, {createRef, ElementRef} from 'react';
 import {render} from 'react-dom';
-import ConsentManager from './ConsentManager';
 import translations from './translations';
 import Main from './components/Main';
 import {language} from './utils/i18n';
@@ -8,6 +7,8 @@ import {deepMerge} from './utils/objects';
 import {Config} from './types';
 import {getRootElement} from './utils/dom';
 import Context from './components/Context';
+import {setup} from './core';
+import {purposesOnly} from './utils/config';
 
 function getTranslations(config: Config) {
 	return deepMerge(
@@ -23,13 +24,7 @@ export const defaultConfig: Config = {
 	forceBanner: false,
 	lang: language(),
 	translations: {},
-	purposes: [],
-	cookie: {
-		name: 'eu-consent',
-		duration: 120,
-		stringify: JSON.stringify.bind(JSON),
-		parse: JSON.parse.bind(JSON)
-	}
+	purposes: []
 };
 
 export function init(conf: Config) {
@@ -47,7 +42,10 @@ export function init(conf: Config) {
 		return;
 	}
 	const element = getRootElement(config.orejimeElement);
-	const manager = new ConsentManager(config);
+	const manager = setup(purposesOnly(config.purposes), {
+		cookie: config.cookie
+	});
+
 	const translations = getTranslations(config);
 	const appRef = createRef<ElementRef<typeof Main>>();
 	const app = render(

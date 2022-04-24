@@ -1,19 +1,8 @@
 import React from 'react';
-import {useTranslations} from '../utils/hooks';
+import {useManager, useTranslations} from '../utils/hooks';
 
-interface GlobalPurposeProps {
-	areAllEnabled: boolean;
-	areAllDisabled: boolean;
-	acceptAll: () => void;
-	declineAll: () => void;
-}
-
-export const GlobalPurpose = ({
-	areAllEnabled,
-	areAllDisabled,
-	acceptAll,
-	declineAll
-}: GlobalPurposeProps) => {
+export const GlobalPurpose = () => {
+	const manager = useManager();
 	const t = useTranslations();
 
 	return (
@@ -21,8 +10,8 @@ export const GlobalPurpose = ({
 			<button
 				type="button"
 				className="orejime-Button orejime-Button--info orejime-PurposeToggles-button orejime-PurposeToggles-enableAll"
-				disabled={areAllEnabled}
-				onClick={acceptAll}
+				disabled={manager.areAllPurposesEnabled()}
+				onClick={() => manager.acceptAll()}
 			>
 				{t.modal.acceptAll}
 			</button>
@@ -30,8 +19,8 @@ export const GlobalPurpose = ({
 			<button
 				type="button"
 				className="orejime-Button orejime-Button--info orejime-PurposeToggles-button orejime-PurposeToggles-disableAll"
-				disabled={areAllDisabled}
-				onClick={declineAll}
+				disabled={manager.areAllPurposesDisabled()}
+				onClick={() => manager.declineAll()}
 			>
 				{t.modal.declineAll}
 			</button>

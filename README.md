@@ -343,7 +343,7 @@ $orejime-theme-color: white;
 
 * `show()`: show the consent modal
 * `internals.react`: the React app used internally. See `src/components/Main.ts`
-* `internals.manager`: the ConsentManager instance used. See `src/ConsentManager.ts`
+* `internals.manager`: the Manager instance used. See `src/core/Manager.ts`
 * `internals.config`: the complete config object used
 
 ## Development

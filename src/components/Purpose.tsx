@@ -2,9 +2,9 @@ import React from 'react';
 import {Purpose as PurposeType} from '../types';
 import {useTranslations} from '../utils/hooks';
 
-interface PurposeProps extends PurposeType {
-	checked: boolean;
-	onToggle: (checked: boolean) => void;
+export interface PurposeProps extends PurposeType {
+	consent: boolean;
+	onChange: (checked: boolean) => void;
 }
 
 const Purpose = ({
@@ -13,12 +13,11 @@ const Purpose = ({
 	description,
 	isMandatory,
 	isExempt,
-	checked,
-	onToggle
+	consent,
+	onChange
 }: PurposeProps) => {
 	const t = useTranslations();
 	const domId = `orejime-purpose-${id}`;
-	const isChecked = checked || isMandatory;
 
 	return (
 		<div className="orejime-Purpose">
@@ -27,10 +26,10 @@ const Purpose = ({
 				className="orejime-Purpose-input"
 				aria-describedby={`${domId}-description`}
 				disabled={isMandatory}
-				checked={!!isChecked}
+				checked={!!consent}
 				type="checkbox"
 				onChange={(event) => {
-					onToggle(event.target.checked);
+					onChange(event.target.checked);
 				}}
 			/>
 			<label
@@ -66,7 +65,7 @@ const Purpose = ({
 				>
 					<div className="orejime-Purpose-slider"></div>
 					<div aria-hidden="true" className="orejime-Purpose-switchLabel">
-						{isChecked ? t.purpose.enabled : t.purpose.disabled}
+						{consent ? t.purpose.enabled : t.purpose.disabled}
 					</div>
 				</span>
 			</label>
