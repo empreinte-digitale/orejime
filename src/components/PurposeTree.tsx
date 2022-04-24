@@ -1,20 +1,17 @@
 import React from 'react';
 import type {
 	PurposeList as PurposeListType,
-	Purpose as PurposeType,
-	Consents
+	Purpose as PurposeType
 } from '../types';
 import PurposeGroup from './PurposeGroup';
 import PurposeList from './PurposeList';
-import Purpose from './Purpose';
+import PurposeContainer from './PurposeContainer';
 
 interface PurposeTreeProps {
 	purposes: PurposeListType;
-	consents: Consents;
-	onToggle: (purpose: PurposeType, checked: boolean) => void;
 }
 
-const PurposeTree = ({purposes, consents, onToggle}: PurposeTreeProps) => (
+const PurposeTree = ({purposes}: PurposeTreeProps) => (
 	<PurposeList>
 		{purposes.map((purpose) =>
 			'purposes' in purpose ? (
@@ -23,18 +20,10 @@ const PurposeTree = ({purposes, consents, onToggle}: PurposeTreeProps) => (
 					title={purpose.title}
 					description={purpose.description}
 				>
-					<PurposeTree
-						purposes={purpose.purposes}
-						consents={consents}
-						onToggle={onToggle}
-					/>
+					<PurposeTree purposes={purpose.purposes} />
 				</PurposeGroup>
 			) : (
-				<Purpose
-					checked={consents[purpose.id] || purpose.isMandatory}
-					onToggle={(value) => onToggle(purpose, value)}
-					{...(purpose as PurposeType)}
-				/>
+				<PurposeContainer {...(purpose as PurposeType)} />
 			)
 		)}
 	</PurposeList>

@@ -7,7 +7,7 @@ import {template} from '../utils/template';
 export interface BannerProps {
 	isHidden: boolean;
 	isForced?: boolean;
-	hasChanges: boolean;
+	needsUpdate: boolean;
 	purposeTitles: string[];
 	privacyPolicyUrl: string;
 	logo?: ImageDescriptor;
@@ -19,7 +19,7 @@ export interface BannerProps {
 const Banner = ({
 	isHidden,
 	isForced,
-	hasChanges,
+	needsUpdate,
 	purposeTitles,
 	privacyPolicyUrl,
 	logo,
@@ -79,7 +79,7 @@ const Banner = ({
 					</p>
 				</div>
 
-				{hasChanges && (
+				{needsUpdate && (
 					<p className="orejime-Banner-changes">{t.misc.updateNeeded}</p>
 				)}
 

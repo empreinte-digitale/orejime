@@ -1,23 +1,9 @@
-import ConsentManager from './ConsentManager';
+import {CookieOptions, Purpose as CorePurpose} from './core';
 
-export type JsonParser = (json: string) => any;
-export type JsonSerializer = (json: any) => string;
-
-type AppCookie = [
-	cookiePattern: RegExp,
-	cookiePath: string,
-	cookieDomain: string
-];
-
-export interface Purpose {
+export interface Purpose extends CorePurpose {
 	id: string;
 	title: string;
 	description?: string;
-	isMandatory?: boolean;
-	isExempt?: boolean;
-	runsOnce?: boolean;
-	default?: boolean;
-	cookies: Array<string | RegExp | AppCookie>;
 }
 
 export interface PurposeGroup {
@@ -92,13 +78,7 @@ export interface Config {
 	orejimeElement?: ElementReference;
 	appElement?: ElementReference;
 	purposes: PurposeList;
-	cookie: {
-		name: string;
-		domain?: string;
-		duration: number;
-		parse: JsonParser;
-		stringify: JsonSerializer;
-	};
+	cookie?: CookieOptions;
 	lang: string;
 	logo?: ImageDescriptor;
 	forceBanner: boolean;
@@ -107,16 +87,4 @@ export interface Config {
 	translations: {
 		[lang: string]: Translations;
 	};
-}
-
-export interface Consents {
-	[purposeId: string]: boolean;
-}
-
-export interface ConsentsWatcher {
-	update: (
-		emitter: ConsentManager,
-		id: 'consents' | 'save',
-		consents?: Consents
-	) => void;
 }
