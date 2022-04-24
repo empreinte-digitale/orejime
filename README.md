@@ -107,23 +107,26 @@ var orejimeConfig = {
     // element), even though it's not required.
     appElement: "#app",
 
-    // Optional. You can customize the name of the cookie that Orejime uses for storing
-    // user consent decisions.
-    // defaults to "orejime".
-    cookieName: "orejime",
+    // Optional.
+    cookie: {
+        // Optional. You can customize the name of the cookie that Orejime uses for storing
+        // user consent decisions.
+        // defaults to "orejime".
+        name: "orejime",
 
-    // Optional. You can set a custom expiration time for the Orejime cookie, in days.
-    // defaults to 365.
-    cookieExpiresAfterDays: 365,
+        // Optional. You can set a custom expiration time for the Orejime cookie, in days.
+        // defaults to 365.
+        duration: 365,
 
-    // Optional. You can provide a custom domain for the Orejime cookie, for example to make it available on every associated subdomains.
-    cookieDomain: 'mydomain.com',
+        // Optional. You can provide a custom domain for the Orejime cookie, for example to make it available on every associated subdomains.
+        domain: 'mydomain.com',
 
-    // Optional. You can provide a custom function to serialize the cookie contents.
-    stringifyCookie: (contents) => JSON.stringify(contents),
+        // Optional. You can provide a custom function to serialize the cookie contents.
+        stringify: (contents) => JSON.stringify(contents),
 
-    // Optional. You can provide a custom function to unserialize the cookie contents.
-    parseCookie: (cookie) => JSON.parse(cookie),
+        // Optional. You can provide a custom function to unserialize the cookie contents.
+        parse: (cookie) => JSON.parse(cookie),
+    },
 
     // You must provide a link to your privacy policy page
     privacyPolicy: "",

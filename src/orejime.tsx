@@ -18,20 +18,22 @@ function getTranslations(config: Config) {
 }
 
 export const defaultConfig: Config = {
-	cookieName: 'orejime',
-	cookieExpiresAfterDays: 365,
-	stringifyCookie: JSON.stringify.bind(JSON),
-	parseCookie: JSON.parse.bind(JSON),
 	privacyPolicy: '',
 	forceModal: false,
 	forceBanner: false,
 	lang: language(),
 	translations: {},
-	purposes: []
+	purposes: [],
+	cookie: {
+		name: 'orejime',
+		duration: 365,
+		stringify: JSON.stringify.bind(JSON),
+		parse: JSON.parse.bind(JSON)
+	}
 };
 
 export function init(conf: Config) {
-	const config = Object.assign({}, defaultConfig, conf);
+	const config = deepMerge(defaultConfig, conf);
 	const errors = [];
 	if (!Object.keys(config.purposes).length) {
 		errors.push('  - you must define `purposes` to manage');

@@ -33,7 +33,7 @@ export default class ConsentManager {
 	}
 
 	get cookieName() {
-		return this.config.cookieName || 'orejime';
+		return this.config.cookie.name || 'orejime';
 	}
 
 	watch(watcher: ConsentsWatcher) {
@@ -146,7 +146,7 @@ export default class ConsentManager {
 	loadConsents() {
 		const consentCookie = getCookie(this.cookieName);
 		if (consentCookie !== null && consentCookie.value !== '') {
-			this.consents = this.config.parseCookie(consentCookie.value);
+			this.consents = this.config.cookie.parse(consentCookie.value);
 			this._checkConsents();
 			this.notify('consents', this.consents);
 		}
@@ -160,13 +160,13 @@ export default class ConsentManager {
 
 	saveConsents() {
 		if (this.consents === null) deleteCookie(this.cookieName);
-		const value = this.config.stringifyCookie(this.consents);
+		const value = this.config.cookie.stringify(this.consents);
 
 		setCookie(
 			this.cookieName,
 			value,
-			this.config.cookieExpiresAfterDays || 120,
-			this.config.cookieDomain
+			this.config.cookie.duration || 120,
+			this.config.cookie?.domain
 		);
 
 		this.confirmed = true;
