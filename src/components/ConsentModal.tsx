@@ -27,7 +27,7 @@ export default class ConsentModal extends Component<Props> {
 		} = this.props;
 
 		const isAlert =
-			config.mustConsent && (!manager.confirmed || manager.changed);
+			config.forceModal && (!manager.confirmed || manager.changed);
 
 		return (
 			<Dialog
@@ -57,14 +57,13 @@ export default class ConsentModal extends Component<Props> {
 							{t.modal.title}
 						</h1>
 						<p className="orejime-Modal-description">
-							{manager.changed &&
-								(config.mustConsent || config.noBanner) && (
-									<p className="orejime-Modal-description">
-										<strong className="orejime-Modal-changes">
-											{t.misc.updateNeeded}
-										</strong>
-									</p>
-								)}
+							{manager.changed && config.forceModal && (
+								<p className="orejime-Modal-description">
+									<strong className="orejime-Modal-changes">
+										{t.misc.updateNeeded}
+									</strong>
+								</p>
+							)}
 							{template(t.modal.description, {
 								privacyPolicy: (
 									<a

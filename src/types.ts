@@ -107,9 +107,8 @@ export interface Config {
 				alt: string;
 				src: string;
 		  };
-	mustConsent: boolean;
-	mustNotice: boolean;
-	noBanner?: boolean;
+	forceBanner: boolean;
+	forceModal: boolean;
 	optOut?: boolean;
 	parseCookie: JsonParser;
 	poweredBy?: string;
