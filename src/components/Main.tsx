@@ -32,7 +32,7 @@ export default class Main extends Component<Props, State> {
 		if (userRequest) {
 			return true;
 		}
-		if (config.mustConsent && (!manager.confirmed || manager.changed)) {
+		if (config.forceModal && (!manager.confirmed || manager.changed)) {
 			return true;
 		}
 		return false;
@@ -40,7 +40,7 @@ export default class Main extends Component<Props, State> {
 
 	isBannerVisible() {
 		const {config, manager} = this.props;
-		if (config.mustConsent || config.noBanner) {
+		if (config.forceModal) {
 			return false;
 		}
 		if (manager.confirmed && !manager.changed) {
@@ -95,7 +95,7 @@ export default class Main extends Component<Props, State> {
 					key="banner"
 					t={t}
 					isVisible={isBannerVisible}
-					isMandatory={config.mustNotice || false}
+					isMandatory={config.forceBanner || false}
 					isModalVisible={this.state.isModalVisible}
 					config={config}
 					manager={manager}

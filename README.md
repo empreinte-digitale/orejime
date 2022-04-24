@@ -132,18 +132,18 @@ var orejimeConfig = {
     // defaults to true
     default: true,
 
-    // Optional. If "mustConsent" is set to true, Orejime will directly display the consent
-    // manager modal and not allow the user to close it before having actively
+    // Optional. If `forceModal` is set to true, Orejime will directly display
+    // the consent modal and not allow the user to close it before having actively
     // consented or declined the use of third-party purposes.
     // defaults to false
-    mustConsent: false,
+    forceModal: false,
 
-    // Optional. If "mustNotice" is set to true, Orejime will display the consent
-    // notice and not allow the user to close it before having actively
-    // consented or declined the use of third-party purposes.
-    // Has no effect if mustConsent is set to true.
+    // Optional. If `forceBanner` is set to true, Orejime will display the consent
+    // notice and not allow the user to close it before having actively consented
+    // or declined the use of third-party purposes.
+    // Has no effect if `forceModal` is set to true.
     // defaults to false
-    mustNotice: false,
+    forceBanner: false,
 
     // Optional. You can define the UI language directly here. If undefined, Orejime will
     // use the value given in the global "lang" variable, or fallback to the value
