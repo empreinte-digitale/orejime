@@ -85,9 +85,31 @@ export const useModalState = (): [
 	return [isOpen, open, close];
 };
 
-export const useConsents = (): Consents => {
+export const useConsents = () => {
 	const manager = useManager();
+	const purposes = manager.getPurposes();
 	const [consents, setConsents] = useState({...manager.consents});
+
+	const areAllEnabled =
+		purposes.filter((purpose) => {
+			return consents[purpose.id];
+		}).length === purposes.length;
+
+	const areAllDisabled =
+		purposes.filter((purpose) => {
+			return purpose.isMandatory || false ? false : consents[purpose.id];
+		}).length === 0;
+
+	const areAllMandatory = purposes.every((purpose) => purpose.isMandatory);
+
+	const toggleAll = (value: boolean) => {
+		purposes.map((purpose) => {
+			manager.updateConsent(purpose, value);
+		});
+	};
+
+	const acceptAll = () => toggleAll(true);
+	const declineAll = () => toggleAll(false);
 
 	useEffect(() => {
 		const watcher: ConsentsWatcher = {
@@ -105,5 +127,12 @@ export const useConsents = (): Consents => {
 		};
 	});
 
-	return consents;
+	return {
+		consents,
+		areAllEnabled,
+		areAllDisabled,
+		areAllMandatory,
+		acceptAll,
+		declineAll
+	};
 };

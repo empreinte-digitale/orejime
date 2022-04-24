@@ -1,38 +1,43 @@
 import React from 'react';
 import {Close} from './Icons';
-import Purposes from './Purposes';
 import Dialog from './Dialog';
 import {template} from '../utils/template';
-import {useConfig, useManager, useTranslations} from '../utils/hooks';
+import {useTranslations} from '../utils/hooks';
 
 interface ModalProps {
-	onHideRequest: () => void;
-	onSaveRequest: () => void;
+	isForced: boolean;
+	privacyPolicyUrl: string;
+	onClose: () => void;
+	onSave: () => void;
+	children: React.ReactNode;
 }
 
-const Modal = ({onHideRequest, onSaveRequest}: ModalProps) => {
-	const config = useConfig();
-	const manager = useManager();
+const Modal = ({
+	isForced,
+	privacyPolicyUrl,
+	onClose,
+	onSave,
+	children
+}: ModalProps) => {
 	const t = useTranslations();
-	const isAlert = config.forceModal && manager.isDirty();
 
 	return (
 		<Dialog
-			isAlert={isAlert}
+			isAlert={isForced}
 			aria={{'labelledby': 'orejime-modal-title'}}
 			portalClassName="orejime-ModalPortal"
 			overlayClassName="orejime-ModalOverlay"
 			className="orejime-ModalWrapper"
-			onRequestClose={onHideRequest}
+			onRequestClose={onClose}
 		>
 			<div className="orejime-Modal">
 				<div className="orejime-Modal-header">
-					{!isAlert && (
+					{!isForced && (
 						<button
 							title={t.modal.closeTitle}
 							className="orejime-Modal-closeButton"
 							type="button"
-							onClick={onHideRequest}
+							onClick={onClose}
 						>
 							<Close title={t.modal.close} />
 						</button>
@@ -42,22 +47,22 @@ const Modal = ({onHideRequest, onSaveRequest}: ModalProps) => {
 						{t.modal.title}
 					</h1>
 					<p className="orejime-Modal-description">
-						{manager.changed && config.forceModal && (
+						{isForced ? (
 							<p className="orejime-Modal-description">
 								<strong className="orejime-Modal-changes">
 									{t.misc.updateNeeded}
 								</strong>
 							</p>
-						)}
+						) : null}
 						{template(t.modal.description, {
 							privacyPolicy: (
 								<a
 									key="privacyPolicyLink"
 									className="orejime-Modal-privacyPolicyLink"
 									onClick={(e) => {
-										onHideRequest();
+										onClose();
 									}}
-									href={config.privacyPolicy}
+									href={privacyPolicyUrl}
 								>
 									{t.modal.privacyPolicyLabel}
 								</a>
@@ -70,12 +75,10 @@ const Modal = ({onHideRequest, onSaveRequest}: ModalProps) => {
 					className="orejime-Modal-form"
 					onSubmit={(event) => {
 						event.preventDefault();
-						onSaveRequest();
+						onSave();
 					}}
 				>
-					<div className="orejime-Modal-body">
-						<Purposes />
-					</div>
+					<div className="orejime-Modal-body">{children}</div>
 					<div className="orejime-Modal-footer">
 						<button
 							className="orejime-Button orejime-Button--save orejime-Modal-saveButton"
