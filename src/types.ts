@@ -93,16 +93,18 @@ export interface Config {
 	orejimeElement?: ElementReference;
 	appElement?: ElementReference;
 	purposes: PurposeList;
-	cookieDomain?: string;
-	cookieExpiresAfterDays: number;
-	cookieName: string;
+	cookie: {
+		name: string;
+		domain?: string;
+		duration: number;
+		parse: JsonParser;
+		stringify: JsonSerializer;
+	};
 	lang: string;
 	logo?: ImageDescriptor;
 	forceBanner: boolean;
 	forceModal: boolean;
-	parseCookie: JsonParser;
 	privacyPolicy: string;
-	stringifyCookie: JsonSerializer;
 	translations: {
 		[lang: string]: Translations;
 	};
