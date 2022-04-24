@@ -18,7 +18,6 @@ export interface Purpose {
 	runsOnce?: boolean;
 	default?: boolean;
 	cookies: Array<string | RegExp | AppCookie>;
-	callback?: (consent: boolean, app: Purpose) => void;
 }
 
 export interface PurposeGroup {

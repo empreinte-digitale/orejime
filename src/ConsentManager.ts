@@ -183,7 +183,6 @@ export default class ConsentManager {
 			if (state === consent) continue;
 			this.updatePurposeElements(purpose, consent);
 			this.updatePurposeCookies(purpose, consent);
-			if (purpose.callback !== undefined) purpose.callback(consent, purpose);
 			this.states[purpose.id] = consent;
 		}
 	}
