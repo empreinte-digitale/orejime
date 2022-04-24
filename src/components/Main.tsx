@@ -64,7 +64,7 @@ const Main: ForwardRefRenderFunction<MainHandle> = (_, ref) => {
 					isHidden={isModalVisible}
 					hasChanges={manager.changed}
 					purposeTitles={config.purposes.map(({title}) => title)}
-					privacyPolicyUrl={config.privacyPolicy}
+					privacyPolicyUrl={config.privacyPolicyUrl}
 					logo={config.logo}
 					onAccept={acceptAndHideAll}
 					onDecline={declineAndHideAll}
@@ -76,7 +76,7 @@ const Main: ForwardRefRenderFunction<MainHandle> = (_, ref) => {
 				<Modal
 					key="modal"
 					isForced={config.forceModal && manager.isDirty()}
-					privacyPolicyUrl={config.privacyPolicy}
+					privacyPolicyUrl={config.privacyPolicyUrl}
 					onClose={closeModal}
 					onSave={saveAndHideAll}
 				>
