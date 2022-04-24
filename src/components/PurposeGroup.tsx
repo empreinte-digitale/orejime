@@ -1,12 +1,18 @@
 import React from 'react';
-import {PurposeGroup, Translations} from '../types';
+import {PurposeGroup as PurposeGroupType, Translations} from '../types';
 
-interface Props extends Omit<PurposeGroup, 'purposes'> {
+interface PurposeGroupProps extends Omit<PurposeGroupType, 'purposes'> {
 	t: Translations;
 	children: any;
 }
 
-const PurposeGroup = ({t, id, title, description, children}: Props) => (
+const PurposeGroup = ({
+	t,
+	id,
+	title,
+	description,
+	children
+}: PurposeGroupProps) => (
 	<div className="orejime-PurposeGroup">
 		<h2 className="orejime-PurposeGroup-title">{t?.[id]?.title || title}</h2>
 

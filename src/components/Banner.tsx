@@ -4,7 +4,7 @@ import {Config, Translations} from '../types';
 import {imageAttributes} from '../utils/config';
 import {template} from '../utils/template';
 
-export interface ConsentBannerProps {
+export interface BannerProps {
 	t: Translations;
 	config: Config;
 	manager: ConsentManager;
@@ -16,7 +16,7 @@ export interface ConsentBannerProps {
 	onConfigRequest: () => void;
 }
 
-export default class ConsentBanner extends Component<ConsentBannerProps> {
+export default class Banner extends Component<BannerProps> {
 	render() {
 		const {
 			t,

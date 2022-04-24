@@ -3,18 +3,18 @@ import ConsentManager from '../ConsentManager';
 import {Config, Consents, Translations} from '../types';
 import PurposeTree from './PurposeTree';
 
-interface Props {
+interface PurposesProps {
 	t: Translations;
 	config: Config;
 	manager: ConsentManager;
 }
 
-interface State {
+interface PurposesState {
 	consents: Consents;
 }
 
-export default class Purposes extends Component<Props, State> {
-	constructor(props: Props) {
+export default class Purposes extends Component<PurposesProps, PurposesState> {
+	constructor(props: PurposesProps) {
 		super(props);
 		props.manager.watch(this);
 		this.state = {
