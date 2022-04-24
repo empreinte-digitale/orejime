@@ -18,7 +18,7 @@ function getTranslations(config: Config) {
 }
 
 export const defaultConfig: Config = {
-	privacyPolicy: '',
+	privacyPolicyUrl: '',
 	forceModal: false,
 	forceBanner: false,
 	lang: language(),
@@ -38,8 +38,8 @@ export function init(conf: Config) {
 	if (!Object.keys(config.purposes).length) {
 		errors.push('  - you must define `purposes` to manage');
 	}
-	if (!config.privacyPolicy.length) {
-		errors.push('  - you must define a `privacyPolicy` url');
+	if (!config.privacyPolicyUrl.length) {
+		errors.push('  - you must define `privacyPolicyUrl`');
 	}
 	if (errors.length) {
 		errors.unshift('Orejime config error:');

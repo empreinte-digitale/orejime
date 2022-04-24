@@ -79,7 +79,7 @@ For external scripts or img tags (for tracking pixels), do the same, and rename 
 
 ### Configuration
 
-You need to pass Orejime 🍪 a configuration object with, at the very least, `purposes` and `privacyPolicy` properties. Each purpose listed in `purposes` must itself have at least `id`, `title` and `cookies`.
+You need to pass Orejime 🍪 a configuration object with, at the very least, `purposes` and `privacyPolicyUrl` properties. Each purpose listed in `purposes` must itself have at least `id`, `title` and `cookies`.
 
 <details open>
     <summary>Here is a fully-detailed annotated example of a configuration object:</summary>
@@ -129,7 +129,7 @@ var orejimeConfig = {
     },
 
     // You must provide a link to your privacy policy page
-    privacyPolicy: "",
+    privacyPolicyUrl: "",
 
     // Optional. If `forceModal` is set to true, Orejime will directly display
     // the consent modal and not allow the user to close it before having actively

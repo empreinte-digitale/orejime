@@ -104,7 +104,7 @@ export interface Config {
 	logo?: ImageDescriptor;
 	forceBanner: boolean;
 	forceModal: boolean;
-	privacyPolicy: string;
+	privacyPolicyUrl: string;
 	translations: {
 		[lang: string]: Translations;
 	};
