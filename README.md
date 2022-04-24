@@ -204,14 +204,6 @@ var orejimeConfig = {
                 "_gat_" + GTM_UA
             ],
 
-            // Optional. A callback function that will be called each time
-            // the consent state for the purpose changes. Passes
-            // the `purpose` config as the second parameter as well.
-            callback: function(consent, purpose){
-                // This is an example callback function.
-                console.log("User consent for purpose " + purpose.id + ": consent=" + consent)
-            },
-
             // Optional. If "isMandatory" is set to true, Orejime will not allow this purpose to
             // be disabled by the user.
             // See "Special cases" below for more information.
