@@ -1,9 +1,9 @@
 import React from 'react';
 import type {Aria} from 'react-modal';
 import Dialog from './Dialog';
-import ConsentBanner, {ConsentBannerProps} from './ConsentBanner';
+import Banner, {BannerProps} from './Banner';
 
-const ModalConsentBanner = ({t, ...props}: ConsentBannerProps) => (
+const ModalBanner = ({t, ...props}: BannerProps) => (
 	<Dialog
 		config={props.config}
 		portalClassName="orejime-BannerPortal"
@@ -15,8 +15,8 @@ const ModalConsentBanner = ({t, ...props}: ConsentBannerProps) => (
 			} as Aria
 		}
 	>
-		<ConsentBanner {...props} t={t} isForced />
+		<Banner {...props} t={t} isForced />
 	</Dialog>
 );
 
-export default ModalConsentBanner;
+export default ModalBanner;

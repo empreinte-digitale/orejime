@@ -3,20 +3,20 @@ import ReactModal, {Props as ReactModalProps} from 'react-modal';
 import {Config} from '../types';
 import {getElement} from '../utils/dom';
 
-interface Props extends Omit<ReactModalProps, 'isOpen'> {
+interface DialogProps extends Omit<ReactModalProps, 'isOpen'> {
 	config: Config;
 	isAlert?: boolean;
 	handleScrollPosition?: boolean;
 }
 
-export default class Dialog extends Component<Props> {
+export default class Dialog extends Component<DialogProps> {
 	static defaultProps = {
 		handleScrollPosition: true
 	};
 
 	private scrollPosition: number;
 
-	constructor(props: Props) {
+	constructor(props: DialogProps) {
 		super(props);
 
 		if (props.config.appElement) {

@@ -1,13 +1,13 @@
 import React, {ChangeEvent, Component} from 'react';
 import {Purpose as PurposeType, Translations} from '../types';
 
-interface Props extends PurposeType {
+interface PurposeProps extends PurposeType {
 	t: Translations;
 	checked: boolean;
 	onToggle: (checked: boolean) => void;
 }
 
-export default class Purpose extends Component<Props> {
+export default class Purpose extends Component<PurposeProps> {
 	render() {
 		const {checked, onToggle, id, title, description, t} = this.props;
 		const mandatory = this.props.isMandatory || false;

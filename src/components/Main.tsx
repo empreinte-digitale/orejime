@@ -1,22 +1,22 @@
 import React, {Component} from 'react';
-import ModalConsentBanner from './ModalConsentBanner';
-import ConsentBanner from './ConsentBanner';
-import ConsentModal from './ConsentModal';
+import ModalBanner from './ModalBanner';
+import Banner from './Banner';
+import Modal from './Modal';
 import ConsentManager from '../ConsentManager';
 import {Config, Translations} from '../types';
 
-interface Props {
+interface MainProps {
 	t: Translations;
 	config: Config;
 	manager: ConsentManager;
 }
 
-interface State {
+interface MainState {
 	isModalVisible: boolean;
 }
 
-export default class Main extends Component<Props, State> {
-	constructor(props: Props) {
+export default class Main extends Component<MainProps, MainState> {
+	constructor(props: MainProps) {
 		super(props);
 		this.state = {
 			isModalVisible: this.isModalVisible()
@@ -90,9 +90,7 @@ export default class Main extends Component<Props, State> {
 	render() {
 		const {config, t, manager} = this.props;
 		const isBannerVisible = this.isBannerVisible();
-		const BannerComponent = config.forceBanner
-			? ModalConsentBanner
-			: ConsentBanner;
+		const BannerComponent = config.forceBanner ? ModalBanner : Banner;
 		return (
 			<div className="orejime-Main">
 				{isBannerVisible ? (
@@ -110,7 +108,7 @@ export default class Main extends Component<Props, State> {
 				) : null}
 
 				{this.state.isModalVisible ? (
-					<ConsentModal
+					<Modal
 						key="modal"
 						t={t}
 						config={config}

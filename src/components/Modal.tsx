@@ -6,7 +6,7 @@ import ConsentManager from '../ConsentManager';
 import {Config, Translations} from '../types';
 import {template} from '../utils/template';
 
-interface Props {
+interface ModalProps {
 	t: Translations;
 	config: Config;
 	manager: ConsentManager;
@@ -14,7 +14,7 @@ interface Props {
 	onSaveRequest: () => void;
 }
 
-export default class ConsentModal extends Component<Props> {
+export default class Modal extends Component<ModalProps> {
 	render() {
 		const {onHideRequest, onSaveRequest, config, manager, t} = this.props;
 		const isAlert = config.forceModal && manager.isDirty();

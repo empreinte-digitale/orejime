@@ -1,10 +1,10 @@
 import React from 'react';
 
-interface Props {
+interface CloseProps {
 	title: string;
 }
 
-export const Close = ({title}: Props) => {
+export const Close = ({title}: CloseProps) => {
 	return (
 		<svg
 			role="img"
