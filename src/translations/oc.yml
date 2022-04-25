@@ -28,8 +28,8 @@ modal:
 purpose:
   mandatory: (tojors requerit)
   mandatoryTitle: Aquesta aplicacion es totjorn requerida
-  optOut: (opt-out)
-  optOutTitle: Aquesta aplicacion es cargada per defaut (mas la podètz desactivar)
+  exempt: (opt-out)
+  exemptTitle: Aquesta aplicacion es cargada per defaut (mas la podètz desactivar)
   showMore: ""
   accept: Acceptar
   decline: Refusar

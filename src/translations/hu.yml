@@ -27,8 +27,8 @@ modal:
 purpose:
   mandatory: (mindig kötelező)
   mandatoryTitle: Ez az applikáció mindig kötelező
-  optOut: (leiratkozás)
-  optOutTitle: Ez az alkalmazás alapértelmezés szerint betöltött (de ki lehet kapcsolni)
+  exempt: (leiratkozás)
+  exemptTitle: Ez az alkalmazás alapértelmezés szerint betöltött (de ki lehet kapcsolni)
   showMore: ""
   accept: ""
   decline: Elvet

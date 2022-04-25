@@ -9,28 +9,28 @@ interface Props extends PurposeType {
 
 export default class Purpose extends Component<Props> {
 	render() {
-		const {checked, onToggle, name, title, description, t} = this.props;
-		const required = this.props.required || false;
-		const optOut = this.props.optOut || false;
+		const {checked, onToggle, id, title, description, t} = this.props;
+		const mandatory = this.props.isMandatory || false;
+		const exempt = this.props.isExempt || false;
 		const purposes = this.props.purposes || [];
 		const onChange = (e: ChangeEvent<HTMLInputElement>) => {
 			onToggle(e.target.checked);
 		};
-		const id = `orejime-purpose-${name}`;
-		const isChecked = checked || required;
+		const domId = `orejime-purpose-${id}`;
+		const isChecked = checked || mandatory;
 		const purposesText = purposes
 			.map((purpose) => t?.purposes?.[purpose])
 			.join(', ');
-		const optOutText = optOut ? (
-			<span className="orejime-Purpose-optOut" title={t.purpose.optOutTitle}>
-				{t.purpose.optOut}
+		const exemptText = exempt ? (
+			<span className="orejime-Purpose-exempt" title={t.purpose.exemptTitle}>
+				{t.purpose.exempt}
 			</span>
 		) : (
 			''
 		);
-		const requiredText = required ? (
+		const requiredText = mandatory ? (
 			<span
-				className="orejime-Purpose-required"
+				className="orejime-Purpose-mandatory"
 				title={t.purpose.mandatoryTitle}
 			>
 				{t.purpose.mandatory}
@@ -49,27 +49,27 @@ export default class Purpose extends Component<Props> {
 		return (
 			<div className="orejime-Purpose">
 				<input
-					id={id}
+					id={domId}
 					className="orejime-Purpose-input"
-					aria-describedby={`${id}-description`}
-					disabled={required}
+					aria-describedby={`${domId}-description`}
+					disabled={mandatory}
 					checked={isChecked}
 					type="checkbox"
 					onChange={onChange}
 				/>
 				<label
-					htmlFor={id}
+					htmlFor={domId}
 					className="orejime-Purpose-label"
-					{...(required ? {tabIndex: 0} : {})}
+					{...(mandatory ? {tabIndex: 0} : {})}
 				>
 					<span className="orejime-Purpose-title">
-						{t?.[name]?.title || title}
+						{t?.[id]?.title || title}
 					</span>
 					{requiredText}
-					{optOutText}
+					{exemptText}
 					<span
 						className={`orejime-Purpose-switch ${
-							required ? 'orejime-Purpose-switch--disabled' : ''
+							mandatory ? 'orejime-Purpose-switch--disabled' : ''
 						}`}
 					>
 						<div className="orejime-Purpose-slider"></div>
@@ -82,13 +82,13 @@ export default class Purpose extends Component<Props> {
 					</span>
 				</label>
 				<div
-					id={`${id}-description`}
+					id={`${domId}-description`}
 					className="orejime-Purpose-fullDescription"
 				>
 					<p
 						className="orejime-Purpose-description"
 						dangerouslySetInnerHTML={{
-							__html: t?.[name]?.description || description
+							__html: t?.[id]?.description || description
 						}}
 					/>
 					{purposesEl}

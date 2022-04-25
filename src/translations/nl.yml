@@ -27,8 +27,8 @@ modal:
 purpose:
   mandatory: (altijd verplicht)
   mandatoryTitle: Deze applicatie is altijd vereist
-  optOut: (afmelden)
-  optOutTitle: Deze app is standaard geladen (maar je kunt je afmelden)
+  exempt: (afmelden)
+  exemptTitle: Deze app is standaard geladen (maar je kunt je afmelden)
   showMore: ""
   accept: Aanvaarden
   decline: Afwijzen

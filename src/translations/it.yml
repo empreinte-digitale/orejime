@@ -27,8 +27,8 @@ modal:
 purpose:
   mandatory: (sempre richiesto)
   mandatoryTitle: Quest'applicazione è sempre richiesta
-  optOut: (opt-out)
-  optOutTitle: Quest'applicazione è caricata di default (ma puoi disattivarla)
+  exempt: (opt-out)
+  exemptTitle: Quest'applicazione è caricata di default (ma puoi disattivarla)
   showMore: ""
   accept: ""
   decline: Rifiuta

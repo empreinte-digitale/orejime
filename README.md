@@ -53,14 +53,14 @@ For IE11, you'll need to have ES6 polyfills loaded on your page. One easy and ef
 
 For each third-party script you want Orejime to manage, you must modify its `<script>` tag so that the browser doesn't load it directly anymore. Orejime will take care of loading it if the user accepts.
 
-For inline scripts, set the `type` attribute to `opt-in` to keep the browser from executing the script. Also add a `data-name` attribute with a short, unique, spaceless name for this script:
+For inline scripts, set the `type` attribute to `opt-in` to keep the browser from executing the script. Also add a `data-purpose` attribute with a short, unique, spaceless name for this script:
 
 ```diff
 - <script>
 + <script
 +   type="opt-in"
 +   data-type="application/javascript"
-+   data-name="google-tag-manager">
++   data-purpose="google-tag-manager">
     (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push [...]
 </script>
 ```
@@ -73,13 +73,13 @@ For external scripts or img tags (for tracking pixels), do the same, and rename 
 + <script
 +   type="opt-in"
 +   data-type="application/javascript"
-+   data-name="google-maps"
++   data-purpose="google-maps"
 +   data-src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
 ```
 
 ### Configuration
 
-You need to pass Orejime 🍪 a configuration object with, at the very least, `purposes` and `privacyPolicy` properties. Each purpose listed in `purposes` must itself have at least `name`, `title` and `cookies`.
+You need to pass Orejime 🍪 a configuration object with, at the very least, `purposes` and `privacyPolicy` properties. Each purpose listed in `purposes` must itself have at least `id`, `title` and `cookies`.
 
 <details open>
     <summary>Here is a fully-detailed annotated example of a configuration object:</summary>
@@ -181,10 +181,11 @@ var orejimeConfig = {
     // The purposes will appear in the modal in the same order as defined here.
     purposes: [
         {
-            // The name of the purpose, used internally by Orejime.
-            // Each name should match a name of a <script> tag defined in the
-            // "Changing your existing third-party scripts" documentation step.
-            name: "google-tag-manager",
+            // The id of the purpose, used internally by Orejime.
+            // Each id should match the `data-purpose` attribute of a <script>
+            // tag defined in the "Changing your existing third-party scripts"
+            // documentation step.
+            id: "google-tag-manager",
 
             // The title of you purpose as listed in the consent modal.
             title: "Google Tag Manager",
@@ -218,33 +219,33 @@ var orejimeConfig = {
             // the `purpose` config as the second parameter as well.
             callback: function(consent, purpose){
                 // This is an example callback function.
-                console.log("User consent for purpose " + purpose.name + ": consent=" + consent)
+                console.log("User consent for purpose " + purpose.id + ": consent=" + consent)
             },
 
-            // Optional. If "required" is set to true, Orejime will not allow this purpose to
+            // Optional. If "isMandatory" is set to true, Orejime will not allow this purpose to
             // be disabled by the user.
             // See "Special cases" below for more information.
             // default to false
-            required: false,
+            isMandatory: false,
 
-            // Optional. If "optOut" is set to true, Orejime will load this purpose
+            // Optional. If `isExempt` is set to true, Orejime will load this purpose
             // even before the user gave explicit consent.
             // We recommend always leaving this "false".
             // See "Special cases" below for more information.
             // defaults to false
-            optOut: false,
+            isExempt: false,
 
             // Optional. If "default" is set to true, the purpose will be enabled by default
             // defaults to false.
             default: false,
 
-            // Optional. If "onlyOnce" is set to true, the purpose will only be executed
+            // Optional. If "runsOnce" is set to true, the purpose will only be executed
             // once regardless how often the user toggles it on and off.
             // defaults to false
-            onlyOnce: true,
+            runsOnce: true,
         },
         {
-            name: "inline-tracker",
+            id: "inline-tracker",
             title: "Inline Tracker",
             purposes: ["analytics"],
             cookies: [
@@ -259,11 +260,11 @@ var orejimeConfig = {
             ]
         },
         {
-            name: "external-tracker",
+            id: "external-tracker",
             title: "External Tracker",
             purposes: ["analytics", "security"],
             cookies: ["external-tracker"],
-            required: true
+            isMandatory: true
         }
     ],
     // Optional. A list of categories under which purposes will be classified.
@@ -271,9 +272,9 @@ var orejimeConfig = {
     // description of their purpose.
     categories: [
         {
-            name: "analytics",
+            id: "analytics",
             title: "Analytics",
-            // The list of purposes belonging to the category, referenced by name.
+            // The list of purposes belonging to the category, referenced by id.
             purposes: [
                 "google-tag-manager",
                 "external-tracker"
@@ -289,11 +290,11 @@ var orejimeConfig = {
 
 ##### Exemption
 
-If every purpose is either `required` or `optOut`, Orejime will not show at startup
+If every purpose is either `isMandatory` or `isExempt`, Orejime will not show at startup
 (but it will still be possible to open it programmatically).
 However, you should consider this use case carefully, and ensure that :
-* `required` trackers are truly required for your app to function properly
-* `optOut` trackers are exempt from consent, (i.e.
+* `isMandatory` trackers are truly required for your app to function properly
+* `isExempt` trackers are exempt from consent, (i.e.
 [as defined by the CNIL](https://www.cnil.fr/fr/cookies-solutions-pour-les-outils-de-mesure-daudience))
 
 ### Initialization
