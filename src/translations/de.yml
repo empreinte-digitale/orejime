@@ -28,8 +28,8 @@ modal:
 purpose:
   mandatory: (immer notwendig)
   mandatoryTitle: Diese Einstellungen werden immer benötigt
-  optOut: (Opt-Out)
-  optOutTitle: Diese Einstellungen als Standard festlegen (sie können jederzeit
+  exempt: (Opt-Out)
+  exemptTitle: Diese Einstellungen als Standard festlegen (sie können jederzeit
     deaktiviert werden)
   showMore: ""
   accept: Akzeptieren

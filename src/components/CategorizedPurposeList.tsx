@@ -10,8 +10,8 @@ interface Props {
 	onToggle: (purpose: Purpose, checked: boolean) => void;
 }
 
-const pickPurposes = (purposes: Purpose[], names: string[]) =>
-	names.map((name) => purposes.find((purpose) => purpose.name === name));
+const pickPurposes = (purposes: Purpose[], ids: string[]) =>
+	ids.map((id) => purposes.find((purpose) => purpose.id === id));
 
 const CategorizedPurposeList = ({
 	t,
@@ -21,20 +21,20 @@ const CategorizedPurposeList = ({
 	onToggle
 }: Props) => (
 	<ul className="orejime-CategorizedPurposeList">
-		{categories.map(({name, title, description, purposes: purposeNames}) => (
+		{categories.map(({id, title, description, purposes: purposeIds}) => (
 			<li className="orejime-CategorizedPurposeList-item">
 				<h2 className="orejime-CategorizedPurposeList-title">
-					{t?.categories?.[name]?.title || title}
+					{t?.categories?.[id]?.title || title}
 				</h2>
 
 				<p className="orejime-CategorizedPurposeList-description">
-					{t?.categories?.[name]?.description || description}
+					{t?.categories?.[id]?.description || description}
 				</p>
 
 				<div className="orejime-CategorizedPurposeList-purposes">
 					<PurposeList
 						t={t}
-						purposes={pickPurposes(purposes, purposeNames)}
+						purposes={pickPurposes(purposes, purposeIds)}
 						consents={consents}
 						onToggle={onToggle}
 					/>

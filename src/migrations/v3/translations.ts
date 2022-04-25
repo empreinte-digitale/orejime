@@ -40,8 +40,8 @@ export const migrateTranslations = (
 		purpose: {
 			mandatory: translations?.app?.required?.title,
 			mandatoryTitle: translations?.app?.required?.description,
-			optOut: translations?.app?.optOut?.title,
-			optOutTitle: translations?.app?.optOut?.description,
+			exempt: translations?.app?.optOut?.title,
+			exemptTitle: translations?.app?.optOut?.description,
 			showMore: '',
 			accept: translations?.accept,
 			decline: translations?.decline,

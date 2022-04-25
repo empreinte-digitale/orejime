@@ -26,8 +26,8 @@ modal:
 purpose:
   mandatory: (Krävs alltid)
   mandatoryTitle: Den här applikationen krävs alltid
-  optOut: (Avaktivera)
-  optOutTitle: Den här appen laddas som standardinställning (men du kan avaktivera den)
+  exempt: (Avaktivera)
+  exemptTitle: Den här appen laddas som standardinställning (men du kan avaktivera den)
   showMore: ""
   accept: ""
   decline: Avböj

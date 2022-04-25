@@ -8,20 +8,20 @@ type AppCookie = [
 ];
 
 export interface Purpose {
-	callback?: (consent: boolean, app: Purpose) => void;
-	cookies: Array<string | RegExp | AppCookie>;
-	default?: boolean;
-	description?: string;
-	name: string;
-	onlyOnce?: boolean;
-	optOut?: boolean;
-	purposes?: string[];
-	required?: boolean;
+	id: string;
 	title: string;
+	description?: string;
+	isMandatory?: boolean;
+	isExempt?: boolean;
+	runsOnce?: boolean;
+	default?: boolean;
+	purposes?: string[];
+	cookies: Array<string | RegExp | AppCookie>;
+	callback?: (consent: boolean, app: Purpose) => void;
 }
 
 export interface Category {
-	name: string;
+	id: string;
 	purposes: string[];
 	description: string;
 	title: string;
@@ -55,8 +55,8 @@ export interface ModalTranslations {
 export interface PurposeTranslations {
 	mandatory: string;
 	mandatoryTitle: string;
-	optOut: string;
-	optOutTitle: string;
+	exempt: string;
+	exemptTitle: string;
 	showMore: string;
 	accept: string;
 	decline: string;
@@ -118,9 +118,9 @@ export interface Config {
 }
 
 export interface Consents {
-	[appName: string]: boolean;
+	[purposeId: string]: boolean;
 }
 
 export interface ConsentsWatcher {
-	update: (emitter: any, name: string, consents: Consents) => void;
+	update: (emitter: any, id: string, consents: Consents) => void;
 }

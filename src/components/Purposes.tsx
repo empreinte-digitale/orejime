@@ -49,15 +49,15 @@ export default class Purposes extends Component<Props, State> {
 
 		const allDisabled =
 			purposes.filter((purpose) => {
-				return purpose.required || false ? false : consents[purpose.name];
+				return purpose.isMandatory || false ? false : consents[purpose.id];
 			}).length === 0;
 
 		const allEnabled =
 			purposes.filter((purpose) => {
-				return consents[purpose.name];
+				return consents[purpose.id];
 			}).length === purposes.length;
 
-		const someOptional = purposes.some((purpose) => !purpose.required);
+		const someOptional = purposes.some((purpose) => !purpose.isMandatory);
 
 		return (
 			<div>

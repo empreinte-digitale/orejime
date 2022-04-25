@@ -41,15 +41,15 @@ export default class ConsentManager {
 		if (this.watchers.has(watcher)) this.watchers.delete(watcher);
 	}
 
-	notify(name: string, data: Consents) {
+	notify(id: string, data: Consents) {
 		this.watchers.forEach((watcher: ConsentsWatcher) => {
-			watcher.update(this, name, data);
+			watcher.update(this, id, data);
 		});
 	}
 
-	getPurpose(name: string) {
+	getPurpose(id: string) {
 		const matching = this.config.purposes.filter((purpose) => {
-			return purpose.name == name;
+			return purpose.id == id;
 		});
 		if (matching.length > 0) return matching[0];
 		return undefined;
@@ -65,16 +65,16 @@ export default class ConsentManager {
 		const consents: Consents = {};
 		for (var i = 0; i < this.config.purposes.length; i++) {
 			const purpose = this.config.purposes[i];
-			consents[purpose.name] = this.getDefaultConsent(purpose);
+			consents[purpose.id] = this.getDefaultConsent(purpose);
 		}
 		return consents;
 	}
 
-	// If every app is either required or optOut, or both,
+	// If every app is either mandatory or exempt, or both,
 	// there is no need to ask for user consent.
 	canBypassConsent() {
 		return this.config.purposes.every(
-			({optOut = false, required = false}) => optOut || required
+			({isExempt = false, isMandatory = false}) => isExempt || isMandatory
 		);
 	}
 
@@ -91,10 +91,10 @@ export default class ConsentManager {
 	}
 
 	updateConsent(purpose: Purpose, value: boolean) {
-		if (purpose.required && !value) {
+		if (purpose.isMandatory && !value) {
 			return;
 		}
-		this.consents[purpose.name] = value;
+		this.consents[purpose.id] = value;
 		this.notify('consents', this.consents);
 	}
 
@@ -106,24 +106,24 @@ export default class ConsentManager {
 		this.notify('consents', this.consents);
 	}
 
-	getConsent(name: string) {
-		return this.consents[name] || false;
+	getConsent(id: string) {
+		return this.consents[id] || false;
 	}
 
 	_checkConsents() {
 		let complete = true;
-		const purposeNames = this.config.purposes.map((purpose) => purpose.name);
+		const purposeIds = this.config.purposes.map((purpose) => purpose.id);
 		Object.keys(this.consents).forEach(
 			function (key: string) {
-				if (purposeNames.indexOf(key) === -1) {
+				if (purposeIds.indexOf(key) === -1) {
 					delete this.consents[key];
 				}
 			}.bind(this)
 		);
 		this.config.purposes.forEach(
 			function (purpose: Purpose) {
-				if (typeof this.consents[purpose.name] === 'undefined') {
-					this.consents[purpose.name] = this.getDefaultConsent(purpose);
+				if (typeof this.consents[purpose.id] === 'undefined') {
+					this.consents[purpose.id] = this.getDefaultConsent(purpose);
 					complete = false;
 				}
 			}.bind(this)
@@ -165,33 +165,33 @@ export default class ConsentManager {
 	applyConsents() {
 		for (var i = 0; i < this.config.purposes.length; i++) {
 			const purpose = this.config.purposes[i];
-			const state = this.states[purpose.name];
-			const confirmed = this.confirmed || !!purpose.optOut;
-			const consent = this.getConsent(purpose.name) && confirmed;
+			const state = this.states[purpose.id];
+			const confirmed = this.confirmed || !!purpose.isExempt;
+			const consent = this.getConsent(purpose.id) && confirmed;
 			if (state === consent) continue;
 			this.updatePurposeElements(purpose, consent);
 			this.updatePurposeCookies(purpose, consent);
 			if (purpose.callback !== undefined) purpose.callback(consent, purpose);
-			this.states[purpose.name] = consent;
+			this.states[purpose.id] = consent;
 		}
 	}
 
 	updatePurposeElements(purpose: Purpose, consent: boolean) {
 		// we make sure we execute this purpose only once if the option is set
 		if (consent) {
-			if (purpose.onlyOnce && this.executedOnce[purpose.name]) return;
-			this.executedOnce[purpose.name] = true;
+			if (purpose.runsOnce && this.executedOnce[purpose.id]) return;
+			this.executedOnce[purpose.id] = true;
 		}
 
 		const elements = document.querySelectorAll<HTMLElement>(
-			"[data-name='" + purpose.name + "']"
+			"[data-purpose='" + purpose.id + "']"
 		);
 		for (var i = 0; i < elements.length; i++) {
 			const element = elements[i];
 
 			const parent = element.parentElement;
 			const {dataset} = element;
-			const {type, name} = dataset;
+			const {type} = dataset;
 			const attrs = ['href', 'src'];
 
 			//if no consent was given we disable this tracker

@@ -27,8 +27,8 @@ modal:
 purpose:
   mandatory: (vaaditaan)
   mandatoryTitle: Sivusto vaatii tämän aina
-  optOut: (ladataan oletuksena)
-  optOutTitle: Ladataan oletuksena (mutta voit ottaa sen pois päältä)
+  exempt: (ladataan oletuksena)
+  exemptTitle: Ladataan oletuksena (mutta voit ottaa sen pois päältä)
   showMore: ""
   accept: ""
   decline: Hylkää

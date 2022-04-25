@@ -168,38 +168,38 @@
 				},
 				purposes: [
 					{
-						name: "inline-tracker",
+						id: "inline-tracker",
 						title: "Inline Tracker",
 						purposes: ["analytics"],
 						cookies: ["inline-tracker"]
 					},
 					{
-						name: "external-tracker",
+						id: "external-tracker",
 						title: "External Tracker",
 						purposes: ["analytics", "security"],
 						cookies: ["external-tracker"],
 					},
 					{
-						name: "disabled-by-default",
+						id: "disabled-by-default",
 						title: "Something disabled by default",
 						purposes: ["ads"],
 						default: false
 					},
 					{
-						name: "always-on",
+						id: "always-on",
 						title: "Required app",
 						purposes: [],
-						required: true
+						isMandatory: true
 					}
 				],
 				categories: [
 					{
-						name: 'example',
+						id: 'example',
 						title: 'Example category',
 						purposes: ['inline-tracker', 'disabled-by-default']
 					},
 					{
-						name: 'third-party',
+						id: 'third-party',
 						title: 'Third-party purposes',
 						purposes: ['external-tracker', 'always-on']
 					}
@@ -215,13 +215,13 @@
 			type="opt-in"
 			data-src="example-assets/external-tracker.js"
 			data-type="application/javascript"
-			data-name="external-tracker"
+			data-purpose="external-tracker"
 		></script>
 
 		<script
 			type="opt-in"
 			data-type="application/javascript"
-			data-name="inline-tracker"
+			data-purpose="inline-tracker"
 		>
 			console.log("This is an example of an inline tracking script.")
 			setCookie("inline-tracker", "foo", 120)
