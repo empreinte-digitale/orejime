@@ -27,7 +27,8 @@ export function init(conf: Config) {
 		});
 
 		const appRef = createRef<ElementRef<typeof Main>>();
-		const app = render(
+
+		render(
 			<Context.Provider
 				value={{
 					config,
@@ -43,7 +44,6 @@ export function init(conf: Config) {
 		return {
 			show: appRef.current!.openModal,
 			internals: {
-				react: app,
 				manager: manager,
 				config: config
 			}
