@@ -339,8 +339,8 @@ $orejime-theme-color: white;
 ### Orejime instance
 
 * `show()`: show the consent modal
-* `internals.manager`: the Manager instance used. See `src/core/Manager.ts`
-* `internals.config`: the complete config object used
+* `manager`: the Manager instance used. See `src/core/Manager.ts`
+* `config`: the complete config object used
 
 ## Development
 
