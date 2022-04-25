@@ -339,7 +339,6 @@ $orejime-theme-color: white;
 ### Orejime instance
 
 * `show()`: show the consent modal
-* `internals.react`: the React app used internally. See `src/components/Main.ts`
 * `internals.manager`: the Manager instance used. See `src/core/Manager.ts`
 * `internals.config`: the complete config object used
 
