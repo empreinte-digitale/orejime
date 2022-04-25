@@ -43,10 +43,8 @@ export function init(conf: Config) {
 
 		return {
 			show: appRef.current!.openModal,
-			internals: {
-				manager: manager,
-				config: config
-			}
+			manager: manager,
+			config: config
 		};
 	});
 }
