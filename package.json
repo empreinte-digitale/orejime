@@ -68,7 +68,7 @@
     "yaml-loader": "^0.8.0"
   },
   "peerDependencies": {
-    "react": ">=15",
-    "react-dom": ">=15"
+    "react": ">=16.8",
+    "react-dom": ">=16.8"
   }
 }

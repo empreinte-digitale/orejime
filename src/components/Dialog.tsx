@@ -1,80 +1,79 @@
-import React, {Component} from 'react';
+import React, {useEffect, useLayoutEffect, useState} from 'react';
 import ReactModal, {Props as ReactModalProps} from 'react-modal';
-import {Config} from '../types';
 import {getElement} from '../utils/dom';
+import {useBeforeRender, useConfig} from '../utils/hooks';
 
 interface DialogProps extends Omit<ReactModalProps, 'isOpen'> {
-	config: Config;
 	isAlert?: boolean;
+	// the scroll position stuff is for iOS to work correctly
+	// when we want to prevent normal website scrolling with
+	// the modal opened
+	//
+	// /!\ this requires specific CSS to work. For example,
+	// if `htmlOpenClassName = 'modal-open'`:
+	//
+	// ```
+	// .modal-open {
+	//   height: 100%;
+	// }
+	//
+	// .modal-open body {
+	//   position: fixed;
+	//   overflow: hidden;
+	//   height: 100%;
+	//   width: 100%;
+	// }
+	// ```
 	handleScrollPosition?: boolean;
+	children: any;
 }
 
-export default class Dialog extends Component<DialogProps> {
-	static defaultProps = {
-		handleScrollPosition: true
-	};
+const Dialog = ({
+	isAlert = false,
+	handleScrollPosition = true,
+	children,
+	...reactModalProps
+}: DialogProps) => {
+	const config = useConfig();
+	const [scrollPosition, setScrollPosition] = useState<number | null>(null);
 
-	private scrollPosition: number;
-
-	constructor(props: DialogProps) {
-		super(props);
-
-		if (props.config.appElement) {
-			ReactModal.setAppElement(props.config.appElement);
+	useBeforeRender(() => {
+		if (config?.appElement) {
+			ReactModal.setAppElement(config.appElement);
 		}
-		this.scrollPosition = null;
-	}
+	});
 
-	componentWillMount() {
-		this.scrollPosition = window.pageYOffset;
-	}
+	useLayoutEffect(() => {
+		if (scrollPosition === null) {
+			setScrollPosition(window.pageYOffset);
+		}
+	});
 
-	componentWillUnmount() {
-		if (this.props.handleScrollPosition && this.scrollPosition !== null) {
-			// the scroll position stuff is for iOS to work correctly when we want to prevent normal website
-			// scrolling with the modal opened
-			//
-			// /!\ this requires specific CSS to work, example if `htmlOpenClassName = modal-open`:
-			//
-			// .modal-open {
-			//   height: 100%;
-			// }
-			// .modal-open body {
-			//   position: fixed;
-			//   overflow: hidden;
-			//   height: 100%;
-			//   width: 100%;
-			// }
+	useEffect(() => {
+		if (scrollPosition !== null) {
+			// setTimeout() avoids a race condition of some sort
 			setTimeout(() => {
-				//setTimeout because it seems there is a race condition of some sort without it… oh well
-				window.scrollTo(window.pageXOffset, this.scrollPosition);
-				this.scrollPosition = null;
+				if (handleScrollPosition) {
+					window.scrollTo(window.pageXOffset, scrollPosition);
+				}
+
+				setScrollPosition(null);
 			}, 0);
 		}
-	}
+	});
 
-	render() {
-		const {
-			isAlert,
-			children,
-			handleScrollPosition,
-			config,
-			...reactModalProps
-		} = this.props;
+	return (
+		<ReactModal
+			{...reactModalProps}
+			parentSelector={() => getElement(config.orejimeElement, document.body)}
+			role={isAlert ? 'alertdialog' : 'dialog'}
+			htmlOpenClassName="orejimeHtml-WithModalOpen"
+			bodyOpenClassName="orejimeBody-WithModalOpen"
+			isOpen
+		>
+			{children}
+		</ReactModal>
+	);
+};
 
-		return (
-			<ReactModal
-				{...reactModalProps}
-				parentSelector={() =>
-					getElement(config.orejimeElement, document.body)
-				}
-				role={isAlert ? 'alertdialog' : 'dialog'}
-				htmlOpenClassName="orejimeHtml-WithModalOpen"
-				bodyOpenClassName="orejimeBody-WithModalOpen"
-				isOpen
-			>
-				{children}
-			</ReactModal>
-		);
-	}
-}
+export default Dialog;
