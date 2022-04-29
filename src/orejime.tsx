@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {createRef, ElementRef} from 'react';
 import {render} from 'react-dom';
 import ConsentManager from './ConsentManager';
 import translations from './translations';
@@ -7,6 +7,7 @@ import {language} from './utils/i18n';
 import {deepMerge} from './utils/objects';
 import {Config} from './types';
 import {getRootElement} from './utils/dom';
+import Context from './components/Context';
 
 function getTranslations(config: Config) {
 	return deepMerge(
@@ -45,13 +46,22 @@ export function init(conf: Config) {
 	}
 	const element = getRootElement(config.orejimeElement);
 	const manager = new ConsentManager(config);
-	const t = getTranslations(config);
-	const app = (render(
-		<Main t={t} manager={manager} config={config} />,
+	const translations = getTranslations(config);
+	const appRef = createRef<ElementRef<typeof Main>>();
+	const app = render(
+		<Context.Provider
+			value={{
+				config,
+				manager,
+				translations
+			}}
+		>
+			<Main ref={appRef} />
+		</Context.Provider>,
 		element
-	) as unknown) as Main;
+	);
 	return {
-		show: app.showModal.bind(app),
+		show: appRef.current!.openModal,
 		internals: {
 			react: app,
 			manager: manager,

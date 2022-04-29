@@ -1,3 +1,5 @@
+import ConsentManager from './ConsentManager';
+
 export type JsonParser = (json: string) => any;
 export type JsonSerializer = (json: any) => string;
 
@@ -111,5 +113,9 @@ export interface Consents {
 }
 
 export interface ConsentsWatcher {
-	update: (emitter: any, id: string, consents: Consents) => void;
+	update: (
+		emitter: ConsentManager,
+		id: 'consents' | 'save',
+		consents?: Consents
+	) => void;
 }

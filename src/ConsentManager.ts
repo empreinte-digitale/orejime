@@ -44,7 +44,7 @@ export default class ConsentManager {
 		if (this.watchers.has(watcher)) this.watchers.delete(watcher);
 	}
 
-	notify(id: string, data: Consents) {
+	notify(id: Parameters<ConsentsWatcher['update']>[1], data?: Consents) {
 		this.watchers.forEach((watcher: ConsentsWatcher) => {
 			watcher.update(this, id, data);
 		});
@@ -171,6 +171,7 @@ export default class ConsentManager {
 
 		this.confirmed = true;
 		this.changed = false;
+		this.notify('save');
 	}
 
 	applyConsents() {

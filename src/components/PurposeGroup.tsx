@@ -1,27 +1,32 @@
 import React from 'react';
-import {PurposeGroup as PurposeGroupType, Translations} from '../types';
+import {PurposeGroup as PurposeGroupType} from '../types';
+import {useTranslations} from '../utils/hooks';
 
 interface PurposeGroupProps extends Omit<PurposeGroupType, 'purposes'> {
-	t: Translations;
 	children: any;
 }
 
 const PurposeGroup = ({
-	t,
 	id,
 	title,
 	description,
 	children
-}: PurposeGroupProps) => (
-	<div className="orejime-PurposeGroup">
-		<h2 className="orejime-PurposeGroup-title">{t?.[id]?.title || title}</h2>
+}: PurposeGroupProps) => {
+	const t = useTranslations();
 
-		<p className="orejime-PurposeGroup-description">
-			{t?.[id]?.description || description}
-		</p>
+	return (
+		<div className="orejime-PurposeGroup">
+			<h2 className="orejime-PurposeGroup-title">
+				{t?.[id]?.title || title}
+			</h2>
 
-		<div className="orejime-PurposeGroup-purposes">{children}</div>
-	</div>
-);
+			<p className="orejime-PurposeGroup-description">
+				{t?.[id]?.description || description}
+			</p>
+
+			<div className="orejime-PurposeGroup-purposes">{children}</div>
+		</div>
+	);
+};
 
 export default PurposeGroup;
