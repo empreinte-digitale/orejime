@@ -35,6 +35,7 @@ purpose:
   decline: Renunță
   enabled: ""
   disabled: ""
+  partial: ""
 misc:
   newWindowTitle: ""
   updateNeeded: Au existat modificări de la ultima vizită, vă rugăm să

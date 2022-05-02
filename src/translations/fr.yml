@@ -35,6 +35,7 @@ purpose:
   decline: Refuser
   enabled: Activé
   disabled: Désactivé
+  partial: ""
 misc:
   newWindowTitle: nouvelle fenêtre
   updateNeeded: Des modifications ont eu lieu depuis votre dernière visite, merci

@@ -50,6 +50,7 @@ export interface PurposeTranslations {
 	decline: string;
 	enabled: string;
 	disabled: string;
+	partial: string;
 }
 
 export interface MiscTranslations {

@@ -33,6 +33,7 @@ purpose:
   decline: Keeldu
   enabled: Lubatud
   disabled: Välja lülitatud
+  partial: ""
 misc:
   newWindowTitle: uus aken
   updateNeeded: Pärast teie viimast külastust on toimunud muudatusi, palun

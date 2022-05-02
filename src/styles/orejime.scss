@@ -1,3 +1,5 @@
+@use "sass:color";
+
 $orejime-box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 5px 5px 10px 0 rgba(0, 0, 0, 0.19) !default;
 $orejime-border-radius: 4px !default;
 
@@ -277,36 +279,19 @@ $orejime-breakpoint-banner: 990px !default;
     margin-top: 0.7em;
 }
 
-.orejime-PurposeGroup {
-    list-style: none;
-}
-
-.orejime-PurposeGroup-title {
-    font-size: 1.2em;
-    font-weight: bold;
-}
-
-.orejime-PurposeGroup-description {
-    font-size: 0.9em;
-}
-
-.orejime-PurposeGroup-purposes {
-    margin-top: 0.5em;
-    margin-left: 1em;
-}
-
 .orejime-Purpose {
     padding-left: 60px;
     min-height: 50px;
 }
 
 .orejime-Purpose-title {
-    font-weight: 600;
+    font-size: 1.2em;
+    font-weight: bold;
     cursor: pointer;
 }
 
 .orejime-Purpose-description {
-    font-size: 0.8em;
+    font-size: 0.9em;
 }
 
 .orejime-Purpose-exempt,
@@ -397,6 +382,16 @@ $orejime-breakpoint-banner: 990px !default;
     transform: translateX(20px);
 }
 
+.orejime-Purpose-input:indeterminate + .orejime-Purpose-label .orejime-Purpose-slider {
+    background-color: color.mix($orejime-blue, #aaa)
+}
+
+.orejime-Purpose-input:indeterminate + .orejime-Purpose-label .orejime-Purpose-slider:before {
+    -webkit-transform: translateX(10px);
+    -ms-transform: translateX(10px);
+    transform: translateX(10px);
+}
+
 .orejime-PurposeToggles {
     margin-bottom: 1em;
     display: block;
@@ -404,4 +399,16 @@ $orejime-breakpoint-banner: 990px !default;
 
 .orejime-PurposeToggles-item {
     display: inline;
+}
+
+.orejime-Purpose-children {
+    margin: 1em 0;
+}
+
+.orejime-Purpose-children .orejime-Purpose-title {
+    font-size: 0.9em;
+}
+
+.orejime-Purpose-children .orejime-Purpose-description {
+    font-size: 0.8em;
 }

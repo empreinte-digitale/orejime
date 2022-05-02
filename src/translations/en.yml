@@ -34,6 +34,7 @@ purpose:
   decline: Decline
   enabled: Enabled
   disabled: Disabled
+  partial: ""
 misc:
   newWindowTitle: new window
   updateNeeded: There were changes since your last visit, please update your consent.

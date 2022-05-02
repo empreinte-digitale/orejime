@@ -35,6 +35,7 @@ purpose:
   decline: Refusar
   enabled: Activat
   disabled: Desactivat
+  partial: ""
 misc:
   newWindowTitle: fenèstra novèla
   updateNeeded: I aguèt de modificacions dempuèi vòstra darrièra visita, mercés

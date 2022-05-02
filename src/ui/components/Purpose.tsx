@@ -1,9 +1,16 @@
-import React from 'react';
+import React, {FC, useEffect, useRef} from 'react';
 import {Purpose as PurposeType} from '../types';
 import {useTranslations} from '../utils/hooks';
 
-export interface PurposeProps extends PurposeType {
-	consent: boolean;
+export enum ConsentState {
+	declined,
+	accepted,
+	partial
+}
+
+export interface PurposeProps extends Omit<PurposeType, 'cookies'> {
+	consent: ConsentState;
+	children?: React.ReactNode;
 	onChange: (checked: boolean) => void;
 }
 
@@ -14,19 +21,28 @@ const Purpose = ({
 	isMandatory,
 	isExempt,
 	consent,
+	children,
 	onChange
 }: PurposeProps) => {
 	const t = useTranslations();
 	const domId = `orejime-purpose-${id}`;
+	const inputRef = useRef<HTMLInputElement>();
+
+	useEffect(() => {
+		if (inputRef.current) {
+			inputRef.current.indeterminate = consent === ConsentState.partial;
+		}
+	}, [consent]);
 
 	return (
 		<div className="orejime-Purpose">
 			<input
 				id={domId}
+				ref={inputRef}
 				className="orejime-Purpose-input"
 				aria-describedby={description ? `${domId}-description` : null}
 				disabled={isMandatory}
-				checked={!!consent}
+				checked={consent === ConsentState.accepted}
 				type="checkbox"
 				onChange={(event) => {
 					onChange(event.target.checked);
@@ -63,7 +79,11 @@ const Purpose = ({
 				>
 					<div className="orejime-Purpose-slider"></div>
 					<div aria-hidden="true" className="orejime-Purpose-switchLabel">
-						{consent ? t.purpose.enabled : t.purpose.disabled}
+						{consent === ConsentState.accepted
+							? t.purpose.enabled
+							: consent === ConsentState.declined
+							? t.purpose.disabled
+							: t.purpose.partial}
 					</div>
 				</span>
 			</label>
@@ -81,6 +101,8 @@ const Purpose = ({
 					/>
 				</div>
 			) : null}
+
+			<div className="orejime-Purpose-children">{children}</div>
 		</div>
 	);
 };

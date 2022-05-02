@@ -46,7 +46,8 @@ export const migrateTranslations = (
 			accept: translations?.accept,
 			decline: translations?.decline,
 			enabled: translations?.enabled,
-			disabled: translations?.disabled
+			disabled: translations?.disabled,
+			partial: ''
 		},
 		misc: {
 			newWindowTitle: translations?.newWindow,
