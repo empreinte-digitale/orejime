@@ -1,9 +1,6 @@
 import React from 'react';
-import type {
-	PurposeList as PurposeListType,
-	Purpose as PurposeType
-} from '../types';
-import PurposeGroup from './PurposeGroup';
+import type {PurposeList as PurposeListType} from '../types';
+import PurposeGroupContainer from './PurposeGroupContainer';
 import PurposeList from './PurposeList';
 import PurposeContainer from './PurposeContainer';
 
@@ -15,15 +12,11 @@ const PurposeTree = ({purposes}: PurposeTreeProps) => (
 	<PurposeList>
 		{purposes.map((purpose) =>
 			'purposes' in purpose ? (
-				<PurposeGroup
-					id={purpose.id}
-					title={purpose.title}
-					description={purpose.description}
-				>
+				<PurposeGroupContainer {...purpose}>
 					<PurposeTree purposes={purpose.purposes} />
-				</PurposeGroup>
+				</PurposeGroupContainer>
 			) : (
-				<PurposeContainer {...(purpose as PurposeType)} />
+				<PurposeContainer {...purpose} />
 			)
 		)}
 	</PurposeList>

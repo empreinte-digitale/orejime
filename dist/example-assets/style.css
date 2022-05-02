@@ -8,6 +8,7 @@
 	--magenta-alt: #AB0D42;
 	--magenta-focus: #e90956;
 	--magenta-active: #c30748;
+	--magenta-indeterminate: #c0597d;
 	--cyan: #367591;
 	--cyan-alt: #245C73;
 	--cyan-dark: #1b3b4a;
@@ -428,6 +429,10 @@ main {
 
 .orejime-Purpose-input:checked + .orejime-Purpose-label .orejime-Purpose-slider {
 	background: var(--magenta);
+}
+
+.orejime-Purpose-input:indeterminate + .orejime-Purpose-label .orejime-Purpose-slider {
+	background: var(--magenta-indeterminate);
 }
 
 .orejime-Modal-privacyPolicyLink {

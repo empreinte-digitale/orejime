@@ -34,6 +34,7 @@ purpose:
   decline: Hylkää
   enabled: ""
   disabled: ""
+  partial: ""
 misc:
   newWindowTitle: ""
   updateNeeded: Olemme tehneet muutoksia ehtoihin viime vierailusi jälkeen, tarkista ehdot.

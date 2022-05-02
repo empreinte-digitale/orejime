@@ -33,6 +33,7 @@ purpose:
   decline: Avböj
   enabled: ""
   disabled: ""
+  partial: ""
 misc:
   newWindowTitle: ""
   updateNeeded: Det har skett förändringar sedan ditt senaste besök, var god

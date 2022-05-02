@@ -1,6 +1,12 @@
 import {useContext, useEffect, useRef, useState} from 'react';
 import Context from '../components/Context';
-import {Purpose} from '../../core';
+import {
+	acceptedConsents,
+	areAllPurposesDisabled,
+	areAllPurposesEnabled,
+	declinedConsents,
+	Purpose
+} from '../../core';
 
 // @see https://stackoverflow.com/a/56818036/2391359
 export const useBeforeRender = (callback: () => void) => {
@@ -78,6 +84,27 @@ export const useModalState = (): [
 	};
 
 	return [isOpen, open, close];
+};
+
+export const useConsentGroup = (
+	purposes: Purpose[]
+): [boolean, boolean, () => void, () => void] => {
+	const manager = useManager();
+
+	const acceptAll = () => {
+		manager.setConsents(acceptedConsents(purposes));
+	};
+
+	const declineAll = () => {
+		manager.setConsents(declinedConsents(purposes));
+	};
+
+	return [
+		areAllPurposesEnabled(purposes, manager.getAllConsents()),
+		areAllPurposesDisabled(purposes, manager.getAllConsents()),
+		acceptAll,
+		declineAll
+	];
 };
 
 export const useConsent = (

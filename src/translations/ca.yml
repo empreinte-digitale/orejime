@@ -36,6 +36,7 @@ purpose:
   decline: Refusar
   enabled: Actiu
   disabled: Inactiu
+  partial: ""
 misc:
   newWindowTitle: finestra nova
   updateNeeded: S'han produït canvis des de la vostra última visita, actualitzeu
