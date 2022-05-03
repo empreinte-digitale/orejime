@@ -1,7 +1,7 @@
 import React from 'react';
 import type {PurposeList as PurposeListType} from '../types';
 import PurposeGroupContainer from './PurposeGroupContainer';
-import PurposeList from './PurposeList';
+import PurposeList from '../themes/orejime/PurposeList';
 import PurposeContainer from './PurposeContainer';
 
 interface PurposeTreeProps {

@@ -3,9 +3,9 @@ import React, {
 	ForwardRefRenderFunction,
 	useImperativeHandle
 } from 'react';
-import ModalBanner from './ModalBanner';
-import Banner from './Banner';
-import Modal from './Modal';
+import ModalBanner from '../themes/orejime/ModalBanner';
+import Banner from '../themes/orejime/Banner';
+import Modal from '../themes/orejime/Modal';
 import {
 	useBannerState,
 	useConfig,
@@ -13,8 +13,8 @@ import {
 	useModalState
 } from '../utils/hooks';
 import PurposeTree from './PurposeTree';
-import {GlobalPurpose} from './GlobalPurpose';
 import StubManagerProvider from './StubManagerProvider';
+import GlobalConsentContainer from './GlobalConsentContainer';
 
 interface MainHandle {
 	openModal: () => void;
@@ -65,7 +65,7 @@ const Main: ForwardRefRenderFunction<MainHandle> = (_, ref) => {
 							onSave={commit}
 						>
 							{manager.areAllPurposesMandatory() ? null : (
-								<GlobalPurpose />
+								<GlobalConsentContainer />
 							)}
 
 							<PurposeTree purposes={config.purposes} />

@@ -1,22 +1,10 @@
 import React from 'react';
-import {ImageDescriptor} from '../types';
-import {imageAttributes} from '../utils/config';
-import {useTranslations} from '../utils/hooks';
-import {template} from '../utils/template';
+import {imageAttributes} from '../../utils/config';
+import {useTranslations} from '../../utils/hooks';
+import {template} from '../../utils/template';
+import {BannerComponent} from '../../components/types/Banner';
 
-export interface BannerProps {
-	isHidden: boolean;
-	isForced?: boolean;
-	needsUpdate: boolean;
-	purposeTitles: string[];
-	privacyPolicyUrl: string;
-	logo?: ImageDescriptor;
-	onAccept: () => void;
-	onDecline: () => void;
-	onConfigure: () => void;
-}
-
-const Banner = ({
+const Banner: BannerComponent = ({
 	isHidden,
 	isForced,
 	needsUpdate,
@@ -26,7 +14,7 @@ const Banner = ({
 	onAccept: onSaveRequest,
 	onDecline: onDeclineRequest,
 	onConfigure: onConfigRequest
-}: BannerProps) => {
+}) => {
 	const t = useTranslations();
 
 	return (
