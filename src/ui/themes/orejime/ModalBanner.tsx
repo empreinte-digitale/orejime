@@ -1,10 +1,11 @@
 import React from 'react';
 import type {Aria} from 'react-modal';
-import Dialog from './Dialog';
-import Banner, {BannerProps} from './Banner';
-import {useTranslations} from '../utils/hooks';
+import Dialog from '../../components/Dialog';
+import Banner from './Banner';
+import {useTranslations} from '../../utils/hooks';
+import {ModalBannerComponent} from '../../components/types/ModalBanner';
 
-const ModalBanner = (props: BannerProps) => {
+const ModalBanner: ModalBannerComponent = (props) => {
 	const t = useTranslations();
 
 	return (
@@ -18,7 +19,7 @@ const ModalBanner = (props: BannerProps) => {
 				} as Aria
 			}
 		>
-			<Banner {...props} isForced />
+			<Banner {...props} />
 		</Dialog>
 	);
 };

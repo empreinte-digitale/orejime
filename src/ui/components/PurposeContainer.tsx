@@ -1,6 +1,8 @@
 import React from 'react';
 import {useConsent} from '../utils/hooks';
-import Purpose, {ConsentState, PurposeProps} from './Purpose';
+import Purpose from '../themes/orejime/Purpose';
+import {ConsentState} from './types/ConsentState';
+import {PurposeProps} from './types/Purpose';
 
 export interface PurposeContainerProps
 	extends Omit<PurposeProps, 'consent' | 'onChange'> {}

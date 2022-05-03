@@ -1,20 +1,9 @@
-import React, {FC, useEffect, useRef} from 'react';
-import {Purpose as PurposeType} from '../types';
-import {useTranslations} from '../utils/hooks';
+import React, {useEffect, useRef} from 'react';
+import {useTranslations} from '../../utils/hooks';
+import {ConsentState} from '../../components/types/ConsentState';
+import {PurposeComponent} from '../../components/types/Purpose';
 
-export enum ConsentState {
-	declined,
-	accepted,
-	partial
-}
-
-export interface PurposeProps extends Omit<PurposeType, 'cookies'> {
-	consent: ConsentState;
-	children?: React.ReactNode;
-	onChange: (checked: boolean) => void;
-}
-
-const Purpose = ({
+const Purpose: PurposeComponent = ({
 	id,
 	title,
 	description,
@@ -23,7 +12,7 @@ const Purpose = ({
 	consent,
 	children,
 	onChange
-}: PurposeProps) => {
+}) => {
 	const t = useTranslations();
 	const domId = `orejime-purpose-${id}`;
 	const inputRef = useRef<HTMLInputElement>();

@@ -1,8 +1,13 @@
 import React from 'react';
-import {useManager, useTranslations} from '../utils/hooks';
+import {useTranslations} from '../../utils/hooks';
+import {GlobalConsentComponent} from '../../components/types/GlobalConsent';
 
-export const GlobalPurpose = () => {
-	const manager = useManager();
+const GlobalConsent: GlobalConsentComponent = ({
+	isEnabled,
+	isDisabled,
+	acceptAll,
+	declineAll
+}) => {
 	const t = useTranslations();
 
 	return (
@@ -10,8 +15,8 @@ export const GlobalPurpose = () => {
 			<button
 				type="button"
 				className="orejime-Button orejime-Button--info orejime-PurposeToggles-button orejime-PurposeToggles-enableAll"
-				disabled={manager.areAllPurposesEnabled()}
-				onClick={() => manager.acceptAll()}
+				disabled={isEnabled}
+				onClick={acceptAll}
 			>
 				{t.modal.acceptAll}
 			</button>
@@ -19,11 +24,13 @@ export const GlobalPurpose = () => {
 			<button
 				type="button"
 				className="orejime-Button orejime-Button--info orejime-PurposeToggles-button orejime-PurposeToggles-disableAll"
-				disabled={manager.areAllPurposesDisabled()}
-				onClick={() => manager.declineAll()}
+				disabled={isDisabled}
+				onClick={declineAll}
 			>
 				{t.modal.declineAll}
 			</button>
 		</div>
 	);
 };
+
+export default GlobalConsent;

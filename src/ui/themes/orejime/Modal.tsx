@@ -1,24 +1,17 @@
 import React from 'react';
 import {Close} from './Icons';
-import Dialog from './Dialog';
-import {template} from '../utils/template';
-import {useTranslations} from '../utils/hooks';
+import Dialog from '../../components/Dialog';
+import {template} from '../../utils/template';
+import {useTranslations} from '../../utils/hooks';
+import {ModalComponent} from '../../components/types/Modal';
 
-interface ModalProps {
-	isForced: boolean;
-	privacyPolicyUrl: string;
-	onClose: () => void;
-	onSave: () => void;
-	children: React.ReactNode;
-}
-
-const Modal = ({
+const Modal: ModalComponent = ({
 	isForced,
 	privacyPolicyUrl,
 	onClose,
 	onSave,
 	children
-}: ModalProps) => {
+}) => {
 	const t = useTranslations();
 
 	return (
@@ -86,6 +79,7 @@ const Modal = ({
 						>
 							{t.modal.save}
 						</button>
+
 						<a
 							target="_blank"
 							className="orejime-Modal-poweredByLink"

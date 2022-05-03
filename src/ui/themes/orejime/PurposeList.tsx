@@ -1,10 +1,7 @@
 import React from 'react';
+import {PurposeListComponent} from '../../components/types/PurposeList';
 
-interface PurposeListProps {
-	children?: JSX.Element[];
-}
-
-const PurposeList = ({children}: PurposeListProps) => (
+const PurposeList: PurposeListComponent = ({children}) => (
 	<ul className="orejime-PurposeList">
 		{children.map((child) => (
 			<li className="orejime-PurposeList-item">{child}</li>
