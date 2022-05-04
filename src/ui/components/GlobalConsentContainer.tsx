@@ -1,9 +1,9 @@
 import React from 'react';
-import {useManager} from '../utils/hooks';
-import GlobalConsent from '../themes/orejime/GlobalConsent';
+import {useManager, useTheme} from '../utils/hooks';
 
 const GlobalConsentContainer = () => {
 	const manager = useManager();
+	const {GlobalConsent} = useTheme();
 
 	return (
 		<GlobalConsent

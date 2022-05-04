@@ -1,7 +1,6 @@
 import React from 'react';
 import {PurposeGroup as PurposeGroupType} from '../types';
-import {useConsentGroup} from '../utils/hooks';
-import Purpose from '../themes/orejime/Purpose';
+import {useConsentGroup, useTheme} from '../utils/hooks';
 import {ConsentState} from './types/ConsentState';
 
 interface PurposeGroupProps extends PurposeGroupType {
@@ -15,6 +14,7 @@ const PurposeGroup = ({purposes, children, ...props}: PurposeGroupProps) => {
 		acceptAll,
 		declineAll
 	] = useConsentGroup(purposes);
+	const {Purpose} = useTheme();
 
 	return (
 		<Purpose

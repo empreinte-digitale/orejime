@@ -3,14 +3,12 @@ import React, {
 	ForwardRefRenderFunction,
 	useImperativeHandle
 } from 'react';
-import ModalBanner from '../themes/orejime/ModalBanner';
-import Banner from '../themes/orejime/Banner';
-import Modal from '../themes/orejime/Modal';
 import {
 	useBannerState,
 	useConfig,
 	useManager,
-	useModalState
+	useModalState,
+	useTheme
 } from '../utils/hooks';
 import PurposeTree from './PurposeTree';
 import StubManagerProvider from './StubManagerProvider';
@@ -25,6 +23,7 @@ const Main: ForwardRefRenderFunction<MainHandle> = (_, ref) => {
 	const manager = useManager();
 	const isBannerOpen = useBannerState();
 	const [isModalOpen, openModal, closeModal] = useModalState();
+	const {Banner, Modal, ModalBanner} = useTheme();
 	const BannerComponent = config.forceBanner ? ModalBanner : Banner;
 
 	// makes openModal() available from the outside
