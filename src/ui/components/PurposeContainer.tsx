@@ -1,6 +1,5 @@
 import React from 'react';
-import {useConsent} from '../utils/hooks';
-import Purpose from '../themes/orejime/Purpose';
+import {useConsent, useTheme} from '../utils/hooks';
 import {ConsentState} from './types/ConsentState';
 import {PurposeProps} from './types/Purpose';
 
@@ -9,6 +8,7 @@ export interface PurposeContainerProps
 
 const PurposeContainer = (props: PurposeContainerProps) => {
 	const [consent, setConsent] = useConsent(props.id);
+	const {Purpose} = useTheme();
 
 	return (
 		<Purpose

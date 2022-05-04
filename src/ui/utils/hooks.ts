@@ -24,6 +24,16 @@ export const useConfig = () => {
 	return config;
 };
 
+export const useTranslations = () => {
+	const {translations} = useConfig();
+	return translations;
+};
+
+export const useTheme = () => {
+	const {theme} = useContext(Context);
+	return theme;
+};
+
 export const useManager = () => {
 	const {manager} = useContext(Context);
 	const [i, refresh] = useState(0);
@@ -43,11 +53,6 @@ export const useManager = () => {
 	});
 
 	return manager;
-};
-
-export const useTranslations = () => {
-	const {translations} = useConfig();
-	return translations;
 };
 
 export const useBannerState = () => {

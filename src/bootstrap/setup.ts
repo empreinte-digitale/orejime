@@ -1,10 +1,18 @@
 import {setup} from '../core';
 import type {Config} from '../ui';
 import {deepMerge} from '../ui/utils/objects';
-import {purposesOnly} from '../ui/utils/config';
+import {
+	assertConfigValidity,
+	DefaultConfig,
+	purposesOnly
+} from '../ui/utils/config';
 import {once} from '../ui/utils/functions';
+import type {UmdGlobal} from './umd';
 
-export default (config: Config) => {
+export default (partialConfig: Config): UmdGlobal => {
+	const config = deepMerge(DefaultConfig, partialConfig);
+	assertConfigValidity(config);
+
 	const manager = setup(purposesOnly(config.purposes), {
 		cookie: config.cookie
 	});
@@ -12,24 +20,23 @@ export default (config: Config) => {
 	const loadUi = once(() =>
 		Promise.all([
 			import(
-				/* webpackChunkName: "orejime-ui" */
-				'../ui'
+				/* webpackChunkName: "orejime-theme-[request]" */
+				`../ui/themes/${config.theme}/index.ts`
 			),
 			import(
 				/* webpackChunkName: "orejime-lang-[request]" */
 				`../translations/${config.lang}.yml`
 			)
-		]).then(([ui, translations]) => {
+		]).then(([{default: setupTheme}, {default: translations}]) => {
 			const fullConfig = deepMerge({translations} as Config, config);
-			return ui.setup(fullConfig, manager);
+			return setupTheme(fullConfig, manager);
 		})
 	);
 
-	const showUi = () => {
-		loadUi().then(({show}) => {
+	const showUi = () =>
+		loadUi().then((show) => {
 			show();
 		});
-	};
 
 	manager.on('dirty', (isDirty) => {
 		if (isDirty) {
@@ -37,16 +44,13 @@ export default (config: Config) => {
 		}
 	});
 
-	if (!manager.isDirty()) {
-		return Promise.resolve({
-			config,
-			manager,
-			show: showUi
-		});
+	if (manager.isDirty()) {
+		showUi();
 	}
 
-	return loadUi().then((props) => ({
-		...props,
-		manager
-	}));
+	return {
+		config,
+		manager,
+		show: showUi
+	};
 };

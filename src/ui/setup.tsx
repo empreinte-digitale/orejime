@@ -1,17 +1,13 @@
 import React, {createRef, ElementRef} from 'react';
 import {render} from 'react-dom';
 import Main from './components/Main';
-import {deepMerge} from './utils/objects';
 import {Config} from './types';
 import {getRootElement} from './utils/dom';
 import Context from './components/Context';
 import {Manager} from '../core';
-import {DefaultConfig, assertConfigValidity} from './utils/config';
+import {Theme} from './components/types/Theme';
 
-export default (conf: Config, manager: Manager) => {
-	const config = deepMerge(DefaultConfig, conf);
-	assertConfigValidity(config);
-
+export default (theme: Theme) => (config: Config, manager: Manager) => {
 	const element = getRootElement(config.orejimeElement);
 	const appRef = createRef<ElementRef<typeof Main>>();
 
@@ -19,7 +15,8 @@ export default (conf: Config, manager: Manager) => {
 		<Context.Provider
 			value={{
 				config,
-				manager
+				manager,
+				theme
 			}}
 		>
 			<Main ref={appRef} />
@@ -27,9 +24,5 @@ export default (conf: Config, manager: Manager) => {
 		element
 	);
 
-	return {
-		show: appRef.current!.openModal,
-		manager: manager,
-		config: config
-	};
+	return appRef.current!.openModal;
 };

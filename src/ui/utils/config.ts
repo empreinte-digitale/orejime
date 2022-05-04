@@ -8,6 +8,7 @@ import {
 import {language} from './i18n';
 
 export const DefaultConfig: Config = {
+	theme: 'orejime',
 	privacyPolicyUrl: '',
 	forceModal: false,
 	forceBanner: false,
