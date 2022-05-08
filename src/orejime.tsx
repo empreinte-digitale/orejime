@@ -6,22 +6,15 @@ import {Config, Translations} from './types';
 import {getRootElement} from './utils/dom';
 import Context from './components/Context';
 import {setup} from './core';
-import {DefaultConfig, purposesOnly} from './utils/config';
+import {
+	DefaultConfig,
+	purposesOnly,
+	assertConfigValidity
+} from './utils/config';
 
 export function init(conf: Config) {
 	const config = deepMerge(DefaultConfig, conf);
-	const errors = [];
-	if (!Object.keys(config.purposes).length) {
-		errors.push('  - you must define `purposes` to manage');
-	}
-	if (!config.privacyPolicyUrl.length) {
-		errors.push('  - you must define `privacyPolicyUrl`');
-	}
-	if (errors.length) {
-		errors.unshift('Orejime config error:');
-		console.error(errors.join('\n'));
-		return;
-	}
+	assertConfigValidity(config);
 
 	return import(
 		/* webpackChunkName: "orejime-lang-[request]" */

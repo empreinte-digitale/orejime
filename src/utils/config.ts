@@ -16,6 +16,16 @@ export const DefaultConfig: Config = {
 	purposes: []
 };
 
+export const assertConfigValidity = (config: Config) => {
+	if (!Object.keys(config.purposes).length) {
+		throw new Error('Orejime config: you must define `purposes`');
+	}
+
+	if (!config.privacyPolicyUrl.length) {
+		throw new Error('Orejime config: you must define `privacyPolicyUrl`');
+	}
+};
+
 // Strips groups from a list of purposes and purpose groups.
 export const purposesOnly = (purposes: PurposeList): Purpose[] =>
 	purposes.flatMap((purpose) =>
