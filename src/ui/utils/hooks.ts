@@ -1,6 +1,6 @@
 import {useContext, useEffect, useRef, useState} from 'react';
 import Context from '../components/Context';
-import {Purpose} from '../core';
+import {Purpose} from '../../core';
 
 // @see https://stackoverflow.com/a/56818036/2391359
 export const useBeforeRender = (callback: () => void) => {
