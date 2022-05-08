@@ -87,22 +87,24 @@ You need to pass Orejime 🍪 a configuration object with, at the very least, `p
 
 ```js
 var orejimeConfig = {
-    // Optional. You can customize the ID of the <div> that Orejime will create when starting up.
-    // The generated <div> will be inserted at the beginning of the <body>.
-    // If there is already a DOM element with this id, Orejime will use it instead of creating a new element.
-    // defaults to "orejime".
-    elementID: "orejime",
+    // Optional. You can customize the element that will contain Orejime (either
+    // a selector or a DOM element).
+    // It no element matches, an element will be created and inserted at the
+    // beginning of the <body>.
+    orejimeElement: "#orejime",
 
-    // Optional. For accessibility's sake, the Orejime modal must know what is the element
-    // containing your app or website. Orejime should *not* be in this element.
-    // The idea is your DOM could look like this after Orejime is initialized:
+    // Optional. For accessibility's sake, the Orejime modal must know what is
+    // the element containing your app or website so it can hide it to assistive
+    // technologies (Orejime should *not* be in this element).
+    // The idea is that your DOM should look like this once Orejime is initialized:
+    //
     // <body>
     //      <div id="orejime">...</div>
     //      <div id="app">your actual website</div>
     // </body>
     //
-    // It is highly recommended to set this option, even though it's not required.
-    // defaults to undefined.
+    // It is highly recommended to set this option (either a selector or a DOM
+    // element), even though it's not required.
     appElement: "#app",
 
     // Optional. You can customize the name of the cookie that Orejime uses for storing

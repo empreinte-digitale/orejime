@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import ReactModal, {Props as ReactModalProps} from 'react-modal';
 import {Config} from '../types';
+import {getElement} from '../utils/dom';
 import useLegacyLifecycleMethods from '../utils/useLegacyLifecycleMethods';
 
 interface Props extends ReactModalProps {
@@ -89,7 +90,7 @@ export default class Dialog extends Component<Props> {
 		return (
 			<ReactModal
 				parentSelector={() =>
-					document.getElementById(config.elementID || 'orejime')
+					getElement(config.orejimeElement, document.body)
 				}
 				htmlOpenClassName="orejimeHtml-WithModalOpen"
 				bodyOpenClassName="orejimeBody-WithModalOpen"
