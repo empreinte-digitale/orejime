@@ -1,10 +1,23 @@
-import React from 'react';
-import AppList from './app-list';
-import CategorizedAppList from './categorized-app-list';
+import React, {Component} from 'react';
+import ConsentManager from '../ConsentManager';
+import {Config, Consents, CssNamespace, Translate} from '../types';
+import AppList from './AppList';
+import CategorizedAppList from './CategorizedAppList';
 
-export default class Apps extends React.Component {
-	constructor(props, context) {
-		super(props, context);
+interface Props {
+	t: Translate;
+	ns: CssNamespace;
+	config: Config;
+	manager: ConsentManager;
+}
+
+interface State {
+	consents: Consents;
+}
+
+export default class Apps extends Component<Props, State> {
+	constructor(props: Props) {
+		super(props);
 		props.manager.watch(this);
 		this.state = {
 			consents: props.manager.consents
@@ -16,7 +29,7 @@ export default class Apps extends React.Component {
 		manager.unwatch(this);
 	}
 
-	update(obj, type, data) {
+	update(obj: ConsentManager, type: string, data: Consents) {
 		const {manager} = this.props;
 		if (obj == manager && type == 'consents') this.setState({consents: data});
 	}
@@ -26,7 +39,7 @@ export default class Apps extends React.Component {
 		const {consents} = this.state;
 		const {apps, categories} = config;
 
-		const toggleAll = (value) => {
+		const toggleAll = (value: boolean) => {
 			apps.map((app) => {
 				manager.updateConsent(app, value);
 			});

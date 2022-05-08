@@ -1,9 +1,17 @@
-import React from 'react';
-import {getPurposes} from '../utils/config';
-import Dialog from './dialog';
-import ConsentNotice from './consent-notice';
+import React, {Component} from 'react';
+import Dialog from './Dialog';
+import ConsentNotice, {Props as ConsentNoticeProps} from './ConsentNotice';
+import {Config, CssNamespace, Translate} from '../types';
 
-export default class ConsentNoticeWrapper extends React.Component {
+interface Props extends ConsentNoticeProps {
+	t: Translate;
+	ns: CssNamespace;
+	config: Config;
+	isVisible: boolean;
+	isMandatory: boolean;
+}
+
+export default class ConsentNoticeWrapper extends Component<Props> {
 	render() {
 		const {isVisible, ...props} = this.props;
 		if (!this.props.isMandatory && !isVisible) {

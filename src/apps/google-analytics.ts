@@ -1,8 +1,8 @@
-import {cookies} from './helpers/google'
+import {cookies, CookiesParams} from './helpers/google'
 
 
 
-export default function(params) {
+export default function(params: CookiesParams) {
 	return {
 		name: 'google-analytics',
 		title : 'Google Analytics',

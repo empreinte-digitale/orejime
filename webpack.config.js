@@ -16,7 +16,7 @@ module.exports = {
 			directory: fullPath('dist')
 		}
 	},
-	entry: [fullPath('src/orejime.umd.js'), fullPath('src/scss/orejime.scss')],
+	entry: [fullPath('src/orejime.umd.ts'), fullPath('src/scss/orejime.scss')],
 	output: {
 		filename: 'orejime.js',
 		path: fullPath('dist'),
@@ -28,7 +28,7 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.jsx?/,
+				test: /\.tsx?/,
 				use: ['babel-loader', 'ts-loader'],
 				include: fullPath('src')
 			},
@@ -43,6 +43,7 @@ module.exports = {
 		]
 	},
 	resolve: {
+		extensions: ['.js', '.ts', '.tsx'],
 		alias: {
 			react: 'preact/compat',
 			'react-dom': 'preact/compat'

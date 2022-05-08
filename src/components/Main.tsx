@@ -1,9 +1,22 @@
-import React from 'react';
-import ConsentNoticeWrapper from './consent-notice-wrapper';
-import ConsentModal from './consent-modal';
+import React, {Component} from 'react';
+import ConsentNoticeWrapper from './ConsentNoticeWrapper';
+import ConsentModal from './ConsentModal';
+import ConsentManager from '../ConsentManager';
+import {Config, CssNamespace, Translate} from '../types';
 
-export default class Main extends React.Component {
-	constructor(props) {
+interface Props {
+	t: Translate;
+	ns: CssNamespace;
+	config: Config;
+	manager: ConsentManager;
+}
+
+interface State {
+	isModalVisible: boolean;
+}
+
+export default class Main extends Component<Props, State> {
+	constructor(props: Props) {
 		super(props);
 		this.state = {
 			isModalVisible: this.isModalVisible()
@@ -15,7 +28,7 @@ export default class Main extends React.Component {
 		this.acceptAndHideAll = this.acceptAndHideAll.bind(this);
 	}
 
-	isModalVisible(userRequest) {
+	isModalVisible(userRequest?: boolean) {
 		const {config, manager} = this.props;
 		if (userRequest) {
 			return true;
@@ -40,21 +53,21 @@ export default class Main extends React.Component {
 		return true;
 	}
 
-	showModal(e) {
+	showModal(e?: Event) {
 		if (e !== undefined) {
 			e.preventDefault();
 		}
 		this.setState({isModalVisible: this.isModalVisible(true)});
 	}
 
-	hideModal(e) {
+	hideModal(e?: Event) {
 		if (e !== undefined) {
 			e.preventDefault();
 		}
 		this.setState({isModalVisible: this.isModalVisible(false)});
 	}
 
-	saveAndHideAll(e) {
+	saveAndHideAll(e?: Event) {
 		if (e !== undefined) {
 			e.preventDefault();
 		}
@@ -62,13 +75,13 @@ export default class Main extends React.Component {
 		this.setState({isModalVisible: this.isModalVisible(false)});
 	}
 
-	declineAndHideAll(e) {
+	declineAndHideAll() {
 		this.props.manager.declineAll();
 		this.props.manager.saveAndApplyConsents();
 		this.setState({isModalVisible: this.isModalVisible(false)});
 	}
 
-	acceptAndHideAll(e) {
+	acceptAndHideAll() {
 		this.props.manager.acceptAll();
 		this.props.manager.saveAndApplyConsents();
 		this.setState({isModalVisible: this.isModalVisible(false)});

@@ -1,6 +1,7 @@
 // To create a new translation, add a YAML file with the required entries and
 // link it here using the appropriate language code.
 
+import {Translations} from '../types';
 import ca from './ca.yml';
 import de from './de.yml';
 import en from './en.yml';
@@ -17,18 +18,18 @@ import ro from './ro.yml';
 import sv from './sv.yml';
 
 export default {
-	ca,
-	de,
-	en,
-	es,
-	et,
-	fi,
-	fr,
-	hu,
-	it,
-	nb,
-	nl,
-	oc,
-	ro,
-	sv
+	ca: ca as Translations,
+	de: de as Translations,
+	en: en as Translations,
+	es: es as Translations,
+	et: et as Translations,
+	fi: fi as Translations,
+	fr: fr as Translations,
+	hu: hu as Translations,
+	it: it as Translations,
+	nb: nb as Translations,
+	nl: nl as Translations,
+	oc: oc as Translations,
+	ro: ro as Translations,
+	sv: sv as Translations
 };
