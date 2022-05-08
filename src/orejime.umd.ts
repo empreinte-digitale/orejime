@@ -1,4 +1,12 @@
-const Orejime = require('./orejime');
+import {Config} from './types';
+import Orejime from './orejime';
+
+declare global {
+	interface Window {
+		orejimeConfig: Config;
+		orejime: any;
+	}
+}
 
 function initDefaultInstance() {
 	if (
@@ -16,4 +24,4 @@ if (document.readyState === 'loading') {
 	initDefaultInstance();
 }
 
-module.exports = Orejime;
+export default Orejime;

@@ -1,6 +1,5 @@
 {
 	"compilerOptions": {
-		"allowJs": true,
 		"allowSyntheticDefaultImports": true,
 		"jsx": "react",
 		"module": "esnext",

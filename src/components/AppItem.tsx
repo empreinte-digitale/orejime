@@ -1,12 +1,20 @@
-import React from 'react';
+import React, {ChangeEvent, Component} from 'react';
+import {App, CssNamespace, Translate} from '../types';
 
-export default class AppItem extends React.Component {
+interface Props extends App {
+	t: Translate;
+	ns: CssNamespace;
+	checked: boolean;
+	onToggle: (checked: boolean) => void;
+}
+
+export default class AppItem extends Component<Props> {
 	render() {
 		const {checked, onToggle, name, title, description, t, ns} = this.props;
 		const required = this.props.required || false;
 		const optOut = this.props.optOut || false;
 		const purposes = this.props.purposes || [];
-		const onChange = (e) => {
+		const onChange = (e: ChangeEvent<HTMLInputElement>) => {
 			onToggle(e.target.checked);
 		};
 		const id = `orejime-app-item-${name}`;
@@ -57,7 +65,7 @@ export default class AppItem extends React.Component {
 				<label
 					htmlFor={id}
 					className={ns('AppItem-label')}
-					{...(required ? {tabIndex: '0'} : {})}
+					{...(required ? {tabIndex: 0} : {})}
 				>
 					<span className={ns('AppItem-title')}>
 						{t([name, 'title']) || title}
@@ -73,7 +81,7 @@ export default class AppItem extends React.Component {
 					>
 						<div className={ns('AppItem-slider')}></div>
 						<div aria-hidden="true" className={ns('AppItem-switchLabel')}>
-							{t(switchLabel)}
+							{t([switchLabel])}
 						</div>
 					</span>
 				</label>

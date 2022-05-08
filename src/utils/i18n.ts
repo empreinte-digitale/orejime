@@ -1,4 +1,12 @@
-function format(string, ...args) {
+import {TranslationObject, Translations} from '../types';
+
+declare global {
+	interface Window {
+		language: string;
+	}
+}
+
+function format(string: string, ...args: any[]) {
 	var t = typeof args[0];
 	var values;
 	if (args.length == 0) values = {};
@@ -34,20 +42,26 @@ export function language() {
 	return window.language || document.documentElement.lang || 'en';
 }
 
-function hget(d, key, defaultValue) {
+function hget(d: Translations, key: string | string[], defaultValue?: string) {
 	var kl = key;
 	if (!Array.isArray(kl)) kl = [kl];
-	var cv = d;
+	var cv: Translations | string = d;
 	for (var i = 0; i < kl.length; i++) {
 		if (cv === undefined) return defaultValue;
 		if (cv instanceof Map) cv = cv.get(kl[i]);
-		else cv = cv[kl[i]];
+		else cv = (cv as TranslationObject)[kl[i]];
 	}
 	if (cv === undefined) return defaultValue;
 	return cv;
 }
 
-export function t(trans, lang, debug, key) {
+export function t(
+	trans: Translations,
+	lang: string,
+	debug: boolean,
+	key: string | string[],
+	...params: any[]
+) {
 	var kl = key;
 	if (!Array.isArray(kl)) kl = [kl];
 	const value = hget(trans, [lang, ...kl]);
@@ -62,7 +76,6 @@ export function t(trans, lang, debug, key) {
 		}
 		return false;
 	}
-	const params = Array.prototype.slice.call(arguments, 4);
-	if (params.length > 0) return format(value, ...params);
+	if (params.length > 0) return format(value as string, ...params);
 	return value;
 }

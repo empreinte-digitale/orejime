@@ -1,5 +1,7 @@
-export function convertToMap(d) {
-	const dm = new Map([]);
+import {TranslationMap, TranslationObject} from '../types';
+
+export function convertToMap(d: TranslationObject) {
+	const dm: TranslationMap = new Map([]);
 	for (var key of Object.keys(d)) {
 		const value = d[key];
 		if (!(typeof key == 'string')) continue;
@@ -12,10 +14,19 @@ export function convertToMap(d) {
 	return dm;
 }
 
-export function update(d, ed, overwrite, clone) {
-	const assign = (d, key, value) => {
+export function update(
+	d: TranslationMap,
+	ed: TranslationMap,
+	overwrite?: boolean,
+	clone?: boolean
+) {
+	const assign = (
+		d: TranslationMap,
+		key: string,
+		value: string | TranslationMap
+	) => {
 		if (value instanceof Map) {
-			const map = new Map([]);
+			const map: TranslationMap = new Map([]);
 			//we deep-clone the map
 			update(map, value, true, false);
 			d.set(key, map);
@@ -26,7 +37,7 @@ export function update(d, ed, overwrite, clone) {
 		throw 'Parameters are not maps!';
 	if (overwrite === undefined) overwrite = true;
 	if (clone === undefined) clone = false;
-	if (clone) d = new d.constructor(d);
+	if (clone) d = new Map(d);
 	for (let key of ed.keys()) {
 		let value = ed.get(key);
 		let dvalue = d.get(key);

@@ -1,10 +1,24 @@
-import React from 'react';
-import ReactModal from 'react-modal';
+import React, {Component} from 'react';
+import ReactModal, {Props as ReactModalProps} from 'react-modal';
+import {Config} from '../types';
 import useLegacyLifecycleMethods from '../utils/useLegacyLifecycleMethods';
 
-export default class Dialog extends React.Component {
-	constructor(props) {
-		super();
+interface Props extends ReactModalProps {
+	config: Config;
+	isOpen: boolean;
+	handleScrollPosition?: boolean;
+}
+
+export default class Dialog extends Component<Props> {
+	static defaultProps = {
+		handleScrollPosition: true
+	};
+
+	private scrollPosition: number;
+
+	constructor(props: Props) {
+		super(props);
+
 		if (props.config.appElement) {
 			ReactModal.setAppElement(props.config.appElement);
 		}
@@ -19,7 +33,7 @@ export default class Dialog extends React.Component {
 	}
 
 	// for react <16.3 support - see constructor
-	componentWillUpdateLifecycle(nextProps) {
+	componentWillUpdateLifecycle(nextProps: Props) {
 		const willOpen = nextProps.isOpen;
 		if (willOpen && !this.props.isOpen) {
 			this.scrollPosition = window.pageYOffset;
@@ -27,15 +41,14 @@ export default class Dialog extends React.Component {
 	}
 
 	// for react >= 16.3 support - see constructor
-	getSnapshotBeforeUpdateLifecycle(prevProps) {
+	getSnapshotBeforeUpdateLifecycle(prevProps: Props) {
 		const {isOpen} = this.props;
 		if (isOpen && !prevProps.isOpen) {
 			this.scrollPosition = window.pageYOffset;
 		}
-		return null;
 	}
 
-	componentDidUpdate(prevProps) {
+	componentDidUpdate(prevProps: Props) {
 		const {isOpen} = this.props;
 		if (
 			!isOpen &&
@@ -68,7 +81,6 @@ export default class Dialog extends React.Component {
 	render() {
 		const {
 			children,
-			appElement,
 			handleScrollPosition,
 			config,
 			...reactModalProps
@@ -88,7 +100,3 @@ export default class Dialog extends React.Component {
 		);
 	}
 }
-
-Dialog.defaultProps = {
-	handleScrollPosition: true
-};

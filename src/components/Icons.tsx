@@ -1,14 +1,19 @@
 import React from 'react';
+import {CssNamespace, Translate} from '../types';
 
-export const Close = ({t, ns}) => {
+interface Props {
+	t: Translate;
+	ns: CssNamespace;
+}
+
+export const Close = ({t, ns}: Props) => {
 	return (
 		<svg
 			role="img"
 			className={ns('CloseIcon')}
-			aria-label={t(['close'])}
+			aria-label={t(['close']) as string}
 			width="12"
 			height="12"
-			viewport="0 0 12 12"
 			version="1.1"
 			xmlns="http://www.w3.org/2000/svg"
 		>

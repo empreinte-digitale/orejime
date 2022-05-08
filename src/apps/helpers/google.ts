@@ -1,4 +1,8 @@
-export function cookies(params) {
+export interface CookiesParams {
+	ua: string
+}
+
+export function cookies(params: CookiesParams) {
 	const cookies = [
 		'_ga',
 		'_gat',

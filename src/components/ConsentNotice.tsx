@@ -1,7 +1,21 @@
-import React from 'react';
+import React, {Component} from 'react';
+import ConsentManager from '../ConsentManager';
+import {Config, CssNamespace, Translate} from '../types';
 import {getPurposes} from '../utils/config';
 
-export default class ConsentNotice extends React.Component {
+export interface Props {
+	t: Translate;
+	ns: CssNamespace;
+	config: Config;
+	manager: ConsentManager;
+	isModalVisible: boolean;
+	isMandatory: boolean;
+	onSaveRequest: () => void;
+	onDeclineRequest: () => void;
+	onConfigRequest: () => void;
+}
+
+export default class ConsentNotice extends Component<Props> {
 	render() {
 		const {
 			config,
@@ -33,7 +47,7 @@ export default class ConsentNotice extends React.Component {
 								src={
 									typeof config.logo == 'object'
 										? config.logo.src
-										: config.logo
+										: (config.logo as string)
 								}
 								alt={
 									typeof config.logo == 'object' && config.logo.alt
@@ -95,7 +109,7 @@ export default class ConsentNotice extends React.Component {
 									'Button Button--save Notice-button Notice-saveButton'
 								)}
 								type="button"
-								title={t(['acceptTitle'])}
+								title={t(['acceptTitle']) as string}
 								onClick={onSaveRequest}
 							>
 								{t(['accept'])}

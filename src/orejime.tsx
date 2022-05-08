@@ -1,13 +1,14 @@
 import React from 'react';
 import {render} from 'react-dom';
-import ConsentManager from './consent-manager';
+import ConsentManager from './ConsentManager';
 import translations from './translations';
-import Main from './components/main';
+import Main from './components/Main';
 import {convertToMap, update} from './utils/maps';
 import {t, language} from './utils/i18n';
 import {createCssNamespace} from './utils/css';
+import {Config, Translate, TranslationMap} from './types';
 
-function getElement(config) {
+function getElement(config: Config) {
 	const {elementID: id, stylePrefix} = config;
 	var element = document.getElementById(id);
 	if (element === null) {
@@ -24,28 +25,26 @@ function getElement(config) {
 	return document.querySelector(`.${stylePrefix}-AppContainer`);
 }
 
-function getTranslations(config) {
-	const trans = new Map([]);
+function getTranslations(config: Config) {
+	const trans: TranslationMap = new Map([]);
 	update(trans, convertToMap(translations));
 	update(trans, convertToMap(config.translations));
 	return trans;
 }
 
-const managers = {};
-function getManager(config) {
+const managers: {[name: string]: ConsentManager} = {};
+function getManager(config: Config) {
 	const name = config.elementID;
 	if (managers[name] === undefined)
 		managers[name] = new ConsentManager(config);
 	return managers[name];
 }
 
-export const defaultConfig = {
+export const defaultConfig: Config = {
 	elementID: 'orejime',
-	appElement: undefined,
 	stylePrefix: 'orejime',
 	cookieName: 'orejime',
 	cookieExpiresAfterDays: 365,
-	cookieDomain: undefined,
 	stringifyCookie: JSON.stringify.bind(JSON),
 	parseCookie: JSON.parse.bind(JSON),
 	privacyPolicy: '',
@@ -55,11 +54,11 @@ export const defaultConfig = {
 	logo: false,
 	lang: language(),
 	translations: {},
-	apps: {},
+	apps: [],
 	debug: false
 };
 
-export function init(conf) {
+export function init(conf: Config) {
 	const config = Object.assign({}, defaultConfig, conf);
 	const errors = [];
 	if (!Object.keys(config.apps).length) {
@@ -76,10 +75,10 @@ export function init(conf) {
 	const element = getElement(config);
 	const trans = getTranslations(config);
 	const manager = getManager(config);
-	const tt = (...args) => {
-		return t(trans, config.lang, config.debug, ...args);
+	const tt: Translate = (key, ...args) => {
+		return t(trans, config.lang, config.debug, key, ...args) as string;
 	};
-	const app = render(
+	const app = (render(
 		<Main
 			t={tt}
 			ns={createCssNamespace(config.stylePrefix)}
@@ -87,7 +86,7 @@ export function init(conf) {
 			config={config}
 		/>,
 		element
-	);
+	) as unknown) as Main;
 	return {
 		show: app.showModal.bind(app),
 		internals: {
