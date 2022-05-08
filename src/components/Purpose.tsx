@@ -24,7 +24,7 @@ const Purpose = ({
 			<input
 				id={domId}
 				className="orejime-Purpose-input"
-				aria-describedby={`${domId}-description`}
+				aria-describedby={description ? `${domId}-description` : null}
 				disabled={isMandatory}
 				checked={!!consent}
 				type="checkbox"
@@ -37,9 +37,7 @@ const Purpose = ({
 				className="orejime-Purpose-label"
 				{...(isMandatory ? {tabIndex: 0} : {})}
 			>
-				<span className="orejime-Purpose-title">
-					{t?.[id]?.title || title}
-				</span>
+				<span className="orejime-Purpose-title">{title}</span>
 
 				{isMandatory ? (
 					<span
@@ -69,17 +67,20 @@ const Purpose = ({
 					</div>
 				</span>
 			</label>
-			<div
-				id={`${domId}-description`}
-				className="orejime-Purpose-fullDescription"
-			>
-				<p
-					className="orejime-Purpose-description"
-					dangerouslySetInnerHTML={{
-						__html: t?.[id]?.description || description
-					}}
-				/>
-			</div>
+
+			{description ? (
+				<div
+					id={`${domId}-description`}
+					className="orejime-Purpose-fullDescription"
+				>
+					<p
+						className="orejime-Purpose-description"
+						dangerouslySetInnerHTML={{
+							__html: description
+						}}
+					/>
+				</div>
+			) : null}
 		</div>
 	);
 };

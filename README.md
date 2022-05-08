@@ -158,17 +158,9 @@ var orejimeConfig = {
     // purpose descriptions and purposes. See `src/translations.yml` for a full
     // list of translations that can be overwritten
     translations: {
-        en: {
-            modal: {
-                description: "This is an example of how to override an existing translation already used by Orejime",
-            },
-            inlineTracker: {
-                description: "Example of an inline tracking script",
-            },
-            externalTracker: {
-                description: "Example of an external tracking script",
-            }
-        },
+        modal: {
+            description: "This is an example of how to override an existing translation already used by Orejime",
+        }
     },
 
     // The list of third-party purposes that Orejime will manage for you.
@@ -183,6 +175,9 @@ var orejimeConfig = {
 
             // The title of you purpose as listed in the consent modal.
             title: "Google Tag Manager",
+
+            // Optional. The description of you purpose as listed in the consent modal.
+            description: "This is used for analytics.",
 
             // A list of regex expressions, strings, or arrays, giving the names of
             // cookies set by this purpose. If the user withdraws consent for a
@@ -229,6 +224,7 @@ var orejimeConfig = {
         {
             id: "inline-tracker",
             title: "Inline Tracker",
+            description: "Example of an inline tracking script",
             cookies: [
                 "inline-tracker"
                 // When deleting a cookie, Orejime will try to delete a cookie with the given name,
@@ -243,6 +239,7 @@ var orejimeConfig = {
         {
             id: "external-tracker",
             title: "External Tracker",
+            description: "Example of an external tracking script",
             cookies: ["external-tracker"],
             isMandatory: true
         },

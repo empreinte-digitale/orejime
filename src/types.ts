@@ -84,7 +84,5 @@ export interface Config {
 	forceBanner: boolean;
 	forceModal: boolean;
 	privacyPolicyUrl: string;
-	translations: {
-		[lang: string]: Translations;
-	};
+	translations: Translations;
 }
