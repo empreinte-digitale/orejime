@@ -14,7 +14,9 @@ function initDefaultInstance() {
 		// `window.orejime instanceof Element` means there is a #orejime div in the dom
 		(window.orejime === undefined || window.orejime instanceof Element)
 	) {
-		window.orejime = Orejime.init(window.orejimeConfig);
+		Orejime.init(window.orejimeConfig).then((orejime) => {
+			window.orejime = orejime;
+		});
 	}
 }
 

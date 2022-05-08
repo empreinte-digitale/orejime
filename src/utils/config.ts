@@ -1,5 +1,10 @@
-import {Config, ImageDescriptor, Purpose, PurposeList} from '../types';
-import translations from '../translations';
+import {
+	Config,
+	ImageDescriptor,
+	Purpose,
+	PurposeList,
+	Translations
+} from '../types';
 import {language} from './i18n';
 
 export const DefaultConfig: Config = {
@@ -7,9 +12,7 @@ export const DefaultConfig: Config = {
 	forceModal: false,
 	forceBanner: false,
 	lang: language(),
-	translations:
-		translations?.[language() as keyof typeof translations] ||
-		translations.en,
+	translations: {} as Translations,
 	purposes: []
 };
 
