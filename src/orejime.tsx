@@ -1,34 +1,15 @@
 import React, {createRef, ElementRef} from 'react';
 import {render} from 'react-dom';
-import translations from './translations';
 import Main from './components/Main';
-import {language} from './utils/i18n';
 import {deepMerge} from './utils/objects';
 import {Config} from './types';
 import {getRootElement} from './utils/dom';
 import Context from './components/Context';
 import {setup} from './core';
-import {purposesOnly} from './utils/config';
-
-function getTranslations(config: Config) {
-	return deepMerge(
-		translations?.[config.lang as keyof typeof translations] ||
-			translations.en,
-		config.translations?.[config.lang]
-	);
-}
-
-export const defaultConfig: Config = {
-	privacyPolicyUrl: '',
-	forceModal: false,
-	forceBanner: false,
-	lang: language(),
-	translations: {},
-	purposes: []
-};
+import {DefaultConfig, purposesOnly} from './utils/config';
 
 export function init(conf: Config) {
-	const config = deepMerge(defaultConfig, conf);
+	const config = deepMerge(DefaultConfig, conf);
 	const errors = [];
 	if (!Object.keys(config.purposes).length) {
 		errors.push('  - you must define `purposes` to manage');
@@ -46,14 +27,13 @@ export function init(conf: Config) {
 		cookie: config.cookie
 	});
 
-	const translations = getTranslations(config);
 	const appRef = createRef<ElementRef<typeof Main>>();
 	const app = render(
 		<Context.Provider
 			value={{
 				config,
 				manager,
-				translations
+				translations: config.translations
 			}}
 		>
 			<Main ref={appRef} />
@@ -72,5 +52,5 @@ export function init(conf: Config) {
 
 export default {
 	init,
-	defaultConfig
+	defaultConfig: DefaultConfig
 };

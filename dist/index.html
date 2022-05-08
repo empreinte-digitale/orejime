@@ -135,43 +135,26 @@
 				appElement: "#app",
 				privacyPolicyUrl: "#privacyPolicy",
 				translations: {
-					en: {
-						modal: {
-							description: "Here is an example of Orejime. View the source code to see how everything is done.",
-						},
-						example: {
-							description: 'Purposes can be grouped to help users better understand their use.'
-						},
-						"third-party": {
-							description: 'These are fake third-party purposes.'
-						},
-						"inline-tracker": {
-							description: "Example of an inline tracking script that sets a dummy cookie",
-						},
-						"external-tracker": {
-							description: "Example of an external tracking script that sets a dummy cookie",
-						},
-						"always-on": {
-							description: "This <a href=\"http://example.com\">example</a> app will not set any cookie",
-						},
-						"disabled-by-default": {
-							description: "This example app will not set any cookie",
-						}
-					},
+					modal: {
+						description: "Here is an example of Orejime. View the source code to see how everything is done.",
+					}
 				},
 				purposes: [
 					{
 						id: 'example',
 						title: 'Example group',
+						description: 'Purposes can be grouped to help users better understand their use.',
 						purposes: [
 							{
 								id: "inline-tracker",
 								title: "Inline Tracker",
+								description: "Example of an inline tracking script that sets a dummy cookie",
 								cookies: ["inline-tracker"]
 							},
 							{
 								id: "disabled-by-default",
 								title: "Something disabled by default",
+								description: "This example app will not set any cookie",
 								default: false
 							}
 						]
@@ -179,15 +162,18 @@
 					{
 						id: 'third-party',
 						title: 'Third-party purposes',
+						description: 'These are fake third-party purposes.',
 						purposes: [
 							{
 								id: "external-tracker",
 								title: "External Tracker",
+								description: "Example of an external tracking script that sets a dummy cookie",
 								cookies: ["external-tracker"],
 							},
 							{
 								id: "always-on",
 								title: "Required app",
+								description: "This <a href=\"http://example.com\">example</a> app will not set any cookie",
 								isMandatory: true
 							}
 						]

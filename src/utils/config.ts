@@ -1,4 +1,17 @@
-import {ImageDescriptor, Purpose, PurposeList} from '../types';
+import {Config, ImageDescriptor, Purpose, PurposeList} from '../types';
+import translations from '../translations';
+import {language} from './i18n';
+
+export const DefaultConfig: Config = {
+	privacyPolicyUrl: '',
+	forceModal: false,
+	forceBanner: false,
+	lang: language(),
+	translations:
+		translations?.[language() as keyof typeof translations] ||
+		translations.en,
+	purposes: []
+};
 
 // Strips groups from a list of purposes and purpose groups.
 export const purposesOnly = (purposes: PurposeList): Purpose[] =>
