@@ -5,7 +5,7 @@ import {deepMerge} from './utils/objects';
 import {Config, Translations} from './types';
 import {getRootElement} from './utils/dom';
 import Context from './components/Context';
-import {setup} from './core';
+import {setup} from '../core';
 import {
 	DefaultConfig,
 	purposesOnly,

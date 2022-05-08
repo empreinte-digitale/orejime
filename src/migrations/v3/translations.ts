@@ -1,4 +1,4 @@
-import type {Translations} from '../../types';
+import type {Translations} from '../../ui/types';
 import type {V2Translations} from '../v2/types';
 
 const join = (strings: string[], separator = ' ') =>

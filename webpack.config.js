@@ -16,7 +16,10 @@ module.exports = {
 			directory: fullPath('dist')
 		}
 	},
-	entry: [fullPath('src/orejime.umd.ts'), fullPath('src/scss/orejime.scss')],
+	entry: [
+		fullPath('src/ui/orejime.umd.ts'),
+		fullPath('src/styles/orejime.scss')
+	],
 	output: {
 		filename: 'orejime.js',
 		chunkFilename: (pathData) => {
@@ -64,7 +67,7 @@ module.exports = {
 			filename: 'orejime.css'
 		}),
 		new CopyPlugin({
-			patterns: [{from: 'src/scss'}]
+			patterns: [{from: 'src/styles'}]
 		}),
 		new webpack.BannerPlugin({
 			banner:

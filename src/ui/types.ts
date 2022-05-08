@@ -1,4 +1,4 @@
-import {CookieOptions, Purpose as CorePurpose} from './core';
+import {CookieOptions, Purpose as CorePurpose} from '../core';
 
 export interface Purpose extends CorePurpose {
 	id: string;
