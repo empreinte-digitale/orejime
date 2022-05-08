@@ -19,6 +19,11 @@ module.exports = {
 	entry: [fullPath('src/orejime.umd.ts'), fullPath('src/scss/orejime.scss')],
 	output: {
 		filename: 'orejime.js',
+		chunkFilename: (pathData) => {
+			// strips file names from generated chunk names
+			//return pathData.chunk.name;
+			return pathData.chunk.name.replace(/(\-yml)$/, '.js');
+		},
 		path: fullPath('dist'),
 		publicPath: '',
 		clean: {
@@ -48,6 +53,11 @@ module.exports = {
 			react: 'preact/compat',
 			'react-dom': 'preact/compat'
 		}
+	},
+	optimization: {
+		// Prevents webpack from splitting anything more than
+		// the explicit chunks created from dynamic imports.
+		splitChunks: false
 	},
 	plugins: [
 		new MiniCssExtractPlugin({
