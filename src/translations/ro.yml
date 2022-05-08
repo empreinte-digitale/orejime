@@ -1,36 +1,44 @@
-consentModal:
+banner:
+  title: null
+  description: >
+    Colectăm și procesăm informațiile dvs. personale în următoarele scopuri:
+    {purposes}.
+     Pentru a afla mai multe, vă rugăm să citiți {privacyPolicy}.
+  privacyPolicyLabel: politica privacy
+  accept: ""
+  acceptTitle: ""
+  decline: Renunță
+  declineTitle: Renunță
+  configure: Află mai multe
+  configureTitle: Află mai multe
+modal:
   title: Informațiile pe care le colectăm
   description: >
-    Aici puteți vedea și personaliza informațiile pe care le colectăm despre dvs.
-  privacyPolicy:
-    name: politica privacy
-    text: |
-      Pentru a afla mai multe, vă rugăm să citiți {privacyPolicy}.
-consentBanner:
-  changeDescription: Au existat modificări de la ultima vizită, vă rugăm să
-    actualizați consimțământul.
-  description: >
-    Colectăm și procesăm informațiile dvs. personale în următoarele
-    scopuri: {purposes}.
-  learnMore: Află mai multe
-accept: ""
-acceptTitle: ""
-acceptAll: ""
-save: Salvează
-saveData: ""
-decline: Renunță
-declineAll: ""
-close: ""
-enabled: ""
-disabled: ""
+    Aici puteți vedea și personaliza informațiile pe care le colectăm despre
+    dvs.
+     Pentru a afla mai multe, vă rugăm să citiți {privacyPolicy}.
+  privacyPolicyLabel: politica privacy
+  close: ""
+  closeTitle: ""
+  globalPreferences: ""
+  acceptAll: ""
+  declineAll: ""
+  save: Salvează
+  saveTitle: ""
 purpose:
-  optOut:
-    title: (opt-out)
-    description: Această aplicație este încărcată în mod implicit (dar puteți renunța)
-  required:
-    title: (întotdeauna necesar)
-    description: Această aplicație este întotdeauna necesară
+  mandatory: (întotdeauna necesar)
+  mandatoryTitle: Această aplicație este întotdeauna necesară
+  optOut: (opt-out)
+  optOutTitle: Această aplicație este încărcată în mod implicit (dar puteți renunța)
+  showMore: ""
+  accept: ""
+  decline: Renunță
   purposes: Scopuri
   purpose: Scop
-poweredBy: Realizat de Orejime
-newWindow: ""
+  enabled: ""
+  disabled: ""
+misc:
+  newWindowTitle: ""
+  updateNeeded: Au existat modificări de la ultima vizită, vă rugăm să
+    actualizați consimțământul.
+  poweredBy: Realizat de Orejime

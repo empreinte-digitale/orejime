@@ -1,37 +1,44 @@
-consentModal:
+banner:
+  title: null
+  description: >
+    Nous collectons et traitons vos informations personnelles dans le but
+    suivant : {purposes}.
+     Pour en savoir plus, merci de lire notre {privacyPolicy}.
+  privacyPolicyLabel: politique de confidentialité
+  accept: Accepter
+  acceptTitle: Accepter les cookies
+  decline: Refuser
+  declineTitle: Refuser
+  configure: En savoir plus
+  configureTitle: En savoir plus
+modal:
   title: Les informations que nous collectons
   description: >
-    Ici, vous pouvez voir et personnaliser les informations que nous
-    collectons sur vous.
-  privacyPolicy:
-    name: politique de confidentialité
-    text: |
-      Pour en savoir plus, merci de lire notre {privacyPolicy}.
-consentBanner:
-  changeDescription: Des modifications ont eu lieu depuis votre dernière visite,
-    merci de mettre à jour votre consentement.
-  description: >
-    Nous collectons et traitons vos informations personnelles dans le
-    but suivant : {purposes}.
-  learnMore: En savoir plus
-accept: Accepter
-acceptTitle: Accepter les cookies
-acceptAll: Tout accepter
-save: Sauvegarder
-saveData: Sauvegarder ma configuration sur les informations collectées
-decline: Refuser
-declineAll: Tout refuser
-close: Fermer
-enabled: Activé
-disabled: Désactivé
+    Ici, vous pouvez voir et personnaliser les informations que nous collectons
+    sur vous.
+     Pour en savoir plus, merci de lire notre {privacyPolicy}.
+  privacyPolicyLabel: politique de confidentialité
+  close: Fermer
+  closeTitle: Fermer
+  globalPreferences: ""
+  acceptAll: Tout accepter
+  declineAll: Tout refuser
+  save: Sauvegarder
+  saveTitle: Sauvegarder ma configuration sur les informations collectées
 purpose:
-  optOut:
-    title: (opt-out)
-    description: Cette application est chargée par défaut (mais vous pouvez la désactiver)
-  required:
-    title: (toujours requis)
-    description: Cette application est toujours requise
+  mandatory: (toujours requis)
+  mandatoryTitle: Cette application est toujours requise
+  optOut: (opt-out)
+  optOutTitle: Cette application est chargée par défaut (mais vous pouvez la désactiver)
+  showMore: ""
+  accept: Accepter
+  decline: Refuser
   purposes: Utilisations
   purpose: Utilisation
-poweredBy: Propulsé par Orejime
-newWindow: nouvelle fenêtre
+  enabled: Activé
+  disabled: Désactivé
+misc:
+  newWindowTitle: nouvelle fenêtre
+  updateNeeded: Des modifications ont eu lieu depuis votre dernière visite, merci
+    de mettre à jour votre consentement.
+  poweredBy: Propulsé par Orejime

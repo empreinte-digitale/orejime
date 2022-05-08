@@ -44,29 +44,28 @@ export default class ConsentModal extends Component<Props> {
 					<div className="orejime-Modal-header">
 						{!isAlert && (
 							<button
-								title={t.close}
+								title={t.modal.closeTitle}
 								className="orejime-Modal-closeButton"
 								type="button"
 								onClick={onHideRequest}
 							>
-								<Close t={t} />
+								<Close title={t.modal.close} />
 							</button>
 						)}
 
 						<h1 className="orejime-Modal-title" id="orejime-modal-title">
-							{t.consentModal.title}
+							{t.modal.title}
 						</h1>
 						<p className="orejime-Modal-description">
 							{manager.changed &&
 								(config.mustConsent || config.noBanner) && (
 									<p className="orejime-Modal-description">
 										<strong className="orejime-Modal-changes">
-											{t.consentBanner.changeDescription}
+											{t.misc.updateNeeded}
 										</strong>
 									</p>
 								)}
-							{t.consentModal.description}&nbsp;
-							{template(t.consentModal.privacyPolicy.text, {
+							{template(t.modal.description, {
 								privacyPolicy: (
 									<a
 										key="privacyPolicyLink"
@@ -76,7 +75,7 @@ export default class ConsentModal extends Component<Props> {
 										}}
 										href={config.privacyPolicy}
 									>
-										{t.consentModal.privacyPolicy.name}
+										{t.modal.privacyPolicyLabel}
 									</a>
 								)
 							})}
@@ -91,9 +90,9 @@ export default class ConsentModal extends Component<Props> {
 							<button
 								className="orejime-Button orejime-Button--save orejime-Modal-saveButton"
 								onClick={onSaveRequest}
-								title={t.saveData}
+								title={t.modal.saveTitle}
 							>
-								{t.save}
+								{t.modal.save}
 							</button>
 							<a
 								target="_blank"
@@ -102,9 +101,9 @@ export default class ConsentModal extends Component<Props> {
 									config.poweredBy ||
 									'https://orejime.empreintedigitale.fr'
 								}
-								title={`${t.poweredBy} (${t.newWindow})`}
+								title={`${t.misc.poweredBy} (${t.misc.newWindowTitle})`}
 							>
-								{t.poweredBy}
+								{t.misc.poweredBy}
 							</a>
 						</div>
 					</form>

@@ -22,11 +22,8 @@ export default class Purpose extends Component<Props> {
 			.map((purpose) => t?.purposes?.[purpose])
 			.join(', ');
 		const optOutText = optOut ? (
-			<span
-				className="orejime-Purpose-optOut"
-				title={t.purpose.optOut.description}
-			>
-				{t.purpose.optOut.title}
+			<span className="orejime-Purpose-optOut" title={t.purpose.optOutTitle}>
+				{t.purpose.optOut}
 			</span>
 		) : (
 			''
@@ -34,9 +31,9 @@ export default class Purpose extends Component<Props> {
 		const requiredText = required ? (
 			<span
 				className="orejime-Purpose-required"
-				title={t.purpose.required.description}
+				title={t.purpose.mandatoryTitle}
 			>
-				{t.purpose.required.title}
+				{t.purpose.mandatory}
 			</span>
 		) : (
 			''
@@ -80,7 +77,7 @@ export default class Purpose extends Component<Props> {
 							aria-hidden="true"
 							className="orejime-Purpose-switchLabel"
 						>
-							{isChecked ? t.enabled : t.disabled}
+							{isChecked ? t.purpose.enabled : t.purpose.disabled}
 						</div>
 					</span>
 				</label>
