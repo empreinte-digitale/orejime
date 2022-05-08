@@ -1,51 +1,19 @@
 {
-	"env": {
-		"development": {
-			"plugins": [
-				"@babel/plugin-transform-runtime"
-			],
-			"presets": [
-				[
-					"@babel/preset-env",
-					{
-						"corejs": 3,
-						"useBuiltIns": "entry",
-						"targets": {
-							"ie": "11",
-							"firefox": "60"
-						}
-					}
-				],
-				"@babel/preset-react"
-			]
-		},
-		"commonjs": {
-			"presets": [
-				[
-					"@babel/preset-env",
-					{
-						"modules": "cjs",
-						"targets": {
-							"node": "14"
-						}
-					}
-				],
-				"@babel/preset-react"
-			]
-		},
-		"module": {
-			"presets": [
-				[
-					"@babel/preset-env",
-					{
-						"modules": false,
-						"targets": {
-							"node": "14"
-						}
-					}
-				],
-				"@babel/preset-react"
-			]
-		}
-	}
+	"plugins": [
+		"@babel/plugin-transform-runtime"
+	],
+	"presets": [
+		[
+			"@babel/preset-env",
+			{
+				"corejs": 3,
+				"useBuiltIns": "entry",
+				"targets": {
+					"ie": "11",
+					"firefox": "60"
+				}
+			}
+		],
+		"@babel/preset-react"
+	]
 }

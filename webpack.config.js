@@ -29,7 +29,7 @@ module.exports = {
 		rules: [
 			{
 				test: /\.jsx?/,
-				use: ['babel-loader'],
+				use: ['babel-loader', 'ts-loader'],
 				include: fullPath('src')
 			},
 			{
