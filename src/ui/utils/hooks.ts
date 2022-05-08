@@ -40,7 +40,7 @@ export const useManager = () => {
 };
 
 export const useTranslations = () => {
-	const {translations} = useContext(Context);
+	const {translations} = useConfig();
 	return translations;
 };
 

@@ -180,6 +180,10 @@
 					}
 				]
 			}
+
+			document.addEventListener('orejime.loaded', function(event) {
+				console.log('Orejime has loaded.', event.detail);
+			});
 		</script>
 
 		<!-- since there is a orejimeConfig global variable in index.js, a window.orejime instance will be initiated when including the lib -->
