@@ -273,35 +273,31 @@ $orejime-breakpoint-banner: 990px !default;
     position: relative;
     line-height: 1.25;
     vertical-align: middle;
-    padding-left: 60px;
     min-height: 40px;
     margin-top: 0.7em;
-
-    &:first-child {
-        margin-top: 0;
-    }
 }
 
-.orejime-CategorizedPurposeList {
+.orejime-PurposeGroup {
     list-style: none;
 }
 
-.orejime-CategorizedPurposeList-item {
-    margin-bottom: 1em;
-}
-
-.orejime-CategorizedPurposeList-title {
+.orejime-PurposeGroup-title {
     font-size: 1.2em;
     font-weight: bold;
 }
 
-.orejime-CategorizedPurposeList-description {
+.orejime-PurposeGroup-description {
     font-size: 0.9em;
 }
 
-.orejime-CategorizedPurposeList-purposes {
+.orejime-PurposeGroup-purposes {
     margin-top: 0.5em;
     margin-left: 1em;
+}
+
+.orejime-Purpose {
+    padding-left: 60px;
+    min-height: 50px;
 }
 
 .orejime-Purpose-title {
@@ -311,11 +307,6 @@ $orejime-breakpoint-banner: 990px !default;
 
 .orejime-Purpose-description {
     font-size: 0.8em;
-}
-
-.orejime-Purpose-purposes {
-    font-size: 0.8em;
-    color: $orejime-theme-color-light;
 }
 
 .orejime-Purpose-exempt,

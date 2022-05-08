@@ -164,15 +164,6 @@ var orejimeConfig = {
             },
             externalTracker: {
                 description: "Example of an external tracking script",
-            },
-            purposes: {
-                analytics: "Analytics",
-                security: "Security"
-            },
-            categories: {
-                analytics: {
-                    description: "A long form description of the category."
-                }
             }
         },
     },
@@ -210,10 +201,6 @@ var orejimeConfig = {
                 "_gat_" + GTM_UA
             ],
 
-            // Optional. The purpose(s) of this purpose. Will be listed on the consent notice.
-            // Do not forget to add translations for all purposes you list here.
-            purposes: ["analytics"],
-
             // Optional. A callback function that will be called each time
             // the consent state for the purpose changes. Passes
             // the `purpose` config as the second parameter as well.
@@ -247,7 +234,6 @@ var orejimeConfig = {
         {
             id: "inline-tracker",
             title: "Inline Tracker",
-            purposes: ["analytics"],
             cookies: [
                 "inline-tracker"
                 // When deleting a cookie, Orejime will try to delete a cookie with the given name,
@@ -262,22 +248,26 @@ var orejimeConfig = {
         {
             id: "external-tracker",
             title: "External Tracker",
-            purposes: ["analytics", "security"],
             cookies: ["external-tracker"],
             isMandatory: true
-        }
-    ],
-    // Optional. A list of categories under which purposes will be classified.
-    // This allows for a visual grouping of the different purposes, along with a
-    // description of their purpose.
-    categories: [
+        },
+
+        // Purposes can also be grouped
         {
-            id: "analytics",
-            title: "Analytics",
-            // The list of purposes belonging to the category, referenced by id.
+            id: "advertising",
+            title: "Advertising",
+            description: "…",
             purposes: [
-                "google-tag-manager",
-                "external-tracker"
+                {
+                    id: "foo",
+                    title: "Foo",
+                    cookies: []
+                },
+                {
+                    id: "bar",
+                    title: "Bar",
+                    cookies: []
+                }
             ]
         }
     ]

@@ -32,8 +32,6 @@ purpose:
   showMore: ""
   accept: Accept
   decline: Decline
-  purposes: Purposes
-  purpose: Purpose
   enabled: Enabled
   disabled: Disabled
 misc:

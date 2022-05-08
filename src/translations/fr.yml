@@ -33,8 +33,6 @@ purpose:
   showMore: ""
   accept: Accepter
   decline: Refuser
-  purposes: Utilisations
-  purpose: Utilisation
   enabled: Activé
   disabled: Désactivé
 misc:

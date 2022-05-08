@@ -45,8 +45,6 @@ export const migrateTranslations = (
 			showMore: '',
 			accept: translations?.accept,
 			decline: translations?.decline,
-			purposes: translations?.app?.purposes,
-			purpose: translations?.app?.purpose,
 			enabled: translations?.enabled,
 			disabled: translations?.disabled
 		},

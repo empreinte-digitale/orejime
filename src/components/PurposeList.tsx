@@ -1,34 +1,14 @@
 import React from 'react';
-import {Purpose as PurposeType, Consents, Translations} from '../types';
-import Purpose from './Purpose';
 
 interface Props {
-	t: Translations;
-	purposes: PurposeType[];
-	consents: Consents;
-	onToggle: (purpose: PurposeType, checked: boolean) => void;
+	children?: JSX.Element[];
 }
 
-const PurposeList = ({t, purposes: purposes, consents, onToggle}: Props) => (
+const PurposeList = ({children}: Props) => (
 	<ul className="orejime-PurposeList">
-		{purposes.map((purpose) => {
-			const checked = consents[purpose.id];
-			const handleToggle = (value: boolean) => onToggle(purpose, value);
-
-			return (
-				<li
-					key={`purpose-${purpose.id}`}
-					className={`orejime-PurposeList-item orejime-PurposeList-item--${purpose.id}`}
-				>
-					<Purpose
-						checked={checked || purpose.isMandatory}
-						onToggle={handleToggle}
-						t={t}
-						{...purpose}
-					/>
-				</li>
-			);
-		})}
+		{children.map((child) => (
+			<li className="orejime-PurposeList-item">{child}</li>
+		))}
 	</ul>
 );
 

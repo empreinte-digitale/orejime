@@ -15,17 +15,18 @@ export interface Purpose {
 	isExempt?: boolean;
 	runsOnce?: boolean;
 	default?: boolean;
-	purposes?: string[];
 	cookies: Array<string | RegExp | AppCookie>;
 	callback?: (consent: boolean, app: Purpose) => void;
 }
 
-export interface Category {
+export interface PurposeGroup {
 	id: string;
-	purposes: string[];
-	description: string;
 	title: string;
+	description?: string;
+	purposes: Purpose[];
 }
+
+export type PurposeList = Array<PurposeGroup | Purpose>;
 
 export interface BannerTranslations {
 	title?: string;
@@ -60,8 +61,6 @@ export interface PurposeTranslations {
 	showMore: string;
 	accept: string;
 	decline: string;
-	purposes: string;
-	purpose: string;
 	enabled: string;
 	disabled: string;
 }
@@ -77,15 +76,6 @@ export interface Translations {
 	modal: ModalTranslations;
 	purpose: PurposeTranslations;
 	misc: MiscTranslations;
-	categories?: {
-		[name: string]: {
-			title: string;
-			description: string;
-		};
-	};
-	purposes?: {
-		[name: string]: string;
-	};
 }
 
 export type ElementReference = string | HTMLElement;
@@ -100,8 +90,7 @@ export type ImageDescriptor = string | ImageAttributes;
 export interface Config {
 	orejimeElement?: ElementReference;
 	appElement?: ElementReference;
-	purposes: Purpose[];
-	categories?: Category[];
+	purposes: PurposeList;
 	cookieDomain?: string;
 	cookieExpiresAfterDays: number;
 	cookieName: string;

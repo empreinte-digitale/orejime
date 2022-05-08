@@ -1,4 +1,5 @@
 import {Purpose, Config, Consents, ConsentsWatcher} from './types';
+import {purposesOnly} from './utils/config';
 import {getCookie, getCookies, setCookie, deleteCookie} from './utils/cookies';
 
 // temporary fix to avoid touching the code for now
@@ -13,12 +14,14 @@ export default class ConsentManager {
 	public changed: boolean;
 	public consents: Consents;
 	private config: Config;
+	private purposes: Purpose[];
 	private states: {[appName: string]: boolean};
 	private executedOnce: {[appName: string]: boolean};
 	private watchers: Set<ConsentsWatcher>;
 
 	constructor(config: Config) {
 		this.config = config; // the configuration
+		this.purposes = purposesOnly(config.purposes);
 		this.consents = this.defaultConsents; // the consent states of the configured purposes
 		this.confirmed = false; // true if the user actively confirmed his/her consent
 		this.changed = false; // true if the purpose config changed compared to the cookie
@@ -47,8 +50,12 @@ export default class ConsentManager {
 		});
 	}
 
+	getPurposes() {
+		return this.purposes;
+	}
+
 	getPurpose(id: string) {
-		const matching = this.config.purposes.filter((purpose) => {
+		const matching = this.purposes.filter((purpose) => {
 			return purpose.id == id;
 		});
 		if (matching.length > 0) return matching[0];
@@ -63,8 +70,8 @@ export default class ConsentManager {
 
 	get defaultConsents() {
 		const consents: Consents = {};
-		for (var i = 0; i < this.config.purposes.length; i++) {
-			const purpose = this.config.purposes[i];
+		for (var i = 0; i < this.purposes.length; i++) {
+			const purpose = this.purposes[i];
 			consents[purpose.id] = this.getDefaultConsent(purpose);
 		}
 		return consents;
@@ -73,19 +80,19 @@ export default class ConsentManager {
 	// If every app is either mandatory or exempt, or both,
 	// there is no need to ask for user consent.
 	canBypassConsent() {
-		return this.config.purposes.every(
+		return this.purposes.every(
 			({isExempt = false, isMandatory = false}) => isExempt || isMandatory
 		);
 	}
 
 	declineAll() {
-		this.config.purposes.map((purpose) => {
+		this.purposes.map((purpose) => {
 			this.updateConsent(purpose, false);
 		});
 	}
 
 	acceptAll() {
-		this.config.purposes.map((purpose) => {
+		this.purposes.map((purpose) => {
 			this.updateConsent(purpose, true);
 		});
 	}
@@ -112,7 +119,7 @@ export default class ConsentManager {
 
 	_checkConsents() {
 		let complete = true;
-		const purposeIds = this.config.purposes.map((purpose) => purpose.id);
+		const purposeIds = this.purposes.map((purpose) => purpose.id);
 		Object.keys(this.consents).forEach(
 			function (key: string) {
 				if (purposeIds.indexOf(key) === -1) {
@@ -120,7 +127,7 @@ export default class ConsentManager {
 				}
 			}.bind(this)
 		);
-		this.config.purposes.forEach(
+		this.purposes.forEach(
 			function (purpose: Purpose) {
 				if (typeof this.consents[purpose.id] === 'undefined') {
 					this.consents[purpose.id] = this.getDefaultConsent(purpose);
@@ -163,8 +170,8 @@ export default class ConsentManager {
 	}
 
 	applyConsents() {
-		for (var i = 0; i < this.config.purposes.length; i++) {
-			const purpose = this.config.purposes[i];
+		for (var i = 0; i < this.purposes.length; i++) {
+			const purpose = this.purposes[i];
 			const state = this.states[purpose.id];
 			const confirmed = this.confirmed || !!purpose.isExempt;
 			const consent = this.getConsent(purpose.id) && confirmed;

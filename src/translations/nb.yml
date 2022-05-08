@@ -32,8 +32,6 @@ purpose:
   showMore: ""
   accept: ""
   decline: Avslå
-  purposes: Årsaker
-  purpose: Årsak
   enabled: ""
   disabled: ""
 misc:

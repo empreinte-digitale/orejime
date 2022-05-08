@@ -32,8 +32,6 @@ purpose:
   showMore: ""
   accept: ""
   decline: Rifiuta
-  purposes: Scopi
-  purpose: Scopo
   enabled: ""
   disabled: ""
 misc:

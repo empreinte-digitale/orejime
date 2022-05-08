@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import ConsentManager from '../ConsentManager';
 import {Config, Consents, Translations} from '../types';
-import PurposeList from './PurposeList';
-import CategorizedPurposeList from './CategorizedPurposeList';
+import PurposeTree from './PurposeTree';
 
 interface Props {
 	t: Translations;
@@ -34,9 +33,9 @@ export default class Purposes extends Component<Props, State> {
 	}
 
 	render() {
-		const {config, t, manager} = this.props;
+		const {t, config, manager} = this.props;
+		const purposes = manager.getPurposes();
 		const {consents} = this.state;
-		const {purposes, categories} = config;
 
 		const toggleAll = (value: boolean) => {
 			purposes.map((purpose) => {
@@ -82,22 +81,12 @@ export default class Purposes extends Component<Props, State> {
 					</div>
 				) : null}
 
-				{categories ? (
-					<CategorizedPurposeList
-						t={t}
-						categories={categories}
-						purposes={purposes}
-						consents={consents}
-						onToggle={manager.updateConsent.bind(manager)}
-					/>
-				) : (
-					<PurposeList
-						t={t}
-						purposes={purposes}
-						consents={consents}
-						onToggle={manager.updateConsent.bind(manager)}
-					/>
-				)}
+				<PurposeTree
+					t={t}
+					purposes={config.purposes}
+					consents={consents}
+					onToggle={manager.updateConsent.bind(manager)}
+				/>
 			</div>
 		);
 	}

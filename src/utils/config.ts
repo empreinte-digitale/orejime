@@ -1,14 +1,12 @@
-import {Config, ImageDescriptor} from '../types';
+import {ImageDescriptor, Purpose, PurposeList} from '../types';
 
-export function getPurposes(config: Config) {
-	const purposes = new Set<string>([]);
-	for (var i = 0; i < config.purposes.length; i++) {
-		const purposePurposes = config.purposes[i].purposes || [];
-		for (var j = 0; j < purposePurposes.length; j++)
-			purposes.add(purposePurposes[j]);
-	}
-	return Array.from(purposes);
-}
+// Strips groups from a list of purposes and purpose groups.
+export const purposesOnly = (purposes: PurposeList): Purpose[] =>
+	purposes.flatMap((purpose) =>
+		'purposes' in purpose
+			? purposesOnly(purpose.purposes)
+			: [purpose as Purpose]
+	);
 
 export const imageAttributes = (image: ImageDescriptor) => {
 	if (typeof image === 'string') {
