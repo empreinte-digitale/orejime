@@ -12,15 +12,11 @@ export default class Purpose extends Component<Props> {
 		const {checked, onToggle, id, title, description, t} = this.props;
 		const mandatory = this.props.isMandatory || false;
 		const exempt = this.props.isExempt || false;
-		const purposes = this.props.purposes || [];
 		const onChange = (e: ChangeEvent<HTMLInputElement>) => {
 			onToggle(e.target.checked);
 		};
 		const domId = `orejime-purpose-${id}`;
 		const isChecked = checked || mandatory;
-		const purposesText = purposes
-			.map((purpose) => t?.purposes?.[purpose])
-			.join(', ');
 		const exemptText = exempt ? (
 			<span className="orejime-Purpose-exempt" title={t.purpose.exemptTitle}>
 				{t.purpose.exempt}
@@ -39,13 +35,6 @@ export default class Purpose extends Component<Props> {
 			''
 		);
 
-		const purposesEl =
-			purposes.length > 0 ? (
-				<p className="orejime-Purpose-purposes">
-					{t.purpose[purposes.length > 1 ? 'purposes' : 'purpose']}:{' '}
-					{purposesText}
-				</p>
-			) : null;
 		return (
 			<div className="orejime-Purpose">
 				<input
@@ -91,7 +80,6 @@ export default class Purpose extends Component<Props> {
 							__html: t?.[id]?.description || description
 						}}
 					/>
-					{purposesEl}
 				</div>
 			</div>
 		);

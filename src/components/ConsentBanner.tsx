@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import ConsentManager from '../ConsentManager';
 import {Config, Translations} from '../types';
-import {getPurposes, imageAttributes} from '../utils/config';
+import {imageAttributes} from '../utils/config';
 import {template} from '../utils/template';
 
 export interface Props {
@@ -10,6 +10,7 @@ export interface Props {
 	manager: ConsentManager;
 	isModalVisible: boolean;
 	isMandatory: boolean;
+	purposeTitles: string[];
 	onSaveRequest: () => void;
 	onDeclineRequest: () => void;
 	onConfigRequest: () => void;
@@ -18,20 +19,17 @@ export interface Props {
 export default class ConsentBanner extends Component<Props> {
 	render() {
 		const {
+			t,
 			config,
 			manager,
 			isModalVisible,
 			isMandatory,
-			t,
+			purposeTitles,
 			onSaveRequest,
 			onDeclineRequest,
 			onConfigRequest
 		} = this.props;
 
-		const purposes = getPurposes(config);
-		const purposesText = purposes
-			.map((purpose) => t?.purposes?.[purpose])
-			.join(', ');
 		const title = t.banner.title;
 
 		return (
@@ -68,7 +66,7 @@ export default class ConsentBanner extends Component<Props> {
 										key="purposes"
 										className="orejime-Banner-purposes"
 									>
-										{purposesText}
+										{purposeTitles.join(', ')}
 									</strong>
 								),
 								privacyPolicy: (

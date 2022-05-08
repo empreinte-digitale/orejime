@@ -368,7 +368,7 @@ main {
 	margin: 0 1px 1px 0;
 }
 
-.orejime-PurposeList-item {
+.orejime-Purpose {
 	padding-left: calc(50px + var(--unit));
 }
 

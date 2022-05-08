@@ -139,6 +139,12 @@
 						modal: {
 							description: "Here is an example of Orejime. View the source code to see how everything is done.",
 						},
+						example: {
+							description: 'Purposes can be grouped to help users better understand their use.'
+						},
+						"third-party": {
+							description: 'These are fake third-party purposes.'
+						},
 						"inline-tracker": {
 							description: "Example of an inline tracking script that sets a dummy cookie",
 						},
@@ -150,58 +156,41 @@
 						},
 						"disabled-by-default": {
 							description: "This example app will not set any cookie",
-						},
-						purposes: {
-							analytics: "Analytics",
-							security: "Security",
-							ads: "Ads"
-						},
-						categories: {
-							example: {
-								description: 'Purposes can be grouped into categories to help users better understand their use.'
-							},
-							"third-party": {
-								description: 'These are fake third-party purposes.'
-							}
 						}
 					},
 				},
 				purposes: [
 					{
-						id: "inline-tracker",
-						title: "Inline Tracker",
-						purposes: ["analytics"],
-						cookies: ["inline-tracker"]
-					},
-					{
-						id: "external-tracker",
-						title: "External Tracker",
-						purposes: ["analytics", "security"],
-						cookies: ["external-tracker"],
-					},
-					{
-						id: "disabled-by-default",
-						title: "Something disabled by default",
-						purposes: ["ads"],
-						default: false
-					},
-					{
-						id: "always-on",
-						title: "Required app",
-						purposes: [],
-						isMandatory: true
-					}
-				],
-				categories: [
-					{
 						id: 'example',
-						title: 'Example category',
-						purposes: ['inline-tracker', 'disabled-by-default']
+						title: 'Example group',
+						purposes: [
+							{
+								id: "inline-tracker",
+								title: "Inline Tracker",
+								cookies: ["inline-tracker"]
+							},
+							{
+								id: "disabled-by-default",
+								title: "Something disabled by default",
+								default: false
+							}
+						]
 					},
 					{
 						id: 'third-party',
 						title: 'Third-party purposes',
-						purposes: ['external-tracker', 'always-on']
+						purposes: [
+							{
+								id: "external-tracker",
+								title: "External Tracker",
+								cookies: ["external-tracker"],
+							},
+							{
+								id: "always-on",
+								title: "Required app",
+								isMandatory: true
+							}
+						]
 					}
 				]
 			}

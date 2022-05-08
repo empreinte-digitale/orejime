@@ -32,8 +32,6 @@ purpose:
   showMore: ""
   accept: ""
   decline: Hylkää
-  purposes: Käyttötarkoitukset
-  purpose: Käyttötarkoitus
   enabled: ""
   disabled: ""
 misc:

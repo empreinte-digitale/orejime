@@ -32,8 +32,6 @@ purpose:
   showMore: ""
   accept: Aceptar
   decline: Rechazar
-  purposes: Propósitos
-  purpose: Propósito
   enabled: Habilitado
   disabled: Deshabilitado
 misc:

@@ -99,6 +99,7 @@ export default class Main extends Component<Props, State> {
 					isModalVisible={this.state.isModalVisible}
 					config={config}
 					manager={manager}
+					purposeTitles={config.purposes.map(({title}) => title)}
 					onSaveRequest={this.acceptAndHideAll}
 					onDeclineRequest={this.declineAndHideAll}
 					onConfigRequest={this.showModal}

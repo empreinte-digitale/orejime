@@ -32,8 +32,6 @@ purpose:
   showMore: ""
   accept: Aanvaarden
   decline: Afwijzen
-  purposes: Doeleinden
-  purpose: Doeleinde
   enabled: Geactiveerd
   disabled: Gedesactiveerd
 misc:
