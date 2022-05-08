@@ -16,10 +16,7 @@ module.exports = {
 			directory: fullPath('dist')
 		}
 	},
-	entry: [
-		fullPath('src/ui/orejime.umd.ts'),
-		fullPath('src/styles/orejime.scss')
-	],
+	entry: ['./src/bootstrap/index.ts', './src/styles/orejime.scss'],
 	output: {
 		filename: 'orejime.js',
 		chunkFilename: (pathData) => {
