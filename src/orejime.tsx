@@ -6,23 +6,7 @@ import Main from './components/Main';
 import {language} from './utils/i18n';
 import {deepMerge} from './utils/objects';
 import {Config} from './types';
-
-function getElement(config: Config) {
-	const {elementID: id} = config;
-	var element = document.getElementById(id);
-	if (element === null) {
-		element = document.createElement('div');
-		element.id = id;
-		document.body.insertBefore(element, document.body.firstChild);
-	}
-	var child = document.querySelector('.orejime-AppContainer');
-	if (child === null) {
-		child = document.createElement('div');
-		child.className = 'orejime-AppContainer';
-		element.appendChild(child);
-	}
-	return document.querySelector('.orejime-AppContainer');
-}
+import {getRootElement} from './utils/dom';
 
 function getTranslations(config: Config) {
 	return deepMerge(
@@ -33,7 +17,6 @@ function getTranslations(config: Config) {
 }
 
 export const defaultConfig: Config = {
-	elementID: 'orejime',
 	cookieName: 'orejime',
 	cookieExpiresAfterDays: 365,
 	stringifyCookie: JSON.stringify.bind(JSON),
@@ -62,7 +45,7 @@ export function init(conf: Config) {
 		console.error(errors.join('\n'));
 		return;
 	}
-	const element = getElement(config);
+	const element = getRootElement(config.orejimeElement);
 	const manager = new ConsentManager(config);
 	const t = getTranslations(config);
 	const app = (render(

@@ -88,15 +88,17 @@ export interface Translations {
 	};
 }
 
+export type ElementReference = string | HTMLElement;
+
 export interface Config {
-	appElement?: HTMLElement;
+	orejimeElement?: ElementReference;
+	appElement?: ElementReference;
 	purposes: Purpose[];
 	categories?: Category[];
 	cookieDomain?: string;
 	cookieExpiresAfterDays: number;
 	cookieName: string;
 	default: boolean;
-	elementID: string;
 	lang: string;
 	logo:
 		| boolean
