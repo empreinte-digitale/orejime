@@ -34,6 +34,7 @@
   "homepage": "https://github.com/empreinte-digitale/orejime#readme",
   "dependencies": {
     "@babel/runtime": "^7.1.2",
+    "js-cookie": "^3.0.1",
     "react-modal": "^3.14.4"
   },
   "devDependencies": {
@@ -43,6 +44,7 @@
     "@babel/preset-env": "^7.17.10",
     "@babel/preset-react": "^7.16.7",
     "@types/jest": "^27.5.0",
+    "@types/js-cookie": "^3.0.2",
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.3",
     "@types/react-modal": "^3.13.1",
