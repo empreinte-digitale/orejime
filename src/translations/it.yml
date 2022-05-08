@@ -1,35 +1,42 @@
-consentModal:
+banner:
+  title: null
+  description: >
+    Raccogliamo ed elaboriamo le vostre informazioni personali per i seguenti
+    scopi: {purposes}.
+     Per saperne di più, leggi la nostra {privacyPolicy}.
+  privacyPolicyLabel: policy privacy
+  accept: ""
+  acceptTitle: ""
+  decline: Rifiuta
+  declineTitle: Rifiuta
+  configure: Scopri di più
+  configureTitle: Scopri di più
+modal:
   title: Informazioni che raccogliamo
   description: |
     Qui puoi vedere e scegliere le informazioni che raccogliamo su di te.
-  privacyPolicy:
-    name: policy privacy
-    text: |
-      Per saperne di più, leggi la nostra {privacyPolicy}.
-consentBanner:
-  changeDescription: Ci sono stati cambiamenti dalla tua ultima visita, aggiorna il tuo consenso.
-  description: >
-    Raccogliamo ed elaboriamo le vostre informazioni personali per i
-    seguenti scopi: {purposes}.
-  learnMore: Scopri di più
-accept: ""
-acceptTitle: ""
-acceptAll: ""
-save: Salva
-saveData: ""
-decline: Rifiuta
-declineAll: ""
-close: ""
-enabled: ""
-disabled: ""
+     Per saperne di più, leggi la nostra {privacyPolicy}.
+  privacyPolicyLabel: policy privacy
+  close: ""
+  closeTitle: ""
+  globalPreferences: ""
+  acceptAll: ""
+  declineAll: ""
+  save: Salva
+  saveTitle: ""
 purpose:
-  optOut:
-    title: (opt-out)
-    description: Quest'applicazione è caricata di default (ma puoi disattivarla)
-  required:
-    title: (sempre richiesto)
-    description: Quest'applicazione è sempre richiesta
+  mandatory: (sempre richiesto)
+  mandatoryTitle: Quest'applicazione è sempre richiesta
+  optOut: (opt-out)
+  optOutTitle: Quest'applicazione è caricata di default (ma puoi disattivarla)
+  showMore: ""
+  accept: ""
+  decline: Rifiuta
   purposes: Scopi
   purpose: Scopo
-poweredBy: Realizzato da Orejime
-newWindow: ""
+  enabled: ""
+  disabled: ""
+misc:
+  newWindowTitle: ""
+  updateNeeded: Ci sono stati cambiamenti dalla tua ultima visita, aggiorna il tuo consenso.
+  poweredBy: Realizzato da Orejime

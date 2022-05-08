@@ -27,47 +27,56 @@ export interface Category {
 	title: string;
 }
 
-export interface Translations {
-	consentModal: {
-		title: string;
-		description: string;
-		privacyPolicy: {
-			name: string;
-			text: string;
-		};
-	};
-	consentBanner: {
-		title: string;
-		description: string;
-		changeDescription: string;
-		learnMore: string;
-	};
+export interface BannerTranslations {
+	title?: string;
+	description: string;
+	privacyPolicyLabel: string;
 	accept: string;
-	acceptTitle: string;
-	acceptAll: string;
-	save: string;
-	saveData: string;
+	acceptTitle?: string;
 	decline: string;
-	declineAll: string;
+	declineTitle?: string;
+	configure: string;
+	configureTitle?: string;
+}
+
+export interface ModalTranslations {
+	title: string;
+	description: string;
+	privacyPolicyLabel: string;
 	close: string;
+	closeTitle: string;
+	globalPreferences: string;
+	acceptAll: string;
+	declineAll: string;
+	save: string;
+	saveTitle: string;
+}
+
+export interface PurposeTranslations {
+	mandatory: string;
+	mandatoryTitle: string;
+	optOut: string;
+	optOutTitle: string;
+	showMore: string;
+	accept: string;
+	decline: string;
+	purposes: string;
+	purpose: string;
 	enabled: string;
 	disabled: string;
-	purpose: {
-		title: string;
-		description: string;
-		optOut: {
-			title: string;
-			description: string;
-		};
-		required: {
-			title: string;
-			description: string;
-		};
-		purposes: string;
-		purpose: string;
-	};
+}
+
+export interface MiscTranslations {
+	newWindowTitle: string;
+	updateNeeded: string;
 	poweredBy: string;
-	newWindow: string;
+}
+
+export interface Translations {
+	banner: BannerTranslations;
+	modal: ModalTranslations;
+	purpose: PurposeTranslations;
+	misc: MiscTranslations;
 	categories?: {
 		[name: string]: {
 			title: string;

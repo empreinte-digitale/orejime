@@ -1,36 +1,43 @@
-consentModal:
+banner:
+  title: null
+  description: >
+    Vi samler inn og prosesserer din personlige informasjon av følgende årsaker:
+    {purposes}.
+     For å lære mer, vennligst les vår {privacyPolicy}.
+  privacyPolicyLabel: personvernerklæring
+  accept: ""
+  acceptTitle: ""
+  decline: Avslå
+  declineTitle: Avslå
+  configure: Lær mer
+  configureTitle: Lær mer
+modal:
   title: Informasjon vi samler inn
   description: |
     Her kan du se og velge hvilken informasjon vi samler inn om deg.
-  privacyPolicy:
-    name: personvernerklæring
-    text: |
-      For å lære mer, vennligst les vår {privacyPolicy}.
-consentBanner:
-  changeDescription: Det har skjedd endringer siden ditt siste besøk, vennligst
-    oppdater ditt samtykke.
-  description: >
-    Vi samler inn og prosesserer din personlige informasjon av følgende
-    årsaker: {purposes}.
-  learnMore: Lær mer
-accept: ""
-acceptTitle: ""
-acceptAll: ""
-save: Opslaan
-saveData: ""
-decline: Avslå
-declineAll: ""
-close: ""
-enabled: ""
-disabled: ""
+     For å lære mer, vennligst les vår {privacyPolicy}.
+  privacyPolicyLabel: personvernerklæring
+  close: ""
+  closeTitle: ""
+  globalPreferences: ""
+  acceptAll: ""
+  declineAll: ""
+  save: Opslaan
+  saveTitle: ""
 purpose:
-  optOut:
-    title: (opt-out)
-    description: Denne appen er lastet som standard (men du kan skru det av)
-  required:
-    title: (alltid påkrevd)
-    description: Denne applikasjonen er alltid påkrevd
+  mandatory: (alltid påkrevd)
+  mandatoryTitle: Denne applikasjonen er alltid påkrevd
+  optOut: (opt-out)
+  optOutTitle: Denne appen er lastet som standard (men du kan skru det av)
+  showMore: ""
+  accept: ""
+  decline: Avslå
   purposes: Årsaker
   purpose: Årsak
-poweredBy: Laget med Orejime
-newWindow: ""
+  enabled: ""
+  disabled: ""
+misc:
+  newWindowTitle: ""
+  updateNeeded: Det har skjedd endringer siden ditt siste besøk, vennligst
+    oppdater ditt samtykke.
+  poweredBy: Laget med Orejime

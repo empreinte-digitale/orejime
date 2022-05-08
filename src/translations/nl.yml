@@ -1,35 +1,42 @@
-consentModal:
+banner:
+  title: null
+  description: >
+    Wij verzamelen en verwerken uw persoonlijke gegevens voor de volgende
+    doeleinden: {purposes}.
+     Lees ons privacybeleid voor meer informatie {privacyPolicy}.
+  privacyPolicyLabel: privacybeleid
+  accept: Aanvaarden
+  acceptTitle: ""
+  decline: Afwijzen
+  declineTitle: Afwijzen
+  configure: Lees meer
+  configureTitle: Lees meer
+modal:
   title: Informatie die we verzamelen
   description: |
     Hier kunt u de informatie bekijken en aanpassen die we over u verzamelen.
-  privacyPolicy:
-    name: privacybeleid
-    text: |
-      Lees ons privacybeleid voor meer informatie {privacyPolicy}.
-consentBanner:
-  changeDescription: Er waren wijzigingen sinds uw laatste bezoek, werk uw voorkeuren bij.
-  description: >
-    Wij verzamelen en verwerken uw persoonlijke gegevens voor de
-    volgende doeleinden: {purposes}.
-  learnMore: Lees meer
-accept: Aanvaarden
-acceptTitle: ""
-acceptAll: Alles aanvaarden
-save: Opslaan
-saveData: Mijn configuratie voor de informatievergaring opslaan
-decline: Afwijzen
-declineAll: Alles weigeren
-close: Sluiten
-enabled: Geactiveerd
-disabled: Gedesactiveerd
+     Lees ons privacybeleid voor meer informatie {privacyPolicy}.
+  privacyPolicyLabel: privacybeleid
+  close: Sluiten
+  closeTitle: Sluiten
+  globalPreferences: ""
+  acceptAll: Alles aanvaarden
+  declineAll: Alles weigeren
+  save: Opslaan
+  saveTitle: Mijn configuratie voor de informatievergaring opslaan
 purpose:
-  optOut:
-    title: (afmelden)
-    description: Deze app is standaard geladen (maar je kunt je afmelden)
-  required:
-    title: (altijd verplicht)
-    description: Deze applicatie is altijd vereist
+  mandatory: (altijd verplicht)
+  mandatoryTitle: Deze applicatie is altijd vereist
+  optOut: (afmelden)
+  optOutTitle: Deze app is standaard geladen (maar je kunt je afmelden)
+  showMore: ""
+  accept: Aanvaarden
+  decline: Afwijzen
   purposes: Doeleinden
   purpose: Doeleinde
-poweredBy: Aangedreven door Orejime
-newWindow: nieuw venster
+  enabled: Geactiveerd
+  disabled: Gedesactiveerd
+misc:
+  newWindowTitle: nieuw venster
+  updateNeeded: Er waren wijzigingen sinds uw laatste bezoek, werk uw voorkeuren bij.
+  poweredBy: Aangedreven door Orejime

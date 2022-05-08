@@ -1,35 +1,42 @@
-consentModal:
+banner:
+  title: null
+  description: >
+    We collect and process your personal information for the following purposes:
+    {purposes}.
+     To learn more, please read our {privacyPolicy}.
+  privacyPolicyLabel: privacy policy
+  accept: Accept
+  acceptTitle: Accept cookies
+  decline: Decline
+  declineTitle: Decline
+  configure: Learn more
+  configureTitle: Learn more
+modal:
   title: Information that we collect
   description: |
     Here you can see and customize the information that we collect about you.
-  privacyPolicy:
-    name: privacy policy
-    text: |
-      To learn more, please read our {privacyPolicy}.
-consentBanner:
-  changeDescription: There were changes since your last visit, please update your consent.
-  description: >
-    We collect and process your personal information for the following
-    purposes: {purposes}.
-  learnMore: Learn more
-accept: Accept
-acceptTitle: Accept cookies
-acceptAll: Accept all apps
-save: Save
-saveData: Save my configuration on collected information
-decline: Decline
-declineAll: Decline all apps
-close: Close
-enabled: Enabled
-disabled: Disabled
+     To learn more, please read our {privacyPolicy}.
+  privacyPolicyLabel: privacy policy
+  close: Close
+  closeTitle: Close
+  globalPreferences: ""
+  acceptAll: Accept all apps
+  declineAll: Decline all apps
+  save: Save
+  saveTitle: Save my configuration on collected information
 purpose:
-  optOut:
-    title: (opt-out)
-    description: This app is loaded by default (but you can opt out)
-  required:
-    title: (always required)
-    description: This application is always required
+  mandatory: (always required)
+  mandatoryTitle: This application is always required
+  optOut: (opt-out)
+  optOutTitle: This app is loaded by default (but you can opt out)
+  showMore: ""
+  accept: Accept
+  decline: Decline
   purposes: Purposes
   purpose: Purpose
-poweredBy: Powered by Orejime
-newWindow: new window
+  enabled: Enabled
+  disabled: Disabled
+misc:
+  newWindowTitle: new window
+  updateNeeded: There were changes since your last visit, please update your consent.
+  poweredBy: Powered by Orejime

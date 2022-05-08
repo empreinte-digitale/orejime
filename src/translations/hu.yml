@@ -1,36 +1,43 @@
-consentModal:
+banner:
+  title: null
+  description: >
+    Az személyes adataidat összegyűjtjük és feldolgozzuk az alábbi célokra:
+    {purposes}.
+     További információért kérjük, olvassd el az {privacyPolicy}.
+  privacyPolicyLabel: adatvédelmi irányelveinket
+  accept: ""
+  acceptTitle: ""
+  decline: Elvet
+  declineTitle: Elvet
+  configure: Tudj meg többet
+  configureTitle: Tudj meg többet
+modal:
   title: Információk, amiket gyűjtünk
   description: |
     Itt láthatod és testreszabhatod az rólad gyűjtött információkat.
-  privacyPolicy:
-    name: adatvédelmi irányelveinket
-    text: |
-      További információért kérjük, olvassd el az {privacyPolicy}.
-consentBanner:
-  changeDescription: Az utolsó látogatás óta változások történtek, kérjük,
-    frissítsd a hozzájárulásodat.
-  description: >
-    Az személyes adataidat összegyűjtjük és feldolgozzuk az alábbi
-    célokra: {purposes}.
-  learnMore: Tudj meg többet
-accept: ""
-acceptTitle: ""
-acceptAll: ""
-save: Mentés
-saveData: ""
-decline: Elvet
-declineAll: ""
-close: ""
-enabled: ""
-disabled: ""
+     További információért kérjük, olvassd el az {privacyPolicy}.
+  privacyPolicyLabel: adatvédelmi irányelveinket
+  close: ""
+  closeTitle: ""
+  globalPreferences: ""
+  acceptAll: ""
+  declineAll: ""
+  save: Mentés
+  saveTitle: ""
 purpose:
-  optOut:
-    title: (leiratkozás)
-    description: Ez az alkalmazás alapértelmezés szerint betöltött (de ki lehet kapcsolni)
-  required:
-    title: (mindig kötelező)
-    description: Ez az applikáció mindig kötelező
+  mandatory: (mindig kötelező)
+  mandatoryTitle: Ez az applikáció mindig kötelező
+  optOut: (leiratkozás)
+  optOutTitle: Ez az alkalmazás alapértelmezés szerint betöltött (de ki lehet kapcsolni)
+  showMore: ""
+  accept: ""
+  decline: Elvet
   purposes: Célok
   purpose: Cél
-poweredBy: Powered by Orejime
-newWindow: ""
+  enabled: ""
+  disabled: ""
+misc:
+  newWindowTitle: ""
+  updateNeeded: Az utolsó látogatás óta változások történtek, kérjük, frissítsd a
+    hozzájárulásodat.
+  poweredBy: Powered by Orejime

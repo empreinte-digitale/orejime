@@ -1,34 +1,42 @@
-consentModal:
+banner:
+  title: null
+  description: >
+    Keräämme ja käsittelemme henkilötietoja seuraaviin tarkoituksiin:
+    {purposes}.
+     Voit lukea lisätietoja {privacyPolicy}.
+  privacyPolicyLabel: tietosuojasivultamme
+  accept: ""
+  acceptTitle: ""
+  decline: Hylkää
+  declineTitle: Hylkää
+  configure: Lue lisää
+  configureTitle: Lue lisää
+modal:
   title: Keräämämme tiedot
   description: |
     Voit tarkastella ja muokata sinusta keräämiämme tietoja.
-  privacyPolicy:
-    name: tietosuojasivultamme
-    text: |
-      Voit lukea lisätietoja {privacyPolicy}.
-consentBanner:
-  changeDescription: Olemme tehneet muutoksia ehtoihin viime vierailusi jälkeen, tarkista ehdot.
-  description: >
-    Keräämme ja käsittelemme henkilötietoja seuraaviin tarkoituksiin: {purposes}.
-  learnMore: Lue lisää
-accept: ""
-acceptTitle: ""
-acceptAll: ""
-save: Tallenna
-saveData: ""
-decline: Hylkää
-declineAll: ""
-close: ""
-enabled: ""
-disabled: ""
+     Voit lukea lisätietoja {privacyPolicy}.
+  privacyPolicyLabel: tietosuojasivultamme
+  close: ""
+  closeTitle: ""
+  globalPreferences: ""
+  acceptAll: ""
+  declineAll: ""
+  save: Tallenna
+  saveTitle: ""
 purpose:
-  optOut:
-    title: (ladataan oletuksena)
-    description: Ladataan oletuksena (mutta voit ottaa sen pois päältä)
-  required:
-    title: (vaaditaan)
-    description: Sivusto vaatii tämän aina
+  mandatory: (vaaditaan)
+  mandatoryTitle: Sivusto vaatii tämän aina
+  optOut: (ladataan oletuksena)
+  optOutTitle: Ladataan oletuksena (mutta voit ottaa sen pois päältä)
+  showMore: ""
+  accept: ""
+  decline: Hylkää
   purposes: Käyttötarkoitukset
   purpose: Käyttötarkoitus
-poweredBy: Palvelun tarjoaa Orejime
-newWindow: ""
+  enabled: ""
+  disabled: ""
+misc:
+  newWindowTitle: ""
+  updateNeeded: Olemme tehneet muutoksia ehtoihin viime vierailusi jälkeen, tarkista ehdot.
+  poweredBy: Palvelun tarjoaa Orejime

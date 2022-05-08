@@ -69,7 +69,7 @@ export default class Purposes extends Component<Props, State> {
 							disabled={allEnabled}
 							onClick={enableAll}
 						>
-							{t.acceptAll}
+							{t.modal.acceptAll}
 						</button>
 						<button
 							type="button"
@@ -77,7 +77,7 @@ export default class Purposes extends Component<Props, State> {
 							disabled={allDisabled}
 							onClick={disableAll}
 						>
-							{t.declineAll}
+							{t.modal.declineAll}
 						</button>
 					</div>
 				) : null}

@@ -159,7 +159,7 @@ var orejimeConfig = {
     // list of translations that can be overwritten
     translations: {
         en: {
-            consentModal: {
+            modal: {
                 description: "This is an example of how to override an existing translation already used by Orejime",
             },
             inlineTracker: {

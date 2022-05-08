@@ -16,7 +16,7 @@ export default class ConsentBannerWrapper extends Component<Props> {
 		if (!this.props.isMandatory && !isVisible) {
 			return null;
 		}
-		const title = this.props.t.consentBanner.title;
+		const title = this.props.t.banner.title;
 		const ariaProp = title
 			? {aria: {'labelledby': 'orejime-Banner-title'}}
 			: {};

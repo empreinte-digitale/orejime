@@ -1,37 +1,44 @@
-consentModal:
+banner:
+  title: null
+  description: >
+    Reculhissèm e tractam vòstras informacions personalas amb la tòca seguenta :
+    {purposes}.
+     Per ne saber mai, mercés de legir nòstra {privacyPolicy}.
+  privacyPolicyLabel: politica de confidencialitat
+  accept: Acceptar
+  acceptTitle: Acceptar los cookies
+  decline: Refusar
+  declineTitle: Refusar
+  configure: Ne saber mai
+  configureTitle: Ne saber mai
+modal:
   title: Las informacions que reculhissèm
   description: >
-    Aicí, podètz veire e personalizar las informacions que reculhissèm
-    vos tocant.
-  privacyPolicy:
-    name: politica de confidencialitat
-    text: |
-      Per ne saber mai, mercés de legir nòstra {privacyPolicy}.
-consentBanner:
-  changeDescription: I aguèt de modificacions dempuèi vòstra darrièra visita,
-    mercés d’actualizar vòstre consentiment.
-  description: >
-    Reculhissèm e tractam vòstras informacions personalas amb la tòca
-    seguenta : {purposes}.
-  learnMore: Ne saber mai
-accept: Acceptar
-acceptTitle: Acceptar los cookies
-acceptAll: Tot acceptar
-save: Salvagardar
-saveData: Salvagardar ma configuracion per las informacions collectadas
-decline: Refusar
-declineAll: Tot refusar
-close: Tancar
-enabled: Activat
-disabled: Desactivat
+    Aicí, podètz veire e personalizar las informacions que reculhissèm vos
+    tocant.
+     Per ne saber mai, mercés de legir nòstra {privacyPolicy}.
+  privacyPolicyLabel: politica de confidencialitat
+  close: Tancar
+  closeTitle: Tancar
+  globalPreferences: ""
+  acceptAll: Tot acceptar
+  declineAll: Tot refusar
+  save: Salvagardar
+  saveTitle: Salvagardar ma configuracion per las informacions collectadas
 purpose:
-  optOut:
-    title: (opt-out)
-    description: Aquesta aplicacion es cargada per defaut (mas la podètz desactivar)
-  required:
-    title: (tojors requerit)
-    description: Aquesta aplicacion es totjorn requerida
+  mandatory: (tojors requerit)
+  mandatoryTitle: Aquesta aplicacion es totjorn requerida
+  optOut: (opt-out)
+  optOutTitle: Aquesta aplicacion es cargada per defaut (mas la podètz desactivar)
+  showMore: ""
+  accept: Acceptar
+  decline: Refusar
   purposes: Utilizacions
   purpose: Utilizacion
-poweredBy: Propulsat per Orejime
-newWindow: fenèstra novèla
+  enabled: Activat
+  disabled: Desactivat
+misc:
+  newWindowTitle: fenèstra novèla
+  updateNeeded: I aguèt de modificacions dempuèi vòstra darrièra visita, mercés
+    d’actualizar vòstre consentiment.
+  poweredBy: Propulsat per Orejime

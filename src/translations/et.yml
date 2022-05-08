@@ -1,35 +1,42 @@
-consentModal:
+banner:
+  title: null
+  description: |
+    Me kogume ja töötleme teie isikuandmeid järgmistel eesmärkidel: {purposes}.
+     Lisateabe saamiseks lugege palun meie {privacyPolicy}
+  privacyPolicyLabel: privaatsustingimused
+  accept: Nõustu
+  acceptTitle: Nõustu küpsistega
+  decline: Keeldu
+  declineTitle: Keeldu
+  configure: Lisateave
+  configureTitle: Lisateave
+modal:
   title: Isikuandmete kogumine
   description: |
     Siit saate vaadata ja hallata teavet, mida me teie kohta kogume.
-  privacyPolicy:
-    name: privaatsustingimused
-    text: |
-      Lisateabe saamiseks lugege palun meie {privacyPolicy}
-consentBanner:
-  changeDescription: Pärast teie viimast külastust on toimunud muudatusi, palun
-    uuendage oma nõusolekut.
-  description: |
-    Me kogume ja töötleme teie isikuandmeid järgmistel eesmärkidel: {purposes}.
-  learnMore: Lisateave
-accept: Nõustu
-acceptTitle: Nõustu küpsistega
-acceptAll: Nõustu kõigi rakendustega
-save: Salvesta
-saveData: Salvesta kogutud teabe seadistused
-decline: Keeldu
-declineAll: Keela kõik rakendused
-close: Sulge
-enabled: Lubatud
-disabled: Välja lülitatud
+     Lisateabe saamiseks lugege palun meie {privacyPolicy}
+  privacyPolicyLabel: privaatsustingimused
+  close: Sulge
+  closeTitle: Sulge
+  globalPreferences: ""
+  acceptAll: Nõustu kõigi rakendustega
+  declineAll: Keela kõik rakendused
+  save: Salvesta
+  saveTitle: Salvesta kogutud teabe seadistused
 purpose:
-  optOut:
-    title: (Opt-Out)
-    description: See rakendus on vaikimisi lisatud (kuid saate sellest loobuda)
-  required:
-    title: (alati vajalik)
-    description: See rakendus on alati vajalik
+  mandatory: (alati vajalik)
+  mandatoryTitle: See rakendus on alati vajalik
+  optOut: (Opt-Out)
+  optOutTitle: See rakendus on vaikimisi lisatud (kuid saate sellest loobuda)
+  showMore: ""
+  accept: Nõustu
+  decline: Keeldu
   purposes: Eesmärgid
   purpose: Eesmärk
-poweredBy: Teenuse pakkuja on Orejime
-newWindow: uus aken
+  enabled: Lubatud
+  disabled: Välja lülitatud
+misc:
+  newWindowTitle: uus aken
+  updateNeeded: Pärast teie viimast külastust on toimunud muudatusi, palun
+    uuendage oma nõusolekut.
+  poweredBy: Teenuse pakkuja on Orejime
