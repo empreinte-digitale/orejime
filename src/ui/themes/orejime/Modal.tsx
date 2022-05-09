@@ -4,6 +4,7 @@ import Dialog from '../../components/Dialog';
 import {template} from '../../utils/template';
 import {useTranslations} from '../../utils/hooks';
 import {ModalComponent} from '../../components/types/Modal';
+import PoweredByLink from '../../components/PoweredByLink';
 
 const Modal: ModalComponent = ({
 	isForced,
@@ -80,14 +81,7 @@ const Modal: ModalComponent = ({
 							{t.modal.save}
 						</button>
 
-						<a
-							target="_blank"
-							className="orejime-Modal-poweredByLink"
-							href={'https://orejime.empreintedigitale.fr'}
-							title={`${t.misc.poweredBy} (${t.misc.newWindowTitle})`}
-						>
-							{t.misc.poweredBy}
-						</a>
+						<PoweredByLink className="orejime-Modal-poweredByLink" />
 					</div>
 				</form>
 			</div>
