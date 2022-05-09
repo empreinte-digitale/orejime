@@ -10,7 +10,10 @@
     "cookie",
     "consent",
     "gdpr",
-    "compliance"
+    "compliance",
+    "accessibility",
+    "ecofriendly",
+    "low footprint"
   ],
   "main": "lib/orejime.js",
   "browser": "lib/orejime.js",
@@ -49,6 +52,7 @@
     "@types/react-dom": "^18.0.3",
     "@types/react-modal": "^3.13.1",
     "babel-loader": "^8.0.4",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "copy-webpack-plugin": "^10.2.4",
     "cross-env": "^5.2.0",
     "css-loader": "^0.28.11",

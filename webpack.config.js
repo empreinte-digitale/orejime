@@ -32,9 +32,14 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.tsx?/,
-				use: ['babel-loader', 'ts-loader'],
-				include: fullPath('src')
+				test: /\.js$/,
+				include: fullPath('node_modules/react-modal'),
+				use: 'babel-loader'
+			},
+			{
+				test: /\.tsx?$/,
+				include: fullPath('src'),
+				use: ['babel-loader', 'ts-loader']
 			},
 			{
 				test: /\.ya?ml$/,
@@ -50,7 +55,10 @@ module.exports = {
 		extensions: ['.js', '.ts', '.tsx'],
 		alias: {
 			react: 'preact/compat',
-			'react-dom': 'preact/compat'
+			'react-dom': 'preact/compat',
+			'react-lifecycles-compat': fullPath(
+				'src/stubs/react-lifecycles-compat.js'
+			)
 		}
 	},
 	optimization: {
