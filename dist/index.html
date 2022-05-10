@@ -69,8 +69,8 @@
 						</p>
 
 						<div class="ButtonGroup">
-							<button type="button" class="Button consent-modal-button">Open consent modal</button>
-							<button type="button" class="Button reset-button">Reset consent</button>
+							<button type="button" class="Button" data-orejime-open>Open consent modal</button>
+							<button type="button" class="Button" data-orejime-reset>Reset consent</button>
 						</div>
 					</div>
 
@@ -188,6 +188,7 @@
 
 		<!-- since there is a orejimeConfig global variable in index.js, a window.orejime instance will be initiated when including the lib -->
 		<script src="orejime.js"></script>
+		<script src="example-assets/buttons.js"></script>
 		<script src="example-assets/setCookie.js"></script>
 
 		<script
@@ -204,18 +205,6 @@
 		>
 			console.log("This is an example of an inline tracking script.")
 			setCookie("inline-tracker", "foo", 120)
-		</script>
-
-		<script>
-			// since there is a orejimeConfig global variable in index.js,
-			// a window.orejime instance was created when including the lib
-			document.querySelector('.consent-modal-button').addEventListener('click', function() {
-				orejime.show();
-			}, false);
-
-			document.querySelector('.reset-button').addEventListener('click', function() {
-				orejime.manager.clearConsents();
-			}, false);
 		</script>
 	</body>
 </html>
