@@ -3,15 +3,15 @@ import {ConsentsMap, Purpose} from './types';
 import updatePurposeElements from './utils/updatePurposeElements';
 
 export default class DomConsentsEffect implements ConsentsEffect {
-	private readonly singletonPurposes: ConsentsMap;
-	private readonly alreadyExecuted: ConsentsMap;
+	readonly #singletonPurposes: ConsentsMap;
+	readonly #alreadyExecuted: ConsentsMap;
 
 	constructor(purposes: Purpose[]) {
-		this.singletonPurposes = Object.fromEntries(
+		this.#singletonPurposes = Object.fromEntries(
 			purposes.map(({id, runsOnce}) => [id, !!runsOnce])
 		);
 
-		this.alreadyExecuted = Object.fromEntries(
+		this.#alreadyExecuted = Object.fromEntries(
 			purposes.map(({id}) => [id, false])
 		);
 	}
@@ -21,12 +21,12 @@ export default class DomConsentsEffect implements ConsentsEffect {
 			.filter(
 				([id, consent]) =>
 					!consent ||
-					!this.singletonPurposes[id] ||
-					!this.alreadyExecuted?.[id]
+					!this.#singletonPurposes[id] ||
+					!this.#alreadyExecuted?.[id]
 			)
 			.forEach(([id, consent]) => {
 				updatePurposeElements(id, consent);
-				this.alreadyExecuted[id] = true;
+				this.#alreadyExecuted[id] = true;
 			});
 	}
 }
