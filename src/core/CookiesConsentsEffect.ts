@@ -4,16 +4,16 @@ import {indexBy} from './utils/arrays';
 import deletePurposeCookies from './utils/deletePurposeCookies';
 
 export default class CookiesConsentsEffect implements ConsentsEffect {
-	private readonly purposes: Record<Purpose['id'], Purpose>;
+	readonly #purposes: Record<Purpose['id'], Purpose>;
 
 	constructor(purposes: Purpose[]) {
-		this.purposes = indexBy(purposes, 'id');
+		this.#purposes = indexBy(purposes, 'id');
 	}
 
 	apply(consents: ConsentsMap) {
 		Object.entries(consents)
 			.filter(([_, consent]) => !consent)
-			.map(([id]) => this.purposes[id].cookies)
+			.map(([id]) => this.#purposes[id].cookies)
 			.filter((cookies) => cookies?.length)
 			.forEach(deletePurposeCookies);
 	}
