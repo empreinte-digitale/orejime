@@ -33,6 +33,11 @@ export default (partialConfig: Config): UmdGlobal => {
 		})
 	);
 
+	const preloadUi = () =>
+		loadUi().then(() => {
+			// Returning nothing here avoids exposing the internal API.
+		});
+
 	const showUi = () =>
 		loadUi().then((show) => {
 			show();
@@ -51,6 +56,7 @@ export default (partialConfig: Config): UmdGlobal => {
 	return {
 		config,
 		manager,
+		preload: preloadUi,
 		show: showUi
 	};
 };

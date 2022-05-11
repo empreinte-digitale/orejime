@@ -4,6 +4,7 @@ import type {Config} from '../ui';
 export interface UmdGlobal {
 	config: Config;
 	manager: Manager;
+	preload: () => Promise<void>;
 	show: () => Promise<void>;
 }
 

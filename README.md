@@ -339,6 +339,7 @@ $orejime-theme-color: white;
 ### Orejime instance
 
 * `show()`: show the consent modal
+* `preload()`: preloads the UI without showing it
 * `manager`: the Manager instance used. See `src/core/Manager.ts`
 * `config`: the complete config object used
 
