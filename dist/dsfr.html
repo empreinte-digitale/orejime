@@ -1,0 +1,228 @@
+<html lang="fr">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<title>Intégration au système de design de l'état - Orejime</title>
+
+		<link
+			rel="stylesheet"
+			href="https://unpkg.com/@gouvfr/dsfr@1/dist/dsfr/dsfr.min.css"
+		/>
+	</head>
+
+	<body id="app">
+		<header role="banner" class="fr-header">
+			<div class="fr-header__body">
+				<div class="fr-container">
+					<div class="fr-header__body-row">
+						<div class="fr-header__brand fr-enlarge-link">
+							<div class="fr-header__brand-top">
+								<div class="fr-header__logo">
+									<a
+										href="/dsfr.html"
+										title="Accueil - Intégration au système de design de l'état - Orejime"
+									>
+										<p class="fr-logo">Exemple</p>
+									</a>
+								</div>
+							</div>
+
+							<div class="fr-header__service">
+								<a
+									href="/dsfr.html"
+									title="Accueil - Intégration au système de design de l'état - Orejime"
+								>
+									<p class="fr-header__service-title">Orejime</p>
+								</a>
+
+								<p class="fr-header__service-tagline">
+									Gestionnaire de consentement accessible et éco-conçu
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<main role="main" class="contentAll">
+			<div style="background-color: #addff3">
+				<div class="fr-container fr-pt-10w fr-pb-10w fr-mb-10w">
+					<div class="fr-grid-row fr-grid-row--gutters">
+						<div class="fr-col-lg-6">
+							<h1>
+								Intégration d'Orejime au système de design de l'État
+							</h1>
+							<p class="fr-mt-5w fr-mb-0w">
+								Orejime propose une version adaptée au système de design
+								de l'État.
+								<br />
+								Cette version est configurable de la même manière que la
+								<a href="/">version standard</a>
+								, mais utilise la présentation recommandée du
+								<a
+									href="https://gouvfr.atlassian.net/wiki/spaces/DB/pages/609189956/Gestionnaire+de+consentement+-+Consent+banner"
+								>
+									gestionnaire de consentement
+								</a>
+								.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="fr-container fr-mb-10w">
+				<div class="fr-callout fr-fi-information-line" id="privacy-policy">
+					<p class="fr-callout__title">
+						Exemple de politique de confidentialité
+					</p>
+					<p class="fr-callout__text">
+						Cette section tient lieu de page de politique de
+						confidentialité.
+						<br />
+						En contexte réel, ce contenu serait affiché dans une page
+						dédiée.
+						<br />
+						Cette page fournirait toutes les informations relatives à la
+						gestion des données personnelles des usagers, ainsi que des
+						boutons permettant à l'usager de configurer ou réinitialiser
+						son consentement, comme ci-dessous.
+					</p>
+
+					<ul class="fr-btns-group fr-btns-group--inline">
+						<li>
+							<button class="fr-btn" data-orejime-open>
+								Configurer
+							</button>
+						</li>
+						<li>
+							<button
+								class="fr-btn fr-btn--secondary"
+								data-orejime-reset
+							>
+								Réinitialiser
+							</button>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</main>
+
+		<footer class="fr-footer" role="contentinfo" id="footer">
+			<div class="fr-container">
+				<div class="fr-footer__body">
+					<div class="fr-footer__brand fr-enlarge-link">
+						<p class="fr-logo">Exemple</p>
+					</div>
+
+					<div class="fr-footer__content">
+						<p class="fr-footer__content-desc">
+							Ce site n'est pas un site de l'État.
+							<br />
+							Il utilise le système de design de l'État pour donner un
+							exemple d'intégration d'Orejime.
+						</p>
+
+						<ul class="fr-footer__content-list">
+							<li class="fr-footer__content-item">
+								<a
+									class="fr-footer__content-link"
+									target="_blank"
+									href="https://www.systeme-de-design.gouv.fr/"
+								>
+									systeme-de-design.gouv.fr
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="fr-footer__bottom">
+					<ul class="fr-footer__bottom-list">
+						<li class="fr-footer__bottom-item">
+							<a class="fr-footer__bottom-link" href="#privacy-policy">
+								Données personnelles
+							</a>
+						</li>
+						<li class="fr-footer__bottom-item">
+							<button
+								class="fr-footer__bottom-link"
+								href="#"
+								data-orejime-preload
+								data-orejime-open
+							>
+								Gestion des cookies
+							</button>
+						</li>
+					</ul>
+
+					<div class="fr-footer__bottom-copy">
+						<p>
+							Sauf mention contraire, tous les contenus de ce site sont
+							sous
+							<a
+								href="https://github.com/etalab/licence-ouverte/blob/master/LO.md"
+								target="_blank"
+							>
+								licence etalab-2.0
+							</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<script>
+			// see the annotated config in the README for details on how everything works
+			window.orejimeConfig = {
+				theme: 'dsfr',
+				appElement: '#app',
+				privacyPolicyUrl: '#privacyPolicy',
+				lang: 'fr',
+				purposes: [
+					{
+						id: 'advertising',
+						title: 'Advertising',
+						description: 'Things related to advertising.',
+						purposes: [
+							{
+								id: 'inline-tracker',
+								name: 'inline-tracker',
+								title: 'Inline Tracker',
+								cookies: ['inline-tracker']
+							},
+							{
+								id: 'external-tracker',
+								name: 'external-tracker',
+								title: 'External Tracker',
+								cookies: ['external-tracker'],
+								isMandatory: true
+							}
+						]
+					},
+					{
+						id: 'disabled-by-default',
+						name: 'disabled-by-default',
+						title: 'Something disabled by default',
+						description:
+							'This <a href="http://example.com">example</a> app will not set any cookie',
+						default: false
+					},
+					{
+						id: 'always-on',
+						name: 'always-on',
+						title: 'Required app',
+						description: 'This example app will not set any cookie',
+						isMandatory: true
+					}
+				]
+			};
+		</script>
+
+		<script type="module" src="orejime.js"></script>
+		<script src="example-assets/buttons.js"></script>
+	</body>
+</html>
