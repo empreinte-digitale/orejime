@@ -24,9 +24,9 @@ modal:
   save: Salvesta
   saveTitle: Salvesta kogutud teabe seadistused
 purpose:
-  mandatory: (alati vajalik)
+  mandatory: alati vajalik
   mandatoryTitle: See rakendus on alati vajalik
-  exempt: (Opt-Out)
+  exempt: Opt-Out
   exemptTitle: See rakendus on vaikimisi lisatud (kuid saate sellest loobuda)
   showMore: Näita rohkem
   accept: Nõustu

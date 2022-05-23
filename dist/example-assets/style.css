@@ -291,154 +291,17 @@ main {
 	}
 }
 
-.orejime-ModalOverlay,
-.orejime-BannerOverlay {
-	background: rgba(54, 117, 145, 0.75);
-}
-
-.orejime-Banner,
-.orejime-Modal {
-	background: var(--cyan-darker);
-	background: linear-gradient(112.5deg, var(--cyan-dark) 0%, var(--cyan-darker) 100%);
-	color: var(--white);
-}
-
-@media screen and (min-width: 990px) {
-	.orejime-Banner {
-		max-width: 40ch;
-	}
-}
-
-.orejime-Banner-body {
-	padding: calc(var(--unit) / 2);
-}
-
-.orejime-Banner-purposes {
-	color: var(--cyan-light);
-}
-
-.orejime-Banner-description {
-	margin-bottom: calc(var(--unit) / 2);
-	text-align: center;
-}
-
-.orejime-Banner-actions {
-	text-align: center;
-}
-
-.orejime-Modal a {
-	color: var(--white);
-}
-
-.orejime-Modal a:hover,
-.orejime-Modal a:focus {
-	background: rgba(214, 8, 79, 0.3);
-}
-
-.orejime-Modal-header {
-	border: 0;
-	padding: calc(1.5 * var(--unit));
-	padding-bottom: 0;
-}
-
-.orejime-Modal-title {
-	margin-bottom: var(--unit);
-	line-height: 1;
-	font-size: 2em;
-}
-
-.orejime-Modal-body {
-	padding: calc(1.5 * var(--unit));
-	padding-bottom: calc(var(--unit) / 2);
-}
-
-.orejime-Modal-footer {
-	border: 0;
-	padding: calc(1.5 * var(--unit));
-}
-
-.orejime-Modal-title {
-	font-family: var(--headings-font);
-}
-
-.orejime-PurposeToggles {
-	margin-bottom: calc(1.5 * var(--unit));
-}
-
-.orejime-PurposeToggles button {
-	margin: 0 1px 1px 0;
-}
-
-.orejime-Purpose {
-	padding-left: calc(50px + var(--unit));
-}
-
-.orejime-Purpose-purposes {
-	color: var(--cyan-light);
-}
-
-.orejime-Button {
-	padding: calc(var(--unit) / 4) calc(var(--unit) / 2);
-	font-weight: 600;
-	cursor: pointer;
-	transition: background-color 75ms ease-in;
-}
-
-.orejime-Button--info {
-	background: var(--magenta);
-}
-
-.orejime-Button--info:hover,
-.orejime-Button--info:focus {
-	background: var(--magenta-focus);
-}
-
-.orejime-Button--info:active {
-	background: var(--magenta-active);
-}
-
-.orejime-Button--decline {
-	background: var(--negative);
-}
-
-.orejime-Button--decline:hover,
-.orejime-Button--decline:focus {
-	background: var(--negative-focus);
-}
-
-.orejime-Button--decline:active {
-	background: var(--negative-active);
-}
-
-.orejime-Button--save,
-.orejime-Button--accept {
-	background: var(--positive);
-	color: var(--cyan-darker);
-}
-
-.orejime-Button--save:hover,
-.orejime-Button--save:focus,
-.orejime-Button--accept:hover,
-.orejime-Button--accept:focus {
-	background: var(--positive-focus);
-}
-.orejime-Button--save:active,
-.orejime-Button--accept:active {
-	background: var(--positive-active);
-}
-
-.orejime-Purpose-input:checked + .orejime-Purpose-label .orejime-Purpose-slider {
-	background: var(--magenta);
-}
-
-.orejime-Purpose-input:indeterminate + .orejime-Purpose-label .orejime-Purpose-slider {
-	background: var(--magenta-indeterminate);
-}
-
-.orejime-Modal-privacyPolicyLink {
-	color: var(--cyan-light);
-}
-
-.orejime-Modal-poweredByLink {
-	display: none;
+.orejime-Env {
+	--orejime-overlay-background: rgba(54, 117, 145, 0.75);
+	--orejime-background: var(--cyan-darker);
+	--orejime-background: linear-gradient(
+		112.5deg,
+		var(--cyan-dark) 0%,
+		var(--cyan-darker) 100%
+	);
+	--orejime-color: var(--white);
+	--orejime-color-subdued: var(--cyan-light);
+	--orejime-color-interactive: #feb752;
+	--orejime-color-interactive: #e3c0fa;
+	--orejime-font-family: inherit;
 }

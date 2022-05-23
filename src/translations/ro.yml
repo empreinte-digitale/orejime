@@ -26,9 +26,9 @@ modal:
   save: Salvează
   saveTitle: null
 purpose:
-  mandatory: (întotdeauna necesar)
+  mandatory: întotdeauna necesar
   mandatoryTitle: Această aplicație este întotdeauna necesară
-  exempt: (opt-out)
+  exempt: opt-out
   exemptTitle: Această aplicație este încărcată în mod implicit (dar puteți renunța)
   showMore: Arata mai mult
   accept: Accepta

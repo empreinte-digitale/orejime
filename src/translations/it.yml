@@ -25,9 +25,9 @@ modal:
   save: Salva
   saveTitle: null
 purpose:
-  mandatory: (sempre richiesto)
+  mandatory: sempre richiesto
   mandatoryTitle: Quest'applicazione è sempre richiesta
-  exempt: (opt-out)
+  exempt: opt-out
   exemptTitle: Quest'applicazione è caricata di default (ma puoi disattivarla)
   showMore: Mostra di più
   accept: Accetto

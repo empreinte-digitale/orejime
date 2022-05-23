@@ -26,9 +26,9 @@ modal:
   save: Desa
   saveTitle: Desa la meva configuració sobre la informació recollida
 purpose:
-  mandatory: (sempre obligatori)
+  mandatory: sempre obligatori
   mandatoryTitle: Aquesta aplicació sempre és necessària
-  exempt: (desactivar)
+  exempt: desactivar
   exemptTitle: Aquesta aplicació es carrega de manera predeterminada (però podeu
     desactivar-la)
   showMore: Saber-ne més

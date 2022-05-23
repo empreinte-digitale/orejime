@@ -25,9 +25,9 @@ modal:
   save: Guardar
   saveTitle: Guardar mi configuración en la información recopilada
 purpose:
-  mandatory: (siempre obligatorio)
+  mandatory: siempre obligatorio
   mandatoryTitle: Esta aplicación es siempre obligatoria
-  exempt: (desactivar)
+  exempt: desactivar
   exemptTitle: Esta aplicación se carga por defecto (pero puedes desactivarla)
   showMore: Mostrar más
   accept: Aceptar

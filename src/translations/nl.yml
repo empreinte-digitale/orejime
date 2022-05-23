@@ -25,9 +25,9 @@ modal:
   save: Opslaan
   saveTitle: Mijn configuratie voor de informatievergaring opslaan
 purpose:
-  mandatory: (altijd verplicht)
+  mandatory: altijd verplicht
   mandatoryTitle: Deze applicatie is altijd vereist
-  exempt: (afmelden)
+  exempt: afmelden
   exemptTitle: Deze app is standaard geladen (maar je kunt je afmelden)
   showMore: Laat meer zien
   accept: Aanvaarden

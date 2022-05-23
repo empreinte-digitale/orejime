@@ -25,9 +25,9 @@ modal:
   save: Save
   saveTitle: Save my configuration on collected information
 purpose:
-  mandatory: (always required)
+  mandatory: always required
   mandatoryTitle: This application is always required
-  exempt: (opt-out)
+  exempt: opt-out
   exemptTitle: This app is loaded by default (but you can opt out)
   showMore: Show more details
   accept: Accept

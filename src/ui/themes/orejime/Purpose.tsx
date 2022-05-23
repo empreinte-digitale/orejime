@@ -42,41 +42,34 @@ const Purpose: PurposeComponent = ({
 				className="orejime-Purpose-label"
 				{...(isMandatory ? {tabIndex: 0} : {})}
 			>
-				<span className="orejime-Purpose-title">{title}</span>
-
+				<span className="orejime-Purpose-title">{title}</span>{' '}
 				{isMandatory ? (
 					<span
-						className="orejime-Purpose-mandatory"
+						className="orejime-Purpose-attribute orejime-Purpose-attribute--mandatory"
 						title={t.purpose.mandatoryTitle}
 					>
 						{t.purpose.mandatory}
 					</span>
-				) : null}
-
+				) : null}{' '}
 				{isExempt ? (
 					<span
-						className="orejime-Purpose-exempt"
+						className="orejime-Purpose-attribute orejime-Purpose-attribute--exempt"
 						title={t.purpose.exemptTitle}
 					>
 						{t.purpose.exempt}
 					</span>
-				) : null}
+				) : null}{' '}
 				<span
-					className={`orejime-Purpose-switch ${
-						isMandatory ? 'orejime-Purpose-switch--disabled' : ''
-					}`}
+					className="orejime-Purpose-attribute orejime-Purpose-attribute--state"
+					aria-hidden="true"
 				>
-					<div className="orejime-Purpose-slider"></div>
-					<div aria-hidden="true" className="orejime-Purpose-switchLabel">
-						{consent === ConsentState.accepted
-							? t.purpose.enabled
-							: consent === ConsentState.declined
-							? t.purpose.disabled
-							: t.purpose.partial}
-					</div>
+					{consent === ConsentState.accepted
+						? t.purpose.enabled
+						: consent === ConsentState.declined
+						? t.purpose.disabled
+						: t.purpose.partial}
 				</span>
 			</label>
-
 			{description ? (
 				<div
 					id={`${domId}-description`}
@@ -90,7 +83,6 @@ const Purpose: PurposeComponent = ({
 					/>
 				</div>
 			) : null}
-
 			<div className="orejime-Purpose-children">{children}</div>
 		</div>
 	);

@@ -26,9 +26,9 @@ modal:
   save: Speichern
   saveTitle: Meine Einstellungen speichern
 purpose:
-  mandatory: (immer notwendig)
+  mandatory: immer notwendig
   mandatoryTitle: Diese Einstellungen werden immer benötigt
-  exempt: (Opt-Out)
+  exempt: Opt-Out
   exemptTitle: Diese Einstellungen als Standard festlegen (sie können jederzeit
     deaktiviert werden)
   showMore: Mehr Details zeigen

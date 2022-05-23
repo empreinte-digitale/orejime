@@ -32,7 +32,7 @@ const Main: ForwardRefRenderFunction<MainHandle> = (_, ref) => {
 	}));
 
 	return (
-		<div className="orejime-Main">
+		<div className="orejime-Main orejime-Env">
 			{isBannerOpen ? (
 				<BannerComponent
 					key="banner"

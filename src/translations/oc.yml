@@ -26,9 +26,9 @@ modal:
   save: Salvagardar
   saveTitle: Salvagardar ma configuracion per las informacions collectadas
 purpose:
-  mandatory: (tojors requerit)
+  mandatory: tojors requerit
   mandatoryTitle: Aquesta aplicacion es totjorn requerida
-  exempt: (opt-out)
+  exempt: opt-out
   exemptTitle: Aquesta aplicacion es cargada per defaut (mas la podètz desactivar)
   showMore: Mostrar mai
   accept: Acceptar
