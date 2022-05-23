@@ -26,9 +26,9 @@ modal:
   save: Sauvegarder
   saveTitle: Sauvegarder ma configuration sur les informations collectées
 purpose:
-  mandatory: (toujours requis)
+  mandatory: toujours requis
   mandatoryTitle: Cette application est toujours requise
-  exempt: (opt-out)
+  exempt: opt-out
   exemptTitle: Cette application est chargée par défaut (mais vous pouvez la désactiver)
   showMore: Voir plus de détails
   accept: Accepter

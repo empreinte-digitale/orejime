@@ -25,9 +25,9 @@ modal:
   save: Opslaan
   saveTitle: null
 purpose:
-  mandatory: (alltid påkrevd)
+  mandatory: alltid påkrevd
   mandatoryTitle: Denne applikasjonen er alltid påkrevd
-  exempt: (opt-out)
+  exempt: opt-out
   exemptTitle: Denne appen er lastet som standard (men du kan skru det av)
   showMore: Vise mer
   accept: Akseptere

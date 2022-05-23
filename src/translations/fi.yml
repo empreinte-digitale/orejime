@@ -25,9 +25,9 @@ modal:
   save: Tallenna
   saveTitle: null
 purpose:
-  mandatory: (vaaditaan)
+  mandatory: vaaditaan
   mandatoryTitle: Sivusto vaatii tämän aina
-  exempt: (ladataan oletuksena)
+  exempt: ladataan oletuksena
   exemptTitle: Ladataan oletuksena (mutta voit ottaa sen pois päältä)
   showMore: Lue lisää
   accept: Hyväksy

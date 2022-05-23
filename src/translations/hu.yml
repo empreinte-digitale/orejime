@@ -25,9 +25,9 @@ modal:
   save: Mentés
   saveTitle: null
 purpose:
-  mandatory: (mindig kötelező)
+  mandatory: mindig kötelező
   mandatoryTitle: Ez az applikáció mindig kötelező
-  exempt: (leiratkozás)
+  exempt: leiratkozás
   exemptTitle: Ez az alkalmazás alapértelmezés szerint betöltött (de ki lehet kapcsolni)
   showMore: Tudjon meg többet
   accept: Elfogad

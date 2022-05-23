@@ -1,24 +1,14 @@
-@use "sass:color";
-
 $orejime-box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 5px 5px 10px 0 rgba(0, 0, 0, 0.19) !default;
-$orejime-border-radius: 4px !default;
 
-$orejime-blue: #057EB6 !default;
-$orejime-green: #008A28 !default;
-
-$orejime-theme-bg: #333 !default;
-$orejime-theme-border: 1px solid #555 !default;
-$orejime-theme-color: #eee !default;
-$orejime-theme-color-light: #aaa !default;
-
-$orejime-breakpoint-banner: 990px !default;
+$orejime-breakpoint-notice: 990px !default;
 
 // micro css reset for everything orejime related
 [class^="orejime-"] {
     margin: 0;
     padding: 0;
     border: 0;
-    font-family: inherit;
+    line-height: var(--orejime-space-1);
+    font-family: var(--orejime-font-family);
     font-size: inherit;
     color: inherit;
     vertical-align: baseline;
@@ -29,62 +19,78 @@ $orejime-breakpoint-banner: 990px !default;
     font-weight: normal;
 }
 
-.orejime-Main,
-.orejime-Modal {
-    font-size: 1em;
-    line-height: 1.5;
-}
+.orejime-Env {
+    --orejime-space-1: 1.4em;
+    --orejime-space-2: calc(2 * var(--orejime-space-1));
+    --orejime-space-05: calc(var(--orejime-space-1) / 2);
+    --orejime-space-025: calc(var(--orejime-space-1) / 4);
+    --orejime-font-size-small: 0.8rem;
+    --orejime-font-family: sans-serif;
+    --orejime-gap: 1ch;
+    --orejime-radius: calc(var(--orejime-space-1) / 4);
+    --orejime-overlay-background: rgba(0,0,0,0.5);
+    --orejime-background: #fff;
+    --orejime-color: #222;
+    --orejime-color-subdued: #555;
+    --orejime-color-interactive: #d6084f;
+    --orejime-banner-max-width: 45ch;
+    --orejime-modal-max-width: 75ch;
 
-.orejime-Button {
-    border: 0;
-    color: #fff;
-    border-radius: $orejime-border-radius;
-    padding: 6px 10px;
-    margin-right: 0.5em;
-    border: 1px solid transparent;
+    p {
+        margin: 0;
+    }
 
-    &[disabled] {
-        opacity: 0.75;
+    a {
+        color: var(--orejime-color-interactive);
+        text-decoration: underline;
+        cursor: pointer;
     }
 }
 
-.orejime-Button--save,
-.orejime-Button--accept {
-    background: $orejime-green;
-    color: #fff;
+.orejime-Button {
+    box-shadow: inset 0 0 0 2px currentColor;
+    margin: 0;
+    border: 0;
+    border-radius: var(--orejime-radius);
+    padding: var(--orejime-space-025) var(--orejime-space-05);
+    color: var(--orejime-color-interactive);
+    background: transparent;
+    font: inherit;
+    cursor: pointer;
+
+    &[disabled] {
+        color: var(--orejime-color-subdued);
+    }
 }
 
-.orejime-Button--decline {
-    background: #666;
-}
-
-.orejime-Button--info {
-    background: $orejime-blue;
+.orejime-Button:not([disabled]):hover,
+.orejime-Button:not([disabled]):focus {
+    box-shadow: inset 0 0 0 2px currentColor, 0 0 0 1px currentColor;
 }
 
 .orejime-Banner {
-    background: $orejime-theme-bg;
+    background: var(--orejime-background);
+    color: var(--orejime-color);
     position: fixed;
     z-index: 1000;
     width: 100%;
     bottom: 0;
-    font-size: 0.8em;
 
-    @media (min-width: $orejime-breakpoint-banner) {
+    @media (min-width: $orejime-breakpoint-notice) {
         box-shadow: $orejime-box-shadow;
-        border-radius: $orejime-border-radius;
-        bottom: 20px;
-        right: 20px;
-        max-width: 300px;
+        border-radius: var(--orejime-radius);
+        bottom: var(--orejime-space-1);
+        right: var(--orejime-space-1);
+        max-width: var(--orejime-banner-max-width);
     }
 
-    @media (max-width: $orejime-breakpoint-banner) {
+    @media (max-width: $orejime-breakpoint-notice) {
         border: none;
         border-radius: 0;
     }
 }
 
-.orejime-Banner--mandatory {
+.orejime-Banner--forced {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -93,57 +99,43 @@ $orejime-breakpoint-banner: 990px !default;
     max-width: none;
 }
 
-.orejime-Banner--hidden {
+.orejime-Banner[aria-hidden="true"] {
     display: none !important;
 }
 
 .orejime-Banner-body {
-    padding: 1em;
+    padding: var(--orejime-space-1);
 }
 
 .orejime-Banner-logo {
-    max-width: 200px;
-}
-
-.orejime-Banner-title,
-.orejime-Banner-description {
-    color: $orejime-theme-color;
-    margin-bottom: 0.5em;
+    max-width: 10ch;
 }
 
 .orejime-Banner-title {
+    margin-bottom: var(--orejime-space-05);
     font-weight: bold;
-    font-size: 1.2em;
-    line-height: 1.3;
+    font-size: 1em;
+    line-height: var(--orejime-space-1);
+}
+
+.orejime-Banner-description {
+    white-space: pre-line;
 }
 
 .orejime-Banner-purposes {
-    color: $orejime-theme-color;
+    font-style: italic;
 }
 
 .orejime-Banner-changes {
-    color: $orejime-theme-color;
-    margin-bottom: 0.5em;
+    margin-top: var(--orejime-space-05);
     font-weight: bold;
 }
 
-.orejime-Banner-privacyPolicyLink {
-    text-decoration: underline;
-    cursor: pointer;
-
-    &,
-    &:hover {
-        color: inherit;
-    }
-
-    &:hover,
-    &:focus {
-        text-decoration: none;
-    }
-}
-
 .orejime-Banner-actions {
-    display: block;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--orejime-gap);
+    margin-top: var(--orejime-space-1);
 }
 
 .orejime-Banner-actionItem {
@@ -168,7 +160,7 @@ $orejime-breakpoint-banner: 990px !default;
 .orejime-ModalOverlay,
 .orejime-BannerOverlay {
     z-index: 1000;
-    background: rgba(0,0,0,0.5);
+    background: var(--orejime-overlay-background);
     position: fixed;
     top: 0;
     left: 0;
@@ -183,30 +175,29 @@ $orejime-breakpoint-banner: 990px !default;
     left: 50%;
     transform: translate(-50%, -50%);
     margin: 0;
-    width: 640px;
+    width: var(--orejime-modal-max-width);
     max-width: 100%;
     max-height: 100%;
     overflow: auto;
 }
 
  .orejime-Modal {
-    background: $orejime-theme-bg;
-    color: $orejime-theme-color;
-    border-radius: $orejime-border-radius;
+    padding: var(--orejime-space-2);
+    background: var(--orejime-background);
+    color: var(--orejime-color);
+    border-radius: var(--orejime-radius);
     box-shadow: $orejime-box-shadow;
 }
 
 .orejime-Modal-header {
-    padding: 1em;
-    border-bottom: $orejime-theme-border;
+    margin-bottom: calc(var(--orejime-space-1) + var(--orejime-space-05));
 }
 
 .orejime-Modal-title {
-    margin: 0;
-    font-size: 2em;
     display: block;
+    margin: 0 0 var(--orejime-space-05) 0;
+    font-size: 2em;
     font-weight: bold;
-    padding-right: 20px;
 }
 
 .orejime-Modal-closeButton {
@@ -214,201 +205,95 @@ $orejime-breakpoint-banner: 990px !default;
     background: none;
     color: inherit;
     position: absolute;
-    top: 1em;
-    right: 1em;
+    top: calc(-1 * var(--orejime-space-1));
+    right: calc(-1 * var(--orejime-space-1));
 }
 
 .orejime-CloseIcon {
     stroke: currentColor;
-    width: 12px;
+    width: 1em;
 }
 
 .orejime-Modal-body {
-    padding: 1em;
+    margin-bottom: var(--orejime-space-2);
+}
+
+.orejime-Modal-description {
+    white-space: pre-line;
 }
 
 .orejime-Modal-footer {
-    padding: 1em;
-    border-top: $orejime-theme-border;
-}
-
-.orejime-Modal-privacyPolicyLink,
-.orejime-Modal-poweredByLink {
-    cursor: pointer;
-    text-decoration: underline;
-    color: inherit;
-
-    &:hover,
-    &:focus,
-    &:active {
-        color: inherit;
-    }
-
-    &:hover,
-    &:focus {
-        text-decoration: none;
-    }
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--orejime-gap);
 }
 
 .orejime-Modal-poweredByLink {
-    position: absolute;
-    right: 1em;
-    color: $orejime-theme-color-light;
-    font-size: 0.8em;
-    padding: 6px 0;
+    display: inline-block;
+    font-size: var(--orejime-font-size-small);
+}
 
-    &:hover,
-    &:focus,
-    &:active {
-        color: $orejime-theme-color-light;
-    }
+.orejime-PurposeToggles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--orejime-gap);
+    margin-bottom: var(--orejime-space-1);
 }
 
 .orejime-PurposeList {
-    display: block;
-    padding: 0;
-    margin: 0;
-}
-
-.orejime-PurposeList-item {
-    display: block;
-    position: relative;
-    line-height: 1.25;
-    vertical-align: middle;
-    min-height: 40px;
-    margin-top: 0.7em;
+    list-style: none;
 }
 
 .orejime-Purpose {
-    padding-left: 60px;
-    min-height: 50px;
+    margin-top: var(--orejime-space-05);
+}
+
+.orejime-Purpose .orejime-Purpose {
+    padding-left: var(--orejime-space-2);
 }
 
 .orejime-Purpose-title {
-    font-size: 1.2em;
     font-weight: bold;
     cursor: pointer;
 }
 
 .orejime-Purpose-description {
-    font-size: 0.9em;
+    padding-left: var(--orejime-space-2);
+    color: var(--orejime-color-subdued);
+    white-space: pre-line;
 }
 
-.orejime-Purpose-exempt,
-.orejime-Purpose-forced {
-    padding-left: 0.2em;
-    font-size: 0.8em;
-    color: $orejime-theme-color-light;
+.orejime-Purpose-purposes {
+    font-size: var(--orejime-font-size-small);
+    color: var(--orejime-color-subdued);
 }
 
-.orejime-Purpose-input {
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    width: 50px;
-    height: 30px;
-}
-
-.orejime-Purpose-switch {
-    position: absolute;
-    left: 0;
-    display: inline-block;
-    width: 50px;
-    height: 30px;
-}
-
-.orejime-Purpose-slider {
-    box-shadow: $orejime-box-shadow;
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #aaa;
-    -webkit-transition: .4s;
-    transition: .4s;
-    width: 50px;
-    display: inline-block;
-    border-radius: 30px;
-    border: 2px solid transparent;
+.orejime-Purpose-attribute {
+    font-size: var(--orejime-font-size-small);
+    font-style: italic;
+    color: var(--orejime-color-subdued);
 
     &:before {
-        position: absolute;
-        content: "";
-        height: 20px;
-        width: 20px;
-        left: 3px;
-        bottom: 3px;
-        background-color: white;
-        -webkit-transition: .4s;
-        transition: .4s;
-        border-radius: 50%;
-        border: 1px solid #555;
+        content: '- ';
+    }
+
+    &[title] {
+        text-decoration: underline dotted;
     }
 }
 
-.orejime-Purpose-switchLabel {
-    position: absolute;
-    width: 50px;
-    top: 34px;
-    overflow: ellipsis;
-    font-size: 0.8em;
-    text-align: center;
+.orejime-Purpose-input {
+    float: left;
+    margin-right: var(--orejime-space-1);
+    width: var(--orejime-space-1);
+    height: var(--orejime-space-1);
+    appearance: revert;
+    background: revert;
+    accent-color: var(--orejime-color-interactive);
 }
 
-.orejime-Purpose-switch--disabled .orejime-Purpose-slider {
-    cursor: default;
-    opacity: 0.5;
-}
-
-.orejime-Purpose-switch--disabled .orejime-Purpose-switchLabel {
-    color: #aaa;
-}
-
-.orejime-Purpose-input:focus + .orejime-Purpose-label .orejime-Purpose-slider {
-    border-color: #fff;
-    outline-offset: 2px;
-}
-
-.orejime-Purpose-input:checked + .orejime-Purpose-label .orejime-Purpose-slider {
-    background-color: $orejime-blue;
-}
-
-.orejime-Purpose-input:checked + .orejime-Purpose-label .orejime-Purpose-slider:before {
-    -webkit-transform: translateX(20px);
-    -ms-transform: translateX(20px);
-    transform: translateX(20px);
-}
-
-.orejime-Purpose-input:indeterminate + .orejime-Purpose-label .orejime-Purpose-slider {
-    background-color: color.mix($orejime-blue, #aaa)
-}
-
-.orejime-Purpose-input:indeterminate + .orejime-Purpose-label .orejime-Purpose-slider:before {
-    -webkit-transform: translateX(10px);
-    -ms-transform: translateX(10px);
-    transform: translateX(10px);
-}
-
-.orejime-PurposeToggles {
-    margin-bottom: 1em;
-    display: block;
-}
-
-.orejime-PurposeToggles-item {
-    display: inline;
-}
-
-.orejime-Purpose-children {
-    margin: 1em 0;
-}
-
-.orejime-Purpose-children .orejime-Purpose-title {
-    font-size: 0.9em;
-}
-
-.orejime-Purpose-children .orejime-Purpose-description {
-    font-size: 0.8em;
+.orejime-Purpose-input:disabled {
+    accent-color: var(--orejime-color-subdued);
 }

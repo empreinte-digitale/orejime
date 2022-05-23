@@ -24,9 +24,9 @@ modal:
   save: Spara
   saveTitle: null
 purpose:
-  mandatory: (Krävs alltid)
+  mandatory: Krävs alltid
   mandatoryTitle: Den här applikationen krävs alltid
-  exempt: (Avaktivera)
+  exempt: Avaktivera
   exemptTitle: Den här appen laddas som standardinställning (men du kan avaktivera den)
   showMore: Visa mer
   accept: Acceptera
