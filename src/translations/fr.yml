@@ -8,9 +8,9 @@ banner:
   accept: Accepter
   acceptTitle: Accepter les cookies
   decline: Refuser
-  declineTitle: Refuser
+  declineTitle: null
   configure: En savoir plus
-  configureTitle: En savoir plus
+  configureTitle: null
 modal:
   title: Les informations que nous collectons
   description: >
@@ -19,8 +19,8 @@ modal:
      Pour en savoir plus, merci de lire notre {privacyPolicy}.
   privacyPolicyLabel: politique de confidentialité
   close: Fermer
-  closeTitle: Fermer
-  globalPreferences: ""
+  closeTitle: null
+  globalPreferences: Préférences pour tous les services
   acceptAll: Tout accepter
   declineAll: Tout refuser
   save: Sauvegarder
@@ -30,12 +30,12 @@ purpose:
   mandatoryTitle: Cette application est toujours requise
   exempt: (opt-out)
   exemptTitle: Cette application est chargée par défaut (mais vous pouvez la désactiver)
-  showMore: ""
+  showMore: Voir plus de détails
   accept: Accepter
   decline: Refuser
-  enabled: Activé
-  disabled: Désactivé
-  partial: ""
+  enabled: activé
+  disabled: désactivé
+  partial: partiel
 misc:
   newWindowTitle: nouvelle fenêtre
   updateNeeded: Des modifications ont eu lieu depuis votre dernière visite, merci

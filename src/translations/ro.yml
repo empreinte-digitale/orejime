@@ -5,12 +5,12 @@ banner:
     {purposes}.
      Pentru a afla mai multe, vă rugăm să citiți {privacyPolicy}.
   privacyPolicyLabel: politica privacy
-  accept: ""
-  acceptTitle: ""
+  accept: Accepta
+  acceptTitle: null
   decline: Renunță
-  declineTitle: Renunță
+  declineTitle: null
   configure: Află mai multe
-  configureTitle: Află mai multe
+  configureTitle: null
 modal:
   title: Informațiile pe care le colectăm
   description: >
@@ -18,26 +18,26 @@ modal:
     dvs.
      Pentru a afla mai multe, vă rugăm să citiți {privacyPolicy}.
   privacyPolicyLabel: politica privacy
-  close: ""
-  closeTitle: ""
-  globalPreferences: ""
-  acceptAll: ""
-  declineAll: ""
+  close: Aproape
+  closeTitle: null
+  globalPreferences: Preferințe pentru toate serviciile
+  acceptAll: Accepta totul
+  declineAll: Refuză toate
   save: Salvează
-  saveTitle: ""
+  saveTitle: null
 purpose:
   mandatory: (întotdeauna necesar)
   mandatoryTitle: Această aplicație este întotdeauna necesară
   exempt: (opt-out)
   exemptTitle: Această aplicație este încărcată în mod implicit (dar puteți renunța)
-  showMore: ""
-  accept: ""
+  showMore: Arata mai mult
+  accept: Accepta
   decline: Renunță
-  enabled: ""
-  disabled: ""
-  partial: ""
+  enabled: activat
+  disabled: dezactivat
+  partial: parţial
 misc:
-  newWindowTitle: ""
+  newWindowTitle: fereastră nouă
   updateNeeded: Au existat modificări de la ultima vizită, vă rugăm să
     actualizați consimțământul.
   poweredBy: Realizat de Orejime

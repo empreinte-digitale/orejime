@@ -5,37 +5,37 @@ banner:
     {purposes}.
      Voit lukea lisätietoja {privacyPolicy}.
   privacyPolicyLabel: tietosuojasivultamme
-  accept: ""
-  acceptTitle: ""
+  accept: Hyväksy
+  acceptTitle: null
   decline: Hylkää
-  declineTitle: Hylkää
+  declineTitle: null
   configure: Lue lisää
-  configureTitle: Lue lisää
+  configureTitle: null
 modal:
   title: Keräämämme tiedot
   description: |
     Voit tarkastella ja muokata sinusta keräämiämme tietoja.
      Voit lukea lisätietoja {privacyPolicy}.
   privacyPolicyLabel: tietosuojasivultamme
-  close: ""
-  closeTitle: ""
-  globalPreferences: ""
-  acceptAll: ""
-  declineAll: ""
+  close: Sulje
+  closeTitle: null
+  globalPreferences: Kaikkien palvelujen asetukset
+  acceptAll: Hyväksyä kaikki
+  declineAll: Hylkää kaikki
   save: Tallenna
-  saveTitle: ""
+  saveTitle: null
 purpose:
   mandatory: (vaaditaan)
   mandatoryTitle: Sivusto vaatii tämän aina
   exempt: (ladataan oletuksena)
   exemptTitle: Ladataan oletuksena (mutta voit ottaa sen pois päältä)
-  showMore: ""
-  accept: ""
+  showMore: Lue lisää
+  accept: Hyväksy
   decline: Hylkää
-  enabled: ""
-  disabled: ""
-  partial: ""
+  enabled: käytössä
+  disabled: pois käytöstä
+  partial: osittainen
 misc:
-  newWindowTitle: ""
+  newWindowTitle: uusi ikkuna
   updateNeeded: Olemme tehneet muutoksia ehtoihin viime vierailusi jälkeen, tarkista ehdot.
   poweredBy: Palvelun tarjoaa Orejime

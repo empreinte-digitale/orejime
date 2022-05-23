@@ -8,9 +8,9 @@ banner:
   accept: Acceptar
   acceptTitle: Acceptar los cookies
   decline: Refusar
-  declineTitle: Refusar
+  declineTitle: null
   configure: Ne saber mai
-  configureTitle: Ne saber mai
+  configureTitle: null
 modal:
   title: Las informacions que reculhissèm
   description: >
@@ -19,8 +19,8 @@ modal:
      Per ne saber mai, mercés de legir nòstra {privacyPolicy}.
   privacyPolicyLabel: politica de confidencialitat
   close: Tancar
-  closeTitle: Tancar
-  globalPreferences: ""
+  closeTitle: null
+  globalPreferences: Preferéncias per totes los servicis
   acceptAll: Tot acceptar
   declineAll: Tot refusar
   save: Salvagardar
@@ -30,12 +30,12 @@ purpose:
   mandatoryTitle: Aquesta aplicacion es totjorn requerida
   exempt: (opt-out)
   exemptTitle: Aquesta aplicacion es cargada per defaut (mas la podètz desactivar)
-  showMore: ""
+  showMore: Mostrar mai
   accept: Acceptar
   decline: Refusar
   enabled: Activat
   disabled: Desactivat
-  partial: ""
+  partial: parciala
 misc:
   newWindowTitle: fenèstra novèla
   updateNeeded: I aguèt de modificacions dempuèi vòstra darrièra visita, mercés

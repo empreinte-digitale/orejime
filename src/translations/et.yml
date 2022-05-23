@@ -7,9 +7,9 @@ banner:
   accept: Nõustu
   acceptTitle: Nõustu küpsistega
   decline: Keeldu
-  declineTitle: Keeldu
+  declineTitle: null
   configure: Lisateave
-  configureTitle: Lisateave
+  configureTitle: null
 modal:
   title: Isikuandmete kogumine
   description: |
@@ -17,8 +17,8 @@ modal:
      Lisateabe saamiseks lugege palun meie {privacyPolicy}
   privacyPolicyLabel: privaatsustingimused
   close: Sulge
-  closeTitle: Sulge
-  globalPreferences: ""
+  closeTitle: null
+  globalPreferences: Eelistused kõigile teenustele
   acceptAll: Nõustu kõigi rakendustega
   declineAll: Keela kõik rakendused
   save: Salvesta
@@ -28,12 +28,12 @@ purpose:
   mandatoryTitle: See rakendus on alati vajalik
   exempt: (Opt-Out)
   exemptTitle: See rakendus on vaikimisi lisatud (kuid saate sellest loobuda)
-  showMore: ""
+  showMore: Näita rohkem
   accept: Nõustu
   decline: Keeldu
-  enabled: Lubatud
-  disabled: Välja lülitatud
-  partial: ""
+  enabled: lubatud
+  disabled: välja lülitatud
+  partial: osaline
 misc:
   newWindowTitle: uus aken
   updateNeeded: Pärast teie viimast külastust on toimunud muudatusi, palun
