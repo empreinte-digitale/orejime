@@ -8,9 +8,9 @@ banner:
   accept: Acceptar
   acceptTitle: Acceptar les cookies
   decline: Refusar
-  declineTitle: Refusar
+  declineTitle: null
   configure: Més informació
-  configureTitle: Més informació
+  configureTitle: null
 modal:
   title: La informació que recollim
   description: >
@@ -19,8 +19,8 @@ modal:
      Per saber-ne més, llegiu la nostre {privacyPolicy}.
   privacyPolicyLabel: política de privacitat
   close: Tancar
-  closeTitle: Tancar
-  globalPreferences: ""
+  closeTitle: null
+  globalPreferences: Preferències per a tots els serveis
   acceptAll: Acceptar-ho tot
   declineAll: Rebutja tot
   save: Desa
@@ -31,12 +31,12 @@ purpose:
   exempt: (desactivar)
   exemptTitle: Aquesta aplicació es carrega de manera predeterminada (però podeu
     desactivar-la)
-  showMore: ""
+  showMore: Saber-ne més
   accept: Acceptar
   decline: Refusar
-  enabled: Actiu
-  disabled: Inactiu
-  partial: ""
+  enabled: actiu
+  disabled: inactiu
+  partial: parcial
 misc:
   newWindowTitle: finestra nova
   updateNeeded: S'han produït canvis des de la vostra última visita, actualitzeu

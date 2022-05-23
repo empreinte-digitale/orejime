@@ -6,11 +6,11 @@ banner:
      Lees ons privacybeleid voor meer informatie {privacyPolicy}.
   privacyPolicyLabel: privacybeleid
   accept: Aanvaarden
-  acceptTitle: ""
+  acceptTitle: null
   decline: Afwijzen
-  declineTitle: Afwijzen
+  declineTitle: null
   configure: Lees meer
-  configureTitle: Lees meer
+  configureTitle: null
 modal:
   title: Informatie die we verzamelen
   description: |
@@ -18,8 +18,8 @@ modal:
      Lees ons privacybeleid voor meer informatie {privacyPolicy}.
   privacyPolicyLabel: privacybeleid
   close: Sluiten
-  closeTitle: Sluiten
-  globalPreferences: ""
+  closeTitle: null
+  globalPreferences: Voorkeuren voor alle services
   acceptAll: Alles aanvaarden
   declineAll: Alles weigeren
   save: Opslaan
@@ -29,12 +29,12 @@ purpose:
   mandatoryTitle: Deze applicatie is altijd vereist
   exempt: (afmelden)
   exemptTitle: Deze app is standaard geladen (maar je kunt je afmelden)
-  showMore: ""
+  showMore: Laat meer zien
   accept: Aanvaarden
   decline: Afwijzen
-  enabled: Geactiveerd
-  disabled: Gedesactiveerd
-  partial: ""
+  enabled: geactiveerd
+  disabled: gedesactiveerd
+  partial: gedeeltelijk
 misc:
   newWindowTitle: nieuw venster
   updateNeeded: Er waren wijzigingen sinds uw laatste bezoek, werk uw voorkeuren bij.

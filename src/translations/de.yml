@@ -8,9 +8,9 @@ banner:
   accept: Akzeptieren
   acceptTitle: Cookies akzeptieren
   decline: Ablehnen
-  declineTitle: Ablehnen
+  declineTitle: null
   configure: Mehr erfahren
-  configureTitle: Mehr erfahren
+  configureTitle: null
 modal:
   title: Informationen zur Privatsphäre
   description: >
@@ -19,8 +19,8 @@ modal:
      Bitte lesen Sie unsere {privacyPolicy} um weitere Details zu erfahren.
   privacyPolicyLabel: Datenschutzerklärung
   close: Schließen
-  closeTitle: Schließen
-  globalPreferences: ""
+  closeTitle: null
+  globalPreferences: globale Vorlieben
   acceptAll: Alle Einstellungen akzeptieren
   declineAll: Alle Einstellungen ablehnen
   save: Speichern
@@ -31,12 +31,12 @@ purpose:
   exempt: (Opt-Out)
   exemptTitle: Diese Einstellungen als Standard festlegen (sie können jederzeit
     deaktiviert werden)
-  showMore: ""
+  showMore: Mehr Details zeigen
   accept: Akzeptieren
   decline: Ablehnen
-  enabled: Aktiviert
-  disabled: Deaktiviert
-  partial: ""
+  enabled: aktiviert
+  disabled: deaktiviert
+  partial: teilweise
 misc:
   newWindowTitle: Neues Fenster
   updateNeeded: Es gab Änderungen seit Ihrem letzten Besuch, bitte aktualisieren

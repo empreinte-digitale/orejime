@@ -8,9 +8,9 @@ banner:
   accept: Accept
   acceptTitle: Accept cookies
   decline: Decline
-  declineTitle: Decline
+  declineTitle: null
   configure: Learn more
-  configureTitle: Learn more
+  configureTitle: null
 modal:
   title: Information that we collect
   description: |
@@ -18,8 +18,8 @@ modal:
      To learn more, please read our {privacyPolicy}.
   privacyPolicyLabel: privacy policy
   close: Close
-  closeTitle: Close
-  globalPreferences: ""
+  closeTitle: null
+  globalPreferences: Global preferences
   acceptAll: Accept all apps
   declineAll: Decline all apps
   save: Save
@@ -29,12 +29,12 @@ purpose:
   mandatoryTitle: This application is always required
   exempt: (opt-out)
   exemptTitle: This app is loaded by default (but you can opt out)
-  showMore: ""
+  showMore: Show more details
   accept: Accept
   decline: Decline
-  enabled: Enabled
-  disabled: Disabled
-  partial: ""
+  enabled: enabled
+  disabled: disabled
+  partial: partial
 misc:
   newWindowTitle: new window
   updateNeeded: There were changes since your last visit, please update your consent.

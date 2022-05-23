@@ -5,38 +5,38 @@ banner:
     {purposes}.
      További információért kérjük, olvassd el az {privacyPolicy}.
   privacyPolicyLabel: adatvédelmi irányelveinket
-  accept: ""
-  acceptTitle: ""
+  accept: Elfogad
+  acceptTitle: null
   decline: Elvet
-  declineTitle: Elvet
+  declineTitle: null
   configure: Tudj meg többet
-  configureTitle: Tudj meg többet
+  configureTitle: null
 modal:
   title: Információk, amiket gyűjtünk
   description: |
     Itt láthatod és testreszabhatod az rólad gyűjtött információkat.
      További információért kérjük, olvassd el az {privacyPolicy}.
   privacyPolicyLabel: adatvédelmi irányelveinket
-  close: ""
-  closeTitle: ""
-  globalPreferences: ""
-  acceptAll: ""
-  declineAll: ""
+  close: Elvet
+  closeTitle: null
+  globalPreferences: Preferenciák az összes szolgáltatáshoz
+  acceptAll: Fogadj el mindent
+  declineAll: Elutasít minden
   save: Mentés
-  saveTitle: ""
+  saveTitle: null
 purpose:
   mandatory: (mindig kötelező)
   mandatoryTitle: Ez az applikáció mindig kötelező
   exempt: (leiratkozás)
   exemptTitle: Ez az alkalmazás alapértelmezés szerint betöltött (de ki lehet kapcsolni)
-  showMore: ""
-  accept: ""
+  showMore: Tudjon meg többet
+  accept: Elfogad
   decline: Elvet
-  enabled: ""
-  disabled: ""
-  partial: ""
+  enabled: engedélyezve van
+  disabled: letiltva
+  partial: részleges
 misc:
-  newWindowTitle: ""
+  newWindowTitle: új ablak
   updateNeeded: Az utolsó látogatás óta változások történtek, kérjük, frissítsd a
     hozzájárulásodat.
   poweredBy: Powered by Orejime
