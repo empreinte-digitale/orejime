@@ -132,61 +132,55 @@
 		<script>
 			// see the annotated config in the README for details on how everything works
 			window.orejimeConfig = {
-				appElement: "#app",
-				privacyPolicyUrl: "#privacyPolicy",
+				appElement: '#app',
+				privacyPolicyUrl: '#privacyPolicy',
+				forceBanner: true,
 				translations: {
 					modal: {
-						description: "Here is an example of Orejime. View the source code to see how everything is done.",
+						description:
+							'Here is an example of Orejime.\n' +
+							'All trackers below are fake ones for demonstration purpose, ' +
+							"they won't collect any sensitive information even if you consent to them.\n"
 					}
 				},
 				purposes: [
 					{
-						id: 'example',
-						title: 'Example group',
-						description: 'Purposes can be grouped to help users better understand their use.',
-						purposes: [
-							{
-								id: "inline-tracker",
-								title: "Inline Tracker",
-								description: "Example of an inline tracking script that sets a dummy cookie",
-								cookies: ["inline-tracker"]
-							},
-							{
-								id: "disabled-by-default",
-								title: "Something disabled by default",
-								description: "This example app will not set any cookie",
-								default: false
-							}
-						]
+						id: 'mandatory',
+						title: 'Technical cookies',
+						description:
+							"This can't be disabled as it is required for the website to function properly.",
+						isMandatory: true
 					},
 					{
-						id: 'third-party',
-						title: 'Third-party purposes',
-						description: 'These are fake third-party purposes.',
+						id: 'group',
+						title: 'Third-party tracking',
+						description:
+							'Cookies that are related to each other can be grouped so they can be described as a whole and let the user accept or decline all of them easily.',
 						purposes: [
 							{
-								id: "external-tracker",
-								title: "External Tracker",
-								description: "Example of an external tracking script that sets a dummy cookie",
-								cookies: ["external-tracker"],
+								id: 'inline-tracker',
+								title: 'Inline Tracker',
+								description:
+									'An inline script that sets a dummy cookie.',
+								cookies: ['inline-tracker']
 							},
 							{
-								id: "always-on",
-								title: "Required app",
-								description: "This <a href=\"http://example.com\">example</a> app will not set any cookie",
-								isMandatory: true
+								id: 'external-tracker',
+								title: 'External Tracker',
+								description:
+									'An external script that sets a dummy cookie.',
+								cookies: ['external-tracker']
 							}
 						]
 					}
 				]
-			}
+			};
 
-			document.addEventListener('orejime.loaded', function(event) {
+			document.addEventListener('orejime.loaded', function (event) {
 				console.log('Orejime has loaded.', event.detail);
 			});
 		</script>
 
-		<!-- since there is a orejimeConfig global variable in index.js, a window.orejime instance will be initiated when including the lib -->
 		<script src="orejime.js"></script>
 		<script src="example-assets/buttons.js"></script>
 		<script src="example-assets/setCookie.js"></script>
