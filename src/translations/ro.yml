@@ -1,25 +1,43 @@
-consentModal:
+banner:
+  title: null
+  description: >
+    Colectăm și procesăm informațiile dvs. personale în următoarele scopuri:
+    {purposes}.
+     Pentru a afla mai multe, vă rugăm să citiți {privacyPolicy}.
+  privacyPolicyLabel: politica privacy
+  accept: ""
+  acceptTitle: null
+  decline: Renunță
+  declineTitle: null
+  configure: Află mai multe
+  configureTitle: null
+modal:
   title: Informațiile pe care le colectăm
   description: >
-    Aici puteți vedea și personaliza informațiile pe care le colectăm despre dvs.
-  privacyPolicy:
-    name: politica privacy
-    text: >
-      Pentru a afla mai multe, vă rugăm să citiți {privacyPolicy}.
-consentNotice:
-  changeDescription: Au existat modificări de la ultima vizită, vă rugăm să actualizați consimțământul.
-  description: >
-    Colectăm și procesăm informațiile dvs. personale în următoarele scopuri: {purposes}.
-  learnMore: Află mai multe
-save: Salvează
-decline: Renunță
-app:
-  optOut:
-    title: (opt-out)
-    description: Această aplicație este încărcată în mod implicit (dar puteți renunța)
-  required:
-    title: (întotdeauna necesar)
-    description: Această aplicație este întotdeauna necesară
-  purposes: Scopuri
-  purpose: Scop
-poweredBy: Realizat de Orejime
+    Aici puteți vedea și personaliza informațiile pe care le colectăm despre
+    dvs.
+     Pentru a afla mai multe, vă rugăm să citiți {privacyPolicy}.
+  privacyPolicyLabel: politica privacy
+  close: ""
+  closeTitle: null
+  globalPreferences: ""
+  acceptAll: ""
+  declineAll: ""
+  save: Salvează
+  saveTitle: null
+purpose:
+  mandatory: întotdeauna necesar
+  mandatoryTitle: Această aplicație este întotdeauna necesară
+  exempt: opt-out
+  exemptTitle: Această aplicație este încărcată în mod implicit (dar puteți renunța)
+  showMore: ""
+  accept: ""
+  decline: Renunță
+  enabled: ""
+  disabled: ""
+  partial: ""
+misc:
+  newWindowTitle: ""
+  updateNeeded: Au existat modificări de la ultima vizită, vă rugăm să
+    actualizați consimțământul.
+  poweredBy: Realizat de Orejime

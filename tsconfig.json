@@ -1,0 +1,17 @@
+{
+	"compilerOptions": {
+		"allowSyntheticDefaultImports": true,
+		"jsx": "react",
+		"module": "esnext",
+		"moduleResolution": "node",
+		"noImplicitAny": true,
+		"outDir": "./dist/",
+		"target": "esnext"
+	},
+	"include": [
+		"./src"
+	],
+	"exclude": [
+		"*.test.ts"
+	]
+}

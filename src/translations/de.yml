@@ -1,25 +1,43 @@
-consentModal:
+banner:
+  title: null
+  description: >
+    Wir speichern und verarbeiten Ihre personenbezogenen Informationen für
+    folgende Zwecke: {purposes}.
+     Bitte lesen Sie unsere {privacyPolicy} um weitere Details zu erfahren.
+  privacyPolicyLabel: Datenschutzerklärung
+  accept: Annehmen
+  acceptTitle: null
+  decline: Ablehnen
+  declineTitle: null
+  configure: Mehr erfahren
+  configureTitle: null
+modal:
   title: Informationen die wir sammeln
   description: >
-    Hier können Sie einsehen und anpassen, welche Information wir über Sie sammeln.
-  privacyPolicy:
-    name: Datenschutzerklärung
-    text: >
-      Bitte lesen Sie unsere {privacyPolicy} um weitere Details zu erfahren.
-consentNotice:
-  changeDescription: Es gab Änderungen seit Ihrem letzten Besuch, bitte aktualisieren Sie Ihre Auswahl.
-  description: >
-    Wir speichern und verarbeiten Ihre personenbezogenen Informationen für folgende Zwecke: {purposes}.
-  learnMore: Mehr erfahren
-save: Speichern
-decline: Ablehnen
-app:
-  optOut:
-    title: (Opt-Out)
-    description: Diese Anwendung wird standarmäßig gelanden (aber Sie können sie deaktivieren)
-  required:
-    title: (immer notwendig)
-    description: Diese Anwendung wird immer benötigt
-  purposes: Zwecke
-  purpose: Zweck
-poweredBy: Realisiert mit Orejime
+    Hier können Sie einsehen und anpassen, welche Information wir über Sie
+    sammeln.
+     Bitte lesen Sie unsere {privacyPolicy} um weitere Details zu erfahren.
+  privacyPolicyLabel: Datenschutzerklärung
+  close: Schließen
+  closeTitle: null
+  globalPreferences: globale Vorlieben
+  acceptAll: Alle annehmen
+  declineAll: Alle ablehnen
+  save: Speichern
+  saveTitle: Speichern
+purpose:
+  mandatory: immer notwendig
+  mandatoryTitle: Diese Anwendung wird immer benötigt
+  exempt: Opt-Out
+  exemptTitle: Diese Anwendung wird standarmäßig gelanden (aber Sie können sie deaktivieren)
+  showMore: Mehr Details zeigen
+  accept: Annehmen
+  decline: Ablehnen
+  enabled: Aktiviert
+  disabled: Behindert
+  partial: Teilweise
+misc:
+  newWindowTitle: neues Fenster
+  updateNeeded: Es gab Änderungen seit Ihrem letzten Besuch, bitte aktualisieren
+    Sie Ihre Auswahl.
+  poweredBy: Realisiert mit Orejime

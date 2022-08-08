@@ -11,6 +11,5 @@
 	"singleQuote": true,
 	"tabWidth": 3,
 	"trailingComma": "none",
-	"useTabs": true,
-	"parser": "babel"
+	"useTabs": true
 }

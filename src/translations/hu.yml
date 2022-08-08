@@ -1,25 +1,42 @@
-consentModal:
+banner:
+  title: null
+  description: >
+    Az személyes adataidat összegyűjtjük és feldolgozzuk az alábbi célokra:
+    {purposes}.
+     További információért kérjük, olvassd el az {privacyPolicy}.
+  privacyPolicyLabel: adatvédelmi irányelveinket
+  accept: ""
+  acceptTitle: null
+  decline: Elvet
+  declineTitle: null
+  configure: Tudj meg többet
+  configureTitle: null
+modal:
   title: Információk, amiket gyűjtünk
-  description: >
+  description: |
     Itt láthatod és testreszabhatod az rólad gyűjtött információkat.
-  privacyPolicy:
-    name: adatvédelmi irányelveinket
-    text: >
-      További információért kérjük, olvassd el az {privacyPolicy}.
-consentNotice:
-  changeDescription: Az utolsó látogatás óta változások történtek, kérjük, frissítsd a hozzájárulásodat.
-  description: >
-    Az személyes adataidat összegyűjtjük és feldolgozzuk az alábbi célokra: {purposes}.
-  learnMore: Tudj meg többet
-save: Mentés
-decline: Elvet
-app:
-  optOut:
-    title: (leiratkozás)
-    description: Ez az alkalmazás alapértelmezés szerint betöltött (de ki lehet kapcsolni)
-  required:
-    title: (mindig kötelező)
-    description: Ez az applikáció mindig kötelező
-  purposes: Célok
-  purpose: Cél
-poweredBy: Powered by Orejime
+     További információért kérjük, olvassd el az {privacyPolicy}.
+  privacyPolicyLabel: adatvédelmi irányelveinket
+  close: Elvet
+  closeTitle: null
+  globalPreferences: ""
+  acceptAll: ""
+  declineAll: ""
+  save: Mentés
+  saveTitle: null
+purpose:
+  mandatory: mindig kötelező
+  mandatoryTitle: Ez az applikáció mindig kötelező
+  exempt: leiratkozás
+  exemptTitle: Ez az alkalmazás alapértelmezés szerint betöltött (de ki lehet kapcsolni)
+  showMore: ""
+  accept: ""
+  decline: Elvet
+  enabled: ""
+  disabled: ""
+  partial: ""
+misc:
+  newWindowTitle: új ablak
+  updateNeeded: Az utolsó látogatás óta változások történtek, kérjük, frissítsd a
+    hozzájárulásodat.
+  poweredBy: Powered by Orejime
