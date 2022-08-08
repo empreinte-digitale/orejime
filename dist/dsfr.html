@@ -94,7 +94,11 @@
 
 					<ul class="fr-btns-group fr-btns-group--inline">
 						<li>
-							<button class="fr-btn" data-orejime-open data-orejime-preload>
+							<button
+								class="fr-btn"
+								data-orejime-open
+								data-orejime-preload
+							>
 								Configurer
 							</button>
 						</li>
@@ -181,42 +185,44 @@
 				theme: 'dsfr',
 				appElement: '#app',
 				privacyPolicyUrl: '#privacyPolicy',
-				lang: 'fr',
+				forceBanner: true,
+				translations: {
+					modal: {
+						description:
+							"Voici un exemple d'Orejime pour le système de design de l'État.\n" +
+							'Tous les trackers ci-dessous sont factices pour les besoins de la demonstration, ' +
+							'ils ne collecteront aucune information sensible même si vous y consentez.\n'
+					}
+				},
 				purposes: [
 					{
-						id: 'advertising',
-						title: 'Advertising',
-						description: 'Things related to advertising.',
+						id: 'mandatory',
+						title: 'Cookies techniques',
+						description:
+							'Ces cookies ne peuvent être désactivés car ils sont nécéssaires au bon fonctionnement du site.',
+						isMandatory: true
+					},
+					{
+						id: 'group',
+						title: 'Suivi tiers',
+						description:
+							"Différents trackers peuvent être regroupés pour y apposer une description et laisser l'usager les accepter ou les refuser tous d'un seul coup.",
 						purposes: [
 							{
 								id: 'inline-tracker',
-								name: 'inline-tracker',
 								title: 'Inline Tracker',
+								description:
+									"Un script inclus dans la page qui ajoute un cookie d'exemple.",
 								cookies: ['inline-tracker']
 							},
 							{
 								id: 'external-tracker',
-								name: 'external-tracker',
 								title: 'External Tracker',
-								cookies: ['external-tracker'],
-								isMandatory: true
+								description:
+									"Un script externe qui ajoute un cookie d'exemple.",
+								cookies: ['external-tracker']
 							}
 						]
-					},
-					{
-						id: 'disabled-by-default',
-						name: 'disabled-by-default',
-						title: 'Something disabled by default',
-						description:
-							'This <a href="http://example.com">example</a> app will not set any cookie',
-						default: false
-					},
-					{
-						id: 'always-on',
-						name: 'always-on',
-						title: 'Required app',
-						description: 'This example app will not set any cookie',
-						isMandatory: true
 					}
 				]
 			};
@@ -224,5 +230,22 @@
 
 		<script type="module" src="orejime.js"></script>
 		<script src="example-assets/buttons.js"></script>
+		<script src="example-assets/setCookie.js"></script>
+
+		<script
+			type="opt-in"
+			data-src="example-assets/external-tracker.js"
+			data-type="application/javascript"
+			data-purpose="external-tracker"
+		></script>
+
+		<script
+			type="opt-in"
+			data-type="application/javascript"
+			data-purpose="inline-tracker"
+		>
+			console.log("This is an example of an inline tracking script.")
+			setCookie("inline-tracker", "foo", 120)
+		</script>
 	</body>
 </html>
