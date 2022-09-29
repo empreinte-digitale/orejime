@@ -278,8 +278,8 @@ var orejimeConfig = {
     // Optional. A list of categories under which apps will be classified.
     // This allows for a visual grouping of the different apps, along with a
     // description of their purpose.
-    categories: {
-        [
+    categories: [
+        {
             name: "analytics",
             title: "Analytics",
             // The list of apps belonging to the category, referenced by name.
@@ -287,8 +287,8 @@ var orejimeConfig = {
                 "google-tag-manager",
                 "external-tracker"
             ]
-        ]
-    }
+        }
+    ]
 }
 ```
 
