@@ -5,6 +5,8 @@
 	--headings-font: 'Barlow Condensed', -apple-system, BlinkMacSystemFont,
 		avenir next, avenir, helvetica neue, helvetica, Ubuntu, roboto, noto,
 		segoe ui, arial, sans-serif;
+	--gdpr: #addff3;
+	--gdpr-light: rgba(173, 223, 243, 0.2);
 	--gray: #a3b0bf;
 	--gray-light: #dde2e7;
 	--gray-lighter: #e8ecef;
@@ -190,8 +192,7 @@ main {
 	margin-bottom: var(--unit);
 	border-radius: calc(0.75 * var(--unit));
 	padding: var(--unit);
-	background: var(--gray-light);
-	background: linear-gradient(112.5deg, var(--gray-lighter) 0%, var(--gray-light) 100%);
+	background: var(--gdpr-light);
 }
 
 @media screen and (min-width: 30rem) {
@@ -280,8 +281,7 @@ main {
 
 .Footer {
 	padding: calc(2 * var(--unit)) 0;
-	background: var(--gray-light);
-	background: linear-gradient(112.5deg, var(--gray-lighter) 0%, var(--gray-light) 100%);
+	background: var(--gdpr);
 }
 
 .Footer p {
