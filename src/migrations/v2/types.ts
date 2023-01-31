@@ -37,4 +37,50 @@ export interface V2Translations {
 	};
 	poweredBy: string;
 	newWindow: string;
+	[key: string]: any;
+}
+
+export interface V2Consents {
+	[name: string]: boolean;
+}
+
+export interface V2App {
+	name: string;
+	title: string;
+	description: string;
+	cookies: string[];
+	purposes: string[];
+	callback: (consent: boolean, app: V2App) => void;
+	required: boolean;
+	optOut: boolean;
+	default: boolean;
+	onlyOnce: boolean;
+}
+
+export interface V2Category {
+	name: string;
+	title: string;
+	description: string;
+	apps: string[];
+}
+
+export interface V2Config {
+	elementID: string;
+	appElement: string;
+	stylePrefix: string;
+	cookieName: string;
+	cookieExpiresAfterDays: 365;
+	cookieDomain: undefined;
+	stringifyCookie: (consents: V2Consents) => string;
+	parseCookie: (consents: string) => V2Consents;
+	privacyPolicy: string;
+	default: boolean;
+	mustConsent: boolean;
+	mustNotice: boolean;
+	logo: boolean;
+	lang: string;
+	translations: Record<string, V2Translations>;
+	apps: V2App[];
+	categories: V2Category[];
+	debug: boolean;
 }
