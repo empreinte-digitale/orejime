@@ -7,13 +7,16 @@
     "url": "git+https://github.com/empreinte-digitale/orejime.git"
   },
   "keywords": [
+    "cmp",
+    "consent management platform",
     "cookie",
     "consent",
     "gdpr",
     "compliance",
     "accessibility",
     "ecofriendly",
-    "low footprint"
+    "low footprint",
+    "lightweight"
   ],
   "main": "lib/orejime.js",
   "browser": "lib/orejime.js",
