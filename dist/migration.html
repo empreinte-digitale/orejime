@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<title>Migration - Orejime</title>
+
+		<link
+			href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600&family=Barlow+Condensed:wght@700&display=swap"
+			rel="stylesheet"
+		/>
+
+		<link rel="stylesheet" href="./example-assets/style.css" />
+
+		<script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+	</head>
+
+	<body>
+		<!--
+			since no #orejime div exists, Orejime will create one and put it at
+			the beginning of the body
+		-->
+
+		<div id="app">
+			<div class="Container">
+				<header class="Header">
+					<h1 class="Header-title">Migration</h1>
+
+					<a href="https://empreintedigitale.fr">
+						<img
+							class="Header-empreinteLogo"
+							src="example-assets/logo.svg"
+						/>
+					</a>
+				</header>
+
+				<main role="main">
+					<div class="Hero">
+						<p>
+							A lot of things can change between major software versions!
+							<br />
+							Here you will find some tools to ease the transition.
+						</p>
+					</div>
+
+					<h2 class="Inset-title">Migrating from V2 to V3</h2>
+
+					<div class="Inset">
+						<h3>Automated migration</h3>
+
+						<p>
+							Paste your current configuration below to get an up-to-date
+							version.
+							<br />
+							<em>
+								Be sure to paste an Orejime config and not arbitrary
+								JavaScript code, as it will be evaluated in your browser
+								in order to be migrated.
+							</em>
+						</p>
+
+						<form class="MigrationForm MigrationForm--2-to-3">
+							<textarea
+								class="MigrationForm-input"
+								rows="10"
+								placeholder="{ appElement: '#app', apps: [] }"
+							></textarea>
+							<input class="Button" type="submit" value="Convert" />
+
+							<pre class="MigrationForm-output is-hidden"></pre>
+						</form>
+					</div>
+				</main>
+			</div>
+
+			<footer class="Footer" role="contentinfo">
+				<div class="Container">
+					<p>
+						<strong>Empreinte Digitale</strong>
+						<br />
+						<a
+							href="https://empreintedigitale.fr"
+							title="Development (fr)"
+						>
+							Development
+						</a>
+						•
+						<a
+							href="https://cloud.empreintedigitale.fr"
+							title="Cloud (fr)"
+						>
+							Cloud
+						</a>
+						•
+						<a
+							href="https://accessibilitenumerique.empreintedigitale.fr"
+							title="Accessibility (fr)"
+						>
+							Accessibility
+						</a>
+						•
+						<a href="https://rgpd.empreintedigitale.fr" title="GDPR (fr)">
+							GDPR
+						</a>
+						<br />
+						<a href="mailto:contact@empreintedigitale.fr">E-mail</a>
+						•
+						<a href="https://twitter.com/empr1tedigitale">Twitter</a>
+						•
+						<a
+							href="https://linkedin.com/company/empreinte-digitale-angers"
+						>
+							LinkedIn
+						</a>
+						•
+						<a href="https://www.facebook.com/empr1tedigitale/">
+							Facebook
+						</a>
+						•
+						<a href="https://github.com/empreinte-digitale">GitHub</a>
+						<br />
+						11 rue des Noyers
+						<br />
+						49000 Angers
+						<br />
+						France
+					</p>
+				</div>
+			</footer>
+		</div>
+
+		<script src="./example-assets/migrations.js"></script>
+	</body>
+</html>

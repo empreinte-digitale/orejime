@@ -1,3 +1,4 @@
+import cleanDeep from 'clean-deep';
 import type {Translations} from '../../ui/types';
 import type {V2Translations} from '../v2/types';
 
@@ -6,8 +7,8 @@ const join = (strings: string[], separator = ' ') =>
 
 export const migrateTranslations = (
 	translations: Partial<V2Translations>
-): Translations => {
-	return {
+): Translations =>
+	cleanDeep({
 		banner: {
 			title: translations?.consentNotice?.title,
 			description: join([
@@ -54,5 +55,4 @@ export const migrateTranslations = (
 			updateNeeded: translations?.consentNotice?.changeDescription,
 			poweredBy: translations?.poweredBy
 		}
-	};
-};
+	}) as Translations;
