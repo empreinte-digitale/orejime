@@ -1,16 +1,20 @@
 :root {
-	--base-font: 'Barlow', -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, Ubuntu, roboto, noto, segoe ui, arial, sans-serif;
-	--headings-font: 'Barlow Condensed', -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, Ubuntu, roboto, noto, segoe ui, arial, sans-serif;
-	--gray: #A3B0BF;
+	--base-font: 'Barlow', -apple-system, BlinkMacSystemFont, avenir next, avenir,
+		helvetica neue, helvetica, Ubuntu, roboto, noto, segoe ui, arial,
+		sans-serif;
+	--headings-font: 'Barlow Condensed', -apple-system, BlinkMacSystemFont,
+		avenir next, avenir, helvetica neue, helvetica, Ubuntu, roboto, noto,
+		segoe ui, arial, sans-serif;
+	--gray: #a3b0bf;
 	--gray-light: #dde2e7;
 	--gray-lighter: #e8ecef;
 	--magenta: #d6084f;
-	--magenta-alt: #AB0D42;
+	--magenta-alt: #ab0d42;
 	--magenta-focus: #e90956;
 	--magenta-active: #c30748;
 	--magenta-indeterminate: #c0597d;
 	--cyan: #367591;
-	--cyan-alt: #245C73;
+	--cyan-alt: #245c73;
 	--cyan-dark: #1b3b4a;
 	--cyan-darker: #0b191f;
 	--cyan-lighter: #edf0f2;
