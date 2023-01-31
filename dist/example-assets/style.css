@@ -279,6 +279,29 @@ main {
 	max-width: 100%;
 }
 
+.MigrationForm-input,
+.MigrationForm-output {
+	box-sizing: border-box;
+	border-radius: 3px;
+	border: 1px solid currentColor;
+	width: 100%;
+	padding: calc(var(--unit) / 2);
+	color: var(--cyan-dark);
+	font: inherit;
+	font-family: monospace;
+	tab-size: 2;
+}
+
+.MigrationForm-output {
+	min-height: calc(10 * var(--unit));
+	background: var(--cyan-lighter);
+	overflow-y: auto;
+}
+
+.MigrationForm-output.is-hidden {
+	display: none;
+}
+
 .Footer {
 	padding: calc(2 * var(--unit)) 0;
 	background: var(--gdpr);
