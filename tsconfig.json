@@ -6,12 +6,11 @@
 		"moduleResolution": "node",
 		"noImplicitAny": true,
 		"outDir": "./dist/",
+		"paths": {
+			"uneval.js": ["./src/uneval.d.ts"]
+		},
 		"target": "esnext"
 	},
-	"include": [
-		"./src"
-	],
-	"exclude": [
-		"*.test.ts"
-	]
+	"include": ["./src"],
+	"exclude": ["*.test.ts"]
 }
