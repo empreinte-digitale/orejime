@@ -1,13 +1,12 @@
 import React, {createRef, ElementRef} from 'react';
 import {render} from 'react-dom';
-import Main from './components/Main';
-import {Config} from './types';
-import {getRootElement} from './utils/dom';
 import Context from './components/Context';
-import {Manager} from '../core';
+import Main from './components/Main';
 import {Theme} from './components/types/Theme';
+import type {SetupUi} from './types';
+import {getRootElement} from './utils/dom';
 
-export default (theme: Theme) => (config: Config, manager: Manager) => {
+export default (theme: Theme): SetupUi => (config, manager) => {
 	const element = getRootElement(config.orejimeElement);
 	const appRef = createRef<ElementRef<typeof Main>>();
 
@@ -24,5 +23,7 @@ export default (theme: Theme) => (config: Config, manager: Manager) => {
 		element
 	);
 
-	return appRef.current!.openModal;
+	return {
+		openModal: appRef.current!.openModal
+	};
 };

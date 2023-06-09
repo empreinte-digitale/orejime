@@ -1,4 +1,4 @@
-import {CookieOptions, Purpose as CorePurpose} from '../core';
+import {CookieOptions, Purpose as CorePurpose, Manager} from '../core';
 
 export interface Purpose extends CorePurpose {
 	id: string;
@@ -88,3 +88,10 @@ export interface Config {
 	privacyPolicyUrl: string;
 	translations: Translations;
 }
+
+export type SetupUi = (
+	config: Config,
+	manager: Manager
+) => {
+	openModal: () => void;
+};
