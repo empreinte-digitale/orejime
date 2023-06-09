@@ -1,13 +1,25 @@
 import {setup} from '../core';
-import type {Config} from '../ui';
-import {deepMerge} from '../ui/utils/objects';
+import type {Config, SetupUi, Translations} from '../ui';
 import {
-	assertConfigValidity,
 	DefaultConfig,
+	assertConfigValidity,
 	purposesOnly
 } from '../ui/utils/config';
 import {once} from '../ui/utils/functions';
+import {deepMerge} from '../ui/utils/objects';
 import type {UmdGlobal} from './umd';
+
+const importTheme = (theme: string) =>
+	import(
+		/* webpackChunkName: "orejime-theme-[request]" */
+		`../ui/themes/${theme}/index.ts`
+	).then((module) => module.default as SetupUi);
+
+const importTranslations = (lang: string) =>
+	import(
+		/* webpackChunkName: "orejime-lang-[request]" */
+		`../translations/${lang}.yml`
+	).then((module) => module.default as Translations);
 
 export default (partialConfig: Config): UmdGlobal => {
 	const config = deepMerge(DefaultConfig, partialConfig);
@@ -19,17 +31,11 @@ export default (partialConfig: Config): UmdGlobal => {
 
 	const loadUi = once(() =>
 		Promise.all([
-			import(
-				/* webpackChunkName: "orejime-theme-[request]" */
-				`../ui/themes/${config.theme}/index.ts`
-			),
-			import(
-				/* webpackChunkName: "orejime-lang-[request]" */
-				`../translations/${config.lang}.yml`
-			)
-		]).then(([{default: setupTheme}, {default: translations}]) => {
+			importTheme(config.theme),
+			importTranslations(config.lang)
+		]).then(([setupUi, translations]) => {
 			const fullConfig = deepMerge({translations} as Config, config);
-			return setupTheme(fullConfig, manager);
+			return setupUi(fullConfig, manager);
 		})
 	);
 
@@ -39,8 +45,8 @@ export default (partialConfig: Config): UmdGlobal => {
 		});
 
 	const showUi = () =>
-		loadUi().then((show) => {
-			show();
+		loadUi().then(({openModal}) => {
+			openModal();
 		});
 
 	manager.on('dirty', (isDirty) => {
