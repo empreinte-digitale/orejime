@@ -7,6 +7,7 @@ import type {ModalComponent} from '../../components/types/Modal';
 
 const Modal: ModalComponent = ({
 	isForced,
+	needsUpdate,
 	privacyPolicyUrl,
 	onClose,
 	onSave,
@@ -47,7 +48,7 @@ const Modal: ModalComponent = ({
 						</h1>
 
 						<div>
-							{isForced ? (
+							{isForced && needsUpdate ? (
 								<p>
 									<strong>{t.misc.updateNeeded}</strong>
 								</p>

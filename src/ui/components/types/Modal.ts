@@ -2,6 +2,7 @@ import {FC} from 'react';
 
 export interface ModalProps {
 	isForced: boolean;
+	needsUpdate: boolean;
 	privacyPolicyUrl: string;
 	onClose: () => void;
 	onSave: () => void;
