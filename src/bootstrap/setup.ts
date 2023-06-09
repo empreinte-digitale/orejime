@@ -39,30 +39,35 @@ export default (partialConfig: Config): UmdGlobal => {
 		})
 	);
 
-	const preloadUi = () =>
+	const preload = () =>
 		loadUi().then(() => {
 			// Returning nothing here avoids exposing the internal API.
 		});
 
-	const showUi = () =>
-		loadUi().then(({openModal}) => {
-			openModal();
+	const show = () =>
+		loadUi().then((actions) => {
+			actions.show();
+		});
+
+	const prompt = () =>
+		loadUi().then((actions) => {
+			actions.openModal();
 		});
 
 	manager.on('dirty', (isDirty) => {
 		if (isDirty) {
-			showUi();
+			show();
 		}
 	});
 
 	if (manager.isDirty()) {
-		showUi();
+		show();
 	}
 
 	return {
 		config,
 		manager,
-		preload: preloadUi,
-		show: showUi
+		preload,
+		prompt
 	};
 };

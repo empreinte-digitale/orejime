@@ -93,5 +93,6 @@ export type SetupUi = (
 	config: Config,
 	manager: Manager
 ) => {
+	show: () => void;
 	openModal: () => void;
 };
