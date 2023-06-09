@@ -8,6 +8,7 @@ import PoweredByLink from '../../components/PoweredByLink';
 
 const Modal: ModalComponent = ({
 	isForced,
+	needsUpdate,
 	privacyPolicyUrl,
 	onClose,
 	onSave,
@@ -40,14 +41,16 @@ const Modal: ModalComponent = ({
 					<h1 className="orejime-Modal-title" id="orejime-modal-title">
 						{t.modal.title}
 					</h1>
+
 					<p className="orejime-Modal-description">
-						{isForced ? (
+						{isForced && needsUpdate ? (
 							<p className="orejime-Modal-description">
 								<strong className="orejime-Modal-changes">
 									{t.misc.updateNeeded}
 								</strong>
 							</p>
 						) : null}
+
 						{template(t.modal.description, {
 							privacyPolicy: (
 								<a
