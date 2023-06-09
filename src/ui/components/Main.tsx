@@ -59,6 +59,7 @@ const Main: ForwardRefRenderFunction<MainHandle> = (_, ref) => {
 						<Modal
 							key="modal"
 							isForced={config.forceModal && manager.isDirty()}
+							needsUpdate={manager.needsUpdate()}
 							privacyPolicyUrl={config.privacyPolicyUrl}
 							onClose={closeModal}
 							onSave={commit}
