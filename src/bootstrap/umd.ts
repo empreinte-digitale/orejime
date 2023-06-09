@@ -5,7 +5,7 @@ export interface UmdGlobal {
 	config: Config;
 	manager: Manager;
 	preload: () => Promise<void>;
-	show: () => Promise<void>;
+	prompt: () => Promise<void>;
 }
 
 declare global {

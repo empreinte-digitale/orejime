@@ -1,6 +1,6 @@
 document.querySelectorAll('[data-orejime-open]').forEach(function (trigger) {
 	trigger.addEventListener('click', function () {
-		window.orejime.show();
+		window.orejime.prompt();
 	});
 });
 
