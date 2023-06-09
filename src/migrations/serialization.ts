@@ -1,4 +1,4 @@
-import uneval from 'uneval.js';
+import uneval, {type Opts} from 'uneval.js';
 import {V2Config} from './v2/types';
 
 export const parse = (code: string) => {
@@ -20,10 +20,7 @@ export const parse = (code: string) => {
 	return config;
 };
 
-export const stringify = (
-	object: object,
-	options: uneval.Opts = {} as uneval.Opts
-) =>
+export const stringify = (object: object, options: Opts = {}) =>
 	uneval(object, {
 		safe: false,
 		...options
