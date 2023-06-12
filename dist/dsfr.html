@@ -10,6 +10,22 @@
 			rel="stylesheet"
 			href="https://unpkg.com/@gouvfr/dsfr@1/dist/dsfr/dsfr.min.css"
 		/>
+
+		<style>
+			.Hero {
+				--theme: #addff3;
+				background: var(--theme);
+				background: var(--theme)
+					radial-gradient(
+						circle at 1.1rem 1.1rem,
+						rgba(28, 13, 38, 0.1) 0.15rem,
+						rgba(0, 0, 0, 0) 0.15rem,
+						rgba(0, 0, 0, 0) 100%
+					)
+					50% 0.5rem/2.2rem 2.2rem fixed;
+				text-shadow: 0 0 1rem var(--theme);
+			}
+		</style>
 	</head>
 
 	<body id="app">
@@ -20,12 +36,15 @@
 						<div class="fr-header__brand fr-enlarge-link">
 							<div class="fr-header__brand-top">
 								<div class="fr-header__logo">
-									<a
-										href="/dsfr.html"
-										title="Accueil - Intégration au système de design de l'état - Orejime"
-									>
-										<p class="fr-logo">Exemple</p>
-									</a>
+									<p class="fr-logo">Exemple</p>
+								</div>
+								<div class="fr-header__operator">
+									<img
+										class="fr-responsive-img"
+										style="max-width: 9.0625rem"
+										src="/example-assets/logo.svg"
+										alt="Empreinte Digitale RGPD"
+									/>
 								</div>
 							</div>
 
@@ -36,7 +55,6 @@
 								>
 									<p class="fr-header__service-title">Orejime</p>
 								</a>
-
 								<p class="fr-header__service-tagline">
 									Gestionnaire de consentement accessible et éco-conçu
 								</p>
@@ -48,10 +66,12 @@
 		</header>
 
 		<main role="main" class="contentAll">
-			<div style="background-color: #addff3">
+			<div class="Hero">
 				<div class="fr-container fr-pt-10w fr-pb-10w fr-mb-10w">
-					<div class="fr-grid-row fr-grid-row--gutters">
-						<div class="fr-col-lg-6">
+					<div
+						class="fr-grid-row fr-grid-row--gutters fr-grid-row--center"
+					>
+						<div class="fr-col-12 fr-col-md-10 fr-col-lg-8">
 							<h1>
 								Intégration d'Orejime au système de design de l'État
 							</h1>
@@ -63,7 +83,7 @@
 								<a href="/">version standard</a>
 								, mais utilise la présentation recommandée du
 								<a
-									href="https://gouvfr.atlassian.net/wiki/spaces/DB/pages/609189956/Gestionnaire+de+consentement+-+Consent+banner"
+									href="https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/gestionnaire-de-consentement"
 								>
 									gestionnaire de consentement
 								</a>
@@ -75,42 +95,46 @@
 			</div>
 
 			<div class="fr-container fr-mb-10w">
-				<div class="fr-callout fr-fi-information-line" id="privacy-policy">
-					<p class="fr-callout__title">
-						Exemple de politique de confidentialité
-					</p>
-					<p class="fr-callout__text">
-						Cette section tient lieu de page de politique de
-						confidentialité.
-						<br />
-						En contexte réel, ce contenu serait affiché dans une page
-						dédiée.
-						<br />
-						Cette page fournirait toutes les informations relatives à la
-						gestion des données personnelles des usagers, ainsi que des
-						boutons permettant à l'usager de configurer ou réinitialiser
-						son consentement, comme ci-dessous.
-					</p>
+				<div class="fr-grid-row fr-grid-row--gutters fr-grid-row--center">
+					<div class="fr-col-12 fr-col-md-10 fr-col-lg-8">
+						<div class="fr-callout" id="privacy-policy">
+							<p class="fr-callout__title">
+								Exemple de politique de confidentialité
+							</p>
+							<p class="fr-callout__text">
+								Cette section tient lieu de page de politique de
+								confidentialité.
+								<br />
+								En contexte réel, ce contenu serait affiché dans une
+								page dédiée.
+								<br />
+								Cette page fournirait toutes les informations relatives
+								à la gestion des données personnelles des usagers, ainsi
+								que des boutons permettant à l'usager de configurer ou
+								réinitialiser son consentement, comme ci-dessous.
+							</p>
 
-					<ul class="fr-btns-group fr-btns-group--inline">
-						<li>
-							<button
-								class="fr-btn"
-								data-orejime-open
-								data-orejime-preload
-							>
-								Configurer
-							</button>
-						</li>
-						<li>
-							<button
-								class="fr-btn fr-btn--secondary"
-								data-orejime-reset
-							>
-								Réinitialiser
-							</button>
-						</li>
-					</ul>
+							<ul class="fr-btns-group fr-btns-group--inline">
+								<li>
+									<button
+										class="fr-btn"
+										data-orejime-open
+										data-orejime-preload
+									>
+										Configurer
+									</button>
+								</li>
+								<li>
+									<button
+										class="fr-btn fr-btn--secondary"
+										data-orejime-reset
+									>
+										Réinitialiser
+									</button>
+								</li>
+							</ul>
+						</div>
+					</div>
 				</div>
 			</div>
 		</main>
@@ -185,7 +209,6 @@
 				theme: 'dsfr',
 				appElement: '#app',
 				privacyPolicyUrl: '#privacyPolicy',
-				forceBanner: true,
 				translations: {
 					modal: {
 						description:
