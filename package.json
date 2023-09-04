@@ -32,33 +32,33 @@
   },
   "homepage": "https://github.com/empreinte-digitale/orejime#readme",
   "dependencies": {
-    "@babel/runtime": "^7.1.2",
-    "react-modal": "^3.13.1"
+    "@babel/runtime": "^7.22.11",
+    "react-modal": "^3.16.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.1.2",
-    "@babel/core": "^7.1.2",
-    "@babel/plugin-transform-runtime": "^7.1.0",
-    "@babel/preset-env": "^7.1.0",
-    "@babel/preset-react": "^7.0.0",
-    "babel-loader": "^8.0.4",
+    "@babel/cli": "^7.22.10",
+    "@babel/core": "^7.22.11",
+    "@babel/plugin-transform-runtime": "^7.22.10",
+    "@babel/preset-env": "^7.22.14",
+    "@babel/preset-react": "^7.22.5",
+    "babel-loader": "^9.1.3",
     "babel-plugin-convert-to-json": "^0.1.0",
-    "browser-sync": "^2.26.3",
-    "cross-env": "^5.2.0",
-    "css-loader": "^0.28.11",
-    "mini-css-extract-plugin": "^0.4.4",
-    "preact": "^8.2.9",
-    "preact-compat": "^3.18.2",
-    "prettier": "^2.2.1",
+    "browser-sync": "^2.29.3",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.8.1",
+    "mini-css-extract-plugin": "^2.7.6",
+    "preact": "^10.17.1",
+    "preact-compat": "^3.19.0",
+    "prettier": "^3.0.3",
     "prettier-loader": "^3.3.0",
-    "sass": "^1.61.0",
-    "sass-loader": "^7.3.1",
+    "sass": "^1.66.1",
+    "sass-loader": "^13.3.2",
     "shx": "^0.3.4",
-    "webpack": "^4.25.1",
-    "webpack-cli": "^3.1.2"
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
   },
   "peerDependencies": {
-    "react": "^0.14.0 || ^15.0.0 || ^16",
-    "react-dom": "^0.14.0 || ^15.0.0 || ^16"
+    "react": "^18",
+    "react-dom": "^18"
   }
 }
