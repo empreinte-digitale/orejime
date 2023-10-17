@@ -135,11 +135,17 @@ export default class ConsentManager {
 	saveConsents() {
 		if (this.consents === null) deleteCookie(this.cookieName);
 		const value = this.config.stringifyCookie(this.consents);
+		const configCookieExpiresAfterDays = this.config.cookieExpiresAfterDays;
+
+		const cookieExpiresAfterDays =
+			typeof configCookieExpiresAfterDays === 'function'
+				? configCookieExpiresAfterDays(this.consents, this.config)
+				: configCookieExpiresAfterDays || 120;
 
 		setCookie(
 			this.cookieName,
 			value,
-			this.config.cookieExpiresAfterDays || 120,
+			cookieExpiresAfterDays,
 			this.config.cookieDomain
 		);
 

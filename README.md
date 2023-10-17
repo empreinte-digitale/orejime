@@ -110,7 +110,12 @@ var orejimeConfig = {
     // defaults to "orejime".
     cookieName: "orejime",
 
-    // Optional. You can set a custom expiration time for the Orejime cookie, in days.
+    // Optional. You can set a custom expiration time for the Orejime cookie, in days,
+    // by using an integer or a function returning an integer.
+    // The function has the following signature: `function cookieExpiresAfterDays (consents, config): integer`
+    //  - consents is an object of apps name defined in `config.apps[].name` with their consent value as a boolean (same as the cookie value).
+    //  - config is your defined configuration (this object).
+    // You can find a snippet function here: https://github.com/empreinte-digitale/orejime/pull/79#issue-1100817288
     // defaults to 365.
     cookieExpiresAfterDays: 365,
 
