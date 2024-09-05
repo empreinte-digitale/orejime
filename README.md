@@ -93,20 +93,6 @@ var orejimeConfig = {
     // beginning of the <body>.
     orejimeElement: "#orejime",
 
-    // Optional. For accessibility's sake, the Orejime modal must know what is
-    // the element containing your app or website so it can hide it to assistive
-    // technologies (Orejime should *not* be in this element).
-    // The idea is that your DOM should look like this once Orejime is initialized:
-    //
-    // <body>
-    //      <div id="orejime">...</div>
-    //      <div id="app">your actual website</div>
-    // </body>
-    //
-    // It is highly recommended to set this option (either a selector or a DOM
-    // element), even though it's not required.
-    appElement: "#app",
-
     // Optional.
     cookie: {
         // Optional. You can customize the name of the cookie that Orejime uses for storing

@@ -1,5 +1,4 @@
 import React from 'react';
-import type {Aria} from 'react-modal';
 import {useTranslations} from '../../utils/hooks';
 import Dialog from '../../components/Dialog';
 import type {ModalBannerComponent} from '../../components/types/ModalBanner';
@@ -10,15 +9,11 @@ const ModalBanner: ModalBannerComponent = ({...props}) => {
 
 	return (
 		<Dialog
-			htmlOpenClassName="fr-no-scroll"
+			htmlClassName="fr-no-scroll"
 			portalClassName="orejime-banner-portal"
 			overlayClassName="orejime-banner-overlay"
 			className="fr-modal fr-modal--opened"
-			aria={
-				{
-					label: t.banner.title
-				} as Aria
-			}
+			label={t.banner.title}
 		>
 			<Banner {...props} isForced />
 		</Dialog>

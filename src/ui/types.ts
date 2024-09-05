@@ -78,7 +78,6 @@ export type ImageDescriptor = string | ImageAttributes;
 export interface Config {
 	theme: 'orejime';
 	orejimeElement?: ElementReference;
-	appElement?: ElementReference;
 	purposes: PurposeList;
 	cookie?: CookieOptions;
 	lang: string;

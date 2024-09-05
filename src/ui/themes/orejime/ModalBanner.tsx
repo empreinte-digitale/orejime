@@ -1,5 +1,4 @@
 import React from 'react';
-import type {Aria} from 'react-modal';
 import Dialog from '../../components/Dialog';
 import Banner from './Banner';
 import {useTranslations} from '../../utils/hooks';
@@ -13,11 +12,7 @@ const ModalBanner: ModalBannerComponent = (props) => {
 			portalClassName="orejime-Env"
 			overlayClassName="orejime-BannerOverlay"
 			className="orejime-BannerWrapper"
-			aria={
-				{
-					label: t.banner.title
-				} as Aria
-			}
+			label={t.banner.title}
 		>
 			<Banner {...props} />
 		</Dialog>

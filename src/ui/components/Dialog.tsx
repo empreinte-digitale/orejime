@@ -1,16 +1,24 @@
-import React, {useEffect, useLayoutEffect, useState} from 'react';
-import ReactModal, {Props as ReactModalProps} from 'react-modal';
-import {getElement} from '../utils/dom';
-import {useBeforeRender, useConfig} from '../utils/hooks';
+import React, {
+	useEffect,
+	useLayoutEffect,
+	useState
+} from 'react';
+import MicroModal from 'micromodal';
 
-interface DialogProps extends Omit<ReactModalProps, 'isOpen'> {
+interface DialogProps {
 	isAlert?: boolean;
+	label?: string;
+	labelId?: string;
+	className?: string;
+	portalClassName?: string;
+	overlayClassName?: string;
+	htmlClassName?: string;
 	// the scroll position stuff is for iOS to work correctly
 	// when we want to prevent normal website scrolling with
 	// the modal opened
 	//
 	// /!\ this requires specific CSS to work. For example,
-	// if `htmlOpenClassName = 'modal-open'`:
+	// if `htmlClassName = 'modal-open'`:
 	//
 	// ```
 	// .modal-open {
@@ -25,23 +33,25 @@ interface DialogProps extends Omit<ReactModalProps, 'isOpen'> {
 	// }
 	// ```
 	handleScrollPosition?: boolean;
+	onRequestClose?: () => void;
 	children: any;
 }
 
+const DialogId = 'orejime-Dialog';
+
 const Dialog = ({
 	isAlert = false,
+	label,
+	labelId,
+	className,
+	portalClassName,
+	overlayClassName,
+	htmlClassName,
 	handleScrollPosition = true,
-	children,
-	...reactModalProps
+	onRequestClose,
+	children
 }: DialogProps) => {
-	const config = useConfig();
 	const [scrollPosition, setScrollPosition] = useState<number | null>(null);
-
-	useBeforeRender(() => {
-		if (config?.appElement) {
-			ReactModal.setAppElement(config.appElement);
-		}
-	});
 
 	useLayoutEffect(() => {
 		if (scrollPosition === null) {
@@ -62,17 +72,36 @@ const Dialog = ({
 		}
 	});
 
+	useEffect(() => {
+		if (htmlClassName) {
+			document.documentElement.classList.add(htmlClassName);
+		}
+
+		MicroModal.show(DialogId, {
+			onClose: onRequestClose
+		});
+
+		return () => {
+			if (htmlClassName) {
+				document.documentElement.classList.remove(htmlClassName);
+			}
+		};
+	}, []);
+
 	return (
-		<ReactModal
-			{...reactModalProps}
-			parentSelector={() => getElement(config.orejimeElement, document.body)}
-			role={isAlert ? 'alertdialog' : 'dialog'}
-			htmlOpenClassName="orejimeHtml-WithModalOpen"
-			bodyOpenClassName="orejimeBody-WithModalOpen"
-			isOpen
-		>
-			{children}
-		</ReactModal>
+		<div className={portalClassName} id={DialogId} aria-hidden="true">
+			<div className={overlayClassName} tabIndex={-1}>
+				<div
+					className={className}
+					role={isAlert ? 'alertdialog' : 'dialog'}
+					aria-modal="true"
+					aria-label={label}
+					aria-labelledby={labelId}
+				>
+					{children}
+				</div>
+			</div>
+		</div>
 	);
 };
 

@@ -50,7 +50,6 @@ const migrateApps = (
 
 export const migrateConfig = (config: Partial<V2Config>): Partial<Config> =>
 	cleanDeep({
-		appElement: config?.appElement,
 		orejimeElement: config?.elementID,
 		lang: config?.lang,
 		logo:

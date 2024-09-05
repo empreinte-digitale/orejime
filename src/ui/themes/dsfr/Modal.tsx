@@ -19,13 +19,11 @@ const Modal: ModalComponent = ({
 		<Dialog
 			isAlert={isForced}
 			onRequestClose={onClose}
-			htmlOpenClassName="fr-no-scroll"
+			htmlClassName="fr-no-scroll"
 			portalClassName="fr-modal fr-modal--opened"
 			overlayClassName="fr-container fr-container--fluid fr-container-md"
 			className="fr-grid-row fr-grid-row--center"
-			aria={{
-				labelledby: 'fr-consent-modal-title'
-			}}
+			labelId='fr-consent-modal-title'
 		>
 			<div className="fr-col-12 fr-col-md-10 fr-col-lg-8">
 				<div className="fr-modal__body">

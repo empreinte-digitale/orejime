@@ -42,8 +42,7 @@
   "dependencies": {
     "@babel/runtime": "^7.1.2",
     "clean-deep": "^3.4.0",
-    "js-cookie": "^3.0.1",
-    "react-modal": "^3.14.4"
+    "js-cookie": "^3.0.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
@@ -53,7 +52,7 @@
     "@babel/preset-react": "^7.16.7",
     "@types/jest": "^27.5.0",
     "@types/js-cookie": "^3.0.2",
-    "@types/react-modal": "^3.13.1",
+    "@types/micromodal": "^0.3.5",
     "babel-loader": "^8.0.4",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "copy-webpack-plugin": "^10.2.4",
@@ -61,6 +60,7 @@
     "css-loader": "^0.28.11",
     "jest": "^28.1.0",
     "jest-environment-jsdom": "^28.1.0",
+    "micromodal": "^0.4.10",
     "mini-css-extract-plugin": "^2.6.0",
     "preact": "^10.23.2",
     "prettier": "^2.2.1",

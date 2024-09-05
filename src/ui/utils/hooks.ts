@@ -8,17 +8,6 @@ import {
 	Purpose
 } from '../../core';
 
-// @see https://stackoverflow.com/a/56818036/2391359
-export const useBeforeRender = (callback: () => void) => {
-	const willMount = useRef(true);
-
-	if (willMount.current) {
-		callback();
-	}
-
-	willMount.current = false;
-};
-
 export const useConfig = () => {
 	const {config} = useContext(Context);
 	return config;
