@@ -2,7 +2,7 @@ import React, {useContext, useRef} from 'react';
 import Context from './Context';
 
 interface StubManagerProviderProps {
-	children: (commit: () => void) => JSX.Element;
+	children: (commit: () => void) => React.JSX.Element;
 	onCommit: () => void;
 }
 
