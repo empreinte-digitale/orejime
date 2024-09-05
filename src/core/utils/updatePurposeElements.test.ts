@@ -6,7 +6,7 @@ test('updatePurposeElements', () => {
 	`;
 
 	updatePurposeElements('foo', true);
-	const foo = document.getElementById('foo');
+	const foo = document.getElementById('foo')!;
 
 	expect(foo.hasAttribute('data-type')).toBeFalsy();
 	expect(foo.hasAttribute('data-src')).toBeFalsy();
@@ -15,9 +15,9 @@ test('updatePurposeElements', () => {
 	expect(foo.getAttribute('crossorigin')).toEqual('anonymous');
 
 	updatePurposeElements('foo', false);
-	const foo2 = document.getElementById('foo');
+	const foo2 = document.getElementById('foo')!;
 
-	expect(foo2.hasAttribute('type')).toBeFalsy();
+	expect(foo2.getAttribute('type')).toEqual('opt-in');
 	expect(foo2.hasAttribute('src')).toBeFalsy();
 	expect(foo2.getAttribute('data-type')).toEqual('type');
 	expect(foo2.getAttribute('data-src')).toEqual('src');

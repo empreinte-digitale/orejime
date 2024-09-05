@@ -1,5 +1,8 @@
 module.exports = {
-	preset: 'ts-jest/presets/js-with-ts-esm',
+	extensionsToTreatAsEsm: ['.ts', '.tsx'],
+	transform: {
+		'^.+\\.(t|j)sx?$': '@swc/jest',
+	},
 	testEnvironment: 'jsdom',
 	moduleNameMapper: {
 		'^react$': 'preact/compat',
