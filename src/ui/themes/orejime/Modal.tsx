@@ -19,7 +19,7 @@ const Modal: ModalComponent = ({
 	return (
 		<Dialog
 			isAlert={isForced}
-			aria={{'labelledby': 'orejime-modal-title'}}
+			labelId='orejime-modal-title'
 			portalClassName="orejime-Env"
 			overlayClassName="orejime-ModalOverlay"
 			className="orejime-ModalWrapper"

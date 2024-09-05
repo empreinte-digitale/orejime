@@ -32,11 +32,6 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.js$/,
-				include: fullPath('node_modules/react-modal'),
-				use: 'babel-loader'
-			},
-			{
 				test: /\.tsx?$/,
 				include: fullPath('src'),
 				use: ['babel-loader', 'ts-loader']
