@@ -1,8 +1,6 @@
 const path = require('path');
-const webpack = require('webpack');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
 const pkg = require('./package.json');
+const {rspack} = require('@rspack/core');
 const fullPath = path.resolve.bind(path, __dirname);
 const isDev = process.env.NODE_ENV === 'development';
 
@@ -24,17 +22,25 @@ module.exports = {
 			return pathData.chunk.name.replace(/(\-index\-ts|\-yml)$/, '.js');
 		},
 		path: fullPath('dist'),
-		publicPath: '',
-		clean: {
-			keep: /example-assets|\.html/
-		}
+		publicPath: ''
 	},
 	module: {
 		rules: [
 			{
 				test: /\.tsx?$/,
 				include: fullPath('src'),
-				use: ['babel-loader', 'ts-loader']
+				type: 'javascript/auto',
+				use: {
+					loader: 'builtin:swc-loader',
+					options: {
+						jsc: {
+							parser: {
+								syntax: 'typescript',
+								tsx: true
+							}
+						}
+					}
+				}
 			},
 			{
 				test: /\.ya?ml$/,
@@ -42,7 +48,12 @@ module.exports = {
 			},
 			{
 				test: /\.s[ac]ss$/i,
-				use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+				type: 'javascript/auto',
+				use: [
+					rspack.CssExtractRspackPlugin.loader,
+					'css-loader',
+					'sass-loader'
+				]
 			}
 		]
 	},
@@ -57,18 +68,18 @@ module.exports = {
 		}
 	},
 	optimization: {
-		// Prevents webpack from splitting anything more than
+		// Prevents rspack from splitting anything more than
 		// the explicit chunks created from dynamic imports.
 		splitChunks: false
 	},
 	plugins: [
-		new MiniCssExtractPlugin({
+		new rspack.CssExtractRspackPlugin({
 			filename: 'orejime.css'
 		}),
-		new CopyPlugin({
+		new rspack.CopyRspackPlugin({
 			patterns: [{from: 'src/styles'}]
 		}),
-		new webpack.BannerPlugin({
+		new rspack.BannerPlugin({
 			banner:
 				pkg.name +
 				' v' +

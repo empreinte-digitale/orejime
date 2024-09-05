@@ -2,8 +2,7 @@
 /dist/*.js
 /dist/*.css
 /dist/*.scss
-/dist/*.LICENSE.txt
+/dist/stats.json
 /dist/example-assets/migrations.js
 /lib
 /es
-/stats.json

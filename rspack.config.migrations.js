@@ -22,7 +22,18 @@ module.exports = {
 			{
 				test: /\.tsx?$/,
 				include: fullPath('src'),
-				use: ['babel-loader', 'ts-loader']
+				type: 'javascript/auto',
+				use: {
+					loader: 'builtin:swc-loader',
+					options: {
+						jsc: {
+							parser: {
+								syntax: 'typescript',
+								tsx: true
+							}
+						}
+					}
+				}
 			}
 		]
 	},
