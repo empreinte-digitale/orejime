@@ -1,3 +1,4 @@
+import {jest} from '@jest/globals';
 import EventEmitter from './EventEmitter';
 
 describe('EventEmitter', () => {

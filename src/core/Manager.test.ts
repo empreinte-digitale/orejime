@@ -1,3 +1,4 @@
+import {jest} from '@jest/globals';
 import Manager from './Manager';
 import type {Purpose} from './types';
 
