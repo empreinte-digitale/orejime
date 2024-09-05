@@ -1,6 +1,6 @@
 import React, {
 	forwardRef,
-	ForwardRefRenderFunction,
+	ForwardedRef,
 	useImperativeHandle
 } from 'react';
 import {
@@ -14,11 +14,11 @@ import PurposeTree from './PurposeTree';
 import StubManagerProvider from './StubManagerProvider';
 import GlobalConsentContainer from './GlobalConsentContainer';
 
-interface MainHandle {
+export interface MainHandle {
 	openModal: () => void;
 }
 
-const Main: ForwardRefRenderFunction<MainHandle> = (_, ref) => {
+const Main = (_: any, ref: ForwardedRef<MainHandle>) => {
 	const config = useConfig();
 	const manager = useManager();
 	const isBannerOpen = useBannerState();

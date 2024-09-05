@@ -1,13 +1,18 @@
 {
 	"compilerOptions": {
 		"allowSyntheticDefaultImports": true,
-		"jsx": "react",
+		"jsx": "react-jsx",
+		"jsxImportSource": "preact",
 		"module": "esnext",
 		"moduleResolution": "node",
 		"noImplicitAny": true,
 		"outDir": "./dist/",
 		"paths": {
-			"uneval.js": ["./src/uneval.d.ts"]
+			"uneval.js": ["./src/uneval.d.ts"],
+			"react": ["./node_modules/preact/compat/"],
+			"react/jsx-runtime": ["./node_modules/preact/jsx-runtime"],
+			"react-dom": ["./node_modules/preact/compat/"],
+			"react-dom/*": ["./node_modules/preact/compat/*"]
 		},
 		"target": "esnext"
 	},

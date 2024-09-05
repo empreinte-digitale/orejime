@@ -34,7 +34,7 @@ const Purpose: PurposeComponent = ({
 				checked={consent === ConsentState.accepted}
 				type="checkbox"
 				onChange={(event) => {
-					onChange(event.target.checked);
+					onChange((event.target as HTMLInputElement).checked);
 				}}
 			/>
 			<label
