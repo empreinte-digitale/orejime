@@ -34,6 +34,7 @@ module.exports = {
 					loader: 'builtin:swc-loader',
 					options: {
 						jsc: {
+							externalHelpers: true,
 							parser: {
 								syntax: 'typescript',
 								tsx: true

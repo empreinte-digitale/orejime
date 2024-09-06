@@ -47,6 +47,7 @@
     "@rspack/cli": "^1.0.3",
     "@rspack/core": "^1.0.3",
     "@swc/core": "^1.7.23",
+    "@swc/helpers": "^0.5.13",
     "@swc/jest": "^0.2.36",
     "@types/jest": "^27.5.0",
     "@types/js-cookie": "^3.0.2",
