@@ -1,8 +1,11 @@
 /node_modules
 /dist/*.js
+/dist/*.cjs
+/dist/*.mjs
 /dist/*.css
 /dist/*.scss
+/dist/*.ts
+/dist/*.cts
+/dist/*.mts
 /dist/stats.json
 /dist/example-assets/migrations.js
-/lib
-/es
