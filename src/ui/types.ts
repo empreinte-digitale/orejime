@@ -1,4 +1,5 @@
 import {CookieOptions, Purpose as CorePurpose, Manager} from '../core';
+import {Theme} from './components/types/Theme';
 
 export interface Purpose extends CorePurpose {
 	id: string;
@@ -76,7 +77,7 @@ export type ImageAttributes = {
 export type ImageDescriptor = string | ImageAttributes;
 
 export interface Config {
-	theme: 'orejime';
+	theme: Theme;
 	orejimeElement?: ElementReference;
 	purposes: PurposeList;
 	cookie?: CookieOptions;
@@ -87,11 +88,3 @@ export interface Config {
 	privacyPolicyUrl: string;
 	translations: Translations;
 }
-
-export type SetupUi = (
-	config: Config,
-	manager: Manager
-) => {
-	show: () => void;
-	openModal: () => void;
-};

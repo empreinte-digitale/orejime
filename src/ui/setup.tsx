@@ -2,12 +2,12 @@ import React, {createRef} from 'react';
 import {render} from 'react-dom';
 import Context from './components/Context';
 import Main, {MainHandle} from './components/Main';
-import {Theme} from './components/types/Theme';
-import type {SetupUi} from './types';
+import type {Config} from './types';
 import {getRootElement} from './utils/dom';
 import {once} from './utils/functions';
+import {Manager} from '../core';
 
-export default (theme: Theme): SetupUi => (config, manager) => {
+export default (config: Config, manager: Manager) => {
 	const element = getRootElement(config.orejimeElement);
 	const appRef = createRef<MainHandle>();
 	const show = once(() => {
@@ -15,8 +15,7 @@ export default (theme: Theme): SetupUi => (config, manager) => {
 			<Context.Provider
 				value={{
 					config,
-					manager,
-					theme
+					manager
 				}}
 			>
 				<Main ref={appRef} />

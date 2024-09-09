@@ -19,8 +19,8 @@ export const useTranslations = () => {
 };
 
 export const useTheme = () => {
-	const {theme} = useContext(Context);
-	return theme;
+	const {config} = useContext(Context);
+	return config.theme;
 };
 
 export const useManager = () => {
