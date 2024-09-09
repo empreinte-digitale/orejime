@@ -14,12 +14,12 @@ module.exports = {
 			directory: fullPath('dist')
 		}
 	},
-	entry: ['./src/bootstrap/index.ts', './src/styles/orejime.scss'],
+	entry: ['./src/umd.ts', './src/styles/orejime.scss'],
 	output: {
 		filename: 'orejime.js',
 		chunkFilename: (pathData) => {
 			// strips file names from generated chunk names
-			return pathData.chunk.name.replace(/(\-index\-ts|\-yml)$/, '.js');
+			return pathData.chunk.name.replace(/(\-ts|\-index\-ts)$/, '.js');
 		},
 		path: fullPath('dist'),
 		publicPath: ''

@@ -7,8 +7,7 @@ import {
 } from '../types';
 import {language} from './i18n';
 
-export const DefaultConfig: Config = {
-	theme: 'orejime',
+export const DefaultConfig: Partial<Config> = {
 	privacyPolicyUrl: '',
 	forceModal: false,
 	forceBanner: false,
@@ -17,7 +16,7 @@ export const DefaultConfig: Config = {
 	purposes: []
 };
 
-export const assertConfigValidity = (config: Config) => {
+export function assertConfigValidity(config: Partial<Config>): asserts config is Config {
 	if (!Object.keys(config.purposes).length) {
 		throw new Error('Orejime config: you must define `purposes`');
 	}

@@ -141,7 +141,7 @@ var orejimeConfig = {
     logo: '/img/logo.png',
 
     // You can overwrite existing translations and add translations for your
-    // purpose descriptions and purposes. See `src/translations.yml` for a full
+    // purpose descriptions and purposes. See `src/translations` for a full
     // list of translations that can be overwritten
     translations: {
         modal: {
@@ -284,6 +284,28 @@ When including the script, the lib checks if the `window.orejimeConfig` variable
 Orejime.init(orejimeConfig);
 ```
 
+#### Within a bundler
+
+If you're using Orejime within a bundler like webpack or vite, you have to provide actual themes and translations. This allows the bundler to perform better tree shaking as dependencies are explicitly stated.
+
+For example, with the `orejime` theme and english translations:
+
+```ts
+import {orejime, orejimeTheme, en} from 'orejime';
+
+const instance = orejime({
+    lang: 'en',
+    translations: en,
+    theme: orejimeTheme,
+    privacyPolicyUrl: 'http://example.org/privacy-policy',
+    purposes: [{
+        id: 'analytics',
+        title: 'Analytics',
+        cookies: []
+    }]
+})
+```
+
 ### Styling
 
 #### CSS
@@ -325,7 +347,6 @@ $orejime-theme-color: white;
 ### Orejime instance
 
 * `prompt()`: opens the consent modal
-* `preload()`: preloads the UI without showing it
 * `manager`: the Manager instance used. See `src/core/Manager.ts`
 * `config`: the complete config object used
 
