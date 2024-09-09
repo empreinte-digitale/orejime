@@ -228,7 +228,7 @@ $orejime-breakpoint-notice: 990px !default;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
     gap: var(--orejime-gap);
 }
 
