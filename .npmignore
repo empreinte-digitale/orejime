@@ -1,5 +1,8 @@
 *
 !/dist/*.js
+!/dist/*.cjs
+!/dist/*.mjs
+!/dist/*.d.ts
 !/dist/*.css
 !/dist/*.scss
 !/dist/*.LICENSE.txt
