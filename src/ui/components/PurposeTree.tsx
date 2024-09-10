@@ -15,11 +15,11 @@ const PurposeTree = ({purposes}: PurposeTreeProps) => {
 		<PurposeList>
 			{purposes.map((purpose) =>
 				'purposes' in purpose ? (
-					<PurposeGroupContainer {...purpose}>
+					<PurposeGroupContainer key={purpose.id} {...purpose}>
 						<PurposeTree purposes={purpose.purposes} />
 					</PurposeGroupContainer>
 				) : (
-					<PurposeContainer {...purpose} />
+					<PurposeContainer key={purpose.id} {...purpose} />
 				)
 			)}
 		</PurposeList>
