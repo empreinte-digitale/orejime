@@ -41,4 +41,4 @@ export default {
 		updateNeeded: "Olemme tehneet muutoksia ehtoihin viime vierailusi jälkeen, tarkista ehdot.",
 		poweredBy: "Palvelun tarjoaa Orejime"
 	}
-} satisfies Translations;
+} satisfies Translations as Translations;

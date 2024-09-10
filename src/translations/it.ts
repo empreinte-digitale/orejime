@@ -41,4 +41,4 @@ export default {
 		updateNeeded: "Ci sono stati cambiamenti dalla tua ultima visita, aggiorna il tuo consenso.",
 		poweredBy: "Realizzato da Orejime"
 	}
-} satisfies Translations;
+} satisfies Translations as Translations;

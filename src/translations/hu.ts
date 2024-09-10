@@ -41,4 +41,4 @@ export default {
 		updateNeeded: "Az utolsó látogatás óta változások történtek, kérjük, frissítsd a hozzájárulásodat.",
 		poweredBy: "Powered by Orejime"
 	}
-} satisfies Translations;
+} satisfies Translations as Translations;

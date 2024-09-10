@@ -41,4 +41,4 @@ export default {
 		updateNeeded: "Au existat modificări de la ultima vizită, vă rugăm să actualizați consimțământul.",
 		poweredBy: "Realizat de Orejime"
 	}
-} satisfies Translations;
+} satisfies Translations as Translations;

@@ -41,4 +41,4 @@ export default {
 		updateNeeded: "Es gab Änderungen seit Ihrem letzten Besuch, bitte aktualisieren Sie Ihre Auswahl.",
 		poweredBy: "Durchgeführt mit Orejime"
 	}
-} satisfies Translations;
+} satisfies Translations as Translations;
