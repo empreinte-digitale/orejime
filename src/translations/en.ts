@@ -44,4 +44,4 @@ export default {
 			'There were changes since your last visit, please update your consent.',
 		poweredBy: 'Powered by Orejime'
 	}
-} satisfies Translations;
+} satisfies Translations as Translations;

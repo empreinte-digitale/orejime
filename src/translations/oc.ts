@@ -41,4 +41,4 @@ export default {
 		updateNeeded: "I aguèt de modificacions dempuèi vòstra darrièra visita, mercés d’actualizar vòstre consentiment.",
 		poweredBy: "Propulsat per Orejime"
 	}
-} satisfies Translations;
+} satisfies Translations as Translations;

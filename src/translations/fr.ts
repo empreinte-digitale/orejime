@@ -45,4 +45,4 @@ export default {
 			'Des modifications ont eu lieu depuis votre dernière visite, merci de mettre à jour votre consentement.',
 		poweredBy: 'Propulsé par Orejime'
 	}
-} satisfies Translations;
+} satisfies Translations as Translations;

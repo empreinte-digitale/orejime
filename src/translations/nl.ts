@@ -41,4 +41,4 @@ export default {
 		updateNeeded: "Er waren wijzigingen sinds uw laatste bezoek, werk uw voorkeuren bij.",
 		poweredBy: "Aangedreven door Orejime"
 	}
-} satisfies Translations;
+} satisfies Translations as Translations;

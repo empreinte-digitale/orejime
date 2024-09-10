@@ -41,4 +41,4 @@ export default {
 		updateNeeded: "Det har skett förändringar sedan ditt senaste besök, var god uppdatera ditt medgivande.",
 		poweredBy: "Körs på Orejime"
 	}
-} satisfies Translations;
+} satisfies Translations as Translations;
