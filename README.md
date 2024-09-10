@@ -81,7 +81,7 @@ For external scripts or img tags (for tracking pixels), do the same, and rename 
 
 You need to pass Orejime 🍪 a configuration object with, at the very least, `purposes` and `privacyPolicyUrl` properties. Each purpose listed in `purposes` must itself have at least `id`, `title` and `cookies`.
 
-<details open>
+<details>
     <summary>Here is a fully-detailed annotated example of a configuration object:</summary>
 &nbsp;
 
@@ -139,6 +139,10 @@ var orejimeConfig = {
     // If the image is not exclusively decorative, you can pass an object
     // with the image `src` and `alt` attributes: `logo: {src: '...', alt: '...'}`
     logo: '/img/logo.png',
+
+    // Optional. The theme used to render the UI (See the "theming" section below).
+    // If unset, this will default to "orejime", the classic built-in UI.
+    theme: 'orejime',
 
     // You can overwrite existing translations and add translations for your
     // purpose descriptions and purposes. See `src/translations` for a full
@@ -284,7 +288,7 @@ When including the script, the lib checks if the `window.orejimeConfig` variable
 Orejime.init(orejimeConfig);
 ```
 
-#### Within a bundler
+#### As a module
 
 If you're using Orejime within a bundler like webpack or vite, you have to provide actual themes and translations. This allows the bundler to perform better tree shaking as dependencies are explicitly stated.
 
@@ -306,38 +310,35 @@ const instance = orejime({
 })
 ```
 
-### Styling
+### Theming
 
-#### CSS
+Orejime support multiple themes to accomodate for every situation.
 
-Either replace the original CSS entirely, or add your custom stylesheet to overwrite only some of the rules.
-For example:
+#### Default theme
+
+This theme is loaded by default. It is meant to be simple but elegant enough to be used as-is on any website. It is easily customizable by tweaking some CSS properties.
+
+Of course, you can either replace the original CSS entirely, or add your custom stylesheet to overwrite only some of the rules.
 
 ```css
 /* custom-style.css */
-.orejime-Notice,
-.orejime-Modal {
-    background: pink;
-    color: white;
+.orejime-Env {
+    --orejime-font-family: monospace;
+    --orejime-background: black;
+    --orejime-color: yellow;
 }
 ```
+
 ```html
 <link rel="stylesheet" href="orejime.css" />
 <link rel="stylesheet" href="custom-style.css" />
 ```
 
-#### Sass
+#### DSFR theme
 
-You can import [the original Sass stylesheet](https://github.com/empreinte-digitale/orejime/blob/master/src/scss/orejime.scss) into your own, and tweak it as you wish.
-Orejime provides default variables that you can overwrite to quickly change its appearance.
-For example:
+This theme is meant to be used on websites using the official design system of the french government. As those sites already include the DSFR styles, this theme does not provide any styles of its own but only makes use of the correct markup and class names.
 
-```scss
-$orejime-theme-bg: pink;
-$orejime-theme-color: white;
-
-@import "~orejime/src/scss/orejime.scss"
-```
+See the [consent manager component](https://www.systeme-de-design.gouv.fr/composants-et-modeles/composants/gestionnaire-de-consentement) on the DSFR docs for an overview.
 
 ## API
 
