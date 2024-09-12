@@ -81,6 +81,10 @@ a:active {
 	text-decoration: none;
 }
 
+.is-hidden {
+	display: none;
+}
+
 .Button {
 	display: inline-block;
 	border: 0;
@@ -240,6 +244,21 @@ a.Tile:active {
 
 .Tile img {
 	max-width: 100%;
+}
+
+.MigrationForm-input,
+.MigrationForm-output {
+	margin-bottom: var(--unit);
+	border: 1px solid currentColor;
+	border-radius: calc(var(--unit) / 4);
+	width: 100%;
+	padding: calc(var(--unit) / 2);
+	font: inherit;
+	font-family: monospace;
+}
+
+.MigrationForm-output {
+	overflow-x: auto;
 }
 
 .Footer {
