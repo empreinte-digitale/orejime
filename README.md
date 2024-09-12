@@ -310,6 +310,24 @@ const instance = orejime({
 })
 ```
 
+If you want full control over the UI, you might want to use only the [consent manager](`./src/core/Manager.ts`), which is the core of Orejime. You can then use it with vanilla JS or your framework of choice.
+
+```ts
+import {manager} from 'orejime';
+
+const instance = manager([
+    {
+        id: 'analytics',
+        title: 'Analytics',
+        cookies: []
+    }
+]);
+
+console.log(instance.getConsent('analytics')); // false
+instance.setConsent('analytics', true);
+console.log(instance.getConsent('analytics')); // true
+```
+
 ### Theming
 
 Orejime support multiple themes to accomodate for every situation.

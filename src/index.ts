@@ -1,3 +1,4 @@
+import manager from './core/setup';
 import orejime from './setup';
 import dsfrTheme from './ui/themes/dsfr';
 import orejimeTheme from './ui/themes/orejime';
@@ -17,6 +18,7 @@ import ro from './translations/ro';
 import sv from './translations/sv';
 
 export {
+	manager,
 	orejime,
 	orejimeTheme,
 	dsfrTheme,
