@@ -25,28 +25,37 @@
 		-->
 
 		<div id="app">
-			<div class="Container">
-				<header class="Header">
-					<h1 class="Header-title">Migration</h1>
-
-					<a href="https://empreintedigitale.fr">
-						<img
-							class="Header-empreinteLogo"
-							src="example-assets/logo.svg"
-						/>
-					</a>
-				</header>
-
-				<main role="main">
-					<div class="Hero">
-						<p>
-							A lot of things can change between major software versions!
-							<br />
-							Here you will find some tools to ease the transition.
-						</p>
+			<header class="Header">
+				<div class="Container">
+					<div class="Header-inner">
+						<a href="https://empreintedigitale.fr">
+							<img
+								class="Header-logo"
+								src="/example-assets/logo.svg"
+								alt="Empreinte Digitale GDPR"
+							/>
+						</a>
 					</div>
+				</div>
+			</header>
 
-					<h2 class="Inset-title">Migrating from V2 to V3</h2>
+			<main role="main">
+				<div class="Hero">
+					<div class="Container">
+						<div class="Hero-inner">
+							<h1 class="Hero-title">Migrating Orejime</h1>
+
+							<p>
+								A lot of things can change between major software versions!
+								<br />
+								Here you will find some tools to ease the transition.
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="Container">
+					<h2 class="Section-title">Migrating from V2 to V3</h2>
 
 					<div class="Inset">
 						<h3>Automated migration</h3>
@@ -63,18 +72,22 @@
 						</p>
 
 						<form class="MigrationForm MigrationForm--2-to-3">
+							<label for="MigrationForm-config">Configuration</label>
 							<textarea
+								id="MigrationForm-config"
 								class="MigrationForm-input"
+								name="config"
 								rows="10"
 								placeholder="{ appElement: '#app', apps: [] }"
 							></textarea>
+
 							<input class="Button" type="submit" value="Convert" />
 
 							<pre class="MigrationForm-output is-hidden"></pre>
 						</form>
 					</div>
-				</main>
-			</div>
+				</div>
+			</main>
 
 			<footer class="Footer" role="contentinfo">
 				<div class="Container">

@@ -369,6 +369,14 @@ See the [consent manager component](https://www.systeme-de-design.gouv.fr/compos
 * `manager`: the Manager instance used. See `src/core/Manager.ts`
 * `config`: the complete config object used
 
+## Migrating
+
+### Version 3
+
+A major overhaul of the configuration took place in this version, as to clarify naming and align more with the GDPR vocabulary.
+
+If you were already using version 2, a tool to migrate your current configuration is available here : https://orejime.empreintedigitale.fr/migration.
+
 ## Development
 
 If you want to contribute to Orejime, or make a special build for yourself, clone the project then:
