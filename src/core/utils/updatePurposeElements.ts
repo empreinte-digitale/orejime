@@ -1,4 +1,12 @@
-const backupName = (attribute: string) => `orejime-${attribute}`;
+const backupName = (attribute: string) => {
+	const name = `orejime-${attribute}`;
+	const camelCased = name.replace(
+		/[-_](.)/g,
+		(_, char) => char.toUpperCase()
+	);
+
+	return camelCased;
+}
 
 const backupAttribute = <T extends HTMLElement>(element: T, name: string) => {
 	if (element.getAttribute(name) && !element.dataset?.[name]) {
