@@ -18,8 +18,9 @@
     "low footprint",
     "lightweight"
   ],
-  "main": "dist/orejime.mjs",
-  "browser": "dist/orejime.mjs",
+  "main": "./dist/orejime.mjs",
+  "browser": "./dist/orejime.mjs",
+  "types": "./dist/orejime.d.ts",
   "exports": {
     "./package.json": "./package.json",
     "./orejime.css": "./dist/orejime.css",
