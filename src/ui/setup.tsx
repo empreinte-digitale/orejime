@@ -1,17 +1,17 @@
 import React, {createRef} from 'react';
-import {render} from 'react-dom';
+import {createRoot} from 'react-dom/client';
+import {Manager} from '../core';
 import Context from './components/Context';
 import Main, {MainHandle} from './components/Main';
 import type {Config} from './types';
 import {getRootElement} from './utils/dom';
 import {once} from './utils/functions';
-import {Manager} from '../core';
 
 export default (config: Config, manager: Manager) => {
 	const element = getRootElement(config.orejimeElement);
 	const appRef = createRef<MainHandle>();
 	const show = once(() => {
-		render(
+		createRoot(element).render(
 			<Context.Provider
 				value={{
 					config,
@@ -19,8 +19,7 @@ export default (config: Config, manager: Manager) => {
 				}}
 			>
 				<Main ref={appRef} />
-			</Context.Provider>,
-			element
+			</Context.Provider>
 		);
 	});
 
