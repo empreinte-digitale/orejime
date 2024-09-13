@@ -93,6 +93,26 @@
 						</div>
 					</div>
 
+					<h2 class="Section-title">Contextual consent example</h2>
+
+					<div class="Inset">
+						<p>
+							The video below is blocked by default, and requires the
+							user consent to be shown.
+						</p>
+
+						<iframe
+							class="Video"
+							title="YouTube video player"
+							data-src="https://www.youtube-nocookie.com/embed/pghz5vpi5q4?si=mGZyEvFd8V7aQuA1"
+							data-purpose="youtube"
+							frameborder="0"
+							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+							referrerpolicy="strict-origin-when-cross-origin"
+							allowfullscreen
+						></iframe>
+					</div>
+
 					<h2 class="Section-title">They're using Orejime</h2>
 
 					<ul class="Tiles">
@@ -273,6 +293,13 @@
 								description:
 									'An external script that sets a dummy cookie.',
 								cookies: ['external-tracker']
+							},
+							{
+								id: 'youtube',
+								title: 'YouTube',
+								description:
+									'Cookies set by YouTube when playing an embedded video.',
+								cookies: []
 							}
 						]
 					}

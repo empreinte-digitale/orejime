@@ -186,6 +186,11 @@ main {
 	font-weight: 700;
 }
 
+.Video {
+	width: 100%;
+	aspect-ratio: 16 / 9;
+}
+
 .Tiles {
 	margin: 0;
 	padding: 0;
