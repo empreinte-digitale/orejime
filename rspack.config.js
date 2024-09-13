@@ -19,7 +19,9 @@ module.exports = {
 		filename: 'orejime.js',
 		chunkFilename: (pathData) => {
 			// strips file names from generated chunk names
-			return pathData.chunk.name.replace(/(\-ts|\-index\-ts)$/, '.js');
+			return isDev
+				? pathData.chunk.name
+				: pathData.chunk.name.replace(/(\-ts|\-index\-ts)$/, '.js');
 		},
 		path: fullPath('dist'),
 		publicPath: ''
