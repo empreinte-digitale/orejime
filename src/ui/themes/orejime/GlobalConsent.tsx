@@ -11,11 +11,11 @@ const GlobalConsent: GlobalConsentComponent = ({
 	const t = useTranslations();
 
 	return (
-		<div className="orejime-PurposeToggles">
+		<div className="orejime-PurposeToggles orejime-ButtonList">
 			<button
 				type="button"
 				className="orejime-Button orejime-Button--info orejime-PurposeToggles-button orejime-PurposeToggles-enableAll"
-				disabled={isEnabled}
+				aria-disabled={isEnabled}
 				onClick={acceptAll}
 			>
 				{t.modal.acceptAll}
@@ -24,7 +24,7 @@ const GlobalConsent: GlobalConsentComponent = ({
 			<button
 				type="button"
 				className="orejime-Button orejime-Button--info orejime-PurposeToggles-button orejime-PurposeToggles-disableAll"
-				disabled={isDisabled}
+				aria-disabled={isDisabled}
 				onClick={declineAll}
 			>
 				{t.modal.declineAll}

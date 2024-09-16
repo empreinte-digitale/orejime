@@ -71,17 +71,13 @@ const Purpose: PurposeComponent = ({
 				</span>
 			</label>
 			{description ? (
-				<div
+				<p
 					id={`${domId}-description`}
-					className="orejime-Purpose-fullDescription"
-				>
-					<p
-						className="orejime-Purpose-description"
-						dangerouslySetInnerHTML={{
-							__html: description
-						}}
-					/>
-				</div>
+					className="orejime-Purpose-description"
+					dangerouslySetInnerHTML={{
+						__html: description
+					}}
+				/>
 			) : null}
 			<div className="orejime-Purpose-children">{children}</div>
 		</div>
