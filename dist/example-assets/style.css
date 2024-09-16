@@ -291,5 +291,8 @@ a.Tile:active {
 }
 
 .orejime-Env {
-	--orejime-background: #eff9fd !important;
+	--orejime-color-background: #eff9fd !important;
+	--orejime-color-text: var(--on-surface) !important;
+	--orejime-color-interactive: var(--interactive) !important;
+	--orejime-color-shadow: 2, 10, 15 !important;
 }

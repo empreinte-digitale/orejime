@@ -71,7 +71,7 @@ const Banner: BannerComponent = ({
 					<p className="orejime-Banner-changes">{t.misc.updateNeeded}</p>
 				)}
 
-				<ul className="orejime-Banner-actions">
+				<ul className="orejime-Banner-actions orejime-ButtonList">
 					<li className="orejime-Banner-actionItem orejime-Banner-actionItem--save">
 						<button
 							className="orejime-Button orejime-Button--save orejime-Banner-button orejime-Banner-saveButton"
