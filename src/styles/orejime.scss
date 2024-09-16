@@ -101,10 +101,6 @@ $orejime-breakpoint-notice: 990px !default;
     max-width: none;
 }
 
-.orejime-Banner[aria-hidden="true"] {
-    display: none !important;
-}
-
 .orejime-Banner-body {
     padding: var(--orejime-space-1);
 }

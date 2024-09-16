@@ -27,7 +27,7 @@ const Modal: ModalComponent = ({
 		>
 			<div className="orejime-Modal">
 				<div className="orejime-Modal-header">
-					{!isForced && (
+					{isForced ? null : (
 						<button
 							title={t.modal.closeTitle}
 							className="orejime-Modal-closeButton"

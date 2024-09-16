@@ -1,5 +1,6 @@
 import React, {
 	useEffect,
+	useId,
 	useLayoutEffect,
 	useState
 } from 'react';
@@ -37,8 +38,6 @@ interface DialogProps {
 	children: any;
 }
 
-const DialogId = 'orejime-Dialog';
-
 const Dialog = ({
 	isAlert = false,
 	label,
@@ -51,6 +50,7 @@ const Dialog = ({
 	onRequestClose,
 	children
 }: DialogProps) => {
+	const id = useId();
 	const [scrollPosition, setScrollPosition] = useState<number | null>(null);
 
 	useLayoutEffect(() => {
@@ -77,11 +77,13 @@ const Dialog = ({
 			document.documentElement.classList.add(htmlClassName);
 		}
 
-		MicroModal.show(DialogId, {
+		MicroModal.show(id, {
 			onClose: onRequestClose
 		});
 
 		return () => {
+			MicroModal.close(id);
+
 			if (htmlClassName) {
 				document.documentElement.classList.remove(htmlClassName);
 			}
@@ -89,8 +91,12 @@ const Dialog = ({
 	}, []);
 
 	return (
-		<div className={portalClassName} id={DialogId} aria-hidden="true">
-			<div className={overlayClassName} tabIndex={-1}>
+		<div className={portalClassName} id={id} aria-hidden="true">
+			<div
+				className={overlayClassName}
+				tabIndex={-1}
+				data-micromodal-close={isAlert ? null : true}
+			>
 				<div
 					className={className}
 					role={isAlert ? 'alertdialog' : 'dialog'}
