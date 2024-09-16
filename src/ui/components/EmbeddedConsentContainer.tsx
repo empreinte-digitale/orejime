@@ -13,17 +13,24 @@ const EmbeddedConsentContainer = ({target, purposeId}: EmbeddedConsentContainerP
 	const ref = useRef<HTMLDivElement>(null)
 
 	useEffect(() => {
-		if (ref.current && !consent) {
-			if (ref.current.contains(document.activeElement)) {
+		return () => {
+			// Moves focus to the target element when removing
+			// the placeholder.
+			if (ref.current?.contains(document.activeElement)) {
 				target.tabIndex = -1;
 				target.focus();
 			}
 		}
-	}, [consent])
+	}, []);
 
 	return consent
 		? null
-		: <EmbeddedConsent onConsent={() => setConsent(true)} />
+		: (
+			<EmbeddedConsent
+				purpose={purpose}
+				onConsent={() => setConsent(true)}
+			/>
+		);
 };
 
 export default EmbeddedConsentContainer;

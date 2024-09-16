@@ -1,16 +1,25 @@
 import React from 'react';
 import {EmbeddedConsentComponent} from '../../components/types/EmbeddedConsent';
 import {useTranslations} from '../../utils/hooks';
+import {template} from '../../utils/template';
 
-const EmbeddedConsent: EmbeddedConsentComponent = ({onConsent}) => {
+const EmbeddedConsent: EmbeddedConsentComponent = ({purpose, onConsent}) => {
 	const t = useTranslations();
 
 	return (
 		<div class="fr-consent-placeholder">
-			<h4 class="fr-h6">**Nom du service** est désactivé</h4>
-			<p>Autorisez le dépôt de cookies pour accèder à cette fonctionnalité.</p>
+			<p class="fr-h6">
+				<strong>
+					{template(t.embed.title, {
+						purpose: purpose.title,
+					})}
+				</strong>
+			</p>
+
+			<p>{t.embed.description}</p>
+
 			<button class="fr-btn" onClick={onConsent}>
-				Autoriser
+				{t.embed.accept}
 			</button>
 		</div>
 	);

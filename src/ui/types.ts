@@ -41,6 +41,12 @@ export interface ModalTranslations {
 	saveTitle: string;
 }
 
+export interface EmbedTranslations {
+	title: string;
+	description: string;
+	accept: string;
+}
+
 export interface PurposeTranslations {
 	mandatory: string;
 	mandatoryTitle: string;
@@ -63,6 +69,7 @@ export interface MiscTranslations {
 export interface Translations {
 	banner: BannerTranslations;
 	modal: ModalTranslations;
+	embed: EmbedTranslations;
 	purpose: PurposeTranslations;
 	misc: MiscTranslations;
 }
