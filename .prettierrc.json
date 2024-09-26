@@ -12,5 +12,13 @@
 	"tabWidth": 3,
 	"trailingComma": "none",
 	"useTabs": true,
-	"parser": "babel"
+	"overrides": [
+		{
+			"files": ["package.json", "package-lock.json"],
+			"options": {
+				"tabWidth": 2,
+				"useTabs": false
+			}
+		}
+	]
 }
