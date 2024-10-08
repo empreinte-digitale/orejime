@@ -202,6 +202,8 @@ export default class ConsentManager {
 				newElement.name = element.name;
 				newElement.defer = element.defer;
 				newElement.async = element.async;
+				newElement.crossOrigin = element.crossOrigin;
+				newElement.integrity = element.integrity;
 
 				if (consent) {
 					newElement.type = type;
