@@ -9,3 +9,7 @@
 /dist/*.mts
 /dist/stats.json
 /dist/example-assets/migrations.js
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
