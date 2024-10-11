@@ -28,3 +28,10 @@ export const getRootElement = (reference: ElementReference) => {
 
 	return element;
 };
+
+// A very minimal implementation tailored for the kind of
+// elements used within the app.
+export const findFirstFocusableChild = (element: HTMLElement) =>
+	element.querySelector<HTMLElement>(
+		'a[href], button:not([disabled]):not([aria-hidden]), [tabindex]:not([tabindex^="-"])'
+	);
