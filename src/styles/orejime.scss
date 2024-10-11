@@ -1,0 +1,326 @@
+$orejime-breakpoint-notice: 990px !default;
+
+// micro css reset for everything orejime related
+[class^="orejime-"] {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    line-height: var(--orejime-space-m);
+    font-family: var(--orejime-font-family);
+    font-size: inherit;
+    color: inherit;
+    vertical-align: baseline;
+    cursor: default;
+    float: none;
+    width: auto;
+    text-align: left;
+    font-weight: normal;
+}
+
+.orejime-Env {
+    --orejime-space-m: 1.4em;
+    --orejime-space-l: calc(2 * var(--orejime-space-m));
+    --orejime-space-s: calc(var(--orejime-space-m) / 2);
+    --orejime-space-xs: calc(var(--orejime-space-m) / 4);
+    --orejime-font-size-small: 0.8rem;
+    --orejime-font-family: sans-serif;
+    --orejime-radius: calc(var(--orejime-space-m) / 4);
+    --orejime-color-background: #fff;
+    --orejime-color-text: #222;
+    --orejime-color-subdued: #666;
+    --orejime-color-interactive: royalblue;
+    --orejime-color-on-interactive: #fff;
+    --orejime-color-backdrop: rgba(0, 0, 0, 0.5);
+    --orejime-color-shadow: 0, 0, 0;
+    --orejime-shadow:
+        0.1em 0.2em 0.4em rgba(var(--orejime-color-shadow), 0.25),
+        0.2em 0.6em 1.5em rgba(var(--orejime-color-shadow), 0.2);
+    --orejime-banner-max-width: 45ch;
+    --orejime-modal-max-width: 65ch;
+
+    all: unset;
+
+    p {
+        margin: 0;
+    }
+
+    a {
+        color: var(--orejime-color-interactive);
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}
+
+.orejime-Button {
+    margin: 0;
+    border: 0;
+    border-radius: var(--orejime-radius);
+    padding: var(--orejime-space-xs) var(--orejime-space-s);
+    color: var(--orejime-color-on-interactive);
+    background: var(--orejime-color-interactive);
+    font: inherit;
+    cursor: pointer;
+}
+
+.orejime-Button:is([disabled], [aria-disabled="true"]) {
+    background: var(--orejime-color-subdued);
+}
+
+.orejime-Button:not(:is([disabled], [aria-disabled="true"])):is(:hover, :focus) {
+    outline: 1px solid var(--orejime-color-interactive);
+    outline-offset: 1px;
+}
+
+.orejime-Button:not(:is([disabled], [aria-disabled="true"])):active {
+    outline-width: 2px;
+}
+
+.orejime-ButtonList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5ch;
+}
+
+.orejime-Banner {
+    background: var(--orejime-color-background);
+    color: var(--orejime-color-text);
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+    bottom: 0;
+
+    @media (min-width: $orejime-breakpoint-notice) {
+        box-shadow: var(--orejime-shadow);
+        border-radius: var(--orejime-radius);
+        bottom: var(--orejime-space-m);
+        right: var(--orejime-space-m);
+        max-width: var(--orejime-banner-max-width);
+    }
+
+    @media (max-width: $orejime-breakpoint-notice) {
+        border: none;
+        border-radius: 0;
+    }
+}
+
+.orejime-Banner--forced {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    max-width: none;
+}
+
+.orejime-Banner-body {
+    padding: var(--orejime-space-m);
+}
+
+.orejime-Banner-logo {
+    max-width: 10ch;
+}
+
+.orejime-Banner-title {
+    margin-bottom: var(--orejime-space-s);
+    font-weight: bold;
+    font-size: 1em;
+    line-height: var(--orejime-space-m);
+}
+
+.orejime-Banner-description {
+    white-space: pre-line;
+}
+
+.orejime-Banner-purposes {
+    font-style: italic;
+}
+
+.orejime-Banner-changes {
+    margin-top: var(--orejime-space-s);
+    font-weight: bold;
+}
+
+.orejime-Banner-actions {
+    margin-top: var(--orejime-space-s);
+}
+
+.orejime-Banner-actionItem {
+    display: inline;
+}
+
+.orejime-Banner-learnMoreButton {
+    display: inline-block;
+}
+
+.orejimeHtml-WithModalOpen {
+    height: 100%;
+}
+
+.orejimeHtml-WithModalOpen body {
+    position: fixed;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+}
+
+.orejime-ModalOverlay,
+.orejime-BannerOverlay {
+    z-index: 1000;
+    background: var(--orejime-color-backdrop);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.orejime-ModalOverlay {
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.orejime-ModalWrapper {
+    box-shadow: var(--orejime-shadow);
+    border-radius: var(--orejime-radius);
+    max-width: 100%;
+    max-height: 100%;
+    overflow: auto;
+}
+
+ .orejime-Modal {
+    position: relative;
+    padding: var(--orejime-space-l);
+    max-width: var(--orejime-modal-max-width);
+    background: var(--orejime-color-background);
+    color: var(--orejime-color-text);
+}
+
+.orejime-Modal-header {
+    margin-bottom: calc(var(--orejime-space-m) + var(--orejime-space-s));
+}
+
+.orejime-Modal-title {
+    display: block;
+    margin: 0 0 var(--orejime-space-s) 0;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.orejime-Modal-closeButton {
+    border: none;
+    background: none;
+    color: var(--orejime-color-subdued);
+    position: absolute;
+    top: var(--orejime-space-s);
+    right: var(--orejime-space-s);
+    padding: var(--orejime-space-s);
+    cursor: pointer;
+}
+
+.orejime-CloseIcon {
+    display: block;
+    stroke: currentColor;
+    stroke-width: 2px;
+    width: 1em;
+    height: 1em;
+}
+
+.orejime-Modal-closeButton:is(:hover, :focus) .orejime-CloseIcon {
+    color: var(--orejime-color-text);
+}
+
+.orejime-Modal-body {
+    margin-bottom: var(--orejime-space-l);
+}
+
+.orejime-Modal-description {
+    white-space: pre-line;
+}
+
+.orejime-Modal-footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 1ch;
+}
+
+.orejime-Modal-poweredByLink {
+    display: inline-block;
+    font-size: var(--orejime-font-size-small);
+}
+
+.orejime-PurposeToggles {
+    margin-bottom: var(--orejime-space-m);
+}
+
+.orejime-PurposeList {
+    list-style: none;
+}
+
+.orejime-Purpose {
+    display: grid;
+    grid-template:
+        'input label'
+        'empty description'
+        'empty children'
+        / min-content auto;
+    gap: 0 1ch;
+    margin-top: var(--orejime-space-s);
+}
+
+.orejime-Purpose-label {
+    grid-area: label;
+}
+
+.orejime-Purpose-title {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.orejime-Purpose-description {
+    grid-area: description;
+    color: var(--orejime-color-subdued);
+    white-space: pre-line;
+}
+
+.orejime-Purpose-purposes {
+    font-size: var(--orejime-font-size-small);
+    color: var(--orejime-color-subdued);
+}
+
+.orejime-Purpose-attribute {
+    font-size: var(--orejime-font-size-small);
+    font-style: italic;
+    color: var(--orejime-color-subdued);
+
+    &:before {
+        content: '- ';
+    }
+
+    &[title] {
+        text-decoration: underline dotted;
+    }
+}
+
+.orejime-Purpose-input {
+    grid-area: input;
+    align-self: center;
+    width: var(--orejime-space-m);
+    height: var(--orejime-space-m);
+    appearance: revert;
+    background: revert;
+    accent-color: var(--orejime-color-interactive);
+}
+
+.orejime-Purpose-input:disabled {
+    accent-color: var(--orejime-color-subdued);
+}
+
+.orejime-Purpose-children {
+    grid-area: children;
+}

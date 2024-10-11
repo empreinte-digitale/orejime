@@ -7,23 +7,40 @@
     "url": "git+https://github.com/empreinte-digitale/orejime.git"
   },
   "keywords": [
+    "cmp",
+    "consent management platform",
     "cookie",
     "consent",
     "gdpr",
-    "compliance"
+    "compliance",
+    "accessibility",
+    "ecofriendly",
+    "low footprint",
+    "lightweight"
   ],
-  "main": "lib/orejime.js",
-  "module": "es/orejime.js",
+  "main": "./dist/orejime.mjs",
+  "browser": "./dist/orejime.mjs",
+  "types": "./dist/orejime.d.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    "./orejime.css": "./dist/orejime.css",
+    "./orejime.scss": "./dist/orejime.scss",
+    ".": {
+      "import": "./dist/orejime.mjs",
+      "default": "./dist/orejime.cjs"
+    }
+  },
   "scripts": {
-    "start": "cross-env NODE_ENV=development npm run umd -- --watch & npm run serve",
-    "serve": "browser-sync start -s --serveStatic dist -w -f dist/orejime.{css,js} --no-open",
-    "cjs": "cross-env BABEL_ENV=cjs babel --out-dir lib src",
-    "es": "cross-env BABEL_ENV=es babel --out-dir es src",
-    "umd": "cross-env BABEL_ENV=umd webpack",
-    "copy-scss": "shx cp src/scss/orejime.scss dist/orejime.scss",
-    "build": "npm run clean-build && npm run cjs && npm run es && cross-env NODE_ENV=production npm run umd && npm run copy-scss",
-    "clean-build": "shx rm -Rf ./dist/orejime.{js,css,scss} && shx rm -Rf -Rf ./lib && shx rm -Rf -Rf ./es",
-    "prepublishOnly": "npm run build"
+    "start": "rspack --watch",
+    "serve": "rspack serve",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest src",
+    "clean-build": "shx rm -Rf ./lib ./es ./dist/*.js ./dist/*.css ./dist/*.scss ./dist/stats.json",
+    "build-commonjs": "tsc -p ./build/tsconfig.commonjs.json",
+    "build-module": "tsc -p ./build/tsconfig.module.json",
+    "build-migrations": "rspack --config rspack.config.migrations.js",
+    "build": "npm run clean-build && tsup && rspack --mode production",
+    "stats": "rspack build --analyze",
+    "prepublishOnly": "npm run test && npm run build"
   },
   "author": "Emmanuel Pelletier <e.pelletier@empreintedigitale.fr>",
   "license": "BSD-3-Clause",
@@ -32,33 +49,35 @@
   },
   "homepage": "https://github.com/empreinte-digitale/orejime#readme",
   "dependencies": {
-    "@babel/runtime": "^7.1.2",
-    "react-modal": "^3.13.1"
+    "clean-deep": "^3.4.0",
+    "js-cookie": "^3.0.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.1.2",
-    "@babel/core": "^7.1.2",
-    "@babel/plugin-transform-runtime": "^7.1.0",
-    "@babel/preset-env": "^7.1.0",
-    "@babel/preset-react": "^7.0.0",
-    "babel-loader": "^8.0.4",
-    "babel-plugin-convert-to-json": "^0.1.0",
-    "browser-sync": "^2.26.3",
+    "@rspack/cli": "^1.0.3",
+    "@rspack/core": "^1.0.3",
+    "@swc/core": "^1.7.23",
+    "@swc/helpers": "^0.5.13",
+    "@swc/jest": "^0.2.36",
+    "@types/jest": "^27.5.0",
+    "@types/js-cookie": "^3.0.2",
+    "@types/micromodal": "^0.3.5",
     "cross-env": "^5.2.0",
     "css-loader": "^0.28.11",
-    "mini-css-extract-plugin": "^0.4.4",
-    "preact": "^8.2.9",
-    "preact-compat": "^3.18.2",
+    "jest": "^28.1.3",
+    "jest-environment-jsdom": "^28.1.0",
+    "micromodal": "^0.4.10",
+    "preact": "^10.23.2",
     "prettier": "^2.2.1",
     "prettier-loader": "^3.3.0",
-    "sass": "^1.61.0",
-    "sass-loader": "^7.3.1",
+    "sass": "^1.51.0",
+    "sass-loader": "^12.6.0",
     "shx": "^0.3.4",
-    "webpack": "^4.25.1",
-    "webpack-cli": "^3.1.2"
+    "tsup": "^8.2.4",
+    "typescript": "^4.6.4",
+    "uneval.js": "^5.7.2"
   },
   "peerDependencies": {
-    "react": "^0.14.0 || ^15.0.0 || ^16",
-    "react-dom": "^0.14.0 || ^15.0.0 || ^16"
+    "react": ">=18",
+    "react-dom": ">=18"
   }
 }
