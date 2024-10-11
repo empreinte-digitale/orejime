@@ -6,7 +6,8 @@ export default class Main extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			isModalVisible: this.isModalVisible()
+			isModalVisible: this.isModalVisible(),
+			isNoticeVisible: this.isNoticeVisible()
 		};
 		this.showModal = this.showModal.bind(this);
 		this.hideModal = this.hideModal.bind(this);
@@ -26,8 +27,11 @@ export default class Main extends React.Component {
 		return false;
 	}
 
-	isNoticeVisible() {
+	isNoticeVisible(userRequest) {
 		const {config, manager} = this.props;
+		if (userRequest) {
+			return true;
+		}
 		if (config.mustConsent || config.noNotice) {
 			return false;
 		}
@@ -44,14 +48,27 @@ export default class Main extends React.Component {
 		if (e !== undefined) {
 			e.preventDefault();
 		}
-		this.setState({isModalVisible: this.isModalVisible(true)});
+		if (
+			!this.state.isNoticeVisible &&
+			!this.props.config.mustConsent &&
+			this.props.config.mustNotice
+		) {
+			this.setState({isNoticeVisible: true});
+		} else {
+			this.setState({isModalVisible: this.isModalVisible(true)});
+		}
 	}
 
-	hideModal(e) {
+	hideModal(e, preserveNotice = false) {
 		if (e !== undefined) {
 			e.preventDefault();
 		}
-		this.setState({isModalVisible: this.isModalVisible(false)});
+		this.setState((state) => ({
+			isModalVisible: this.isModalVisible(false),
+			isNoticeVisible: this.isNoticeVisible(
+				!state.isNoticeVisible ? false : preserveNotice
+			)
+		}));
 	}
 
 	saveAndHideAll(e) {
@@ -59,24 +76,24 @@ export default class Main extends React.Component {
 			e.preventDefault();
 		}
 		this.props.manager.saveAndApplyConsents();
-		this.setState({isModalVisible: this.isModalVisible(false)});
+		this.hideModal(e);
 	}
 
 	declineAndHideAll(e) {
 		this.props.manager.declineAll();
 		this.props.manager.saveAndApplyConsents();
-		this.setState({isModalVisible: this.isModalVisible(false)});
+		this.hideModal(e);
 	}
 
 	acceptAndHideAll(e) {
 		this.props.manager.acceptAll();
 		this.props.manager.saveAndApplyConsents();
-		this.setState({isModalVisible: this.isModalVisible(false)});
+		this.hideModal(e);
 	}
 
 	render() {
 		const {config, t, manager, ns} = this.props;
-		const isNoticeVisible = this.isNoticeVisible();
+		const isNoticeVisible = this.isNoticeVisible(this.state.isNoticeVisible);
 		return (
 			<div className={ns('Main')}>
 				<ConsentNoticeWrapper
@@ -85,7 +102,9 @@ export default class Main extends React.Component {
 					ns={ns}
 					isVisible={isNoticeVisible}
 					isMandatory={config.mustNotice || false}
-					isModalVisible={this.state.isModalVisible}
+					isModalVisible={
+						this.state.isNoticeVisible || this.state.isModalVisible
+					}
 					config={config}
 					manager={manager}
 					onSaveRequest={this.acceptAndHideAll}
@@ -98,7 +117,7 @@ export default class Main extends React.Component {
 					t={t}
 					ns={ns}
 					config={config}
-					onHideRequest={this.hideModal}
+					onHideRequest={(e) => this.hideModal(e, true)}
 					onSaveRequest={this.saveAndHideAll}
 					manager={manager}
 				/>
