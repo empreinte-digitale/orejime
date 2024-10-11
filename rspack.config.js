@@ -24,7 +24,7 @@ module.exports = {
 				: pathData.chunk.name.replace(/(\-ts|\-index\-ts)$/, '.js');
 		},
 		path: fullPath('dist'),
-		publicPath: ''
+		publicPath: 'auto'
 	},
 	module: {
 		rules: [
