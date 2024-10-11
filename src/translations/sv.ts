@@ -6,11 +6,11 @@ export default {
 		description: "Vi samlar och bearbetar din personliga data i följande syften: {purposes}.\nFör att veta mer, läs vår {privacyPolicy}.",
 		privacyPolicyLabel: "Integritetspolicy",
 		accept: "Acceptera",
-		acceptTitle: null,
+		acceptTitle: "Acceptera alla cookies",
 		decline: "Avböj",
-		declineTitle: null,
+		declineTitle: "Avvisa alla valfria cookies",
 		configure: "Läs mer",
-		configureTitle: null
+		configureTitle: "Välj cookies"
 	},
 	modal: {
 		title: "Information som vi samlar",

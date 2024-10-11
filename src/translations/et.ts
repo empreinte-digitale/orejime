@@ -6,11 +6,11 @@ export default {
 		description: "Me kogume ja töötleme teie isikuandmeid järgmistel eesmärkidel: {purposes}.\nLisateabe saamiseks lugege palun meie {privacyPolicy}",
 		privacyPolicyLabel: "privaatsustingimused",
 		accept: "Nõustu",
-		acceptTitle: "Nõustu küpsistega",
+		acceptTitle: "Aktsepteeri kõik küpsised",
 		decline: "Keeldu",
-		declineTitle: null,
+		declineTitle: "Keelata kõik valikulised küpsised",
 		configure: "Lisateave",
-		configureTitle: null
+		configureTitle: "Vali küpsised"
 	},
 	modal: {
 		title: "Isikuandmete kogumine",

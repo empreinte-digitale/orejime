@@ -8,7 +8,7 @@ export default {
 		accept: "Acceptar",
 		acceptTitle: "Acceptar los cookies",
 		decline: "Refusar",
-		declineTitle: null,
+		declineTitle: "Refusar los cookies",
 		configure: "Ne saber mai",
 		configureTitle: null
 	},
