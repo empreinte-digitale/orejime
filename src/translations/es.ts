@@ -6,11 +6,11 @@ export default {
 	  description: "Recopilamos y procesamos su información personal para los siguientes propósitos : {purposes}.\nPara obtener más información, lea nuestra {privacyPolicy}.",
 	  privacyPolicyLabel: "política de confidencialidad",
 	  accept: "Aceptar",
-	  acceptTitle: "Aceptar cookies",
+	  acceptTitle: "Aceptar todas las cookies",
 	  decline: "Rechazar",
-	  declineTitle: null,
+	  declineTitle: "Rechazar todas las cookies opcionales",
 	  configure: "Más información",
-	  configureTitle: null
+	  configureTitle: "Elegir cookies"
 	},
 	modal: {
 	  title: "La información que recopilamos",

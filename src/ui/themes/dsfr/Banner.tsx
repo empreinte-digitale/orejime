@@ -37,7 +37,7 @@ const Banner: BannerComponent = ({
 				)}
 			</div>
 
-			<ul className="fr-consent-banner__buttons fr-btns-group fr-btns-group--right fr-btns-group--inline-reverse fr-btns-group--inline-sm">
+			<ul className="fr-consent-banner__buttons fr-btns-group fr-btns-group--right fr-btns-group--inline-sm">
 				<li>
 					<button
 						className="fr-btn"

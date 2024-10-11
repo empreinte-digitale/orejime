@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {Children, useEffect, useRef} from 'react';
 import {useTranslations} from '../../utils/hooks';
 import {ConsentState} from '../../components/types/ConsentState';
 import {PurposeComponent} from '../../components/types/Purpose';
@@ -37,12 +37,15 @@ const Purpose: PurposeComponent = ({
 					onChange((event.target as HTMLInputElement).checked);
 				}}
 			/>
+
 			<label
 				htmlFor={domId}
 				className="orejime-Purpose-label"
 				{...(isMandatory ? {tabIndex: 0} : {})}
 			>
-				<span className="orejime-Purpose-title">{title}</span>{' '}
+				<span id={`${domId}-title`} className="orejime-Purpose-title">
+					{title}
+				</span>{' '}
 				{isMandatory ? (
 					<span
 						className="orejime-Purpose-attribute orejime-Purpose-attribute--mandatory"
@@ -70,6 +73,7 @@ const Purpose: PurposeComponent = ({
 						: t.purpose.partial}
 				</span>
 			</label>
+
 			{description ? (
 				<p
 					id={`${domId}-description`}
@@ -79,7 +83,16 @@ const Purpose: PurposeComponent = ({
 					}}
 				/>
 			) : null}
-			<div className="orejime-Purpose-children">{children}</div>
+
+			{Children.count(children) ? (
+				<div
+					className="orejime-Purpose-children"
+					role="group"
+					aria-labelledby={`${domId}-title`}
+				>
+					{children}
+				</div>
+			) : null}
 		</div>
 	);
 };

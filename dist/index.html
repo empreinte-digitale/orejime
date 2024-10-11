@@ -27,7 +27,7 @@
 		-->
 
 		<div id="app">
-			<header class="Header">
+			<header class="Header" role="banner">
 				<div class="Container">
 					<div class="Header-inner">
 						<a href="https://empreintedigitale.fr">
@@ -58,7 +58,10 @@
 							</p>
 
 							<p>
-								<a href="https://github.com/empreinte-digitale/orejime">
+								<a
+									class="Button"
+									href="https://github.com/empreinte-digitale/orejime"
+								>
 									See the documentation on GitHub
 								</a>
 							</p>
@@ -79,18 +82,19 @@
 							consent preferences.
 						</p>
 
-						<div class="ButtonGroup">
-							<button
-								type="button"
-								class="Button"
-								data-orejime-open
-							>
-								Open consent modal
-							</button>
-							<button type="button" class="Button" data-orejime-reset>
-								Reset consent
-							</button>
-						</div>
+						<ul class="ButtonGroup">
+							<li>
+								<button type="button" class="Button" data-orejime-open>
+									Open consent modal
+								</button>
+							</li>
+
+							<li>
+								<button type="button" class="Button" data-orejime-reset>
+									Reset consent
+								</button>
+							</li>
+						</ul>
 					</div>
 
 					<h2 class="Section-title">They're using Orejime</h2>

@@ -6,11 +6,11 @@ export default {
 		description: "Az személyes adataidat összegyűjtjük és feldolgozzuk az alábbi célokra: {purposes}.\nTovábbi információért kérjük, olvassd el az {privacyPolicy}.",
 		privacyPolicyLabel: "adatvédelmi irányelveinket",
 		accept: "Elfogad",
-		acceptTitle: null,
+		acceptTitle: "Minden cookie elfogadása",
 		decline: "Elvet",
-		declineTitle: null,
+		declineTitle: "Minden opcionális cookie elutasítása",
 		configure: "Tudj meg többet",
-		configureTitle: null
+		configureTitle: "Cookie-k kiválasztása"
 	},
 	modal: {
 		title: "Információk, amiket gyűjtünk",

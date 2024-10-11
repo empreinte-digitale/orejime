@@ -74,6 +74,17 @@ const Modal: ModalComponent = ({
 						event.preventDefault();
 						onSave();
 					}}
+					onKeyDown={(event) => {
+						// Prevents a bug where hitting the `Enter`
+						// key on a checkbox submits the form.
+						if (
+							event.target.nodeName === 'INPUT' &&
+							event.target.type === 'checkbox' &&
+							event.key === 'Enter'
+						) {
+							event.preventDefault();
+						}
+					}}
 				>
 					<div className="orejime-Modal-body">{children}</div>
 					<div className="orejime-Modal-footer">

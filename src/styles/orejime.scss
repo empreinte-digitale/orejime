@@ -63,7 +63,9 @@ $orejime-breakpoint-notice: 990px !default;
 }
 
 .orejime-Button:is([disabled], [aria-disabled="true"]) {
-    background: var(--orejime-color-subdued);
+    background: none;
+    color: var(--orejime-color-subdued);
+    cursor: not-allowed;
 }
 
 .orejime-Button:not(:is([disabled], [aria-disabled="true"])):is(:hover, :focus) {

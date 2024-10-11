@@ -7,11 +7,11 @@ export default {
 			'We collect and process your personal information for the following purposes: {purposes}.\nTo learn more, please read our {privacyPolicy}.\n',
 		privacyPolicyLabel: 'privacy policy',
 		accept: 'Accept',
-		acceptTitle: 'Accept cookies',
+		acceptTitle: 'Accept all cookies',
 		decline: 'Decline',
-		declineTitle: null,
+		declineTitle: 'Decline optional cookies',
 		configure: 'Learn more',
-		configureTitle: null
+		configureTitle: 'Choose cookies'
 	},
 	modal: {
 		title: 'Information that we collect',

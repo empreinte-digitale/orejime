@@ -6,11 +6,11 @@ export default {
 		description: "Vi samler inn og prosesserer din personlige informasjon av følgende årsaker: {purposes}.\nFor å lære mer, vennligst les vår {privacyPolicy}.",
 		privacyPolicyLabel: "personvernerklæring",
 		accept: "Akseptere",
-		acceptTitle: null,
+		acceptTitle: "Godta alle informasjonskapsler",
 		decline: "Avslå",
-		declineTitle: null,
+		declineTitle: "Avslå alle valgfrie informasjonskapsler",
 		configure: "Lær mer",
-		configureTitle: null
+		configureTitle: "Velg informasjonskapsler"
 	},
 	modal: {
 		title: "Informasjon vi samler inn",

@@ -110,6 +110,16 @@ a:active {
 	background: #b30443;
 }
 
+.ButtonGroup {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.ButtonGroup li {
+	display: inline-block;
+}
+
 .Container {
 	box-sizing: border-box;
 	margin: auto;
