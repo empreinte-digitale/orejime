@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 3.2.1
+
+- fix: Collision resolution on non-element focus targets
+  (https://github.com/boscop-fr/orejime/pull/172)
+- internal: Optimized CI workflows
+  (https://github.com/boscop-fr/orejime/pull/171)
+
 ## 3.2.0
 
 - feature: Trusted publishing on npm
