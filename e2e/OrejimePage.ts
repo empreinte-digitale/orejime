@@ -10,6 +10,8 @@ declare global {
 	}
 }
 
+type Rect = Pick<DOMRect, 'x' | 'y' | 'width' | 'height'>;
+
 export class OrejimePage {
 	constructor(
 		public readonly page: Page,
@@ -148,6 +150,31 @@ export class OrejimePage {
 
 	async acceptContextualNotice() {
 		await this.page.getByTestId('orejime-contextual-notice-accept').click();
+	}
+
+	// @see https://github.com/boscop-fr/orejime/issues/170
+	async focusOnDocument() {
+		return await this.page.evaluate(() => {
+			document.dispatchEvent(new FocusEvent('focusin'));
+		});
+	}
+
+	async getBannerRect() {
+		const position = await this.banner.boundingBox();
+
+		if (!position) {
+			throw new Error('Unable to get banner position');
+		}
+
+		return position as Rect;
+	}
+
+	async expectBannerRect(expected: Rect) {
+		await expect(await this.getBannerRect()).toEqual(expected);
+	}
+
+	async expectDifferentBannerRect(expected: Rect) {
+		await expect(await this.getBannerRect()).not.toEqual(expected);
 	}
 
 	async expectUndefinedConsents() {

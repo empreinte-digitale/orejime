@@ -113,7 +113,12 @@ const getZIndex = (element: HTMLElement): number => {
 // by scrolling the page or moving one of them.
 // We're only resolving collisions on the vertical axis, as
 // it is the main direction of web pages.
-export const resolveCollision = (fixed: HTMLElement, mobile: HTMLElement) => {
+export const resolveCollision = (mobile: HTMLElement, fixed?: HTMLElement) => {
+	if (!fixed) {
+		translateElementY(mobile, 0);
+		return;
+	}
+
 	if (mobile.contains(fixed)) {
 		translateElementY(mobile, 0);
 		return;

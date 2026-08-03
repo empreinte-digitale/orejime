@@ -248,7 +248,7 @@ test.describe('Orejime', () => {
 	});
 
 	test('should not obscure any focused element (WCAG 2.4.12)', async () => {
-		const initalPosition = await orejimePage.banner.boundingBox();
+		const initalRect = await orejimePage.getBannerRect();
 		const obscured = orejimePage.locator('#obscured');
 
 		// The button should be obscured by the banner at
@@ -264,26 +264,27 @@ test.describe('Orejime', () => {
 		// should be moved so it becomes visible/usable.
 		await obscured.focus();
 		await obscured.click();
-
-		const position = await orejimePage.banner.boundingBox();
-		await expect(position).not.toEqual(initalPosition);
+		await orejimePage.expectDifferentBannerRect(initalRect);
 
 		// When a non obscured button takes focus, the banner
 		// shouldn't be displaced.
 		const nonObscured = orejimePage.locator('#non-obscured');
 		await nonObscured.focus();
 		await nonObscured.click();
-
-		const position2 = await orejimePage.banner.boundingBox();
-		await expect(position2).toEqual(initalPosition);
+		await orejimePage.expectBannerRect(initalRect);
 
 		// When a button above the banner takes focus, the
 		// banner shouldn't be displaced either.
 		const obscuring = orejimePage.locator('#obscuring');
 		await obscuring.focus();
+		await orejimePage.expectBannerRect(initalRect);
 
-		const position3 = await orejimePage.banner.boundingBox();
-		await expect(position3).toEqual(initalPosition);
+		// Collision detection is based on focus event targets.
+		// Sometimes, those targets aren't DOM elements.
+		// This should not break the resolution but move the
+		// banner to its default position.
+		await orejimePage.focusOnDocument();
+		await orejimePage.expectBannerRect(initalRect);
 	});
 
 	test('should clear consents', async () => {
