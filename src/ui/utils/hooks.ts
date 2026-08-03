@@ -112,7 +112,10 @@ export const useConsent = (
 export const useNonObscuringElement = (ref: MutableRef<HTMLElement>): void => {
 	useEffect(() => {
 		const resolve = (event: FocusEvent) => {
-			resolveCollision(event.target as HTMLElement, ref.current);
+			resolveCollision(
+				ref.current,
+				event.target instanceof HTMLElement ? event.target : null
+			);
 		};
 
 		document.addEventListener('focusin', resolve);
