@@ -263,21 +263,25 @@ test.describe('Orejime', () => {
 		// When the obscured button takes focus, the banner
 		// should be moved so it becomes visible/usable.
 		await obscured.focus();
-		await obscured.click();
 		await orejimePage.expectDifferentBannerRect(initalRect);
 
 		// When a non obscured button takes focus, the banner
 		// shouldn't be displaced.
 		const nonObscured = orejimePage.locator('#non-obscured');
 		await nonObscured.focus();
-		await nonObscured.click();
 		await orejimePage.expectBannerRect(initalRect);
+
+		// Moves the banner again before the next test.
+		await obscured.focus();
 
 		// When a button above the banner takes focus, the
 		// banner shouldn't be displaced either.
 		const obscuring = orejimePage.locator('#obscuring');
 		await obscuring.focus();
 		await orejimePage.expectBannerRect(initalRect);
+
+		// Moves the banner again before the next test.
+		await obscured.focus();
 
 		// Collision detection is based on focus event targets.
 		// Sometimes, those targets aren't DOM elements.

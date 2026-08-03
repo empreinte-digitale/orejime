@@ -154,7 +154,7 @@ export class OrejimePage {
 
 	// @see https://github.com/boscop-fr/orejime/issues/170
 	async focusOnDocument() {
-		return await this.page.evaluate(() => {
+		return this.page.evaluate(() => {
 			document.dispatchEvent(new FocusEvent('focusin'));
 		});
 	}
